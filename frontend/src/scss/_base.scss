@@ -1,3 +1,11 @@
-root {
-    color: red;
+$red: rgb(179, 0, 0);
+$black: #000;
+$white: #fff;
+
+$small-padding: 5px;
+
+@mixin custom-box-shadow {
+    box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+    -webkit-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
 }

@@ -1,0 +1,5 @@
+@use "base";
+
+.test-shadow-box {
+    @include base.custom-box-shadow;
+}
