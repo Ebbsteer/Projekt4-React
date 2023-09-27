@@ -51,7 +51,7 @@ npm run dev
 
 ### Flytta över kod till github
 
-```
+```bash
 git add .
 git commit -m "Erat commit-meddelande här"
 git push -u origin main
