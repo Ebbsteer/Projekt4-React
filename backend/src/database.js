@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export const DB = Database("database.db");
 
+const prepareCache = new Map();
+
 export const prepare = (query) => {
     if (prepareCache.has(query)) {
         return (
@@ -49,11 +51,26 @@ export const insertUser = (id, username, password_hash) => {
  */
 export const getUser = (id) => {
     const getUserStmt = prepare(`
-        SELECT id, username, password FROM users WHERE id = ?
+        SELECT id, username, password_hash FROM users WHERE id = ?
     `);
 
     return (getUserStmt.get(id));
 }
+
+/**
+ * Get a user by username from the database
+ * @param {string} username username of user
+ * @returns {User | undefined} user
+ */
+export const getUserByUsername = (username) => {
+    const getUserByUsernameStmt = prepare(`
+        SELECT id, username, password_hash FROM users WHERE username = ?
+    `);
+
+    return (
+        getUserByUsernameStmt.get(username)
+    );
+};
 
 /**
  * Get total amount of users
@@ -77,3 +94,4 @@ export const deleteUser = (cid) => {
 
     deleteUserStmt.run(cid);
 };
+
