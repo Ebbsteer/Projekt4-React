@@ -2,12 +2,16 @@ const Footer = () => {
   return (
     <>
       <div id="foot">
-        <p>CosmicHub enterprise</p>
-
-        
+        <div>
+         
+          <p>
+       
+            <b> CosmicHub </b>
+          </p>
+          <br />
+          <p> Copyright © 2023-2024 All rights reserved.</p>
+        </div>
       </div>
-
- 
     </>
   );
 };
