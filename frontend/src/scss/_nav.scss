@@ -16,6 +16,9 @@
    }
 img{
    height: 3rem;
+   float: left;
+   padding-right: 1rem;
+   margin-top: 0.8rem;
 }
  }
 
@@ -40,6 +43,14 @@ img{
     display: none;
  }
 
+ .hamb1, .hamb2, .hamb3{
+   width: 2.3rem;
+   height: 0.35rem;
+   background-color: rgb(255, 255, 255);
+   margin: 0.35rem 0;
+   transition: 0.4s ease;
+}
+
  @media only screen and (max-width:700px){
     #droppa{
        display: none;
@@ -60,5 +71,10 @@ img{
 
     #dropknapp{
        display: inline !important;
+       float: right;
+       margin-right: 1rem;
+       background: none;
+       border: none;
+       margin-top: 1rem;
     }
  }

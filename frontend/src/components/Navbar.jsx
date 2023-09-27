@@ -6,10 +6,14 @@ const Navbar = () => {
 
     return <>
     <div id="nav">
-        <button onClick={drop} id="dropknapp">Hej</button>
+        <a href=""><img src="../src/assets/img/logospace.jpg" alt="" /></a>
+        <button onClick={drop} id="dropknapp">
+        <div class="hamb1"></div>
+        <div class="hamb2"></div>
+        <div class="hamb3"></div>
+        </button>
         <div id="droppa">
             <div id="navleft">
-                <a href=""><img src="../src/assets/img/logospace.jpg" alt="" /></a>
                 <a href="">HOME</a>
                 <a href="">ITEMS</a>
                 <a href="">PLANETS&#8681;</a>
