@@ -3,7 +3,11 @@ const Footer = () => {
     <>
       <div id="foot">
         <p>CosmicHub enterprise</p>
+
+        
       </div>
+
+ 
     </>
   );
 };

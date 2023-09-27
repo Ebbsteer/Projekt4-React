@@ -1,6 +1,23 @@
 @use "base";
 
 #foot{
+ display: flex;
+    text-align: center;
+    justify-content: center;
+   
 
+   height: 15vh;
+   padding: 1vh;
+  margin-top: auto;
+
+    color: white;
     background-color: base.$blackish;
+
+
+    p{
+        font-size: large;
+
+    }
 }
+
+
