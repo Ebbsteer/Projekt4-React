@@ -28,10 +28,37 @@ img{
     float: left;
  }
 
- #droppa{display: inline;}
+ #droppa{
+    display: inline;
+   }
+
+ .toggla{
+    display: inline !important;
+ }
+
+ #dropknapp{
+    display: none;
+ }
 
  @media only screen and (max-width:700px){
     #droppa{
-       display: none !important;
+       display: none;
+    }
+
+    #droppa a{
+       display: block;
+       width: 100%;
+    }
+
+    #navleft{
+       float: none;
+    }
+    
+    #navright{
+       float: none;
+      }
+
+    #dropknapp{
+       display: inline !important;
     }
  }

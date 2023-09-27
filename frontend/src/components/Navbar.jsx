@@ -1,11 +1,12 @@
-import {useState} from 'react';
+function drop(){
+    document.getElementById("droppa").classList.toggle("toggla");
+}
 
 const Navbar = () => {
-    const [dropdown, setDropdown] = useState(true);
 
     return <>
     <div id="nav">
-        <button onClick={()=>{setDropdown(!dropdown)}}>Hej</button>
+        <button onClick={drop} id="dropknapp">Hej</button>
         <div id="droppa">
             <div id="navleft">
                 <a href=""><img src="../src/assets/img/logospace.jpg" alt="" /></a>
