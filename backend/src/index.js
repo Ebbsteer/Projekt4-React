@@ -13,7 +13,7 @@ const port = 3000;
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
-app.use(cookieParser("very secret"));
+app.use(cookieParser("very secret")); // Bör bytas ut i production :^)
 
 app.use(
     urlencoded({

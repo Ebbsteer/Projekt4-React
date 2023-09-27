@@ -31,6 +31,13 @@ router.use((req, res, next) => {
     next();
 });
 
+const authRoute =  (req, res, next) => {
+    console.log("authRoute");
+    if(!req.user) return next("router");
+
+    next();
+}
+
 router.route("/login").post((req, res) => {
     const { username, password } = req.body;
 
@@ -57,7 +64,7 @@ router.route("/login").post((req, res) => {
     return res.status(400);
 })
 
-router.route("/test").get((req, res) => {
+router.route("/test").get(authRoute, (req, res) => {
     console.log("You accessed /test!");
 
     res.send(200);
