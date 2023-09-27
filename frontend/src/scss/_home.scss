@@ -5,14 +5,17 @@
   background-color: base.$red;
 }
 
-<<<<<<< HEAD
 #home {
-  position: relative;
+  background-image: url("../src/assets/img/nebulae.jpeg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+
   width: 100vw; /* Use viewport width to fill the entire width of the viewport */
   height: 100vh; /* Use viewport height to fill the entire height of the viewport */
   overflow: hidden;
 
   .nebulae {
+    
     width: 100%; /* Width to fill the parent container */
     height: 100%; /* Height to fill the parent container */
     object-fit: cover; /* Maintain aspect ratio and fill */
@@ -24,12 +27,3 @@
   }
 }
   
-=======
-    background-color: base.$red;
-}
-
-#nav{
-    background-color: base.$blackish;
-    font-size: 3rem;
-}
->>>>>>> 4db61b367421542a020a2ddf3e2140e56da78f93
