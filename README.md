@@ -49,6 +49,14 @@ cd backend
 npm run dev
 ```
 
+### Flytta över kod till github
+
+```
+git add .
+git commit -m "Erat commit-meddelande här"
+git push -u origin main
+```
+
 ## Verktyg och tekniker som används i projektet
 
 ### Node.js
