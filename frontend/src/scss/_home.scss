@@ -1,41 +1,84 @@
 /* Home.scss */
 #home {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  
-    .nebulae {
-      background-image: url("../src/assets/img/nebulae.jpeg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(5px);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .nebulae {
+    background-image: url("../src/assets/img/nebulae.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .Homebox {
+    display: flex;
+    justify-content: flex-end; /* Move the box to the right */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 10%; /* Adjust this margin-right value as needed */
+    z-index: 1;
+    overflow: hidden; /* Clip content to the box */
+
+    /* Styles for the black background box */
+    .background-box {
+      background-color: rgba(0, 0, 0, 0.75); /* Black background with 75% opacity */
+      width: 100%; /* Width of the black box, covering the entire Homebox */
+      height: 100%; /* Height of the black box, covering the entire Homebox */
       position: absolute;
       top: 0;
-      left: 0;
-      z-index: -1;
+      right: 0; /* Align with the text box */
+      z-index: -1; /* Place it behind the text box */
+      border-radius: 20px; /* Rounded corners */
+
+      /* Add a smaller rounded filter using a pseudo-element */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10%; /* Adjust the position of the filter */
+        left: 10%; /* Adjust the position of the filter */
+        width: 80%; /* Adjust the size of the filter */
+        height: 80%; /* Adjust the size of the filter */
+        background: rgba(0, 0, 0, 0.3); /* Filter color and opacity */
+        border-radius: 50%; /* Make it rounded */
+      }
     }
-  
-    .center-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1; /* Place it above the blurred image */
-    }
-  
+
+    /* Styles for the rounded text box */
     .textbox {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
+      background-color: rgba(187, 18, 176, 0.401); /* Transparent background */
+      color: #ffffff; /* Text color */
+      border-radius: 20px; /* Rounded corners */
+      padding: 200px;
       text-align: center;
+      max-width: 80%;
+      /* Add a minimum height or some content to ensure the box is visible */
+      min-height: 50px;
+      position: relative; /* Position the text within the box */
+      z-index: 1; /* Place it above the black background */
     }
   }
-  
+
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .Homebox {
+      justify-content: center; /* Center the box on smaller screens */
+      right: 0; /* Remove margin-right on smaller screens */
+    }
+
+    .textbox {
+      padding: 10px;
+    }
+  }
+}
