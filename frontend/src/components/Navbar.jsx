@@ -1,7 +1,10 @@
 const Navbar = () => {
     return <>
     <div id="nav">
-        <a href=""><p>hej</p></a>
+            <a href="">hej</a>
+            <a href="">hej</a>
+            <a href="">hej</a>
+            <a href="">hej</a>
     </div>
     </>;
 };
