@@ -7,9 +7,18 @@
     padding-left: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-
-
+    display:inline-block;
+    width: 100%;
+    position: fixed;
  a{
-    padding-right: 1rem;}
+    padding-right: 1rem;
+   }
+ }
 
+ #navright{
+    float: right;
+ }
+
+ #navleft{
+    float: left;
  }
