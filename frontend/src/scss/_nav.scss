@@ -1,15 +1,15 @@
 @use "base";
 
 #nav{
+   font-family: 'Bungee Inline', cursive;
     background-color: base.$blackish;
-    font-size: 3rem;
+    font-size: 2rem;
     color: base.$white;
     padding-left: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     display:inline-block;
     width: 100%;
     position: fixed;
+    line-height: 5rem;
  a{
     padding-right: 1rem;
    }
@@ -17,6 +17,7 @@
 
  #navright{
     float: right;
+    font-size: 3rem !important;
  }
 
  #navleft{
