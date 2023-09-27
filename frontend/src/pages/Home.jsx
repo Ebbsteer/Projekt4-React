@@ -5,6 +5,8 @@ const Home = () => {
   return (
     <>
         <div id="home">
+
+            
             <div className="image">
                 {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
             </div>

@@ -4,6 +4,11 @@
   @include base.custom-box-shadow;
   background-color: base.$red;
 }
+
+#nav{
+    background-color: base.$blackish;
+    font-size: 3rem;
+}
   
 #home {
   background-image: url("../src/assets/img/nebulae.jpeg");
