@@ -5,24 +5,20 @@
   background-color: base.$red;
 }
 
-
-  
 #home {
-  background-image: url("../src/assets/img/nebulae.jpeg");
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
-  
-
   width: 100vw; /* Use viewport width to fill the entire width of the viewport */
   height: 100vh; /* Use viewport height to fill the entire height of the viewport */
   overflow: hidden;
 
   .nebulae {
-    
+    background-image: url("../src/assets/img/nebulae.jpeg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+
     width: 100%; /* Width to fill the parent container */
     height: 100%; /* Height to fill the parent container */
     object-fit: cover; /* Maintain aspect ratio and fill */
-    filter: blur(15px); /* Apply blur effect */
+    filter: blur(5px); /* Apply blur effect */
     position: absolute; /* Positioning within #home */
     top: 0;
     left: 0;
@@ -30,7 +26,7 @@
   }
 }
 
-#nav{
-    background-color: base.$blackish;
-    font-size: 3rem;
+#nav {
+  background-color: base.$blackish;
+  font-size: 3rem;
 }

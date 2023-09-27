@@ -7,7 +7,7 @@ const Home = () => {
         <div id="home">
 
             
-            <div className="image">
+            <div className="nebulae">
                 {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
             </div>
         </div>
