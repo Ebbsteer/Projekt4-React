@@ -12,7 +12,7 @@ const CreateRoutes = () => {
                     <Route path="/">
                         <Route index element={<Home />} />
                         <Route path="*" element={<ErrorPage />} />
-                        <Route path="/planet/:mars" element={<Planet />} />
+                        <Route path="/planet/:id" element={<Planet />} />
                     </Route>
                 </Routes>
             </Router>
