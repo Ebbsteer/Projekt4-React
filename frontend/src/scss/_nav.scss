@@ -1,0 +1,15 @@
+@use "base";
+
+#nav{
+    background-color: base.$blackish;
+    font-size: 3rem;
+    color: base.$white;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+
+ a{
+    padding-right: 1rem;}
+
+ }
