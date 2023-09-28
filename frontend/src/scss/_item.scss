@@ -2,7 +2,7 @@
     height: 70%;
     width: 80%;
     color: white;
-    background-color: red;
+    background-color: rgba(73, 73, 73, 0.76);
     margin: 0;
     position: absolute;
     top: 50%;
@@ -20,6 +20,10 @@
         border:1px solid black;
         text-align: left;
     }
-    tr{
-    }
+    th {
+        top: 0;
+        position: sticky;
+        background: #ffffff;
+        color: black;
+     }
 }
