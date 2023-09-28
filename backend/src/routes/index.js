@@ -19,6 +19,7 @@ const authRoute =  (req, res, next) => {
 }
 
 router.route("/login").post((req, res) => {
+    console.log(req.body)
     const { username, password } = req.body;
 
     const redirectUrl = req.query.redirect ? `${req.query.redirect}` : "/";
