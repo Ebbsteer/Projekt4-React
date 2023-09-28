@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import { fileURLToPath } from "url";
 import { router } from "./routes/index.js";
@@ -15,11 +16,11 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 app.use(cookieParser("very secret")); // Bör bytas ut i production :^)
 
-app.use(
-    urlencoded({
-        extended: true,
-    }),
-);
+app.use(cors({
+    origin: "*"
+}));
+
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../public")));
 
