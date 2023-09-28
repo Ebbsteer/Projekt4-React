@@ -11,26 +11,6 @@ import {
     getUserByUsername,
 } from "../database.js";
 
-router.use((req, res, next) => {
-    if (!req.signedCookies?.cid) {
-        res.cookie("cid", uuidv4(), {
-            maxAge: 1000 * 60 * 60 * 24 * 365,
-            signed: true,
-        });
-    }
-    req.cid = signedCookie(req.signedCookies.cid, req.secret || "");
-    if (req.cid) {
-        const user = getUser(req.cid);
-        if (user) {
-            req.user = user;
-        }
-    }
-
-    console.log({ cid: req.cid, user: req.user, path: req.path });
-
-    next();
-});
-
 const authRoute =  (req, res, next) => {
     console.log("authRoute");
     if(!req.user) return next("router");
