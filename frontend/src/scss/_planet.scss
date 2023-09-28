@@ -1,7 +1,19 @@
 @use "base";
 
+
 #planet{
 
-    width: 100dvw;
-    height: 100dvh;
+ position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
 }
+
+ .planet-info{
+
+    display: flex;
+    justify-content: flex-end; /* Move the box to the right */
+    align-items: center;
+    margin-top: 40%;
+ }
