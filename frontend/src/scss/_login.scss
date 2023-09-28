@@ -18,12 +18,65 @@
       z-index: -1;
     }
   
-    // Add a media query for screens smaller than 768px (adjust as needed)
+    // Media query for screens smaller than 768px (adjust as needed)
     @media screen and (max-width: 768px) {
       .spacepic {
         // Adjust styles for smaller screens here
-        filter: blur(0); // Remove blur effect
+        filter: blur(0); // Remove blur effect for smaller screens
       }
+    }
+  
+    // Styles for the login container
+    .login-container {
+      position: absolute;
+      top: 50%; // Vertically center the container
+      left: 50%; // Horizontally center the container
+      transform: translate(-50%, -50%); // Center the container precisely
+      background-color: rgba(255, 255, 255, 0.8); // Semi-transparent white background
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    label {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+  
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #50035e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
   }
   
