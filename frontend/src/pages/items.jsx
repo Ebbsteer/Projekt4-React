@@ -41,6 +41,8 @@ const Items = () => {
               <th>Discovered</th>
               <th>Gravity</th>
           </tr>
+          </thead>
+          <tbody>
           {planets.map((e)=>(
             <tr>
               <td key={e.id}>{e.bodyType}</td>
@@ -49,7 +51,7 @@ const Items = () => {
               <td key={e.id3}>{e.discoveryDate}</td>
               <td key={e.id4}>{e.gravity}</td>
             </tr>))}
-          </thead>
+         </tbody>
       </table>
       </div>
     </div>
