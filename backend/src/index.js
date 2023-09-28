@@ -16,13 +16,11 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 app.use(cookieParser("very secret")); // Bör bytas ut i production :^)
 
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 
-app.use(
-    urlencoded({
-        extended: true,
-    }),
-);
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../public")));
 
