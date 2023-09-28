@@ -12,7 +12,7 @@ const Items = () => {
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
       <div class="tabellDiv">
-      <p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p><p>He</p>
+      <p>He</p>
       </div>
     </div>
   );
