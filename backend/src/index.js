@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import { fileURLToPath } from "url";
 import { router } from "./routes/index.js";
@@ -14,6 +15,8 @@ const port = 3000;
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 app.use(cookieParser("very secret")); // Bör bytas ut i production :^)
+
+app.use(cors());
 
 app.use(
     urlencoded({
