@@ -114,10 +114,12 @@ export const getFavorites = (cid) => {
     getFavoritesStmt.get(cid);
 };
 
-
+/**
+ * Add favorites
+ * @param {string} fid id of favorite
+ */
 export const addFavorite = (cid, fid) => {
     const getCurentFavorite = getFavorites(cid);
-
     const currentFavorite = getCurentFavorite + "," + fid;
 
     const addFavoriteStmt = prepare(`
