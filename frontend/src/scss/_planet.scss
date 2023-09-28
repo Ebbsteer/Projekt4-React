@@ -10,10 +10,69 @@
 
 }
 
- .planet-info{
+
+
+.planet-box {
 
     display: flex;
     justify-content: flex-end; /* Move the box to the right */
     align-items: center;
-    margin-top: 40%;
+    width: 50%; /* Adjusted for responsiveness */
+    height: 100%; /* Adjusted for responsiveness */
+    position: absolute;
+  // margin-left: auto
+   ; /* Adjust this margin-right value as needed */
+    z-index: 1;
+
+
+ .planet-info{
+    
+    position: absolute;
+    width: auto; /* Allow the text box to expand horizontally as needed */
+    height: auto; /* Allow the text box to expand vertically as needed */
+    max-width: 60%; /* Limit the maximum width */
+    max-height: 40%; /* Limit the maximum height for responsiveness */
+
+    
+    background-color: #50035e70; /* Bright color */
+    color: #ffffff; /* Text color */
+    
+    text-align: center;
+    
+   
+    /* Add a minimum height or some content to ensure the box is visible */
+    padding: 5vh; /* Adjusted for responsiveness */
+    border-radius: 15px; /* Remove border-radius to make it square */
+    border: 10px solid black;
+    overflow: auto; /* Add overflow property to enable scrolling when needed */
+
+
+
  }
+
+ .box-title{
+    top: 15%;
+    position: absolute;
+   
+    background-color: #50035e70; /* Bright color */
+    color: #ffffff; /* Text color */
+    padding: 2vh;/* Adjusted for responsiveness */
+    border-radius: 15px; /* Remove border-radius to make it square */
+    text-align: center;
+    width: auto; /* Allow the text box to expand horizontally as needed */
+    height: auto; /* Allow the text box to expand vertically as needed */
+    max-width: 35%; /* Limit the maximum width */
+    max-height: 40%; /* Limit the maximum height for responsiveness */
+    /* Add a minimum height or some content to ensure the box is visible */
+    min-height: 50px;
+    border: 8px solid black;
+    overflow: auto; /* Add overflow property to enable scrolling when needed */
+
+ }
+}
+
+
+
+@media only screen and (max-width:700px){
+    
+}
