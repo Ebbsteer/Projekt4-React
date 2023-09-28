@@ -32,6 +32,10 @@ const Items = () => {
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
       <div className="tabellDiv">
+      <select>
+              <option value="">A-Z</option>
+              <option value="">Type</option>
+      </select>
       <table>
           <thead>
           <tr>

@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 function drop(){
     document.getElementById("droppa").classList.toggle("toggla");
 }
@@ -10,7 +12,7 @@ const Navbar = () => {
 
     return <>
     <div id="nav">
-        <a href=""><img src="../src/assets/img/logospace.jpg" alt="" /></a>
+        <NavLink to=""><img src="../src/assets/img/logospace.jpg" alt="" /></NavLink>
         <button onClick={drop} id="dropknapp">
         <div class="hamb1"></div>
         <div class="hamb2"></div>
@@ -18,25 +20,25 @@ const Navbar = () => {
         </button>
         <div id="droppa">
             <div id="navleft">
-                <a href="">HOME</a>
-                <a href="">ITEMS</a>
+                <NavLink to="/">HOME</NavLink>
+                <NavLink to="/items">ITEMS</NavLink>
                 <div class="droppaPlanets">
                     <a onClick={dropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
-                        <a href="">Mercury</a>
-                        <a href="">Venus</a>
-                        <a href="">Tellus</a>
-                        <a href="">Mars</a>
-                        <a href="">Jupiter</a>
-                        <a href="">Saturn</a>
-                        <a href="">Uranus (lol)</a>
-                        <a href="">Neptune</a>
+                        <NavLink to="/mercury">Mercury</NavLink>
+                        <NavLink to="/venus">Venus</NavLink>
+                        <NavLink to="/tellus">Tellus</NavLink>
+                        <NavLink to="/mars">Mars</NavLink>
+                        <NavLink to="/jupiter">Jupiter</NavLink>
+                        <NavLink to="/saturn">Saturn</NavLink>
+                        <NavLink to="/uranus">Uranus (lol)</NavLink>
+                        <NavLink to="/neptune">Neptune</NavLink>
                     </div>
                 </div>
             </div>
             <div id="navright">
-                <a href="">&#9733;</a>
-                <a href="">&#9817;</a>
+                <NavLink to="">&#9733;</NavLink>
+                <NavLink to="">&#9817;</NavLink>
             </div>
         </div>
     </div>
