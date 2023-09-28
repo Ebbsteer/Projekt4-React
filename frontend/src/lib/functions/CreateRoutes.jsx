@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Home, ErrorPage, Planet, Items } from "../../pages";
+import { Home, ErrorPage, Planet, Items, Login } from "../../pages";
 import { Navbar, Footer } from "../../components";
 
 const CreateRoutes = () => {
@@ -14,6 +14,7 @@ const CreateRoutes = () => {
                         <Route path="*" element={<ErrorPage />} />
                         <Route path="/planet/:id" element={<Planet />} />
                         <Route path="/items" element={<Items />} />
+                        <Route path="/Login" element={<Login />} />
                         
                     </Route>
                 </Routes>

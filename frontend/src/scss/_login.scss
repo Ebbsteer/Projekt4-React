@@ -1,0 +1,29 @@
+#login {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  
+    .spacepic {
+      background-image: url("../src/assets/img/spacepic.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(2px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  
+    // Add a media query for screens smaller than 768px (adjust as needed)
+    @media screen and (max-width: 768px) {
+      .spacepic {
+        // Adjust styles for smaller screens here
+        filter: blur(0); // Remove blur effect
+      }
+    }
+  }
+  
