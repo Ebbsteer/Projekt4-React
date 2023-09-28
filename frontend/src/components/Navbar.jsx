@@ -22,7 +22,7 @@ const Navbar = () => {
             <div id="navleft">
                 <NavLink to="/">HOME</NavLink>
                 <NavLink to="/items">ITEMS</NavLink>
-                <div class="droppaPlanets">
+                <div className="droppaPlanets">
                     <a onClick={dropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
                         <NavLink to="/planet/mercury">Mercury</NavLink>
