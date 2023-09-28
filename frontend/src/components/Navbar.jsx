@@ -25,14 +25,14 @@ const Navbar = () => {
                 <div class="droppaPlanets">
                     <a onClick={dropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
-                        <NavLink to="/planets/mercury">Mercury</NavLink>
-                        <NavLink to="/planets/venus">Venus</NavLink>
-                        <NavLink to="/planets/tellus">Tellus</NavLink>
-                        <NavLink to="/planets/mars">Mars</NavLink>
-                        <NavLink to="/planets/jupiter">Jupiter</NavLink>
-                        <NavLink to="/planets/saturn">Saturn</NavLink>
-                        <NavLink to="/planets/uranus">Uranus (lol)</NavLink>
-                        <NavLink to="/planets/neptune">Neptune</NavLink>
+                        <NavLink to="/planet/mercury">Mercury</NavLink>
+                        <NavLink to="/planet/venus">Venus</NavLink>
+                        <NavLink to="/planet/earth">Tellus</NavLink>
+                        <NavLink to="/planet/mars">Mars</NavLink>
+                        <NavLink to="/planet/jupiter">Jupiter</NavLink>
+                        <NavLink to="/planet/saturn">Saturn</NavLink>
+                        <NavLink to="/planet/uranus">Uranus (lol)</NavLink>
+                        <NavLink to="/planet/neptune">Neptune</NavLink>
                     </div>
                 </div>
             </div>
