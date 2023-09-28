@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Home, ErrorPage, Planet, } from "../../pages";
+import { Home, ErrorPage, Planet, Items } from "../../pages";
 import { Navbar, Footer } from "../../components";
 
 const CreateRoutes = () => {
@@ -13,6 +13,8 @@ const CreateRoutes = () => {
                         <Route index element={<Home />} />
                         <Route path="*" element={<ErrorPage />} />
                         <Route path="/planet/:id" element={<Planet />} />
+                        <Route path="/items" element={<Items />} />
+                        
                     </Route>
                 </Routes>
             </Router>
