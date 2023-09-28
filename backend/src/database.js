@@ -116,19 +116,13 @@ export const getFavorites = (cid) => {
 
 /**
  * Add favorites
+ * @param {string} cid id of user
  * @param {string} fid id of favorite
  */
 export const addFavorite = (cid, fid) => {
-    const getCurentFavorite = getFavorites(cid);
-    const currentFavorite = getCurentFavorite + "," + fid;
+    const oldFavorite = getFavorites(cid);
+    console.log(oldFavorite);
+    
+    const newFavorite = oldFavorite + "," + fid;
 
-    const addFavoriteStmt = prepare(`
-        INSERT INTO users (favorite) VALUES 
-    `);
 };
-
-
-
-
-
-//    favorites = getFavorites + ""
