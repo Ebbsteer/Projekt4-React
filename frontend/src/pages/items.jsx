@@ -37,12 +37,18 @@ const Items = () => {
           <tr>
               <th>Type</th>
               <th>Name</th>
-              <th>Moons</th>
-              <th>Temperature</th>
+              <th>Temperature- (F)</th>
               <th>Discovered</th>
               <th>Gravity</th>
           </tr>
-          {planets.map((e)=>(<tr><td key={e.id}>{e.name}</td></tr>))}
+          {planets.map((e)=>(
+            <tr>
+              <td key={e.id}>{e.bodyType}</td>
+              <td key={e.id1}>{e.englishName}</td>
+              <td key={e.id2}>{e.avgTemp}</td>
+              <td key={e.id3}>{e.discoveryDate}</td>
+              <td key={e.id4}>{e.gravity}</td>
+            </tr>))}
           </thead>
       </table>
       </div>
