@@ -18,11 +18,17 @@ export const prepare = (query) => {
 };
 
 export const setupDB = () => {
+    // const dropUsersTable = DB.prepare(`
+    //     DROP TABLE users
+    // `);
+    // dropUsersTable.run();
+
     const setupUsersTable = DB.prepare(`
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY NOT NULL,
             username TEXT NOT NULL,
-            password_hash TEXT NOT NULL
+            password_hash TEXT NOT NULL,
+            favorites TEXT 
         )
     `);
     setupUsersTable.run();
@@ -95,3 +101,32 @@ export const deleteUser = (cid) => {
     deleteUserStmt.run(cid);
 };
 
+
+/**
+ * Get favorites
+ * @param {string} cid id of user
+ */
+export const getFavorites = (cid) => {
+    const getFavoritesStmt = prepare(`
+        SELECT favorites FROM users WHERE id = ?
+    `);
+
+    getFavoritesStmt.get(cid);
+};
+
+
+export const addFavorite = (cid, fid) => {
+    const getCurentFavorite = getFavorites(cid);
+
+    const currentFavorite = getCurentFavorite + "," + fid;
+
+    const addFavoriteStmt = prepare(`
+        INSERT INTO users (favorite) VALUES 
+    `);
+};
+
+
+
+
+
+//    favorites = getFavorites + ""
