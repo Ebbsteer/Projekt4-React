@@ -14,9 +14,9 @@ const Navbar = () => {
     <div id="nav">
         <NavLink to=""><img src="../src/assets/img/logospace.jpg" alt="" /></NavLink>
         <button onClick={drop} id="dropknapp">
-        <div class="hamb1"></div>
-        <div class="hamb2"></div>
-        <div class="hamb3"></div>
+        <div className="hamb1"></div>
+        <div className="hamb2"></div>
+        <div className="hamb3"></div>
         </button>
         <div id="droppa">
             <div id="navleft">
