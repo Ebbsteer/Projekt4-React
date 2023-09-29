@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+  }
+
 #planet {
     position: relative;
     width: 100%;
@@ -8,21 +12,50 @@
     align-items: center;
   }
   
+  .planet-container{
+    border: 1px dotted black;
+    display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  text-align: center;
+  
+   width: 100%;
+   height: 100%;
+   
+  }
  
  .planet-box {
+    border: 1px dotted black;
+   
+   
     flex-direction: column;
           display: flex;
           justify-content: center; /* Move the box to the right */
           align-items: center;
-          width: 45%; /* Adjusted for responsiveness */
+          //width: 45%; /* Adjusted for responsiveness */
           height: 100%; /* Adjusted for responsiveness */
           position: absolute; /* Adjust this margin-right value as needed */
           z-index: 1;
-          align-content: left;
+          align-content: center;
 
    
   }
   
+
+  .right-box{
+    border: 1px dotted black;
+ 
+    flex-direction: column;
+          display: flex;
+          justify-content: center; /* Move the box to the right */
+          align-items: center;
+          //width: 45%; /* Adjusted for responsiveness */
+          height: 100%; /* Adjusted for responsiveness */
+          position: absolute; /* Adjust this margin-right value as needed */
+          z-index: 1;
+          align-content: center;
+  }
+
   .box-title {
     display: flex;
   margin-top: -10%;
