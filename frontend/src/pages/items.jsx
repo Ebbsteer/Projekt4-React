@@ -52,6 +52,7 @@ const Items = () => {
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Type</th>
               <th>Name</th>
               <th>Temperature- (K)</th>
@@ -65,8 +66,9 @@ const Items = () => {
                 <td colSpan="5">Inga resultat hittades</td>
               </tr>
             ) : (
-              searchResults.map((planet) => (
+              searchResults.map((planet,i) => (
                 <tr key={planet.id}>
+                  <td>{i}</td>
                   <td>{planet.bodyType}</td>
                   <td>{planet.englishName}</td>
                   <td>{planet.avgTemp}</td>
