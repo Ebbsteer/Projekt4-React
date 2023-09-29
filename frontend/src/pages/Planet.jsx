@@ -76,7 +76,7 @@ const Planet = () => {
                     <div className="box-title">
                         <h1>{planet.name}</h1>
                     </div>
-
+                <br />
                     <div className="planet-info">
                         <p>
                             {planet.description}Muffin marshmallow lemon drops
