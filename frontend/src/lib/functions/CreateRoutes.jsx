@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 
-import { Home, ErrorPage, Planet, Items, Login } from "../../pages";
+import { Home, ErrorPage, Planet, Items, Login, Exempel } from "../../pages";
 import { Navbar, Footer } from "../../components";
 
 const OutletTest = () => {
@@ -23,7 +23,7 @@ const CreateRoutes = () => {
                         <Route path="/planet/:id" element={<Planet />} />
                         <Route path="/items" element={<Items />} />
                         <Route path="/Login" element={<Login />} />
-                        
+                        <Route path="/exempel" element={<Exempel />} />
                     </Route>
                 </Routes>
             </Router>

@@ -50,3 +50,11 @@ router.route("/test").get(authRoute, (req, res) => {
 
     res.send(200);
 })
+
+
+// NEW 28/9
+
+// router.route("/add-favorite").patch((req, res) => {
+//     const {favorite_id} = req.body
+//     res.send(200);
+// })
