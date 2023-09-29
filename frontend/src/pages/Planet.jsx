@@ -79,30 +79,7 @@ const Planet = () => {
                 <br />
                     <div className="planet-info">
                         <p>
-                            {planet.description}Muffin marshmallow lemon drops
-                            dessert bonbon pudding sesame snaps croissant wafer.
-                            Biscuit lollipop biscuit oat cake bonbon. Cake candy
-                            macaroon muffin chocolate bar fruitcake. Cookie
-                            pudding bonbon liquorice danish danish. Tart
-                            marshmallow gingerbread gummi bears chocolate cake
-                            toffee soufflé pudding. Halvah ice cream oat cake
-                            shortbread cake fruitcake sweet tootsie roll lemon
-                            drops. Liquorice bear claw tart carrot cake icing
-                            biscuit macaroon topping. Icing marshmallow cake
-                            carrot cake tart. Pudding carrot cake brownie oat
-                            cake donut pastry sesame snaps. Donut tiramisu
-                            topping bear claw sugar plum sweet roll bear claw
-                            chupa chups. Icing biscuit topping sweet carrot cake
-                            oat cake. Dessert donut gummies dessert icing sweet
-                            dessert cotton candy caramels. Ice cream caramels
-                            wafer halvah bear claw. Cookie toffee tootsie roll
-                            sweet roll gummi bears cheesecake shortbread sweet
-                            roll apple pie. Chocolate bar chocolate bar powder
-                            tootsie roll donut chupa chups. Gingerbread powder
-                            dessert biscuit sesame snaps soufflé dessert
-                            chocolate bar sweet. Gummies liquorice tiramisu
-                            danish pudding sweet. Donut wafer donut topping
-                            marshmallow. Bonbon icing pastry halvah gummi bears.{" "}
+                            {planet.description}{" "}
                         </p>
                     </div>
                 </div>
