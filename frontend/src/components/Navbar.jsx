@@ -38,7 +38,7 @@ const Navbar = () => {
             </div>
             <div id="navright">
                 <NavLink to="">&#9733;</NavLink>
-                <NavLink to="">&#9817;</NavLink>
+                <NavLink to="/login">&#9817;</NavLink>
             </div>
         </div>
     </div>

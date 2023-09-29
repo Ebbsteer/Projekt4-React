@@ -41,7 +41,7 @@ const Items = () => {
           <tr>
               <th>Type</th>
               <th>Name</th>
-              <th>Temperature- (F)</th>
+              <th>Temperature- (K)</th>
               <th>Discovered</th>
               <th>Gravity</th>
           </tr>
@@ -54,6 +54,7 @@ const Items = () => {
               <td key={e.id2}>{e.avgTemp}</td>
               <td key={e.id3}>{e.discoveryDate}</td>
               <td key={e.id4}>{e.gravity}</td>
+              <td>&#9733;</td>
             </tr>))}
          </tbody>
       </table>

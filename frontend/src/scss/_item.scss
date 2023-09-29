@@ -26,4 +26,7 @@
         background: #ffffff;
         color: black;
      }
+     tr:nth-child(even) {
+        background-color: rgba(41, 41, 41, 0.76);
+      }
 }
