@@ -1,73 +1,103 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react"
 
 const Items = () => {
-    const {id} = useParams() 
-    console.log(id);
+  const { id } = useParams();
+  console.log(id);
 
-    const itemList=("https://api.le-systeme-solaire.net/rest/bodies/")
+  const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
 
-    const [planets, setPlanets] = useState([])
-  
-    const fetchUserData = () => {
-      fetch(itemList)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          console.log(data);
-          setPlanets(data.bodies);
-        })
-    }
-  
-    useEffect(() => {
-      fetchUserData()
-    }, [])
+  const [planets, setPlanets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
+  const fetchUserData = () => {
+    fetch(itemList)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setPlanets(data.bodies);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    const filteredData = planets.filter((item) =>
+      item.englishName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(filteredData);
+  }, [planets, searchTerm]);
 
   return (
     <div id="home">
-      <div className="nebulae">
-        {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
-      </div>
+      <div className="nebulae"></div>
       <div className="tabellDiv">
-      <select>
-              <option value="">A-Z</option>
-              <option value="">Type</option>
-      </select>
-      <table>
+        <input
+          type="text"
+          placeholder="Sök..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <table>
           <thead>
-          <tr>
+            <tr>
               <th>Type</th>
               <th>Name</th>
               <th>Temperature- (K)</th>
               <th>Discovered</th>
               <th>Gravity</th>
-          </tr>
+            </tr>
           </thead>
           <tbody>
-          {planets.map((e)=>(
-            <tr>
-              <td key={e.id}>{e.bodyType}</td>
-              <td key={e.id1}>{e.englishName}</td>
-              <td key={e.id2}>{e.avgTemp}</td>
-              <td key={e.id3}>{e.discoveryDate}</td>
-              <td key={e.id4}>{e.gravity}</td>
-              <td><button onClick={()=>{
-                  fetch("http://localhost:3000/add-favorite", {
-                      method: "POST",
-                      headers: {
-                          "Content-Type": "application/json"
-                      },
-                      body: JSON.stringify(e.id)
-                  }).then((response) => {
-                      console.log(response)
-                  })
-              }}>&#9733;</button></td>
-            </tr>))}
-         </tbody>
-      </table>
+            {searchResults.length === 0 ? (
+              <tr>
+                <td colSpan="5">Inga resultat hittades</td>
+              </tr>
+            ) : (
+              searchResults.map((planet) => (
+                <tr key={planet.id}>
+                  <td>{planet.bodyType}</td>
+                  <td>{planet.englishName}</td>
+                  <td>{planet.avgTemp}</td>
+                  <td>{planet.discoveryDate}</td>
+                  <td>{planet.gravity}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        fetch("http://localhost:3000/add-favorite", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify(planet.id),
+                        })
+                          .then((response) => {
+                            console.log(response);
+                          })
+                          .catch((error) => {
+                            console.error("Fetch error:", error);
+                          });
+                      }}
+                    >
+                      &#9733;
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
