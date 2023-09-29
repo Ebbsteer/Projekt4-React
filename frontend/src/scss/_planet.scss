@@ -27,7 +27,7 @@
   }
  
  .planet-box {
-    
+    margin-top: 5%;
    
     flex-direction: column;
     display: flex;
@@ -48,7 +48,7 @@
   
 
   .right-box{
-
+margin-top: 5%;
     flex-direction: column;
           display: flex;
           justify-content: center; /* Move the box to the right */
@@ -58,7 +58,29 @@
           // position: absolute; /* Adjust this margin-right value as needed */
           // z-index: 1;
           align-content: center;
-  }
+          scroll-behavior: smooth;
+
+          table{
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              font-size: 1.7rem;
+          }
+          td, th{
+              border:1px solid black;
+              text-align: left;
+          }
+          th {
+              top: 0;
+              position: sticky;
+              background: #ffffff;
+              color: black;
+           }
+           tr:nth-child(even) {
+              background-color: rgba(41, 41, 41, 0.76);
+            }
+      }
+  
 
   .box-title {
     display: flex;
