@@ -3,7 +3,8 @@ import nebulae from "../assets/img/nebulae.jpeg";
 
 const Home = () => {
 
-    const [num, setNum] = useState(0);
+    const [num, setNum] = useState(Math.floor(Math.random()
+    *(8 - 1 + 1)) + 1);
 
     const randomNumberInRange = (min, max) => {
       return Math.floor(Math.random()
@@ -15,6 +16,27 @@ const Home = () => {
     if(num==1){
       window.location = `/planet/mercury`
     }
+    else if(num==2){
+      window.location = `/planet/venus`
+    }
+    else if(num==3){
+      window.location = `/planet/earth`
+    }
+    else if(num==4){
+      window.location = `/planet/mars`
+    }
+    else if(num==5){
+      window.location = `/planet/jupiter`
+    }
+    else if(num==6){
+      window.location = `/planet/saturn`
+    }
+    else if(num==7){
+      window.location = `/planet/uranus`
+    }
+    else if(num==8){
+      window.location = `/planet/neptune`
+    }
   };
 
   return (
@@ -23,7 +45,6 @@ const Home = () => {
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
       <div className="Homebox">
-        <h2>Number is: {num}</h2>
       <button onClick={handleClick}>
                 Click Me Generate
             </button>
