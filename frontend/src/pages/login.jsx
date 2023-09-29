@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div id="login">
+    <div id="login" className="login-container">
       <div className="spacepic">
         {/* Background image */}
       </div>
@@ -77,6 +77,10 @@ const Login = () => {
           <button type="button" onClick={handleForgotPassword}>
             Forgot Password
           </button>
+          {/* Endast en knapp för att registrera här */}
+          <button className="register-button">Register here</button>
+          {/* Font link */}
+          <a href="https://www.fontspace.com/category/jungle"></a>
         </form>
       </div>
     </div>

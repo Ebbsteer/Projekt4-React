@@ -1,4 +1,9 @@
-#login {
+@font-face {
+    font-family: 'NeonAdventure'; // Namnet på din fontfamilj
+    src: url('../src/assets/fonts/neonadventure.ttf') format('truetype'); // Sökvägen till din TTF-fil
+  }
+  
+  #login {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -10,6 +15,7 @@
       background-size: cover;
       width: 100%;
       height: 100%;
+      filter: blur();
       object-fit: cover;
       position: absolute;
       top: 0;
@@ -17,28 +23,27 @@
       z-index: -1;
     }
   
-    // Media query for screens smaller than 768px (adjust as needed)
+    // Media query for screens smaller than 768px
     @media screen and (max-width: 768px) {
       .spacepic {
-        // Adjust styles for smaller screens here
         filter: blur(0); // Remove blur effect for smaller screens
       }
     }
   
-    // Styles for the login container
     .login-container {
       position: absolute;
-      top: 50%; // Vertically center the container
-      left: 50%; // Horizontally center the container
-      transform: translate(-50%, -50%); // Center the container precisely
-      background-color: rgba(255, 255, 255, 0.097); // Semi-transparent white background
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(57, 110, 156, 0.301);
       padding: 20px;
       border-radius: 10px;
       text-align: center;
     }
   
     h2 {
-      font-size: 24px;
+      font-family: 'NeonAdventure', sans-serif; // Använd din nya font här
+      font-size: 28px;
       margin-bottom: 20px;
     }
   
@@ -53,7 +58,7 @@
       width: 100%;
       padding: 10px;
       margin: 5px 0;
-      border: 1px solid rgb(84, 17, 126);
+      border: 1px solid rgb(255, 204, 0);
       border-radius: 5px;
     }
   
@@ -61,7 +66,7 @@
       display: flex;
       align-items: center;
       margin: 5px 0;
-      font-size: 14px;
+      font-size: 18px;
     }
   
     input[type="checkbox"] {
@@ -71,11 +76,32 @@
     button {
       margin-top: 10px;
       padding: 10px 20px;
-      background-color: hsl(287, 94%, 19%);
-      color: #fff;
+      background-color: hsl(0, 0%, 100%);
+      color: #000000;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-family: 'NeonAdventure', sans-serif; // Använd din nya font här
+    }
+  
+    // Style for the "Not signed up yet? Register here." button
+    .register-text {
+      font-size: 18px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .register-text {
+        font-size: 14px; // Anpassa textstorleken för mindre skärmar
+      }
+    }
+  
+    button.register-button {
+      color: rgb(176, 30, 30);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      font-family: 'NeonAdventure', sans-serif; // Använd din nya font här
     }
   }
   
