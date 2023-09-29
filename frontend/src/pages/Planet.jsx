@@ -72,6 +72,7 @@ const Planet = () => {
                     backgroundImage: `url(${planet.image})`,
                 }}
             >
+              <div className="planet-container"> 
                 <div className="planet-box">
                     <div className="box-title">
                         <h1>{planet.name}</h1>
@@ -82,6 +83,15 @@ const Planet = () => {
                             {planet.description}{" "}
                         </p>
                     </div>
+                </div>
+
+                <div className="right-box">
+
+                dgfhgfdgfgfdgdgf
+
+                </div>
+
+
                 </div>
             </div>
         </>

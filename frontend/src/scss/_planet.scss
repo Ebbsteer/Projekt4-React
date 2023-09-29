@@ -1,31 +1,69 @@
+* {
+    box-sizing: border-box;
+  }
+
 #planet {
     position: relative;
     width: 100%;
     overflow: hidden;
     display: flex;
-    height: 100dvh;
+    min-height: 100dvh;
     justify-content: left;
     align-items: center;
   }
   
+  .planet-container{
+    border: 1px dotted black;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    font-size: 30px;
+    text-align: center;
+  
+    width: 100%;
+    height: 100%;
+   
+  }
  
  .planet-box {
+    border: 1px dotted black;
+   
     flex-direction: column;
-          display: flex;
-          justify-content: center; /* Move the box to the right */
-          align-items: center;
-          width: 45%; /* Adjusted for responsiveness */
-          height: 100%; /* Adjusted for responsiveness */
-          position: absolute; /* Adjust this margin-right value as needed */
-          z-index: 1;
-          align-content: left;
+    display: flex;
+
+    justify-content: center; /* Move the box to the right */
+    align-items: center;
+
+    width: 50%; /* Adjusted for responsiveness */
+    height: 100%; /* Adjusted for responsiveness */
+
+    // position: absolute; /* Adjust this margin-right value as needed */
+    // z-index: 1;
+
+    align-content: center;
 
    
   }
   
+
+  .right-box{
+    border: 1px dotted black;
+ 
+    flex-direction: column;
+          display: flex;
+          justify-content: center; /* Move the box to the right */
+          align-items: center;
+          width: 50%; /* Adjusted for responsiveness */
+          height: 100%; /* Adjusted for responsiveness */
+          // position: absolute; /* Adjust this margin-right value as needed */
+          // z-index: 1;
+          align-content: center;
+  }
+
   .box-title {
     display: flex;
-  margin-top: -10%;
+   // margin-top: -10%;
     padding: 2vh;
     background-color: rgba(80, 3, 94, 0.44);
     color: #ffffff;
@@ -33,7 +71,7 @@
     border-radius: 15px;
     text-align: center;
     max-width: 60%;
-   justify-content: center;
+    justify-content: center;
  
   }
   
@@ -42,7 +80,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 80%;
+    max-width: 70%;
     padding: 20px;
     background-color: rgba(80, 3, 94, 0.44);
     color: #ffffff;
@@ -50,16 +88,31 @@
     border-radius: 15px;
     text-align: center;
     max-height: 80%;
+    word-wrap: break-word;
 }
 
   @media only screen and (max-width: 700px) {
-    .planet-box {
+
+
+
+    .planet-container{
+    
+    
       width: 100%;
+      min-height: 100%;
+     flex-direction: column;
     }
+
+    .planet-box, .right-box{
+      width: 100vw;
+      height: fit-content;
+    }
+
+   
   
     .box-title {
       max-width: 90%;
-      margin-top: -50%;
+     
     }
 
     .planet-info{
