@@ -54,7 +54,17 @@ const Items = () => {
               <td key={e.id2}>{e.avgTemp}</td>
               <td key={e.id3}>{e.discoveryDate}</td>
               <td key={e.id4}>{e.gravity}</td>
-              <td>&#9733;</td>
+              <td><button onClick={()=>{
+                  fetch("http://localhost:3000/add-favorite", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify(e.id)
+                  }).then((response) => {
+                      console.log(response)
+                  })
+              }}>&#9733;</button></td>
             </tr>))}
          </tbody>
       </table>
