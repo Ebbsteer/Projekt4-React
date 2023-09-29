@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-function drop(){
+function Drop(){
     document.getElementById("droppa").classList.toggle("toggla");
 }
 
-function dropPlan(){
+function DropPlan(){
     document.getElementById("myPlanets").classList.toggle("togglaPlanets");
 }
 
@@ -13,7 +13,7 @@ const Navbar = () => {
     return <>
     <div id="nav">
         <NavLink to=""><img src="../src/assets/img/logospace.jpg" alt="" /></NavLink>
-        <button onClick={drop} id="dropknapp">
+        <button onClick={Drop} id="dropknapp">
         <div className="hamb1"></div>
         <div className="hamb2"></div>
         <div className="hamb3"></div>
@@ -23,7 +23,7 @@ const Navbar = () => {
                 <NavLink to="/">HOME</NavLink>
                 <NavLink to="/items">ITEMS</NavLink>
                 <div className="droppaPlanets">
-                    <a onClick={dropPlan} id="planetsID">PLANETS&#8681;</a>
+                    <a onClick={DropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
                         <NavLink to="/planet/mercury">Mercury</NavLink>
                         <NavLink to="/planet/venus">Venus</NavLink>
