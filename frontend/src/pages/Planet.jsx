@@ -16,7 +16,7 @@ const bodyInfo = [
   },
   {
     name: "Earth",
-    image: "../img/planets/earth.jpg",
+    image: "../assets/img/planets/earth.jpg",
     description:
       "Earth is the only known planet with abundant life. It has a diverse climate and is home to a wide variety of ecosystems and species.",
   },
@@ -99,6 +99,10 @@ const Planet = () => {
 
   var planMass = planet.mass?.massValue.toFixed(2);
 
+  var planetimg = "../assets/img/" + id  + "mock.png"; 
+
+  console.log(planetimg);
+
   return (
     <>
       <div
@@ -108,10 +112,11 @@ const Planet = () => {
         }}
       >
         <div className="planet-container">
-          <div className="planet-box">
-            <div className="box-title">
-              <h1>{bodies.name}</h1>
-            </div>
+          <div className="planet-box" style={{ backgroundImage: `url(${planetimg})` }}>
+         
+          <div className="box-title">
+  <h1>{bodies.name}</h1>
+</div>
             <br />
             <div className="planet-info">
               <p>{bodies.description}</p>
