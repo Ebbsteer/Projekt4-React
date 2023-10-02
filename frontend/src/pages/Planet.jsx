@@ -133,7 +133,7 @@ const Planet = () => {
               <tbody>
                 {searchResults.length === 0 ? (
                   <tr>
-                    <td colSpan="2">No results found</td>
+                    <td colSpan="2">This planet has no moons</td>
                   </tr>
                 ) : (
                   searchResults.map((moon, index) => (
