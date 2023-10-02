@@ -97,7 +97,7 @@ const Planet = () => {
     setSearchResults(filteredData);
   }, [planet, searchTerm]);
 
-  var planMass =  ( planet.mass?.massValue).toFixed(2);
+  var planMass = planet.mass?.massValue.toFixed(2);
 
   return (
     <>
@@ -134,7 +134,7 @@ const Planet = () => {
                     <td> {planet.gravity} m.s-2 </td>
                     <td> {planet.avgTemp - 273} °C </td>
                     <td> {planet.discoveryDate}</td>
-                    <td> {planMass} x 10^{planet.mass?.massExponent} kg </td>
+                    <td> {planMass} x 10^ {planet.mass?.massExponent} kg </td>
                   </tr>
                 </tbody>
               </table>
