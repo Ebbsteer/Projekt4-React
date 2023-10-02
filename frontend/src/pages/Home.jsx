@@ -1,6 +1,31 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
-import mercurymock from "../assets/img/mercurymock.png";
+
+const images = [
+  '/src/assets/img/mercurymock.png',
+  '/src/assets/img/earthmock.png',
+];
+
+const Slideshow = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // Byt bild varje 3 sekunder (justera tiden efter behov)
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 6000); // 3000 ms = 3 sekunder
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [images]);
+
+  return (
+    <div className="slideshow">
+      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
+    </div>
+  );
+};
 
 const Home = () => {
 
@@ -68,16 +93,16 @@ const Home = () => {
       <div className="nebulae">
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
-      <div id="planetoftheday">
-          <img src={mercurymock} alt="" className="timerbild"/>
+
+      <div className="Homebox">
+        <div id="planetoftheday">
+        <Slideshow images={images}/>
           <h1>Timer: {seconds} sekunder</h1>
           <h2>{message}</h2>
           <button onClick={handleClick}>
           Click Me Generate
         </button>
         </div>
-
-      <div className="Homebox">
         <div className="textbox">
           <h1>INFORMATION ABOUT PLANETS</h1>
           <p>Did you know that Venus rotates in the opposite

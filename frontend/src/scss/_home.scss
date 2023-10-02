@@ -56,19 +56,11 @@
       border: 10px solid black;
       overflow: auto; /* Add overflow property to enable scrolling when needed */
     }
-   
   }
 
-  #planetoftheday{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  .slideshowbild{
+    height: 15vh;
   }
-
-  // .timerbild{
-  // }
 
   /* Media query for smaller screens */
   @media screen and (max-width: 768px) {
