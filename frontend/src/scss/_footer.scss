@@ -1,22 +1,43 @@
 @use "base";
 
 #foot {
-    display: flex;
-    text-align: center;
     justify-content: center;
     align-items: center;
-
+    
+    color: base.$whiteish;
+    text-align: center;
    
     padding: 2dvh;
     margin-top: auto;
 
-    color: white;
+    height: fit-content;
+    min-height: 250px;
+
     background-color: base.$blackish;
 
 
     p {
         font-size: large;
 
+    }
+
+    .footer-CO-name {
+        font-size: 2.5rem;
+        font-family: 'Bungee Inline', cursive;
+        line-height: 5rem;
+    }
+
+    .footer-CO-copyright {
+        font-size: 1.1rem;
+        margin: 1rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    text-align: center;
     }
 }
 
