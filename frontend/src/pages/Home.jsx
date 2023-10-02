@@ -44,7 +44,6 @@ const Home = () => {
         }
         return prevSeconds + 1;
       });
-      console.log(message)
     }, 1000);
 
     return () => clearInterval(timer);

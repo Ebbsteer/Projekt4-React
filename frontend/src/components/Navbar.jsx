@@ -26,7 +26,6 @@ const Navbar = () => {
             <div id="navleft">
                 <NavLink to="/">HOME</NavLink>
                 <NavLink to="/items">ITEMS</NavLink>
-
                 <div className="droppaPlanets">
                     <a onClick={DropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
