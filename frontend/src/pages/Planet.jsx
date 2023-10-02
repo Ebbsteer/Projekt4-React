@@ -97,6 +97,8 @@ const Planet = () => {
     setSearchResults(filteredData);
   }, [planet, searchTerm]);
 
+  var planMass =  ( planet.mass?.massValue).toFixed(2);
+
   return (
     <>
       <div
@@ -114,6 +116,29 @@ const Planet = () => {
             <div className="planet-info">
               <p>{bodies.description}</p>
             </div>
+
+            <div className="table-container">
+              <table>
+                {" "}
+                <thead>
+                  <tr>
+                    <th>gravity</th>
+                    <th>temperature</th>
+                    <th> Discovered </th>
+                   
+                    <th> mass </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {planet.gravity} m.s-2 </td>
+                    <td> {planet.avgTemp - 273} °C </td>
+                    <td> {planet.discoveryDate}</td>
+                    <td> {planMass} x 10^{planet.mass?.massExponent} kg </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div className="right-box">
@@ -123,36 +148,38 @@ const Planet = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <table>
-              <thead>
-                <tr>
-                  <th>Moon</th>
-                  <th>Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {searchResults.length === 0 ? (
+            <div className="table-container">
+              <table>
+                <thead>
                   <tr>
-                    <td colSpan="2">No results found</td>
+                    <th>Moon</th>
+                    <th>Details</th>
                   </tr>
-                ) : (
-                  searchResults.map((moon, index) => (
-                    <tr key={index}>
-                      <td>{moon.moon}</td>
-                      <td>
-                        <a
-                          href={moon.rel}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Details
-                        </a>
-                      </td>
+                </thead>
+                <tbody>
+                  {searchResults.length === 0 ? (
+                    <tr>
+                      <td colSpan="2">This planet has no moons</td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  ) : (
+                    searchResults.map((moon, index) => (
+                      <tr key={index}>
+                        <td>{moon.moon}</td>
+                        <td>
+                          <a
+                            href={moon.rel}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View Details
+                          </a>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
