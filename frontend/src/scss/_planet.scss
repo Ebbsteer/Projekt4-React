@@ -28,13 +28,13 @@
     
 
 .table-container {
-   
+    margin: 5%;
    width: 80%;
     overflow-x: auto;
     scroll-behavior: smooth;
 }
     table{
-        margin: 5%;
+     
         font-family: arial, sans-serif;
         border-collapse: collapse;
        width: 100%;

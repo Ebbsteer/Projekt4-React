@@ -49,7 +49,7 @@ const Items = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <table>
+        <table className="itemtable">
           <thead>
             <tr>
               <th></th>
