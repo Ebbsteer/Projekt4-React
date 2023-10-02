@@ -16,7 +16,7 @@ const bodyInfo = [
   },
   {
     name: "Earth",
-    image: "../assets/img/planets/earth.jpg",
+    image: "../assets/img/planets/earth.avif",
     description:
       "Earth is the only known planet with abundant life. It has a diverse climate and is home to a wide variety of ecosystems and species.",
   },
@@ -99,7 +99,7 @@ const Planet = () => {
 
   var planMass = planet.mass?.massValue.toFixed(2);
 
-  var planetimg = "../assets/img/" + id  + "mock.png"; 
+  var planetimg = "/src/assets/img/" + id + "mock.png";
 
   console.log(planetimg);
 
@@ -112,11 +112,23 @@ const Planet = () => {
         }}
       >
         <div className="planet-container">
-          <div className="planet-box" style={{ backgroundImage: `url(${planetimg})` }}>
-         
-          <div className="box-title">
-  <h1>{bodies.name}</h1>
+          <div className="planet-box">
+
+            <div className="title-img" style={{
+  backgroundImage: `url(${planetimg})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '40vw',
+  width: '40vw',
+  height: '40vw',
+
+
+}}> 
+            <h1>{bodies.name}</h1>
+            </div>
+          <div >
+  
 </div>
+
             <br />
             <div className="planet-info">
               <p>{bodies.description}</p>
@@ -130,7 +142,7 @@ const Planet = () => {
                     <th>gravity</th>
                     <th>temperature</th>
                     <th> Discovered </th>
-                   
+
                     <th> mass </th>
                   </tr>
                 </thead>
@@ -139,7 +151,10 @@ const Planet = () => {
                     <td> {planet.gravity} m.s-2 </td>
                     <td> {planet.avgTemp - 273} °C </td>
                     <td> {planet.discoveryDate}</td>
-                    <td> {planMass} x 10^ {planet.mass?.massExponent} kg </td>
+                    <td>
+                      {" "}
+                      {planMass} x 10^ {planet.mass?.massExponent} kg{" "}
+                    </td>
                   </tr>
                 </tbody>
               </table>
