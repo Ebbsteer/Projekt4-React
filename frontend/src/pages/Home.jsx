@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
+import mercurymock from "../assets/img/mercurymock.png";
 
 const Home = () => {
 
@@ -16,7 +17,6 @@ const Home = () => {
           setMessage("goober");
           return 0;
         }
-
         return prevSeconds + 1;
       });
       console.log(message)
@@ -68,14 +68,16 @@ const Home = () => {
       <div className="nebulae">
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
-      <div className="Homebox">
-        <div>
+      <div id="planetoftheday">
+          <img src={mercurymock} alt="" className="timerbild"/>
           <h1>Timer: {seconds} sekunder</h1>
           <h2>{message}</h2>
-        </div>
-        <button onClick={handleClick}>
+          <button onClick={handleClick}>
           Click Me Generate
         </button>
+        </div>
+
+      <div className="Homebox">
         <div className="textbox">
           <h1>INFORMATION ABOUT PLANETS</h1>
           <p>Did you know that Venus rotates in the opposite

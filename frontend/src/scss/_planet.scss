@@ -3,13 +3,13 @@
   }
 
 #planet {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    min-height: 100dvh;
-    justify-content: left;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  min-height: 100dvh;
+  justify-content: left;
+  align-items: center;
   }
   
   .planet-container{
@@ -77,33 +77,33 @@
     flex-direction: column;
     display: flex;
 
-    justify-content: center; /* Move the box to the right */
-    align-items: center;
+  justify-content: center; /* Move the box to the right */
+  align-items: center;
 
-    width: 50%; /* Adjusted for responsiveness */
-    height: 100%; /* Adjusted for responsiveness */
+  width: 50%; /* Adjusted for responsiveness */
+  height: 100%; /* Adjusted for responsiveness */
 
-    // position: absolute; /* Adjust this margin-right value as needed */
-    // z-index: 1;
+  // position: absolute; /* Adjust this margin-right value as needed */
+  // z-index: 1;
 
-    align-content: center;
+  align-content: center;
 
-   
-  }
+  
+}
   
 
-  .right-box{
-margin-top: 5%;
-    flex-direction: column;
-          display: flex;
-          justify-content: center; /* Move the box to the right */
-          align-items: center;
-          width: 50%; /* Adjusted for responsiveness */
-          height: 100%; /* Adjusted for responsiveness */
-          // position: absolute; /* Adjust this margin-right value as needed */
-          // z-index: 1;
-          align-content: center;
-          scroll-behavior: smooth;
+.right-box {
+  margin-top: 5%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center; /* Move the box to the right */
+  align-items: center;
+  width: 50%; /* Adjusted for responsiveness */
+  height: 100%; /* Adjusted for responsiveness */
+  // position: absolute; /* Adjust this margin-right value as needed */
+  // z-index: 1;
+  align-content: center;
+  scroll-behavior: smooth;
 
           
       }
@@ -139,17 +139,13 @@ margin-top: 5%;
     word-wrap: break-word;
 }
 
-  @media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700px) {
 
-
-
-    .planet-container{
-    
-    
-      width: 100%;
-      min-height: 100%;
-     flex-direction: column;
-    }
+  .planet-container {
+    width: 100%;
+    min-height: 100%;
+    flex-direction: column;
+  }
 
     .planet-box, .right-box{
       width: 100vw;
@@ -166,11 +162,9 @@ margin-top: 5%;
      
     }
 
-    .planet-info{
-        max-width: 90% ;
-        margin-top: 5%;
-    }
-
-
+  .planet-info {
+    max-width: 90% ;
+    margin-top: 5%;
   }
-  
+
+}
