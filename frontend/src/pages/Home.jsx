@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
+import mercurymock from "../assets/img/mercurymock.webp";
 
 const Home = () => {
 
@@ -70,6 +71,7 @@ const Home = () => {
       </div>
       <div className="Homebox">
         <div>
+          <img src={mercurymock} alt="" />
           <h1>Timer: {seconds} sekunder</h1>
           <h2>{message}</h2>
         </div>
