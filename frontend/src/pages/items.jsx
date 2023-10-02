@@ -53,6 +53,7 @@ const Items = () => {
           <thead>
             <tr>
               <th></th>
+              <th>Num</th>
               <th>Type</th>
               <th>Name</th>
               <th>Temperature- (K)</th>
@@ -68,12 +69,6 @@ const Items = () => {
             ) : (
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
-                  <td>{i}</td>
-                  <td>{planet.bodyType}</td>
-                  <td>{planet.englishName}</td>
-                  <td>{planet.avgTemp}</td>
-                  <td>{planet.discoveryDate}</td>
-                  <td>{planet.gravity}</td>
                   <td>
                     <button
                       onClick={() => {
@@ -95,6 +90,12 @@ const Items = () => {
                       &#9733;
                     </button>
                   </td>
+                  <td>{i}</td>
+                  <td>{planet.bodyType}</td>
+                  <td>{planet.englishName}</td>
+                  <td>{planet.avgTemp}</td>
+                  <td>{planet.discoveryDate}</td>
+                  <td>{planet.gravity}</td>
                 </tr>
               ))
             )}
