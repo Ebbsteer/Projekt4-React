@@ -29,6 +29,12 @@ const Slideshow = ({ images }) => {
 
 const Home = () => {
 
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+  var oneDay = 1000 * 60 * 60 * 24;
+  var day = Math.floor(diff / oneDay);
+
 
   const [seconds, setSeconds] = useState(0);
   const [message, setMessage] = useState("HEJ");
@@ -97,7 +103,7 @@ const Home = () => {
         <div id="planetoftheday">
         <Slideshow images={images}/>
           <h1>Timer: {seconds} sekunder</h1>
-          <h2>{message}</h2>
+          <h2>{day}</h2>
           <button onClick={handleClick}>
           Click Me Generate
         </button>

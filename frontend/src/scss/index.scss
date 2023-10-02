@@ -17,30 +17,14 @@
     }
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     min-height: 100dvh;
     overflow-x: hidden;
 }
-
-// ::-webkit-scrollbar-thumb{
-//     background-image: url("../assets/img/rocket.png");
-// }
-
-// body::-webkit-scrollbar {
-//     width: 3em;
-//     }
-    
-//     body::-webkit-scrollbar-track {
-//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-//     }
-    
-//     body::-webkit-scrollbar-thumb {
-//     background-image: url("../assets/img/rocket.png"),
-//     linear-gradient(100deg, transparent, transparent);
-//     background-position: center bottom, center -40px;
-//     background-repeat: no-repeat, no-repeat;
-//     background-size: contain, contain;
-//     }
 
 main {
     width: 100%;
