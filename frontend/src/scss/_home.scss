@@ -56,8 +56,7 @@
       border: 10px solid black;
       overflow: auto; /* Add overflow property to enable scrolling when needed */
     }
-    
-    
+   
   }
 
   #planetoftheday{
@@ -68,8 +67,8 @@
     height: 100%;
   }
 
-  .timerbild{
-  }
+  // .timerbild{
+  // }
 
   /* Media query for smaller screens */
   @media screen and (max-width: 768px) {
