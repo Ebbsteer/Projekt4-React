@@ -17,7 +17,6 @@ const Home = () => {
           setMessage("goober");
           return 0;
         }
-
         return prevSeconds + 1;
       });
       console.log(message)
