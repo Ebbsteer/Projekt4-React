@@ -1,16 +1,22 @@
 @use "base";
 
-#nav{
-   z-index: 10;
-   font-family: 'Bungee Inline', cursive;
+// ----- navbar stylses -------------------------------------------------------
+
+#nav{ 
    background-color: base.$blackish;
-   font-size: 2rem;
-   color: base.$white;
-   padding-left: 1rem;
-   display: inline-block;
-   width: 100%;
+   color: base.$whiteish;
+   
    position: fixed;
+   z-index: 10;
+   width: 100%;
+
+   display: inline-block;
+   padding-left: 1rem;
+
+   font-family: 'Bungee Inline';
+   font-size: 2rem;
    line-height: 5rem;
+   
    user-select: none;
 
    a {
@@ -19,18 +25,22 @@
    
    img {
    display: inline;
-   height: 3rem;
    float: left;
-   padding-right: 1rem;
-   margin-top: 0.8rem;
+   height: 3rem;
+
+   margin: 0.95rem 1rem auto 0px;
+
+   border-radius: 10px;
    }
 }
 
-#navright {
+// ----- Right elements in navbar - Home, Items, Planet
+#navright { 
    float: right;
    font-size: 3rem !important;
 }
 
+// ----- Left elements in Navbar - Login/Logout/Profile, Favorites
 #navleft {
    float: left;
 }
@@ -48,10 +58,13 @@
 }
 
 .hamb1, .hamb2, .hamb3 {
+   background-color: rgb(255, 255, 255);
+   
    width: 2.3rem;
    height: 0.35rem;
-   background-color: rgb(255, 255, 255);
+
    margin: 0.35rem 0;
+
    transition: 0.4s ease;
 }
 
@@ -64,15 +77,17 @@
 }
 
 .contentPlanets {
-   display: none;
+   background-color: base.$blackish;
+   
    position: absolute;
-   min-width: 160px;
-   overflow: auto;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   display: none;
    z-index: 1;
    overflow: auto;
+
+   min-width: 160px;
    max-height: 200px;
-   background-color: base.$blackish;
+
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
    a {
       display: block;
@@ -84,11 +99,11 @@
 }
 
 @media only screen and (max-width:700px){
-   #nav {
-      img {
-         display: block;
-      }
-   }
+   // #nav {
+   //    // img {
+   //    //    display: block;
+   //    // }
+   // }
 
    #droppa {
       display: none;
@@ -108,12 +123,15 @@
    }
 
    #dropknapp {
+      background: none;
+
       display: inline !important;
       float: right;
+
       margin-right: 1rem;
-      background: none;
-      border: none;
       margin-top: 1rem;
+
+      border: none;
    }
 
    .contentPlanets {

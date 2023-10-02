@@ -126,3 +126,9 @@ export const addFavorite = (cid, fid) => {
     const newFavorite = oldFavorite + "," + fid;
 
 };
+
+
+
+ 
+//  home - login - skapa user - id-uuid4 - cid 
+// finns - finns -    inte    -   inte   - finns

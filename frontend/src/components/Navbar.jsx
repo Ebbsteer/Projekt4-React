@@ -12,16 +12,21 @@ const Navbar = () => {
 
     return <>
     <div id="nav">
-        <NavLink to=""><img src="../src/assets/img/logospace.jpg" alt="" /></NavLink>
+        <NavLink to="">
+            <img src="../src/assets/img/logospace.jpg" alt="" />
+        </NavLink>
+
         <button onClick={Drop} id="dropknapp">
-        <div className="hamb1"></div>
-        <div className="hamb2"></div>
-        <div className="hamb3"></div>
+            <div className="hamb1"></div>
+            <div className="hamb2"></div>
+            <div className="hamb3"></div>
         </button>
+
         <div id="droppa">
             <div id="navleft">
                 <NavLink to="/">HOME</NavLink>
                 <NavLink to="/items">ITEMS</NavLink>
+
                 <div className="droppaPlanets">
                     <a onClick={DropPlan} id="planetsID">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
@@ -36,6 +41,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            
             <div id="navright">
                 <NavLink to="">&#9733;</NavLink>
                 <NavLink to="/login">&#9817;</NavLink>
