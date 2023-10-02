@@ -1,20 +1,20 @@
 @use "base";
 
-#foot{
- display: flex;
+#foot {
+    display: flex;
     text-align: center;
     justify-content: center;
-   align-items: center;
+    align-items: center;
 
    
-   padding: 2dvh;
-  margin-top: auto;
+    padding: 2dvh;
+    margin-top: auto;
 
     color: white;
     background-color: base.$blackish;
 
 
-    p{
+    p {
         font-size: large;
 
     }
