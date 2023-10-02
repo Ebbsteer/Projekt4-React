@@ -3,49 +3,51 @@
 #nav{
    z-index: 10;
    font-family: 'Bungee Inline', cursive;
-    background-color: base.$blackish;
-    font-size: 2rem;
-    color: base.$white;
-    padding-left: 1rem;
-    display: inline-block;
-    width: 100%;
-    position: fixed;
-    line-height: 5rem;
-    user-select: none;
- a{
+   background-color: base.$blackish;
+   font-size: 2rem;
+   color: base.$white;
+   padding-left: 1rem;
+   display: inline-block;
+   width: 100%;
+   position: fixed;
+   line-height: 5rem;
+   user-select: none;
+
+   a {
     padding-right: 1rem;
    }
-img{
+   
+   img {
    display: inline;
    height: 3rem;
    float: left;
    padding-right: 1rem;
    margin-top: 0.8rem;
-}
- }
-
- #navright{
-    float: right;
-    font-size: 3rem !important;
- }
-
- #navleft{
-    float: left;
- }
-
- #droppa{
-    display: inline;
+   }
 }
 
- .toggla{
-    display: inline !important;
- }
+#navright {
+   float: right;
+   font-size: 3rem !important;
+}
 
- #dropknapp{
-    display: none;
- }
+#navleft {
+   float: left;
+}
 
- .hamb1, .hamb2, .hamb3{
+#droppa {
+   display: inline;
+}
+
+.toggla {
+   display: inline !important;
+}
+
+#dropknapp {
+   display: none;
+}
+
+.hamb1, .hamb2, .hamb3 {
    width: 2.3rem;
    height: 0.35rem;
    background-color: rgb(255, 255, 255);
@@ -53,15 +55,15 @@ img{
    transition: 0.4s ease;
 }
 
-.droppaPlanets{
+.droppaPlanets {
    display: inline-block;
 }
 
-#planetsID{
+#planetsID {
    cursor: pointer;
 }
 
-.contentPlanets{
+.contentPlanets {
    display: none;
    position: absolute;
    min-width: 160px;
@@ -71,48 +73,50 @@ img{
    overflow: auto;
    max-height: 200px;
    background-color: base.$blackish;
-   a{
+
+   a {
       display: block;
    }
  }
 
- .togglaPlanets{
-    display: block !important;
- }
+.togglaPlanets {
+   display: block !important;
+}
 
- @media only screen and (max-width:700px){
-    #nav{
-       img{
-          display: block;
-       }
-    }
-    #droppa{
-       display: none;
-    }
-
-    #droppa a{
-       display: block;
-       width: 100%;
-    }
-
-    #navleft{
-       float: none;
-    }
-    
-    #navright{
-       float: none;
+@media only screen and (max-width:700px){
+   #nav {
+      img {
+         display: block;
       }
+   }
 
-    #dropknapp{
-       display: inline !important;
-       float: right;
-       margin-right: 1rem;
-       background: none;
-       border: none;
-       margin-top: 1rem;
-    }
+   #droppa {
+      display: none;
+   }
 
-    .contentPlanets{
-      position: relative !important;
-    }
- }
+   #droppa a {
+      display: block;
+      width: 100%;
+   }
+
+   #navleft {
+      float: none;
+   }
+   
+   #navright {
+      float: none;
+   }
+
+   #dropknapp {
+      display: inline !important;
+      float: right;
+      margin-right: 1rem;
+      background: none;
+      border: none;
+      margin-top: 1rem;
+   }
+
+   .contentPlanets {
+   position: relative !important;
+   }
+}
