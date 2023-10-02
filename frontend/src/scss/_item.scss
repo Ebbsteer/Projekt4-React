@@ -1,4 +1,4 @@
-.tabellDiv{
+.tabellDiv {
     height: 70%;
     width: 80%;
     color: white;
@@ -11,23 +11,27 @@
     transform: translate(-50%, -50%);
     overflow: auto;
     scroll-behavior: smooth;
-    table{
+
+    table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
         font-size: 1.7rem;
     }
-    td, th{
+
+    td, th {
         border:1px solid black;
         text-align: left;
     }
+
     th {
         top: 0;
         position: sticky;
         background: #ffffff;
         color: black;
-     }
-     tr:nth-child(even) {
+    }
+
+    tr:nth-child(even) {
         background-color: rgba(41, 41, 41, 0.76);
-      }
+    }
 }
