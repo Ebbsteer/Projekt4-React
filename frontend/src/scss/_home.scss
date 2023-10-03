@@ -87,7 +87,7 @@
       
       .left {
         margin-top: 25px;
-        
+
         width: 100%;
 
         #planetoftheday {
@@ -101,19 +101,7 @@
       
       .right {
         width: 100%;
-      }
-      
+      } 
     }
-    
-  }
-
-  .break-flex-small-screen {
-    flex-basis: 100%;
-    height: 0;
-  }
-
-  .break-flex-all-screen {
-    flex-basis: 100%;
-    height: 0;
   }
 }

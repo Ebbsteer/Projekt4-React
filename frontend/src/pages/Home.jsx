@@ -110,8 +110,6 @@ const Home = () => {
             <h2>{day}</h2>
           </div>
 
-          {/* <div className="break-flex-all-screen"></div> Makes the flex break line on all screen - Perent div needs: display: flex; flex-wrap: wrap; */}
-          
           <div>
             <button onClick={handleClick}>
               Click Me Generate
@@ -120,9 +118,6 @@ const Home = () => {
 
         </div>
 
-        {/* <div className="break-flex-small-screen"></div> Makes the flex break line on small screen - Perent div needs: display: flex; flex-wrap: wrap; */}
-        {/* <div className="break-flex-small-screen"></div> Makes the flex break line on small screen - Perent div needs: display: flex; flex-wrap: wrap; */}
-        
         <div className="right">
 
           <div className="textbox">
