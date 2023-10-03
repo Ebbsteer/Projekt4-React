@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import profil from "../assets/img/profilwallpaper.jpeg";
 
 
-const profil = () => {
+
+const Profil = () => {
     return <>Profil</>;
 };
 
-export default profil;
+export default Profil;
