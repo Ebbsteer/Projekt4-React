@@ -5,7 +5,7 @@ import {
     Outlet,
 } from "react-router-dom";
 
-import { Home, ErrorPage, Planet, Items, Login, Exempel } from "../../pages";
+import { Home, ErrorPage, Planet, Items, Login, Exempel, Profil } from "../../pages";
 import { Navbar, Footer } from "../../components";
 
 const OutletTest = () => {
@@ -30,6 +30,7 @@ const CreateRoutes = () => {
                         <Route path="/items" element={<Items />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/exempel" element={<Exempel />} />
+                        <Route path="/profil" element={<Profil />} />
                     </Route>
                 </Routes>
             </Router>
