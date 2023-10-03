@@ -74,7 +74,7 @@ const Items = () => {
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
                   <td>
-                    <button id="favoritknapp" onClick={dofavorite}
+                    <button id="favoritknapp"
                       onClick={() => {
                         fetch("http://localhost:3000/add-favorite", {
                           method: "POST",
