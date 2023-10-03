@@ -16,7 +16,7 @@ const bodyInfo = [
   },
   {
     name: "Earth",
-    image: "../assets/img/planets/earth.avif",
+    image: "../assets/planets/earth.jpg",
     description:
       "Earth is the only known planet with abundant life. It has a diverse climate and is home to a wide variety of ecosystems and species.",
   },
@@ -100,15 +100,18 @@ const Planet = () => {
   var planMass = planet.mass?.massValue.toFixed(2);
 
   var planetimg = "/src/assets/img/" + id + "mock.png";
+  var planetBackground = "/src/assets/planets/" + id + ".png";
 
-  console.log(planetimg);
+  console.log(planetBackground);
 
   return (
     <>
       <div
         id="planet"
         style={{
-          backgroundImage: `url(${bodies.image})`,
+          backgroundImage: `url(${planetBackground})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
         }}
       >
         <div className="planet-container">
