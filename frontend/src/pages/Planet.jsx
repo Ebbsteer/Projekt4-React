@@ -71,34 +71,55 @@ const Planet = () => {
     const planetURL = `https://api.le-systeme-solaire.net/rest/bodies/${id}`;
 
     const fetchPlanetData = async () => {
-      try {
-        const response = await fetch(planetURL);
+      // try {
+      const response = await fetch(planetURL);
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const data = await response.json();
-        setPlanet(data); // Update the state with fetched data
-
-
-        if (data.moons && data.moons.length > 0) {
-          const moonResponse = await fetch(data.moons[0].rel);
-
-          const moonData = await moonResponse.json();
-        setmoonEnglish(moonData); // Set the moon's English nam
-        }
-
-      } catch (error) {
-        console.error("Fetch error:", error);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      console.log(response.body);
+
+      const data = await response.json().catch(console.log);
+      setPlanet(data); // Update the state with fetched data
+
+      if (data.moons && data.moons.length > 0) {
+        const moonDataArray = data.moons.map((moon) =>
+          fetch(moon.rel).then((moonResponse) =>
+            moonResponse
+              .text()
+              .then((text) =>
+                JSON.parse(
+                  text.replaceAll('": ,', '": "",').replaceAll('":,', '": "",')
+                )
+              )
+              .catch((error) => {
+                console.log("error", error, moon);
+              })
+          )
+        );
+
+        // for (let i = 0; i < data.moons.length; i++) {
+        //   var moonResponse = await fetch(data.moons[i].rel);
+        //   if (!moonResponse.ok) {
+        //     throw new Error("Network response for moon data was not ok");
+        //   }
+        //   const moonData = await moonResponse.json();
+        //   moonDataArray.push(moonData);
+        // }.
+        const yeet = await Promise.all(moonDataArray);
+
+        setmoonEnglish(yeet); // Set the moon data as an array
+      }
+      // } catch (error) {
+      //   console.error("Fetch error:", error, planetURL);
+      // }
     };
 
     // Call the fetchPlanetData function when the component mounts
     fetchPlanetData();
   }, [id]);
 
-  console.log(moonEnglish.englishName)
+  //console.log(moonEnglish[index]?.englishName);
 
   useEffect(() => {
     const filteredData = planet.moons
@@ -114,35 +135,31 @@ const Planet = () => {
   var planetimg = "/src/assets/img/" + id + "mock.png";
   var planetBackground = "/src/assets/planets/" + id + ".png";
 
-  console.log(planetBackground);
-
   return (
     <>
       <div
         id="planet"
         style={{
           backgroundImage: `url(${planetBackground})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
         <div className="planet-container">
           <div className="planet-box">
-
-            <div className="title-img" style={{
-  backgroundImage: `url(${planetimg})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: '40vw',
-  width: '40vw',
-  height: '40vw',
-
-
-}}> 
-            <h1>{bodies.name}</h1>
+            <div
+              className="title-img"
+              style={{
+                backgroundImage: `url(${planetimg})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "30vw",
+                width: "30vw",
+                height: "30vw",
+              }}
+            >
+              <h1>{bodies.name}</h1>
             </div>
-          <div >
-  
-</div>
+            <div></div>
 
             <br />
             <div className="planet-info">
@@ -177,13 +194,16 @@ const Planet = () => {
           </div>
 
           <div className="right-box">
-            <input
+          <input
               type="text"
               placeholder="Search Moon..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ marginTop: '5%',
+            marginBottom:'-5%' }}
             />
             <div className="table-container">
+              
               <table>
                 <thead>
                   <tr>
@@ -199,7 +219,7 @@ const Planet = () => {
                   ) : (
                     searchResults.map((moon, index) => (
                       <tr key={index}>
-                        <td>{moonEnglish.englishName}</td>
+                        <td>{moonEnglish[index]?.englishName}</td>
                         <td>
                           <a
                             href={moon.rel}
