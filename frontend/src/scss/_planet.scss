@@ -67,13 +67,15 @@
 .details{
     display: none;
     position: fixed;
-    top: 0;
+    top: 100;
     width: 200px;
 
     height: 200px;
 }
 
-
+.details.mystyle {
+  display: block;
+}
 
 
 

@@ -135,10 +135,10 @@ const Planet = () => {
   var planetimg = "/src/assets/img/" + id + "mock.png";
   var planetBackground = "/src/assets/planets/" + id + ".png";
 
-  const infohandler  = () => { 
-    var element = document.getElementsByClassName("details");
-
-  }
+  function infohandler() { 
+    var element = document.querySelector(".details");
+    element.classList.toggle("mystyle");
+}
 
   return (
     <>
@@ -226,11 +226,11 @@ const Planet = () => {
                       <tr key={index}>
                         <td>{moonEnglish[index]?.englishName}</td>
                         <td>
-                          <a
+                          <p
                             onClick={infohandler}
                           >
                             View Details
-                          </a>
+                          </p>
                           <div className="details">    <td> difggjdif  </td>   </div>
                         </td>
                       </tr>
