@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
+import { useParams } from "react-router-dom";
 
 const images = [
   '/src/assets/img/mercurymock.png',
@@ -29,11 +30,44 @@ const Slideshow = ({ images }) => {
 
 const Home = () => {
 
+  const { id } = useParams();
+  console.log(id);
+
+  const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
+
+  const [planets, setPlanets] = useState([]);
+  const [dag, setDag] = useState("");
+
+  const fetchUserData = () => {
+    fetch(itemList)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setPlanets(data.bodies);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   var now = new Date();
   var start = new Date(now.getFullYear(), 0, 0);
   var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
   var oneDay = 1000 * 60 * 60 * 24;
   var day = Math.floor(diff / oneDay);
+
+  if(day==planets.i){
+    console.log("ja" + planets.id);
+  }
 
 
   const [seconds, setSeconds] = useState(0);
