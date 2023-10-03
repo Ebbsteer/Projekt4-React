@@ -1,7 +1,8 @@
 #home {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
+  min-height: calc(100vh - 250px);
   overflow: hidden;
 
   .nebulae {
