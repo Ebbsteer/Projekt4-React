@@ -4,8 +4,13 @@ import { useParams } from "react-router-dom";
 function dofavorite(){
   document.getElementById("favoritknapp").className.toggle("görfavorit");
 }
-
 const Items = () => {
+const[isActive, setActive]=useState(false);
+
+const toggleClass = () => {
+  setActive(!isActive);
+};
+  
   const { id } = useParams();
   console.log(id);
 
@@ -74,8 +79,9 @@ const Items = () => {
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
                   <td>
-                    <button id="favoritknapp" 
-                      onClick={() => {
+                    <button id="favoritknapp"
+                    className={isActive ? 'görfavorit': null} 
+                      onClick={() => {toggleClass();
                         fetch("http://localhost:3000/add-favorite", {
                           method: "POST",
                           headers: {
@@ -88,8 +94,7 @@ const Items = () => {
                           })
                           .catch((error) => {
                             console.error("Fetch error:", error);
-                          });
-                      dofavorite();}}
+                          });}}
                     >
                       &#9733;
                     </button>
