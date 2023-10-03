@@ -100,23 +100,45 @@ const Home = () => {
       </div>
 
       <div className="Homebox">
-        <div id="planetoftheday">
-        <Slideshow images={images}/>
-          <h1>Timer: {seconds} sekunder</h1>
-          <h2>{day}</h2>
-          <button onClick={handleClick}>
-          Click Me Generate
-        </button>
+        <div className="left">
+
+          <div id="planetoftheday">
+            <Slideshow images={images}/>
+
+            <h1>Timer: {seconds} sekunder</h1>
+
+            <h2>{day}</h2>
+          </div>
+
+          {/* <div className="break-flex-all-screen"></div> Makes the flex break line on all screen - Perent div needs: display: flex; flex-wrap: wrap; */}
+          
+          <div>
+            <button onClick={handleClick}>
+              Click Me Generate
+            </button>
+          </div>
+
         </div>
-        <div className="textbox">
-          <h1>INFORMATION ABOUT PLANETS</h1>
-          <p>Did you know that Venus rotates in the opposite
-            direction to most planets in our solar system?
-            While the majority of planets, including Earth,
-            rotate counterclockwise, Venus rotates clockwise.
-            This means that if you were standing on the surface of Venus,
-            the sun would rise in the west and set in the east,
-            which is quite different from what we experience on Earth!</p>
+
+        {/* <div className="break-flex-small-screen"></div> Makes the flex break line on small screen - Perent div needs: display: flex; flex-wrap: wrap; */}
+        {/* <div className="break-flex-small-screen"></div> Makes the flex break line on small screen - Perent div needs: display: flex; flex-wrap: wrap; */}
+        
+        <div className="right">
+
+          <div className="textbox">
+            <h1>INFORMATION ABOUT PLANETS</h1>
+
+            <p>
+              Did you know that Venus rotates in the opposite
+              direction to most planets in our solar system?
+              While the majority of planets, including Earth,
+              rotate counterclockwise, Venus rotates clockwise.
+              This means that if you were standing on the surface of Venus,
+              the sun would rise in the west and set in the east,
+              which is quite different from what we experience on Earth!
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
