@@ -1,9 +1,12 @@
+@use "base";
+
 #home {
   position: relative;
+
   width: 100vw;
   height: fit-content;
-  min-height: calc(100vh - 250px);
-  overflow: hidden;
+  min-height: calc(100vh - 100px);
+  
 
   .nebulae {
     background-image: url("../src/assets/img/nebulae.jpeg");
@@ -21,57 +24,84 @@
 
   .Homebox {
     display: flex;
-    justify-content: flex-end; /* Move the box to the right */
-    align-items: center;
-    width: 100%; /* Adjusted for responsiveness */
-    height: 100%; /* Adjusted for responsiveness */
-    position: absolute;
-    top: 0;
-    right: 10%; /* Adjust this margin-right value as needed */
-    z-index: 1;
+    flex-wrap: wrap;
 
-    /* Styles for the box */
-    .background-box {
-      background-color: black; /* Black background */
-      max-width: 100%; /* Adjusted for responsiveness */
-      height: 75vh; /* Adjusted for responsiveness */
-      position: absolute;
-      top: 15%; /* Adjusted for vertical centering */
-      right: 0; /* Align with the text box */
-      z-index: 10; /* Place it behind the text box */
-      border-radius: 20px; /* Rounded corners */
-    }
+    padding-top: 80px;
 
-    .textbox {
-      background-color: #50035e70; /* Bright color */
-      color: #ffffff; /* Text color */
-      padding: 5vh; /* Adjusted for responsiveness */
-      border-radius: 0; /* Remove border-radius to make it square */
+    width: 100%;
+    height: fit-content;
+    min-height: calc(100vh - 100px);
+
+    
+    .left {
+      height: 100%;
+      width: 50%;
+      
+      margin: auto;
+
       text-align: center;
-      width: auto; /* Allow the text box to expand horizontally as needed */
-      height: auto; /* Allow the text box to expand vertically as needed */
-      max-width: 25%; /* Limit the maximum width */
-      max-height: 60%; /* Limit the maximum height for responsiveness */
-      /* Add a minimum height or some content to ensure the box is visible */
-      min-height: 50px;
-      border: 10px solid black;
-      overflow: auto; /* Add overflow property to enable scrolling when needed */
-    }
-  }
 
-  .slideshowbild{
-    height: 15vh;
+      #planetoftheday {
+        height: fit-content;
+
+        .slideshowbild{
+          height: 30vw;
+          max-height: 45vh;
+          min-height: 300px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+
+      height: 100%;
+      width: 50%;
+
+      margin: auto;
+
+      text-align: center;
+
+      /* Styles for the box */
+      .textbox {
+        background-color: #28032fbb;
+        
+        color: base.$whiteish;
+        text-align: center;
+
+        width: 70%;
+        min-height: 400px;
+
+        padding: 4vh; 
+        margin: 4vh auto;
+        
+        border: 10px solid black;
+      }
+    }
+
   }
 
   /* Media query for smaller screens */
   @media screen and (max-width: 768px) {
     .Homebox {
-      justify-content: center; /* Center the box on smaller screens */
-      right: 0; /* Remove margin-right on smaller screens */
-    }
+      
+      .left {
+        margin-top: 25px;
 
-    .textbox {
-      padding: 10px; /* Adjusted for responsiveness */
+        width: 100%;
+
+        #planetoftheday {
+
+          .slideshowbild{
+            height: 50vw;
+            min-height: 50vw;
+          }
+        }
+      }
+      
+      .right {
+        width: 100%;
+      } 
     }
   }
 }

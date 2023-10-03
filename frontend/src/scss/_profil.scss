@@ -3,18 +3,30 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-  
-    .profil {
-      background-image: url("../src/assets/img/profilwallpaper.jpeg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100%;
-      filter: blur(3px);
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+
+    .profilwallpaper {
+        background-image: url("../src/assets/img/profilwallpaper.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        filter: blur(8px);
+    }
+
+    @media (max-width: 768px) {
+        .profilwallpaper {
+            filter: blur(4px); /* Adjust the blur for smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .profilwallpaper {
+            filter: blur(2px); /* Adjust the blur for even smaller screens */
+        }
     }
 }
