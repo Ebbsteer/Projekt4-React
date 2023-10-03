@@ -23,8 +23,8 @@ const Footer = () => {
 
           <div className="footer-planets">
             <div className="droppaPlanets">
-              <a onClick={DropPlan_footer} id="planetsID">PLANETS&#8681;</a>
-                <div id="myPlanets-footer" className="contentPlanets">
+              <a onClick={DropPlan_footer} id="planetsID">PLANETS &#8680;</a>
+                <div id="myPlanets-footer" className="contentPlanets_footer">
                     <NavLink to="/planet/mercury">Mercury</NavLink>
                     <NavLink to="/planet/venus">Venus</NavLink>
                     <NavLink to="/planet/earth">Tellus</NavLink>
