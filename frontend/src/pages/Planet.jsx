@@ -199,7 +199,8 @@ const Planet = () => {
               placeholder="Search Moon..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginBottom: '-5%' }}
+              style={{ marginTop: '5%',
+            marginBottom:'-5%' }}
             />
             <div className="table-container">
               
