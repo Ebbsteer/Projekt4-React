@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function dofavorite(){
-  document.getElementById("favoritknapp").classList.toggle("görfavorit");
+  document.getElementById("favoritknapp").className.toggle("görfavorit");
 }
 
 const Items = () => {
@@ -74,7 +74,7 @@ const Items = () => {
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
                   <td>
-                    <button id="favoritknapp"
+                    <button id="favoritknapp" 
                       onClick={() => {
                         fetch("http://localhost:3000/add-favorite", {
                           method: "POST",
@@ -89,7 +89,7 @@ const Items = () => {
                           .catch((error) => {
                             console.error("Fetch error:", error);
                           });
-                      }}
+                      dofavorite();}}
                     >
                       &#9733;
                     </button>
