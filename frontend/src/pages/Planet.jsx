@@ -65,6 +65,7 @@ const Planet = () => {
   const [planet, setPlanet] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [moonEnglish, setmoonEnglish] = useState({});
 
   useEffect(() => {
     const planetURL = `https://api.le-systeme-solaire.net/rest/bodies/${id}`;
@@ -79,6 +80,15 @@ const Planet = () => {
 
         const data = await response.json();
         setPlanet(data); // Update the state with fetched data
+
+
+        if (data.moons && data.moons.length > 0) {
+          const moonResponse = await fetch(data.moons[0].rel);
+
+          const moonData = await moonResponse.json();
+        setmoonEnglish(moonData); // Set the moon's English nam
+        }
+
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -87,6 +97,8 @@ const Planet = () => {
     // Call the fetchPlanetData function when the component mounts
     fetchPlanetData();
   }, [id]);
+
+  console.log(moonEnglish.englishName)
 
   useEffect(() => {
     const filteredData = planet.moons
@@ -187,7 +199,7 @@ const Planet = () => {
                   ) : (
                     searchResults.map((moon, index) => (
                       <tr key={index}>
-                        <td>{moon.moon}</td>
+                        <td>{moonEnglish.englishName}</td>
                         <td>
                           <a
                             href={moon.rel}
