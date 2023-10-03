@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+function dofavorite(){
+  document.getElementById("favoritknapp").classList.toggle("görfavorit");
+}
+
 const Items = () => {
   const { id } = useParams();
   console.log(id);

@@ -35,6 +35,10 @@ const Home = () => {
   var oneDay = 1000 * 60 * 60 * 24;
   var day = Math.floor(diff / oneDay);
 
+  if(day==planets.i){
+    console.log("ja" + planets.id);
+  }
+
 
   const [seconds, setSeconds] = useState(0);
   const [message, setMessage] = useState("HEJ");
