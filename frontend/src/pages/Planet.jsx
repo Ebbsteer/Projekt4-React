@@ -135,6 +135,13 @@ const Planet = () => {
   var planetimg = "/src/assets/img/" + id + "mock.png";
   var planetBackground = "/src/assets/planets/" + id + ".png";
 
+  const infohandler  = () => {
+ 
+      <td> difggjdif  </td>
+     
+    
+  }
+
   return (
     <>
       <div
@@ -222,9 +229,7 @@ const Planet = () => {
                         <td>{moonEnglish[index]?.englishName}</td>
                         <td>
                           <a
-                            href={moon.rel}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            onClick={infohandler}
                           >
                             View Details
                           </a>
