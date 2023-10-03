@@ -135,11 +135,9 @@ const Planet = () => {
   var planetimg = "/src/assets/img/" + id + "mock.png";
   var planetBackground = "/src/assets/planets/" + id + ".png";
 
-  const infohandler  = () => {
- 
-      <td> difggjdif  </td>
-     
-    
+  const infohandler  = () => { 
+    var element = document.getElementsByClassName("details");
+
   }
 
   return (
@@ -233,6 +231,7 @@ const Planet = () => {
                           >
                             View Details
                           </a>
+                          <div className="details">    <td> difggjdif  </td>   </div>
                         </td>
                       </tr>
                     ))
