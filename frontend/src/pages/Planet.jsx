@@ -144,6 +144,10 @@ const Planet = () => {
     }));
   };
 
+  const exponent2 = "\u00B2";
+
+
+
   return (
     <>
       <div
@@ -189,12 +193,16 @@ const Planet = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td> {planet.gravity} m.s-2 </td>
+                    <td> {planet.gravity} m/s{exponent2} </td>
                     <td> {planet.avgTemp - 273} °C </td>
                     <td> {planet.discoveryDate}</td>
                     <td>
                       {" "}
-                      {planMass} x 10^ {planet.mass?.massExponent} kg{" "}
+                   
+  
+                   {planMass} x 10<sup>{planet.mass?.massExponent}</sup> kg{" "}
+  
+
                     </td>
                   </tr>
                 </tbody>
@@ -203,49 +211,68 @@ const Planet = () => {
           </div>
 
           <div className="right-box">
-          <input
+            <input
               type="text"
               placeholder="Search Moon..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginTop: '5%',
-            marginBottom:'-5%' }}
+              style={{ marginTop: "5%", marginBottom: "-5%" }}
             />
             <div className="table-container">
-              
               <table>
                 <thead>
                   <tr>
-                    <th>Moon</th>
-                    <th>Details</th>
+                    <th className="planet-table-title-moon">Moon</th>
+                    <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>
                 <tbody>
-                {searchResults.length === 0 ? (
-  <tr>
-    <td colSpan="2">This planet has no moons</td>
-  </tr>
-) : (
-  searchResults.map((moon, index) => (
-    <tr key={index}>
-      <td>{moonEnglish[index]?.englishName}</td>
-      <a onClick={() => infohandler(index)}> <td>
-       
-         {showDetails[index] ? '  ' : 'Show Details'}
-       
-        {showDetails[index] && (
-          <div>
-            {/* Add additional information here */}
-            Moon Mass: {moonEnglish[index]?.massValue}
-            {/* Add more details as needed */}
-          </div>
-        )}
-      </td>
-      </a>
-    </tr>
-  ))
-)}
+                  {searchResults.length === 0 ? (
+                    <tr>
+                      <td colSpan="2">This planet has no moons</td>
+                    </tr>
+                  ) : (
+                    searchResults.map((moon, index) => (
+                      <tr  key={index}>
+                        <td>{moonEnglish[index]?.englishName}</td>
+                        <td onClick={() => infohandler(index)}>
+                          {showDetails[index]
+                            ? "  Hide Details"
+                            : "Show Details"}
 
+                          {showDetails[index] && (
+                            
+                            <tbody className="planet-table-innertable">
+                                
+                                  <span className="planet-table-innertable-type">Moon Mass: </span>
+                                  <span className="planet-table-innertable-info">
+                                    {" "}
+                                    {/* Add additional information here */}
+                                    {moonEnglish[index]?.mass?.massValue.toFixed( 2 )}
+                                    {" "}
+                                    x 10^ 
+                                    {moonEnglish[index]?.mass?.massExponent}
+                                    {" "}
+                                    kg 
+                                    {/* Add more details as needed */}
+                                  </span>
+
+                                  <span className="flex-break-planet-table-innertable"></span>
+
+                                  <span className="planet-table-innertable-type">Gravity: </span>
+                                  <span className="planet-table-innertable-info"> 
+                                    {moonEnglish[index]?.gravity}
+                                    m/s
+                                    {exponent2}
+                                  </span>
+                                
+                            </tbody>
+                            
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
