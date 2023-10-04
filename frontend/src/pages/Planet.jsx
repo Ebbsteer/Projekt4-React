@@ -226,12 +226,12 @@ const Planet = () => {
                       <tr key={index}>
                         <td>{moonEnglish[index]?.englishName}</td>
                         <td>
-                          <p
-                            onClick={infohandler}
-                          >
+                          <p onClick={infohandler}>
                             View Details
                           </p>
-                          <div className="details">    <td> difggjdif  </td>   </div>
+                          <p className="details"> 
+                            difggjdif  
+                          </p>
                         </td>
                       </tr>
                     ))
