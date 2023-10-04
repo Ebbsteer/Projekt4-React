@@ -242,26 +242,25 @@ const Planet = () => {
 
                           {showDetails[index] && (
                             
-                            <tbody className="planet-table-innertable"> 
-                            <div> 
-                              <tr>
-                                <td className="planet-table-innertable-type"> Moon Mass: </td>
-                                <td className="planet-table-innertable-info">
-                                  {" "}
-                                  {/* Add additional information here */}
-                                  {moonEnglish[index]?.mass?.massValue.toFixed(
-                                    2
-                                  )}{" "}
-                                  x 10^ {moonEnglish[index]?.mass?.massExponent}{" "}
-                                  kg {/* Add more details as needed */}
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td className="planet-table-innertable-type">Gravity</td>
-                                <td className="planet-table-innertable-info"> {moonEnglish[index]?.gravity}  m/s{exponent2}</td>
-                              </tr>
-                              </div>
+                            <tbody className="planet-table-innertable">
+                              <div> 
+                                <tr>
+                                  <td className="planet-table-innertable-type">Moon Mass: </td>
+                                  <td className="planet-table-innertable-info">
+                                    {" "}
+                                    {/* Add additional information here */}
+                                    {moonEnglish[index]?.mass?.massValue.toFixed(
+                                      2
+                                    )}{" "}
+                                    x 10^ {moonEnglish[index]?.mass?.massExponent}{" "}
+                                    kg {/* Add more details as needed */}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="planet-table-innertable-type">Gravity: </td>
+                                  <td className="planet-table-innertable-info"> {moonEnglish[index]?.gravity}  m/s{exponent2}</td>
+                                </tr>
+                                </div>
                             </tbody>
                             
                           )}
