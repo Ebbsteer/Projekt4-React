@@ -15,12 +15,18 @@
     scroll-behavior: smooth;
 }
 
-#favoritknapp{
-    width: 60px;
+#favoriteButton{
+    background: none;
+    border: none;
+    color: white;
 }
 
-.görfavorit{
-    background-color: rgb(0, 0, 0) !important;
+#btnContent{
+    font-size: 1.5rem;
+}
+
+.makeFavorite{
+    color: gold !important;
 }
 
 .search {
