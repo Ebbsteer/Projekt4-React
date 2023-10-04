@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function dofavorite(){
-  document.getElementById("favoritknapp").className.toggle("görfavorit");
-}
 const Items = () => {
-const[isActive, setActive]=useState(false);
+const[activeButtons, setActiveButtons]=useState(false);
 
-const toggleClass = () => {
-  setActive(!isActive);
+const toggleClass = (planetId) => {
+  setActiveButtons((prevActiveButtons)=>({
+    ...prevActiveButtons,
+    [planetId]: !prevActiveButtons[planetId],
+  }));
 };
+
+const handleButtonClick = (planetId) => {
+  toggleClass(planetId);
+
+  fetch("http://localhost:3000/add-favorite", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(planetId),
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
+
   
   const { id } = useParams();
   console.log(id);
@@ -80,24 +99,11 @@ const toggleClass = () => {
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
                   <td className="item-table-info-favo">
-                    <button id="favoritknapp"
-                    className={isActive ? 'görfavorit': null} 
-                      onClick={() => {toggleClass();
-                        fetch("http://localhost:3000/add-favorite", {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify(planet.id),
-                        })
-                          .then((response) => {
-                            console.log(response);
-                          })
-                          .catch((error) => {
-                            console.error("Fetch error:", error);
-                          });}}
+                    <button id="favoriteButton"
+                    className={activeButtons[planet.id] ? 'makeFavorite' : ''} 
+                      onClick={() => handleButtonClick(planet.id)}
                     >
-                      &#9733;
+                      <p id="btnContent">&#9733;</p>
                     </button>
                   </td>
                   <td className="item-table-info-nr">{i}</td>
