@@ -138,7 +138,7 @@ const Planet = () => {
   function infohandler() { 
     var element = document.querySelector(".details");
     element.classList.toggle("mystyle");
-}
+  }
 
   return (
     <>
@@ -222,18 +222,19 @@ const Planet = () => {
                       <td colSpan="2">This planet has no moons</td>
                     </tr>
                   ) : (
-                    searchResults.map((moon, index) => (
+                    searchResults.map((moon, index) => (<>
                       <tr key={index}>
                         <td>{moonEnglish[index]?.englishName}</td>
                         <td>
                           <p onClick={infohandler}>
                             View Details
                           </p>
-                          <p className="details"> 
-                            difggjdif  
-                          </p>
+                          
                         </td>
                       </tr>
+                      <tr> <p className="details"> 
+                      difggjdif  
+                    </p></tr>     </>
                     ))
                   )}
                 </tbody>
