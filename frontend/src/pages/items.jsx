@@ -5,10 +5,11 @@ const Items = () => {
 const[activeButtons, setActiveButtons]=useState(false);
 
 const toggleClass = (planetId) => {
-  setActiveButtons((prevActiveButtons)=>({
-    ...prevActiveButtons,
-    [planetId]: !prevActiveButtons[planetId],
-  }));
+  const updatedButtons = {...activeButtons};
+  updatedButtons[planetId] = !updatedButtons[planetId];
+  setActiveButtons(updatedButtons);
+
+  localStorage.setItem("activeButtons", JSON.stringify(updatedButtons));
 };
 
 const handleButtonClick = (planetId, planetI) => {
@@ -28,7 +29,6 @@ const handleButtonClick = (planetId, planetI) => {
       console.error("Fetch error:", error);
     });
     console.log(planetId, planetI);
-    localStorage.setItem("items", JSON.stringify(activeButtons));
 };
 
   
@@ -42,11 +42,10 @@ const handleButtonClick = (planetId, planetI) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(()=>{
-    const storedFavoritePlanets = localStorage.getItem("items");
-    if(storedFavoritePlanets){
-      setActiveButtons(JSON.parse(storedFavoritePlanets));
-    }
-  }, []);
+    const storedButtons = JSON.parse(localStorage.getItem("activeButtons")) || {};
+    setActiveButtons(storedButtons);
+
+  }, );
 
   const fetchUserData = () => {
     fetch(itemList)
