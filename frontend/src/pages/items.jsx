@@ -5,13 +5,14 @@ const Items = () => {
 const[activeButtons, setActiveButtons]=useState(false);
 
 const toggleClass = (planetId) => {
-  setActiveButtons((prevActiveButtons)=>({
-    ...prevActiveButtons,
-    [planetId]: !prevActiveButtons[planetId],
-  }));
+  const updatedButtons = {...activeButtons};
+  updatedButtons[planetId] = !updatedButtons[planetId];
+  setActiveButtons(updatedButtons);
+
+  localStorage.setItem("activeButtons", JSON.stringify(updatedButtons));
 };
 
-const handleButtonClick = (planetId) => {
+const handleButtonClick = (planetId, planetI) => {
   toggleClass(planetId);
 
   fetch("http://localhost:3000/add-favorite", {
@@ -27,6 +28,7 @@ const handleButtonClick = (planetId) => {
     .catch((error) => {
       console.error("Fetch error:", error);
     });
+    console.log(planetId, planetI);
 };
 
   
@@ -38,6 +40,12 @@ const handleButtonClick = (planetId) => {
   const [planets, setPlanets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(()=>{
+    const storedButtons = JSON.parse(localStorage.getItem("activeButtons")) || {};
+    setActiveButtons(storedButtons);
+
+  }, );
 
   const fetchUserData = () => {
     fetch(itemList)
@@ -101,7 +109,7 @@ const handleButtonClick = (planetId) => {
                   <td className="item-table-info-favo">
                     <button id="favoriteButton"
                     className={activeButtons[planet.id] ? 'makeFavorite' : ''} 
-                      onClick={() => handleButtonClick(planet.id)}
+                      onClick={() => handleButtonClick(planet.id, i)}
                     >
                       <p id="btnContent">&#9733;</p>
                     </button>
