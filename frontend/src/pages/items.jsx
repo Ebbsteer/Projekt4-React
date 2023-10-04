@@ -33,7 +33,6 @@ const handleButtonClick = (planetId, planetI) => {
 
   
   const { id } = useParams();
-  console.log(id);
 
   const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
 
@@ -44,8 +43,8 @@ const handleButtonClick = (planetId, planetI) => {
   useEffect(()=>{
     const storedButtons = JSON.parse(localStorage.getItem("activeButtons")) || {};
     setActiveButtons(storedButtons);
-
-  }, );
+  },[]);
+  
 
   const fetchUserData = () => {
     fetch(itemList)
