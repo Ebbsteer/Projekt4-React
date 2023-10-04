@@ -13,7 +13,7 @@ const Login = () => {
       password
     };
 
-    console.log(loginData)
+    console.log(loginData);
 
     // Send a POST request to your server (localhost:3000 or your server URL)
     fetch('http://localhost:3000/login', { // Update with your server URL
@@ -26,7 +26,7 @@ const Login = () => {
       .then((response) => {
         if (response.ok) {
           // Handle a successful login response here
-          // For example, you can redirect the user to a different page
+          // For example, you can display an alert
           alert('Login successful');
         } else {
           // Handle an unsuccessful login response here
@@ -41,6 +41,11 @@ const Login = () => {
 
   const handleForgotPassword = () => {
     // Implement logic for password reset here
+  };
+
+  const handleRegister = () => {
+    // Redirect to http://localhost:5173/profil
+    window.location.href = 'http://localhost:5173/src/pages/profil.jsx';
   };
 
   return (
@@ -77,10 +82,11 @@ const Login = () => {
           <button type="button" onClick={handleForgotPassword}>
             Forgot Password
           </button>
-          {/* Endast en knapp för att registrera här */}
-          <button className="register-button">Register here</button>
-          {/* Font link */}
-          <a href="https://www.fontspace.com/category/jungle"></a>
+          {/* Button to navigate to http://localhost:5173/profil */}
+          <button className="register-button" onClick={handleRegister}>
+            Register here
+          </button>
+          
         </form>
       </div>
     </div>
