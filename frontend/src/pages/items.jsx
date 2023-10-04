@@ -11,7 +11,7 @@ const toggleClass = (planetId) => {
   }));
 };
 
-const handleButtonClick = (planetId) => {
+const handleButtonClick = (planetId, planetI) => {
   toggleClass(planetId);
 
   fetch("http://localhost:3000/add-favorite", {
@@ -27,6 +27,8 @@ const handleButtonClick = (planetId) => {
     .catch((error) => {
       console.error("Fetch error:", error);
     });
+    console.log(planetId, planetI);
+    localStorage.setItem("items", JSON.stringify(activeButtons));
 };
 
   
@@ -38,6 +40,13 @@ const handleButtonClick = (planetId) => {
   const [planets, setPlanets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(()=>{
+    const storedFavoritePlanets = localStorage.getItem("items");
+    if(storedFavoritePlanets){
+      setActiveButtons(JSON.parse(storedFavoritePlanets));
+    }
+  }, []);
 
   const fetchUserData = () => {
     fetch(itemList)
@@ -101,7 +110,7 @@ const handleButtonClick = (planetId) => {
                   <td className="item-table-info-favo">
                     <button id="favoriteButton"
                     className={activeButtons[planet.id] ? 'makeFavorite' : ''} 
-                      onClick={() => handleButtonClick(planet.id)}
+                      onClick={() => handleButtonClick(planet.id, i)}
                     >
                       <p id="btnContent">&#9733;</p>
                     </button>
