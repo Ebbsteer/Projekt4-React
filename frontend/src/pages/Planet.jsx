@@ -144,6 +144,10 @@ const Planet = () => {
     }));
   };
 
+  const exponent2 = "\u00B2";
+
+
+
   return (
     <>
       <div
@@ -189,12 +193,16 @@ const Planet = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td> {planet.gravity} m.s-2 </td>
+                    <td> {planet.gravity} m/s{exponent2} </td>
                     <td> {planet.avgTemp - 273} °C </td>
                     <td> {planet.discoveryDate}</td>
                     <td>
                       {" "}
-                      {planMass} x 10^ {planet.mass?.massExponent} kg{" "}
+                   
+  
+                   {planMass} x 10<sup>{planet.mass?.massExponent}</sup> kg{" "}
+  
+
                     </td>
                   </tr>
                 </tbody>
@@ -214,8 +222,8 @@ const Planet = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>Moon</th>
-                    <th>Details</th>
+                    <th className="planet-table-title-moon">Moon</th>
+                    <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -225,7 +233,7 @@ const Planet = () => {
                     </tr>
                   ) : (
                     searchResults.map((moon, index) => (
-                      <tr key={index}>
+                      <tr  key={index}>
                         <td>{moonEnglish[index]?.englishName}</td>
                         <td onClick={() => infohandler(index)}>
                           {showDetails[index]
@@ -233,15 +241,12 @@ const Planet = () => {
                             : "Show Details"}
 
                           {showDetails[index] && (
-                            <div style={ {
-                              display: 'flex',
-                              alignContent:'center',
-                              justifyContent: 'center',
-                              }}>
-                                <tbody> 
+                            
+                            <tbody className="planet-table-innertable"> 
+                            <div> 
                               <tr>
-                                <td> Moon Mass: </td>
-                                <td>
+                                <td className="planet-table-innertable-type"> Moon Mass: </td>
+                                <td className="planet-table-innertable-info">
                                   {" "}
                                   {/* Add additional information here */}
                                   {moonEnglish[index]?.mass?.massValue.toFixed(
@@ -253,11 +258,12 @@ const Planet = () => {
                               </tr>
 
                               <tr>
-                                <td>gravity</td>
-                                <td> {moonEnglish[index]?.gravity}</td>
+                                <td className="planet-table-innertable-type">Gravity</td>
+                                <td className="planet-table-innertable-info"> {moonEnglish[index]?.gravity}  m/s{exponent2}</td>
                               </tr>
-                              </tbody>
-                            </div>
+                              </div>
+                            </tbody>
+                            
                           )}
                         </td>
                       </tr>
