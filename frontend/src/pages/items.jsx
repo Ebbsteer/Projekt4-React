@@ -53,6 +53,7 @@ const toggleClass = () => {
       <div className="nebulae"></div>
       <div className="tabellDiv">
         <input
+          className="search"
           type="text"
           placeholder="Sök..."
           value={searchTerm}
@@ -61,13 +62,13 @@ const toggleClass = () => {
         <table className="itemtable">
           <thead>
             <tr>
-              <th></th>
-              <th>Num</th>
-              <th>Type</th>
-              <th>Name</th>
-              <th>Temperature- (K)</th>
-              <th>Discovered</th>
-              <th>Gravity</th>
+              <th className="item-table-title-favo"></th>
+              <th className="item-table-title-nr">Nr</th>
+              <th className="item-table-title-type">Type</th>
+              <th className="item-table-title-name">Name</th>
+              <th className="item-table-title-temp">Temperature- (K)</th>
+              <th className="item-table-title-grav">Gravity</th>
+              <th className="item-table-title-disc">Discovered</th>
             </tr>
           </thead>
           <tbody>
@@ -78,7 +79,7 @@ const toggleClass = () => {
             ) : (
               searchResults.map((planet,i) => (
                 <tr key={planet.id}>
-                  <td>
+                  <td className="item-table-info-favo">
                     <button id="favoritknapp"
                     className={isActive ? 'görfavorit': null} 
                       onClick={() => {toggleClass();
@@ -99,12 +100,12 @@ const toggleClass = () => {
                       &#9733;
                     </button>
                   </td>
-                  <td>{i}</td>
-                  <td>{planet.bodyType}</td>
-                  <td>{planet.englishName}</td>
-                  <td>{planet.avgTemp}</td>
-                  <td>{planet.discoveryDate}</td>
-                  <td>{planet.gravity}</td>
+                  <td className="item-table-info-nr">{i}</td>
+                  <td className="item-table-info-type">{planet.bodyType}</td>
+                  <td className="item-table-info-name">{planet.englishName}</td>
+                  <td className="item-table-info-temp">{planet.avgTemp}</td>
+                  <td className="item-table-info-grav">{planet.gravity}</td>
+                  <td className="item-table-info-disc">{planet.discoveryDate}</td>
                 </tr>
               ))
             )}
