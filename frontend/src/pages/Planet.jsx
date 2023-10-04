@@ -66,6 +66,7 @@ const Planet = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [moonEnglish, setmoonEnglish] = useState({});
+  const [showDetails, setShowDetails] = useState({});
 
   useEffect(() => {
     const planetURL = `https://api.le-systeme-solaire.net/rest/bodies/${id}`;
@@ -135,10 +136,13 @@ const Planet = () => {
   var planetimg = "/src/assets/img/" + id + "mock.png";
   var planetBackground = "/src/assets/planets/" + id + ".png";
 
-  function infohandler() { 
-    var element = document.querySelector(".details");
-    element.classList.toggle("mystyle");
-  }
+  const infohandler = (index) => {
+    // Toggle the state for the clicked moon
+    setShowDetails((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle the value
+    }));
+  };
 
   return (
     <>
@@ -217,26 +221,31 @@ const Planet = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {searchResults.length === 0 ? (
-                    <tr>
-                      <td colSpan="2">This planet has no moons</td>
-                    </tr>
-                  ) : (
-                    searchResults.map((moon, index) => (<>
-                      <tr key={index}>
-                        <td>{moonEnglish[index]?.englishName}</td>
-                        <td>
-                          <p onClick={infohandler}>
-                            View Details
-                          </p>
-                          
-                        </td>
-                      </tr>
-                      <tr> <p className="details"> 
-                      difggjdif  
-                    </p></tr>     </>
-                    ))
-                  )}
+                {searchResults.length === 0 ? (
+  <tr>
+    <td colSpan="2">This planet has no moons</td>
+  </tr>
+) : (
+  searchResults.map((moon, index) => (
+    <tr key={index}>
+      <td>{moonEnglish[index]?.englishName}</td>
+      <a onClick={() => infohandler(index)}> <td>
+       
+         {showDetails[index] ? '  ' : 'Show Details'}
+       
+        {showDetails[index] && (
+          <div>
+            {/* Add additional information here */}
+            Moon Mass: {moonEnglish[index]?.massValue}
+            {/* Add more details as needed */}
+          </div>
+        )}
+      </td>
+      </a>
+    </tr>
+  ))
+)}
+
                 </tbody>
               </table>
             </div>
