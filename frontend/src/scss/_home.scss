@@ -30,7 +30,7 @@
 
     width: 100%;
     height: fit-content;
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
 
     
     .left {
@@ -64,7 +64,7 @@
 
       /* Styles for the box */
       .textbox {
-        background-color: #28032fbb;
+        background-color: base.$box-color;
         
         color: base.$whiteish;
         text-align: center;
@@ -75,7 +75,8 @@
         padding: 4vh; 
         margin: 4vh auto;
         
-        border: 10px solid black;
+        border: 10px solid base.$blackish;
+        border-radius: 10px;
       }
     }
 
