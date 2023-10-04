@@ -1,8 +1,12 @@
+@use "base";
+
 * {
     box-sizing: border-box;
+   
   }
 
 #planet {
+  font-family:base.$font-p;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -28,53 +32,78 @@
   }
     
 
-.table-container {
+  .table-container {
     margin: 5%;
-   width: 80%;
+    width: 80%;
     overflow-x: auto;
     scroll-behavior: smooth;
     color: white;
     background-color: rgba(73, 73, 73, 0.76);
-}
+
     table{
-     
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-       width: 100%;
-        font-size: 1.7rem;
-        text-align: center;
-      
-      
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 1.7rem;
+      text-align: center;
     }
+
     td, th{
-        border:1px solid black;
-        
-    
+      border:1px solid black;
     }
+
     th {
-        top: 0;
-        position: sticky;
-        background: #ffffff;
-        color: black;
-     }
-     tr:nth-child(even) {
-        background-color: rgba(41, 41, 41, 0.76);
-    
+      top: 0;
+      position: sticky;
+      background: #ffffff;
+      color: black;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(41, 41, 41, 0.76);
+    }
+
+    .planet-table-title-moon {
+      width: 35%;
+    }
+
+    .planet-table-title-details {
+      width: 65%;
+    } 
+
+    .planet-table-innertable {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      
+      
+        
+      .planet-table-innertable-type {
+        padding: 2px;
+        font-size: 1rem;
       }
+      
+      .planet-table-innertable-info {
+        padding: 4px;
+        font-size: 0.9rem;
+      }
+      
+      
+    }
+  }
    
   
 
-.details{
-    display: none;
-    position: relative;
+  .details{
+      display: none;
+      position: relative;
 
-    width: auto;
-    height: fit-content;
-}
+      width: auto;
+      height: fit-content;
+  }
 
-.details.mystyle {
-  display: block;
-}
+  .details.mystyle {
+    display: block;
+  }
 
 
 
@@ -105,24 +134,25 @@
 
 
 
-.right-box {
- // margin-top: 5%;
-  flex-direction: column;
-  display: flex;
-  justify-content: center; /* Move the box to the right */
-  align-items: center;
-  width: 50%; /* Adjusted for responsiveness */
-  height: 100%; /* Adjusted for responsiveness */
-  // position: absolute; /* Adjust this margin-right value as needed */
-  // z-index: 1;
-  align-content: center;
-  scroll-behavior: smooth;
+  .right-box {
+  // margin-top: 5%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center; /* Move the box to the right */
+    align-items: center;
+    width: 50%; /* Adjusted for responsiveness */
+    height: 100%; /* Adjusted for responsiveness */
+    // position: absolute; /* Adjust this margin-right value as needed */
+    // z-index: 1;
+    align-content: center;
+    scroll-behavior: smooth;
 
           
       }
   
 
   .title-img {
+  font-family:base.$font-h;
     display: flex;
    // margin-top: -10%;
     padding: 2vh;
