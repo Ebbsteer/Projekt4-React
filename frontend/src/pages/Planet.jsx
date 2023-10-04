@@ -222,7 +222,7 @@ const Planet = () => {
               <table>
                 <thead>
                   <tr>
-                    <th className="planet-table-title-moon">Moon</th>
+                    <th className="planet-table-title-moon">Moons</th>
                     <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>
@@ -250,8 +250,8 @@ const Planet = () => {
                                     {/* Add additional information here */}
                                     {moonEnglish[index]?.mass?.massValue.toFixed( 2 )}
                                     {" "}
-                                    x 10^ 
-                                    {moonEnglish[index]?.mass?.massExponent}
+                                    x 10
+                                    <sup> {moonEnglish[index]?.mass?.massExponent} </sup>
                                     {" "}
                                     kg 
                                     {/* Add more details as needed */}
