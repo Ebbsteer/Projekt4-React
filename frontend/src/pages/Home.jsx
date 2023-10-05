@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
+import { NavLink } from 'react-router-dom';
 
 const images = [
   '/src/assets/img/mercurymock.png',
@@ -25,13 +26,24 @@ const planetNames = [
 
 const planetInfo = [
   '1st planet',
-  '2st planet',
-  '3st planet',
-  '4st planet',
-  '5st planet',
-  '6st planet',
-  '7st planet',
-  '8st planet',
+  '2nd planet',
+  '3d planet',
+  '4th planet',
+  '5th planet',
+  '6th planet',
+  '7th planet',
+  '8th planet',
+];
+
+const planetDirect=[
+  '/planet/mercury',
+  '/planet/venus',
+  '/planet/earth',
+  '/planet/mars',
+  '/planet/jupiter',
+  '/planet/saturn',
+  '/planet/uranus',
+  '/planet/neptune',
 ];
 
 const Slideshow = ({ images }) => {
@@ -40,7 +52,7 @@ const Slideshow = ({ images }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
+    }, 30000);
 
     return () => {
       clearInterval(timer);
@@ -51,7 +63,8 @@ const Slideshow = ({ images }) => {
     <div className="slideshow">
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
-      <p className="slideshowInfo">{planetInfo[currentIndex]}</p>
+      <p className="slideshowInfo">{"The " + planetInfo[currentIndex] + " in our solar system"}</p>
+      <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
     </div>
   );
 };
@@ -134,11 +147,6 @@ const Home = () => {
           <div id="planetoftheday">
             <Slideshow images={images}/>
           </div>
-          <div>
-            <button onClick={handleClick}>
-              Generate random planet
-            </button>
-          </div>
 
         </div>
 
@@ -156,6 +164,9 @@ const Home = () => {
               the sun would rise in the west and set in the east,
               which is quite different from what we experience on Earth!
             </p>
+            <button onClick={handleClick} className="rndBtn">
+              Generate random planet
+            </button>
           </div>
 
         </div>

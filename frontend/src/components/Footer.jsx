@@ -9,7 +9,7 @@ const Footer = () => {
     <>
       <div id="foot">
         <div>
-          <span className="footer-CO-name">CosmicHub</span>
+          <span className="footer-CO-name">Cosmic<span className='hubStyle'>Hub</span></span>
         </div>
 
         <div className="footer-content">
