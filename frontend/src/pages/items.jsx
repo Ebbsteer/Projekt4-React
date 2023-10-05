@@ -2,36 +2,35 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Items = () => {
-const[activeButtons, setActiveButtons]=useState(false);
+  const [activeButtons, setActiveButtons] = useState(false);
 
-const toggleClass = (planetId) => {
-  const updatedButtons = {...activeButtons};
-  updatedButtons[planetId] = !updatedButtons[planetId];
-  setActiveButtons(updatedButtons);
+  const toggleClass = (planetId) => {
+    const updatedButtons = { ...activeButtons };
+    updatedButtons[planetId] = !updatedButtons[planetId];
+    setActiveButtons(updatedButtons);
 
-  localStorage.setItem("activeButtons", JSON.stringify(updatedButtons));
-};
+    localStorage.setItem("activeButtons", JSON.stringify(updatedButtons));
+  };
 
-const handleButtonClick = (planetId, planetI) => {
-  toggleClass(planetId);
+  const handleButtonClick = (planetId, planetI) => {
+    toggleClass(planetId);
 
-  fetch("http://localhost:3000/add-favorite", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(planetId),
-  })
-    .then((response) => {
-      console.log(response);
+    fetch("http://localhost:3000/add-favorite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(planetId),
     })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
     console.log(planetId, planetI);
-};
+  };
 
-  
   const { id } = useParams();
 
   const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
@@ -39,21 +38,71 @@ const handleButtonClick = (planetId, planetI) => {
   const [planets, setPlanets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrderDate, setSortOrderDate] = useState("asc");
+  const [sortOrderType, setSortOrderType] = useState("asc");
 
-  useEffect(()=>{
-    const storedButtons = JSON.parse(localStorage.getItem("activeButtons")) || {};
+  useEffect(() => {
+    const storedButtons =
+      JSON.parse(localStorage.getItem("activeButtons")) || {};
     setActiveButtons(storedButtons);
-  },[]);
+  }, []);
 
+  const sortlistName = () => {
+    const newSortOrder = sortOrder === "desc" ? "asc" : "desc";
+    setSortOrder(newSortOrder);
 
-  const sortlistName =() => {
-    
+    // Sort the searchResults array based on the sorting order
+    const sortedResults = [...searchResults].sort((a, b) => {
+      const nameA = a.englishName.toLowerCase();
+      const nameB = b.englishName.toLowerCase();
 
+      if (newSortOrder === "asc") {
+        return nameA.localeCompare(nameB);
+      } else {
+        return nameB.localeCompare(nameA);
+      }
+    });
 
+    setSearchResults(sortedResults);
+  };
+  const sortlistDate = () => {
+    // Toggle sorting order for Date column
+    const newSortOrder = sortOrderDate === "desc" ? "asc" : "desc";
+    setSortOrderDate(newSortOrder);
 
+    const sortedResults = [...searchResults].sort((a, b) => {
+      const dateA = new Date(parseDate(a.discoveryDate)).getTime();
+      const dateB = new Date(parseDate(b.discoveryDate)).getTime();
 
-  }
-  
+      if (newSortOrder === "asc") {
+        return dateA - dateB;
+      } else {
+        return dateB - dateA;
+      }
+    });
+
+    setSearchResults(sortedResults);
+  };
+
+  const sortlistType = () => {
+    // Toggle sorting order for Type column
+    const newSortOrder = sortOrderType === "desc" ? "asc" : "desc";
+    setSortOrderType(newSortOrder);
+
+    const sortedResults = [...searchResults].sort((a, b) => {
+      const typeA = a.bodyType.toLowerCase();
+      const typeB = b.bodyType.toLowerCase();
+
+      if (newSortOrder === "asc") {
+        return typeA.localeCompare(typeB);
+      } else {
+        return typeB.localeCompare(typeA);
+      }
+    });
+
+    setSearchResults(sortedResults);
+  };
 
   const fetchUserData = () => {
     fetch(itemList)
@@ -83,6 +132,17 @@ const handleButtonClick = (planetId, planetI) => {
     setSearchResults(filteredData);
   }, [planets, searchTerm]);
 
+  const parseDate = (dateString) => {
+    const parts = dateString.split("/");
+    if (parts.length === 3) {
+      const [day, month, year] = parts;
+      return `${year}-${month}-${day}`;
+    } else {
+      // Return a default date if the input format is not as expected
+      return "1970-01-01"; // You can choose any default date you prefer
+    }
+  };
+  
 
   return (
     <div id="home">
@@ -100,11 +160,17 @@ const handleButtonClick = (planetId, planetI) => {
             <tr>
               <th className="item-table-title-favo"></th>
               <th className="item-table-title-nr">Nr</th>
-              <th className="item-table-title-type">Type</th>
-              <th onClick={sortlistName} className="item-table-title-name">Name</th>
+              <th onClick={sortlistType} className="item-table-title-type">
+                Type {sortOrderType === "asc" ? "▼" : "▲"}{" "}
+              </th>
+              <th onClick={sortlistName} className="item-table-title-name">
+                Name {sortOrder === "asc" ? "▼" : "▲"}
+              </th>
               <th className="item-table-title-temp">Temperature- (K)</th>
               <th className="item-table-title-grav">Gravity</th>
-              <th className="item-table-title-disc">Discovered</th>
+              <th onClick={sortlistDate} className="item-table-title-disc">
+                Discovered {sortOrderDate === "asc" ? "▼" : "▲"}{" "}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -113,11 +179,12 @@ const handleButtonClick = (planetId, planetI) => {
                 <td colSpan="5">Inga resultat hittades</td>
               </tr>
             ) : (
-              searchResults.map((planet,i) => (
+              searchResults.map((planet, i) => (
                 <tr key={planet.id}>
                   <td className="item-table-info-favo">
-                    <button id="favoriteButton"
-                    className={activeButtons[planet.id] ? 'makeFavorite' : ''} 
+                    <button
+                      id="favoriteButton"
+                      className={activeButtons[planet.id] ? "makeFavorite" : ""}
                       onClick={() => handleButtonClick(planet.id, i)}
                     >
                       <p id="btnContent">&#9733;</p>
@@ -128,7 +195,9 @@ const handleButtonClick = (planetId, planetI) => {
                   <td className="item-table-info-name">{planet.englishName}</td>
                   <td className="item-table-info-temp">{planet.avgTemp}</td>
                   <td className="item-table-info-grav">{planet.gravity}</td>
-                  <td className="item-table-info-disc">{planet.discoveryDate}</td>
+                  <td className="item-table-info-disc">
+                    {planet.discoveryDate}
+                  </td>
                 </tr>
               ))
             )}
