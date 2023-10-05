@@ -42,6 +42,10 @@ const Items = () => {
   const [sortOrderDate, setSortOrderDate] = useState("asc");
   const [sortOrderType, setSortOrderType] = useState("asc");
 
+  
+  const [filterType, setFilterType] = useState("all"); // Default to "all"
+  const [showFavorites, setShowFavorites] = useState(false);
+
   useEffect(() => {
     const storedButtons =
       JSON.parse(localStorage.getItem("activeButtons")) || {};
@@ -104,6 +108,26 @@ const Items = () => {
     setSearchResults(sortedResults);
   };
 
+
+  const handleTypeFilterChange = (e) => {
+    setFilterType(e.target.value);
+  };
+
+  const handleFavoritesFilterChange = () => {
+    setShowFavorites(!showFavorites);
+  };
+
+  const filteredResults = searchResults.filter((planet) => {
+    const isFavorite = activeButtons[planet.id];
+    if (showFavorites && !isFavorite) {
+      return false; // Hide non-favorites when "Favorites" filter is active
+    }
+    if (filterType === "all" || planet.bodyType.toLowerCase() === filterType) {
+      return true; // Show all types or matching types
+    }
+    return false;
+  });
+
   const fetchUserData = () => {
     fetch(itemList)
       .then((response) => {
@@ -148,6 +172,7 @@ const Items = () => {
     <div id="home">
       <div className="nebulae"></div>
       <div className="tabellDiv">
+        
         <input
           className="search"
           type="text"
@@ -155,6 +180,27 @@ const Items = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+          <select value={filterType} onChange={handleTypeFilterChange}>
+            <option value="all">All Types</option>
+            <option value="star">Star</option>
+            <option value="planet">Planets</option>
+            <option value="moon">Moons</option>
+            <option value="dwarf planet">Dwarf planets</option>
+            <option value="asteroid">Asteroids</option>
+            <option value="comet">Comets</option>
+
+          
+          </select>
+
+          <label>
+            <input
+              type="checkbox"
+              checked={showFavorites}
+              onChange={handleFavoritesFilterChange}
+            />
+            Show Favorites
+          </label>
+
         <table className="itemtable">
           <thead>
             <tr>
@@ -174,12 +220,12 @@ const Items = () => {
             </tr>
           </thead>
           <tbody>
-            {searchResults.length === 0 ? (
+            {filteredResults.length === 0 ? (
               <tr>
-                <td colSpan="5">Inga resultat hittades</td>
+                <td colSpan="5">No matching cosmic body</td>
               </tr>
             ) : (
-              searchResults.map((planet, i) => (
+              filteredResults.map((planet, i) => (
                 <tr key={planet.id}>
                   <td className="item-table-info-favo">
                     <button
