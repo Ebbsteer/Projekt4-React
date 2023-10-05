@@ -7,9 +7,7 @@ const prepareCache = new Map();
 
 export const prepare = (query) => {
     if (prepareCache.has(query)) {
-        return (
-            prepareCache.get(query)
-        );
+        return prepareCache.get(query);
     }
 
     const stmt = DB.prepare(query);
@@ -32,7 +30,7 @@ export const setupDB = () => {
         )
     `);
     setupUsersTable.run();
-}
+};
 
 /**
  * Insert a user into the database
@@ -60,8 +58,8 @@ export const getUser = (id) => {
         SELECT id, username, password_hash FROM users WHERE id = ?
     `);
 
-    return (getUserStmt.get(id));
-}
+    return getUserStmt.get(id);
+};
 
 /**
  * Get user by id without password hash from database
@@ -73,9 +71,7 @@ export const getSecureUser = (id) => {
         SELECT id, username FROM users WHERE id = ?
     `);
 
-    return (
-        getSecureUserStmt.get(id)
-    );
+    return getSecureUserStmt.get(id);
 };
 
 /**
@@ -88,9 +84,7 @@ export const getUserByUsername = (username) => {
         SELECT id, username, password_hash FROM users WHERE username = ?
     `);
 
-    return (
-        getUserByUsernameStmt.get(username)
-    );
+    return getUserByUsernameStmt.get(username);
 };
 
 /**
@@ -101,8 +95,8 @@ export const getUserCount = () => {
         SELECT COUNT(*) AS user_count FROM users
     `);
 
-    return (getUserCountStmt.get())
-}
+    return getUserCountStmt.get();
+};
 
 /**
  * Delete a specific user
@@ -116,34 +110,57 @@ export const deleteUser = (cid) => {
     deleteUserStmt.run(cid);
 };
 
-
 /**
  * Get favorites
  * @param {string} cid id of user
+ * @returns {string} total favorites, seperated by special
  */
 export const getFavorites = (cid) => {
     const getFavoritesStmt = prepare(`
         SELECT favorites FROM users WHERE id = ?
     `);
 
-    getFavoritesStmt.get(cid);
+    return getFavoritesStmt.get(cid);
 };
 
 /**
- * Add favorites
+ * Add favorite
  * @param {string} cid id of user
- * @param {string} fid id of favorite
  */
 export const addFavorite = (cid, fid) => {
-    const oldFavorite = getFavorites(cid);
+    const oldFavorite = getFavorites(cid).split(",");
     console.log(oldFavorite);
-    
+
+    if (favorites.find(fid)) return null;
+
     const newFavorite = oldFavorite + "," + fid;
 
+    const addFavoriteStmt = prepare(`
+        UPDATE users SET favorites = @favorites WHERE id = @id
+    `);
+
+    deleteFavoriteStmt.run({ id: cid, favorites: newFavorites });
 };
 
+/**
+ * Delete favorite
+ * @param {string} cid id of user
+ */
+export const deleteFavorite = (cid, fid) => {
+    const favorites = getFavorites(cid).split(",");
 
+    const position = favorites.find(fid);
 
- 
-//  home - login - skapa user - id-uuid4 - cid 
+    if (!position) res.send(401);
+
+    const newFavorites = favorites.splice(position, 1).join(",");
+
+    const deleteFavoriteStmt = prepare(`
+        UPDATE users SET favorites = @favorites WHERE id = @id
+    `);
+
+    deleteFavoriteStmt.run({ id: cid, favorites: newFavorites });
+};
+
+//  home - login - skapa user - id-uuid4 - cid
 // finns - finns -    inte    -   inte   - finns
