@@ -17,7 +17,9 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 app.use(cookieParser("very secret")); // Bör bytas ut i production :^)
 
 app.use(cors({
-    origin: "*"
+    origin: "http://localhost:5173", // Bör bytas ut i production :^)
+    credentials: true
+    
 }));
 
 app.use(express.json());

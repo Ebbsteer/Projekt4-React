@@ -3,7 +3,35 @@ import nebulae from "../assets/img/nebulae.jpeg";
 
 const images = [
   '/src/assets/img/mercurymock.png',
+  '/src/assets/img/venusmock.png',
   '/src/assets/img/earthmock.png',
+  '/src/assets/img/marsmock.png',
+  '/src/assets/img/jupitermock.png',
+  '/src/assets/img/saturnmock.png',
+  '/src/assets/img/uranusmock.png',
+  '/src/assets/img/neptunemock.png',
+];
+
+const planetNames = [
+  'Mercury',
+  'Venus',
+  'Earth',
+  'Mars',
+  'Jupiter',
+  'Saturn',
+  'Uranus',
+  'Neptune',
+];
+
+const planetInfo = [
+  '1st planet',
+  '2st planet',
+  '3st planet',
+  '4st planet',
+  '5st planet',
+  '6st planet',
+  '7st planet',
+  '8st planet',
 ];
 
 const Slideshow = ({ images }) => {
@@ -11,9 +39,8 @@ const Slideshow = ({ images }) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Byt bild varje 3 sekunder (justera tiden efter behov)
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000); // 3000 ms = 3 sekunder
+    }, 6000);
 
     return () => {
       clearInterval(timer);
@@ -22,7 +49,9 @@ const Slideshow = ({ images }) => {
 
   return (
     <div className="slideshow">
+      <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
+      <p className="slideshowInfo">{planetInfo[currentIndex]}</p>
     </div>
   );
 };
@@ -104,15 +133,10 @@ const Home = () => {
 
           <div id="planetoftheday">
             <Slideshow images={images}/>
-
-            <h1>Timer: {seconds} sekunder</h1>
-
-            <h2>{day}</h2>
           </div>
-
           <div>
             <button onClick={handleClick}>
-              Click Me Generate
+              Generate random planet
             </button>
           </div>
 
