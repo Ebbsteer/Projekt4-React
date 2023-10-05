@@ -50,6 +50,9 @@ const Login = () => {
     };
 
     const handleRegister = (e) => {
+        e.preventDefault(); // Förhindra standardbeteendet för knappen
+        setIsRegistering(!isRegistering);
+
         // Prepare the login data as an object
         const registerData = {
             username,
