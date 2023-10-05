@@ -8,6 +8,9 @@ import {
     getSecureUser,
     getUserByUsername,
     insertUser,
+    getFavorites,
+    addFavorite,
+    deleteFavorite,
 } from "../database.js";
 
 export const router = Router();
@@ -35,7 +38,10 @@ router.use((req, res, next) => {
 
 const authRoute = (req, res, next) => {
     console.log("authRoute");
-    if (!req.user) return next("router");
+    if (!req.user || !req.cid) return res.send("router");
+
+    const user = getSecureUser(req.cid);
+    if (user !== req.user) return res.send("router");
 
     next();
 };
@@ -101,18 +107,26 @@ router.route("/test").get(authRoute, (req, res) => {
     res.send(200);
 });
 
+// Update later
 router.route("/favorite/add").patch(authRoute, (req, res) => {
-    const { id } = req.body;
+    const { fid } = req.body;
+
+    addFavorite(req.cid, fid);
 
     res.send(200);
 });
 
+// Update later
 router.route("/favorite/remove").patch(authRoute, (req, res) => {
-    const { id } = req.body;
+    const { fid } = req.body;
+
+    deleteFavorite(req.cid, fid);
 
     res.send(200);
 });
 
 router.route("/favorite/list").get(authRoute, (req, res) => {
-    res.send(200);
+    const favorites = getFavorites(req.cid).split(";");
+
+    res.send(200).json(favorites);
 });
