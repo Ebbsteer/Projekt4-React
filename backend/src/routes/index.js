@@ -13,9 +13,7 @@ import {
 export const router = Router();
 
 router.use((req, res, next) => {
-    res.header('Access-Control-Allow-Credentials', true);
-
-    req.cid = req.body.cid;
+    req.cid = req.signedCookies?.cid;
     console.log(req.cid);
 
     if (!req.cid) {
@@ -31,8 +29,6 @@ router.use((req, res, next) => {
 
     const user = getSecureUser(req.cid);
     if (user) req.user = user;
-
-    console.log(req.cid);
 
     next();
 });
@@ -94,7 +90,7 @@ router.route("/login").post((req, res) => {
     return res.status(400);
 });
 
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
     res.clearCookie("cid");
     res.redirect("/");
 });

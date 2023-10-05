@@ -15,7 +15,6 @@ const Login = () => {
         const loginData = {
             username,
             password,
-            cid: Cookies.get("cid"),
         };
 
         console.log(loginData);
