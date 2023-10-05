@@ -50,8 +50,8 @@ export const insertUser = (id, username, password_hash) => {
     insertUserStmt.run({ id, username, password_hash });
 };
 
-/**F
- * Get a user from the database
+/**
+ * Get user by id from database
  * @param {string} id id of user
  * @returns {User | undefined} user
  */
@@ -62,6 +62,21 @@ export const getUser = (id) => {
 
     return (getUserStmt.get(id));
 }
+
+/**
+ * Get user by id without password hash from database
+ * @param {string} id username of user
+ * @returns {Omit<User, 'password_hash'> | undefined} user
+ */
+export const getSecureUser = (id) => {
+    const getSecureUserStmt = prepare(`
+        SELECT id, username FROM users WHERE id = ?
+    `);
+
+    return (
+        getSecureUserStmt.get(id)
+    );
+};
 
 /**
  * Get a user by username from the database
