@@ -50,8 +50,32 @@ const Login = () => {
     };
 
     const handleRegister = (e) => {
-        e.preventDefault(); // Förhindra standardbeteendet för knappen
-        setIsRegistering(!isRegistering);
+        // Prepare the login data as an object
+        const registerData = {
+            username,
+            password,
+        };
+
+        console.log(registerData);
+
+        fetch("http://localhost:3000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(registerData),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("Registration successful");
+                } else {
+                    alert("Registration failed");
+                }
+            })
+            .catch((error) => {
+                console.error("Registration error:", error);
+            });
     };
 
     return (
