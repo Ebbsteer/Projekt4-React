@@ -13,17 +13,28 @@ const images = [
 ];
 
 const planetNames = [
-  'mercury',
-  'venus',
-  'earth',
-  'mars',
-  'jupiter',
-  'saturn',
-  'uranus',
-  'neptune',
+  'Mercury',
+  'Venus',
+  'Earth',
+  'Mars',
+  'Jupiter',
+  'Saturn',
+  'Uranus',
+  'Neptune',
 ];
 
-const Slideshow = ({ images, names }) => {
+const planetInfo = [
+  '1st planet',
+  '2st planet',
+  '3st planet',
+  '4st planet',
+  '5st planet',
+  '6st planet',
+  '7st planet',
+  '8st planet',
+];
+
+const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -34,12 +45,13 @@ const Slideshow = ({ images, names }) => {
     return () => {
       clearInterval(timer);
     };
-  }, [images, names]);
+  }, [images]);
 
   return (
     <div className="slideshow">
+      <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
-      <p>{planetNames[currentIndex]}</p>
+      <p className="slideshowInfo">{planetInfo[currentIndex]}</p>
     </div>
   );
 };
@@ -121,14 +133,10 @@ const Home = () => {
 
           <div id="planetoftheday">
             <Slideshow images={images}/>
-
-            <h1>Timer: {seconds} sekunder</h1>
-
-            <h2>{day}</h2>
           </div>
           <div>
             <button onClick={handleClick}>
-              Click Me Generate
+              Generate random planet
             </button>
           </div>
 
