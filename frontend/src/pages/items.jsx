@@ -44,6 +44,15 @@ const handleButtonClick = (planetId, planetI) => {
     const storedButtons = JSON.parse(localStorage.getItem("activeButtons")) || {};
     setActiveButtons(storedButtons);
   },[]);
+
+
+  const sortlistName =() => {
+    
+
+
+
+
+  }
   
 
   const fetchUserData = () => {
@@ -74,6 +83,7 @@ const handleButtonClick = (planetId, planetI) => {
     setSearchResults(filteredData);
   }, [planets, searchTerm]);
 
+
   return (
     <div id="home">
       <div className="nebulae"></div>
@@ -91,7 +101,7 @@ const handleButtonClick = (planetId, planetI) => {
               <th className="item-table-title-favo"></th>
               <th className="item-table-title-nr">Nr</th>
               <th className="item-table-title-type">Type</th>
-              <th className="item-table-title-name">Name</th>
+              <th onClick={sortlistName} className="item-table-title-name">Name</th>
               <th className="item-table-title-temp">Temperature- (K)</th>
               <th className="item-table-title-grav">Gravity</th>
               <th className="item-table-title-disc">Discovered</th>
