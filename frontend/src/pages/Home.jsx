@@ -3,26 +3,43 @@ import nebulae from "../assets/img/nebulae.jpeg";
 
 const images = [
   '/src/assets/img/mercurymock.png',
+  '/src/assets/img/venusmock.png',
   '/src/assets/img/earthmock.png',
+  '/src/assets/img/marsmock.png',
+  '/src/assets/img/jupitermock.png',
+  '/src/assets/img/saturnmock.png',
+  '/src/assets/img/uranusmock.png',
+  '/src/assets/img/neptunemock.png',
 ];
 
-const Slideshow = ({ images }) => {
+const planetNames = [
+  'mercury',
+  'venus',
+  'earth',
+  'mars',
+  'jupiter',
+  'saturn',
+  'uranus',
+  'neptune',
+];
+
+const Slideshow = ({ images, names }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Byt bild varje 3 sekunder (justera tiden efter behov)
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000); // 3000 ms = 3 sekunder
+    }, 6000);
 
     return () => {
       clearInterval(timer);
     };
-  }, [images]);
+  }, [images, names]);
 
   return (
     <div className="slideshow">
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
+      <p>{planetNames[currentIndex]}</p>
     </div>
   );
 };
@@ -109,7 +126,6 @@ const Home = () => {
 
             <h2>{day}</h2>
           </div>
-
           <div>
             <button onClick={handleClick}>
               Click Me Generate
