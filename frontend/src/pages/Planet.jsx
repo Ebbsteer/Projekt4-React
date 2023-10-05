@@ -218,7 +218,7 @@ const Planet = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ marginTop: "5%", marginBottom: "-5%" }}
             />
-            <div className="table-container">
+            <div className="table-container moon-container">
               <table>
                 <thead>
                   <tr>

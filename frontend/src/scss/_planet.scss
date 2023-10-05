@@ -106,7 +106,11 @@
     }
   }
    
-  
+  .moon-container{
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height:80vh ;
+  }
 
   .details{
       display: none;
