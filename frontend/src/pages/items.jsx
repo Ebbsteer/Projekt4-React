@@ -42,7 +42,6 @@ const Items = () => {
   const [sortOrderDate, setSortOrderDate] = useState("asc");
   const [sortOrderType, setSortOrderType] = useState("asc");
 
-  
   const [filterType, setFilterType] = useState("all"); // Default to "all"
   const [showFavorites, setShowFavorites] = useState(false);
 
@@ -108,7 +107,6 @@ const Items = () => {
     setSearchResults(sortedResults);
   };
 
-
   const handleTypeFilterChange = (e) => {
     setFilterType(e.target.value);
   };
@@ -120,10 +118,10 @@ const Items = () => {
   const filteredResults = searchResults.filter((planet) => {
     const isFavorite = activeButtons[planet.id];
     if (showFavorites && !isFavorite) {
-      return false; 
+      return false;
     }
     if (filterType === "all" || planet.bodyType.toLowerCase() === filterType) {
-      return true; 
+      return true;
     }
     return false;
   });
@@ -166,41 +164,42 @@ const Items = () => {
       return "1970-01-01"; // You can choose any default date you prefer
     }
   };
-  
 
   return (
     <div id="home">
       <div className="nebulae"></div>
       <div className="tabellDiv">
+     <div className="filter"> 
+          <input
+            className="search"
+            type="text"
+            placeholder="Sök..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
         
-        <input
-          className="search"
-          type="text"
-          placeholder="Sök..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-          <select value={filterType} onChange={handleTypeFilterChange}>
-            <option value="all">All Types</option>
-            <option value="star">Star</option>
-            <option value="planet">Planets</option>
-            <option value="moon">Moons</option>
-            <option value="dwarf planet">Dwarf planets</option>
-            <option value="asteroid">Asteroids</option>
-            <option value="comet">Comets</option>
+            <select className="type" value={filterType} onChange={handleTypeFilterChange}>
+              <option value="all">All Types</option>
+              <option value="star">Star</option>
+              <option value="planet">Planets</option>
+              <option value="moon">Moons</option>
+              <option value="dwarf planet">Dwarf planets</option>
+              <option value="asteroid">Asteroids</option>
+              <option value="comet">Comets</option>
+            </select>
 
-          
-          </select>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={showFavorites}
-              onChange={handleFavoritesFilterChange}
-            />
-            Show Favorites
-          </label>
-
+            <label className="type">
+              <input
+                type="checkbox"
+                checked={showFavorites}
+                onChange={handleFavoritesFilterChange}
+              />
+              Show Favorites
+            </label>
+            </div>
+   
+        
         <table className="itemtable">
           <thead>
             <tr>
