@@ -50,15 +50,25 @@ router.route("/register").post((req, res) => {
     const { username, password } = req.body;
 
     // no session id (how?)
-    if (!req.cid) return res.send("router");
+    if (!req.cid)
+    {
+        return res.status(400).send("Missing CID");
+    }
 
     // no password or username passed :p
-    if (!username || !password) return res.send("router");
+    if (!username || !password)
+    {
+        return res.status(400).send("Missing username or password");
+    }
 
     const user = getUserByUsername(username);
 
     // user exists
-    if (user) return res.location("/login");
+    if (user)
+    {
+        res.location("/login");
+        return res.status(302).send("User already exists");
+    }
 
     const hashedPassword = hashMD5(password);
     insertUser(req.cid, username, hashedPassword, 1);
@@ -74,7 +84,7 @@ router.route("/login").post((req, res) => {
     console.log("login", username, password);
 
     if (!username || !password) {
-        return res.status(400);
+        return res.status(400).send("Missing username or password");
     }
 
     const user = getUserByUsername(username);
@@ -93,7 +103,7 @@ router.route("/login").post((req, res) => {
     }
 
     res.location = "/login";
-    return res.status(400);
+    return res.status(400).send("User not found, create an account");
 });
 
 router.post("/logout", (req, res) => {
