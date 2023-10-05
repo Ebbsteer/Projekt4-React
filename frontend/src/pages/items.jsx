@@ -120,10 +120,10 @@ const Items = () => {
   const filteredResults = searchResults.filter((planet) => {
     const isFavorite = activeButtons[planet.id];
     if (showFavorites && !isFavorite) {
-      return false; // Hide non-favorites when "Favorites" filter is active
+      return false; 
     }
     if (filterType === "all" || planet.bodyType.toLowerCase() === filterType) {
-      return true; // Show all types or matching types
+      return true; 
     }
     return false;
   });
