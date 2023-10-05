@@ -4,7 +4,10 @@ import spacepic from "../assets/img/spacepic.jpeg";
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [retypePassword, setRetypePassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     // Prepare the login data as an object
@@ -43,9 +46,9 @@ const Login = () => {
     // Implement logic for password reset here
   };
 
-  const handleRegister = () => {
-    // Redirect to http://localhost:5173/profil
-    window.location.href = 'http://localhost:5173/src/pages/profil.jsx';
+  const handleRegister = (e) => {
+    e.preventDefault(); // Förhindra standardbeteendet för knappen
+    setIsRegistering(!isRegistering);
   };
 
   return (
@@ -54,7 +57,7 @@ const Login = () => {
         {/* Background image */}
       </div>
       <div className="login-container">
-        <h2>Login</h2>
+        <h2>{isRegistering ? 'Register' : 'Login'}</h2>
         <form className="login-form">
           <input
             type="text"
@@ -62,12 +65,37 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="password-input">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="show-password-button"
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+          </div>
+          {isRegistering && (
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Re-type Password"
+              value={retypePassword}
+              onChange={(e) => setRetypePassword(e.target.value)}
+            />
+          )}
+          <button type="button" onClick={isRegistering ? handleRegister : handleLogin}>
+            {isRegistering ? 'Register' : 'Login'}
+          </button>
+          {!isRegistering && (
+            <button type="button" onClick={handleForgotPassword}>
+              Forgot Password
+            </button>
+          )}
           <label>
             <input
               type="checkbox"
@@ -76,17 +104,9 @@ const Login = () => {
             />
             Remember Me
           </label>
-          <button type="button" onClick={handleLogin}>
-            Login
-          </button>
-          <button type="button" onClick={handleForgotPassword}>
-            Forgot Password
-          </button>
-          {/* Button to navigate to http://localhost:5173/profil */}
           <button className="register-button" onClick={handleRegister}>
-            Register here
+            {isRegistering ? 'Back to Login' : 'Register here'}
           </button>
-          
         </form>
       </div>
     </div>
