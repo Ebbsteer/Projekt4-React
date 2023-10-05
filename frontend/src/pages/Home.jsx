@@ -27,7 +27,7 @@ const planetNames = [
 const planetInfo = [
   '1st planet',
   '2nd planet',
-  '3d planet',
+  '3rd planet',
   '4th planet',
   '5th planet',
   '6th planet',
