@@ -42,7 +42,6 @@
       text-align: center;
 
       #planetoftheday {
-        height: fit-content;
 
         .slideshowbild{
           height: 30vw;
@@ -84,6 +83,25 @@
 
   .slideshowInfo{
     color: white;
+    clear: both;
+    margin-bottom: 1rem;
+  }
+
+  .learnBtn{
+    color: white;
+    font-size: 1.5rem;
+    background-color: purple;
+    border-radius: 1rem;
+    padding:1rem;
+  }
+
+  .rndBtn{
+    color: white;
+    font-size: 1rem;
+    background-color: purple;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding:0.5rem;
   }
 
   /* Media query for smaller screens */

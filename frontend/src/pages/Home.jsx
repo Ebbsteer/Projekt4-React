@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
+import { NavLink } from 'react-router-dom';
 
 const images = [
   '/src/assets/img/mercurymock.png',
@@ -34,13 +35,24 @@ const planetInfo = [
   '8st planet',
 ];
 
+const planetDirect=[
+  '/planet/mercury',
+  '/planet/venus',
+  '/planet/earth',
+  '/planet/mars',
+  '/planet/jupiter',
+  '/planet/saturn',
+  '/planet/uranus',
+  '/planet/neptune',
+];
+
 const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
+    }, 30000);
 
     return () => {
       clearInterval(timer);
@@ -52,6 +64,7 @@ const Slideshow = ({ images }) => {
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
       <p className="slideshowInfo">{planetInfo[currentIndex]}</p>
+      <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
     </div>
   );
 };
@@ -134,11 +147,6 @@ const Home = () => {
           <div id="planetoftheday">
             <Slideshow images={images}/>
           </div>
-          <div>
-            <button onClick={handleClick}>
-              Generate random planet
-            </button>
-          </div>
 
         </div>
 
@@ -156,6 +164,9 @@ const Home = () => {
               the sun would rise in the west and set in the east,
               which is quite different from what we experience on Earth!
             </p>
+            <button onClick={handleClick} className="rndBtn">
+              Generate random planet
+            </button>
           </div>
 
         </div>
