@@ -26,13 +26,13 @@ const planetNames = [
 
 const planetInfo = [
   '1st planet',
-  '2st planet',
-  '3st planet',
-  '4st planet',
-  '5st planet',
-  '6st planet',
-  '7st planet',
-  '8st planet',
+  '2nd planet',
+  '3d planet',
+  '4th planet',
+  '5th planet',
+  '6th planet',
+  '7th planet',
+  '8th planet',
 ];
 
 const planetDirect=[
@@ -63,7 +63,7 @@ const Slideshow = ({ images }) => {
     <div className="slideshow">
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
-      <p className="slideshowInfo">{planetInfo[currentIndex]}</p>
+      <p className="slideshowInfo">{"The " + planetInfo[currentIndex] + " in our solar system"}</p>
       <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
     </div>
   );
