@@ -42,7 +42,7 @@ const Navbar = () => {
             </div>
             
             <div id="navright">
-                <NavLink to="">&#9733;</NavLink>
+                <NavLink to="/items/fav">&#9733;</NavLink>
                 <NavLink to="/login">&#9817;</NavLink>
             </div>
         </div>
