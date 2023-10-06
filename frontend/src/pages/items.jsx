@@ -179,7 +179,7 @@ const Items = () => {
             <div className="tabellDiv">
                 <div className="filter">
                     <input
-                        className="search input-search"
+                        className="search"
                         type="text"
                         placeholder="Sök..."
                         value={searchTerm}
@@ -230,7 +230,7 @@ const Items = () => {
                                 Name {sortOrder === "asc" ? "▼" : "▲"}
                             </th>
                             <th className="item-table-title-temp">
-                                Temperature- (K)
+                                Temperature - (K)
                             </th>
                             <th className="item-table-title-grav">Gravity</th>
                             <th
