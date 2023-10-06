@@ -138,29 +138,18 @@ const Home = () => {
       <div className="Homebox">
         <div className="left">
 
-          <div id="planetoftheday">
-            <Slideshow images={images}/>
-          </div>
+        <button onClick={handleClick} className="rndBtn">
+              Generate random planet
+            </button>
 
         </div>
 
         <div className="right">
 
           <div className="textbox">
-            <h1>INFORMATION ABOUT PLANETS</h1>
-
-            <p>
-              Did you know that Venus rotates in the opposite
-              direction to most planets in our solar system?
-              While the majority of planets, including Earth,
-              rotate counterclockwise, Venus rotates clockwise.
-              This means that if you were standing on the surface of Venus,
-              the sun would rise in the west and set in the east,
-              which is quite different from what we experience on Earth!
-            </p>
-            <button onClick={handleClick} className="rndBtn">
-              Generate random planet
-            </button>
+          <div id="planetoftheday">
+            <Slideshow images={images}/>
+          </div>
           </div>
 
         </div>

@@ -72,14 +72,21 @@ body{
         color: base.$whiteish;
         text-align: center;
 
-        width: 70%;
-        min-height: 400px;
+        
 
         padding: 4vh; 
         margin: 4vh auto;
         
         border: 10px solid base.$blackish;
         border-radius: 10px;
+      }
+      #planetoftheday {
+
+        .slideshowbild{
+          height: 30vw;
+          max-height: 45vh;
+          min-height: 300px;
+        }
       }
     }
 
