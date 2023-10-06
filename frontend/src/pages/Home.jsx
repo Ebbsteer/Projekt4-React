@@ -46,6 +46,8 @@ const planetDirect=[
   '/planet/neptune',
 ];
 
+
+
 const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -58,12 +60,12 @@ const Slideshow = ({ images }) => {
       clearInterval(timer);
     };
   }, [images]);
-
+  
   return (
     <div className="slideshow">
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
-      <p className="slideshowInfo">{"The " + planetInfo[currentIndex] + " in our solar system"}</p>
+      <p className="slideshowInfo">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
       <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
     </div>
   );
