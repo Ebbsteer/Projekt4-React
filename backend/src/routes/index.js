@@ -11,6 +11,7 @@ import {
     getFavorites,
     addFavorite,
     deleteFavorite,
+    updateUser,
 } from "../database.js";
 
 export const router = Router();
@@ -96,6 +97,8 @@ router.route("/login").post((req, res) => {
             signed: true,
         });
 
+
+        // Security issue: Open Redirect, should check against regex
         res.location = redirectUrl;
         return res.send(`
             Redirecting to ${redirectUrl}<br><a href="${redirectUrl}">Click here if you are not redirected</a>
@@ -111,11 +114,25 @@ router.post("/logout", (req, res) => {
     res.redirect("/");
 });
 
-router.route("/test").get(authRoute, (req, res) => {
-    console.log("You accessed /test!");
+// Update later
+router.route("/user").get(authRoute, (req, res) => {
+    const userData = getUser(req.cid);
+    console.log(userData);
 
-    res.send(200);
-});
+    res.status(200).json(userData);
+})
+
+router.route("/user/update").post(authRoute, (req, res) => {
+    const { username, password, image_blob } = req.body;
+
+    if (!username || !password || !image_blob) return res.status(400).send("Missing parameters");
+
+    const hashedPassword = hashMD5(password);
+
+    updateUser(req.cid, username, hashedPassword, image_blob);
+
+    res.status(200).send("Updated user");
+})
 
 // Update later
 router.route("/favorite/add").patch(authRoute, (req, res) => {
