@@ -26,6 +26,7 @@ export const setupDB = () => {
             id TEXT PRIMARY KEY NOT NULL,
             username TEXT NOT NULL,
             password_hash TEXT NOT NULL,
+            image BLOB,
             favorites TEXT 
         )
     `);
@@ -40,7 +41,7 @@ export const setupDB = () => {
  */
 export const insertUser = (id, username, password_hash) => {
     const insertUserStmt = prepare(`
-        INSERT INTO users VALUES (@id, @username, @password_hash)
+        INSERT INTO users VALUES (@id, @username, @password_hash, NULL, NULL)
     `);
 
     console.log({ id, username, password_hash });
@@ -108,6 +109,60 @@ export const deleteUser = (cid) => {
     `);
 
     deleteUserStmt.run(cid);
+};
+
+/**
+ * Update all information about a user
+ * @param {string} cid id of user
+ * @param {string} username users username
+ * @param {string} password_hash password hash
+ * @param {string} image image blob of users profile picture
+ */
+export const updateUser = (cid, username, password_hash, image) => {
+    const updateUserStmt = prepare(`
+        UPDATE users SET username = @username, password_hash = @password_hash, image = @image WHERE id = @id
+    `);
+
+    updateUserStmt.run({id: cid, username, password_hash, image});
+};
+
+/**
+ * Update username for specific user
+ * @param {string} cid id of user
+ * @param {string} username users username
+ */
+export const updateUserUsername = (cid, username) => {
+    const updateUserUsernameStmt = prepare(`
+        UPDATE users SET username = @username WHERE id = @id
+    `);
+
+    updateUserUsernameStmt.run({id: cid, username});
+};
+
+/**
+ * Update password for specific user
+ * @param {string} cid id of user
+ * @param {string} password_hash users hashed password
+ */
+export const updateUserPassword = (cid, password_hash) => {
+    const updateUserPasswordStmt = prepare(`
+        UPDATE users SET password_hash = @password_hash WHERE id = @id
+    `);
+
+    updateUserPasswordStmt.run({id: cid, password_hash});
+};
+
+/**
+ * Update username for specific user
+ * @param {string} cid id of user
+ * @param {string} image image blob of users profile picture
+ */
+export const updateUserImage = (cid, image) => {
+    const updateUserImageStmt = prepare(`
+        UPDATE users SET image = @image WHERE id = @id
+    `);
+
+    updateUserImageStmt.run({id: cid, image});
 };
 
 /**
