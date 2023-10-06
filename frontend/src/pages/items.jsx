@@ -179,15 +179,17 @@ const Items = () => {
             <div className="tabellDiv">
                 <div className="filter">
                     <input
-                        className="search"
+                        className="search input-search"
                         type="text"
                         placeholder="Sök..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
 
+                    <span className="filter-span">Filter:</span>
+                    
                     <select
-                        className="type"
+                        className="select-type"
                         value={filterType}
                         onChange={handleTypeFilterChange}
                     >
@@ -200,7 +202,7 @@ const Items = () => {
                         <option value="comet">Comets</option>
                     </select>
 
-                    <label className="type">
+                    <label className="fav-type">
                         <input
                             type="checkbox"
                             checked={showFavorites}
