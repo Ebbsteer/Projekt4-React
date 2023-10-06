@@ -22,7 +22,7 @@ const Login = () => {
         console.log(loginData);
 
         // Send a POST request to your server (localhost:3000 or your server URL)
-        fetch("http://localhost:3000/login", {
+        fetch("http://localhost:3000/login?redirect=http://localhost:5173/profil", {
             // Update with your server URL
             method: "POST",
             headers: {

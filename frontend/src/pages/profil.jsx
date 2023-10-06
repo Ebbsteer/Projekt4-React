@@ -29,7 +29,7 @@ const Profil = () => {
       <div className="container">
         <div className="card">
           <div className="info">
-            <span>Edit form</span>
+            <span>Profile Info</span>
             <button onClick={toggleReadonly}>
               {readonly ? 'Edit' : 'Save'}
             </button>
@@ -54,7 +54,7 @@ const Profil = () => {
               />
             </div>
             <div className="inputs">
-              <span>Email</span>
+              <span>Username</span>
               <input
                 type="text"
                 readOnly={readonly}
@@ -63,7 +63,7 @@ const Profil = () => {
               />
             </div>
             <div className="inputs">
-              <span>UserName</span>
+              <span>Password</span>
               <input
                 type="text"
                 readOnly={readonly}
@@ -72,7 +72,7 @@ const Profil = () => {
               />
             </div>
             <div className="inputs">
-              <span>Country</span>
+              <span>Security Question</span>
               <input
                 type="text"
                 readOnly={readonly}
