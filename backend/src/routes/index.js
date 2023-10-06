@@ -11,6 +11,9 @@ import {
     getFavorites,
     addFavorite,
     deleteFavorite,
+    updateUser,
+    getUserByQuestion,
+    updateUserPassword,
 } from "../database.js";
 
 export const router = Router();
@@ -50,22 +53,19 @@ router.route("/register").post((req, res) => {
     const { username, password } = req.body;
 
     // no session id (how?)
-    if (!req.cid)
-    {
+    if (!req.cid) {
         return res.status(400).send("Missing CID");
     }
 
     // no password or username passed :p
-    if (!username || !password)
-    {
+    if (!username || !password) {
         return res.status(400).send("Missing username or password");
     }
 
     const user = getUserByUsername(username);
 
     // user exists
-    if (user)
-    {
+    if (user) {
         res.location("/login");
         return res.status(302).send("User already exists");
     }
@@ -96,6 +96,7 @@ router.route("/login").post((req, res) => {
             signed: true,
         });
 
+        // Security issue: Open Redirect, should check against regex
         res.location = redirectUrl;
         return res.send(`
             Redirecting to ${redirectUrl}<br><a href="${redirectUrl}">Click here if you are not redirected</a>
@@ -111,10 +112,54 @@ router.post("/logout", (req, res) => {
     res.redirect("/");
 });
 
-router.route("/test").get(authRoute, (req, res) => {
-    console.log("You accessed /test!");
+router.route("/account-recovery").post((req, res) => {
+    const { username, question_answer, new_password } = req.body;
 
-    res.send(200);
+    if (!username || !question_answer)
+        return res.status(400).send("Missing parameters");
+
+    const hashedQuestionAnswer = hashMD5(question_answer);
+    const result = getUserByQuestion(username, hashedQuestionAnswer);
+
+    // This return technically gives wrong return message + error code but we do this 
+    // to confuse any potential attackers trying to bruteforce out user reset question :^)
+    if (!result) return res.status(400).send("Missing parameters");
+
+    const hashedPassword = hashMD5(new_password);
+
+    updateUserPassword(result.cid, hashedPassword);
+
+    return res.status(200).send("OK");
+});
+
+// Update later
+router.route("/user").get(authRoute, (req, res) => {
+    const userData = getSecureUser(req.cid);
+    console.log(userData);
+
+    res.status(200).json(userData);
+});
+
+router.route("/user/update").post(authRoute, (req, res) => {
+    const { username, password, question, question_answer, image_blob } =
+        req.body;
+
+    if (!username || !password || !question || !question_answer || !image_blob)
+        return res.status(400).send("Missing parameters");
+
+    const hashedPassword = hashMD5(password);
+    const hashedQuestionAnswer = hashMD5(question_answer);
+
+    updateUser(
+        req.cid,
+        username,
+        hashedPassword,
+        question,
+        hashedQuestionAnswer,
+        image_blob
+    );
+
+    res.status(200).send("Updated user");
 });
 
 // Update later

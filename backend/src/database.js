@@ -16,16 +16,19 @@ export const prepare = (query) => {
 };
 
 export const setupDB = () => {
-    // const dropUsersTable = DB.prepare(`
-    //     DROP TABLE users
-    // `);
-    // dropUsersTable.run();
+    const dropUsersTable = DB.prepare(`
+        DROP TABLE users
+    `);
+    dropUsersTable.run();
 
     const setupUsersTable = DB.prepare(`
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY NOT NULL,
             username TEXT NOT NULL,
             password_hash TEXT NOT NULL,
+            question TEXT NOT NULL,
+            question_answer_hash TEXT NOT NULL,
+            image BLOB,
             favorites TEXT 
         )
     `);
@@ -37,15 +40,17 @@ export const setupDB = () => {
  * @param {string} id id of user
  * @param {string} username username of user
  * @param {string} password_hash password hash of user
+ * @param {string} question qustion for revocering account 
+ * @param {string} question_answer_hash hash of answer to question
  */
-export const insertUser = (id, username, password_hash) => {
+export const insertUser = (id, username, password_hash, question, question_answer_hash) => {
     const insertUserStmt = prepare(`
-        INSERT INTO users VALUES (@id, @username, @password_hash)
+        INSERT INTO users VALUES (@id, @username, @password_hash, @question, @question_answer_hash, NULL, NULL)
     `);
 
-    console.log({ id, username, password_hash });
+    console.log({ id, username, password_hash, question, question_answer_hash });
 
-    insertUserStmt.run({ id, username, password_hash });
+    insertUserStmt.run({ id, username, password_hash, question, question_answer_hash });
 };
 
 /**
@@ -55,7 +60,7 @@ export const insertUser = (id, username, password_hash) => {
  */
 export const getUser = (id) => {
     const getUserStmt = prepare(`
-        SELECT id, username, password_hash FROM users WHERE id = ?
+        SELECT id, username, password_hash, question, question_answer_hash, image FROM users WHERE id = ?
     `);
 
     return getUserStmt.get(id);
@@ -68,7 +73,7 @@ export const getUser = (id) => {
  */
 export const getSecureUser = (id) => {
     const getSecureUserStmt = prepare(`
-        SELECT id, username FROM users WHERE id = ?
+        SELECT id, username, question, image FROM users WHERE id = ?
     `);
 
     return getSecureUserStmt.get(id);
@@ -85,6 +90,20 @@ export const getUserByUsername = (username) => {
     `);
 
     return getUserByUsernameStmt.get(username);
+};
+
+/**
+ * Get user based on correct answer to question
+ * @param {string} username username of user
+ * @param {string} question_answer_hash hash of question answer
+ * @returns {User | undefined} user
+ */
+export const getUserByQuestion = (username, question_answer_hash) => {
+    const getUserCountStmt = prepare(`
+        SELECT id, username, password_hash FROM users WHERE username = @username AND question_answer_hash = @question_answer_hash
+    `);
+
+    return getUserCountStmt.get({username, question_answer_hash});
 };
 
 /**
@@ -108,6 +127,62 @@ export const deleteUser = (cid) => {
     `);
 
     deleteUserStmt.run(cid);
+};
+
+/**
+ * Update all information about a user
+ * @param {string} cid id of user
+ * @param {string} username users username
+ * @param {string} password_hash password hash
+ * @param {string} question question for account recovery
+ * @param {string} question_answer_hash hash of question answer
+ * @param {string} image image blob of users profile picture
+ */
+export const updateUser = (cid, username, password_hash, image) => {
+    const updateUserStmt = prepare(`
+        UPDATE users SET username = @username, password_hash = @password_hash, question = @question, question_answer_hash = @question_answer_hash, image = @image WHERE id = @id
+    `);
+
+    updateUserStmt.run({ id: cid, username, password_hash, question, question_answer_hash, image });
+};
+
+/**
+ * Update username for specific user
+ * @param {string} cid id of user
+ * @param {string} username users username
+ */
+export const updateUserUsername = (cid, username) => {
+    const updateUserUsernameStmt = prepare(`
+        UPDATE users SET username = @username WHERE id = @id
+    `);
+
+    updateUserUsernameStmt.run({ id: cid, username });
+};
+
+/**
+ * Update password for specific user
+ * @param {string} cid id of user
+ * @param {string} password_hash users hashed password
+ */
+export const updateUserPassword = (cid, password_hash) => {
+    const updateUserPasswordStmt = prepare(`
+        UPDATE users SET password_hash = @password_hash WHERE id = @id
+    `);
+
+    updateUserPasswordStmt.run({ id: cid, password_hash });
+};
+
+/**
+ * Update username for specific user
+ * @param {string} cid id of user
+ * @param {string} image image blob of users profile picture
+ */
+export const updateUserImage = (cid, image) => {
+    const updateUserImageStmt = prepare(`
+        UPDATE users SET image = @image WHERE id = @id
+    `);
+
+    updateUserImageStmt.run({ id: cid, image });
 };
 
 /**

@@ -3,19 +3,19 @@ import profil from "../assets/img/profilwallpaper.gif";
 
 const Profil = () => {
   const [readonly, setReadonly] = useState(true);
-  const [firstName, setFirstName] = useState(localStorage.getItem('firstName') || 'John');
-  const [lastName, setLastName] = useState(localStorage.getItem('lastName') || 'Doe');
-  const [email, setEmail] = useState(localStorage.getItem('email') || 'john.doe12@gmail.com');
-  const [userName, setUserName] = useState(localStorage.getItem('userName') || 'johndoe12');
-  const [country, setCountry] = useState(localStorage.getItem('country') || 'United States');
+  const [firstName, setFirstName] = useState(localStorage.getItem('firstName') || 'Your Name');
+  const [lastName, setLastName] = useState(localStorage.getItem('lastName') || 'Your Last Name');
+  const [userName, setUserName] = useState(localStorage.getItem('userName') || 'Your Username');
+  const [Password, setPassword] = useState(localStorage.getItem('Password') || 'Your Password');
+  const [SecurityQuestion, setSecurityQuestion] = useState(localStorage.getItem('Security Question') || 'Your Security Answer');
 
   useEffect(() => {
-    localStorage.setItem('firstName', firstName);
-    localStorage.setItem('lastName', lastName);
-    localStorage.setItem('email', email);
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('country', country);
-  }, [firstName, lastName, email, userName, country]);
+    localStorage.setItem('Your Name', firstName);
+    localStorage.setItem('Your last Name', lastName);
+    localStorage.setItem('Your userName', userName);
+    localStorage.setItem('Your Password', Password);
+    localStorage.setItem('Your Security Question', SecurityQuestion);
+  }, [firstName, lastName, userName, Password, SecurityQuestion]);
 
   const toggleReadonly = () => {
     setReadonly(!readonly);
@@ -29,7 +29,7 @@ const Profil = () => {
       <div className="container">
         <div className="card">
           <div className="info">
-            <span>Edit form</span>
+            <span>Profile Info</span>
             <button onClick={toggleReadonly}>
               {readonly ? 'Edit' : 'Save'}
             </button>
@@ -54,16 +54,7 @@ const Profil = () => {
               />
             </div>
             <div className="inputs">
-              <span>Email</span>
-              <input
-                type="text"
-                readOnly={readonly}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="inputs">
-              <span>UserName</span>
+              <span>Username</span>
               <input
                 type="text"
                 readOnly={readonly}
@@ -72,12 +63,21 @@ const Profil = () => {
               />
             </div>
             <div className="inputs">
-              <span>Country</span>
+              <span>Password</span>
               <input
                 type="text"
                 readOnly={readonly}
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                value={Password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="inputs">
+              <span>Security Question</span>
+              <input
+                type="text"
+                readOnly={readonly}
+                value={SecurityQuestion}
+                onChange={(e) => setSecurityQuestion(e.target.value)}
               />
             </div>
           </div>
