@@ -169,35 +169,43 @@ const Items = () => {
     <div id="home">
       <div className="nebulae"></div>
       <div className="tabellDiv">
-     <div className="filter"> 
-          <input
-            className="search"
-            type="text"
-            placeholder="Sök..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+      <div className="filter">
+          <div className="div-search"> 
+            <input
+              className="search"
+              type="text"
+              placeholder="Sök..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="filter-filter">
+            <div className="div-filter-span">
+              <span className="filter-span">Filters:</span>
+            </div>
 
-        
-            <select className="type" value={filterType} onChange={handleTypeFilterChange}>
-              <option value="all">All Types</option>
-              <option value="star">Star</option>
-              <option value="planet">Planets</option>
-              <option value="moon">Moons</option>
-              <option value="dwarf planet">Dwarf planets</option>
-              <option value="asteroid">Asteroids</option>
-              <option value="comet">Comets</option>
-            </select>
+            <div className="div-type">
+              <select className="type" value={filterType} onChange={handleTypeFilterChange}>
+                <option value="all">All Types</option>
+                <option value="star">Star</option>
+                <option value="planet">Planets</option>
+                <option value="moon">Moons</option>
+                <option value="dwarf planet">Dwarf planets</option>
+                <option value="asteroid">Asteroids</option>
+                <option value="comet">Comets</option>
+              </select>
+            </div>
 
-            <label className="type">
-              <input
+            <div className="div-filter-favorite">
+              <input className="filter-favorite-input"
                 type="checkbox"
                 checked={showFavorites}
                 onChange={handleFavoritesFilterChange}
               />
-              Show Favorites
-            </label>
+              <label className="filter-favorite-label">Show Favorites</label>
             </div>
+          </div>
+      </div>
    
         
         <table className="itemtable">
