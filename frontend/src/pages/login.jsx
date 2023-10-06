@@ -5,12 +5,13 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [retypePassword, setRetypePassword] = useState("");
-    const [securityQuestion, setSecurityQuestion] = useState("");
+    const [securityQuestion, setSecurityQuestion] = useState(""); // Security question
+    const [securityAnswer, setSecurityAnswer] = useState(""); // Security answer
     const [rememberMe, setRememberMe] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [resettingPassword, setResettingPassword] = useState(false);
-    const [resetPasswordUsername, setResetPasswordUsername] = useState(""); // New state for resetting password username
+    const [resetPasswordUsername, setResetPasswordUsername] = useState("");
 
     const handleLogin = () => {
         // Prepare the login data as an object
@@ -57,9 +58,9 @@ const Login = () => {
         const storedData = localStorage.getItem(resetPasswordUsername);
 
         if (storedData) {
-            const { securityQuestion: storedSecurityQuestion } = JSON.parse(storedData);
+            const { securityQuestion: storedSecurityQuestion, securityAnswer: storedSecurityAnswer } = JSON.parse(storedData);
 
-            if (securityQuestion === storedSecurityQuestion) {
+            if (securityQuestion === storedSecurityQuestion && securityAnswer === storedSecurityAnswer) {
                 // Implement your password reset logic here
                 alert("Password reset successful");
                 setResettingPassword(false); // Reset the state to hide the reset form
@@ -80,6 +81,7 @@ const Login = () => {
             username,
             password,
             securityQuestion,
+            securityAnswer, // Added security answer
         };
 
         console.log(registerData);
@@ -122,9 +124,15 @@ const Login = () => {
                         />
                         <input
                             type="text"
-                            placeholder="Security Question: What is your mom's name?"
+                            placeholder="Security Question: Your custom question"
                             value={securityQuestion}
                             onChange={(e) => setSecurityQuestion(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Security Answer: Your custom answer"
+                            value={securityAnswer}
+                            onChange={(e) => setSecurityAnswer(e.target.value)}
                         />
                         <button type="button" onClick={handleResetPassword}>
                             Reset Password
@@ -164,9 +172,15 @@ const Login = () => {
                                 />
                                 <input
                                     type="text"
-                                    placeholder="Security Question: What is your mom's name?"
+                                    placeholder="Security Question: Your custom question"
                                     value={securityQuestion}
                                     onChange={(e) => setSecurityQuestion(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Security Answer: Your custom answer"
+                                    value={securityAnswer}
+                                    onChange={(e) => setSecurityAnswer(e.target.value)}
                                 />
                             </>
                         )}
