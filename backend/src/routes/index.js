@@ -50,7 +50,7 @@ const authRoute = (req, res, next) => {
 };
 
 router.route("/register").post((req, res) => {
-    const { username, password } = req.body;
+    const { username, password, question, question_answer } = req.body;
 
     // no session id (how?)
     if (!req.cid) {
@@ -58,7 +58,7 @@ router.route("/register").post((req, res) => {
     }
 
     // no password or username passed :p
-    if (!username || !password) {
+    if (!username || !password || !question || !question_answer) {
         return res.status(400).send("Missing username or password");
     }
 
@@ -71,7 +71,8 @@ router.route("/register").post((req, res) => {
     }
 
     const hashedPassword = hashMD5(password);
-    insertUser(req.cid, username, hashedPassword, 1);
+    const hashedQuestionAnswer = hashMD5(question_answer);
+    insertUser(req.cid, username, hashedPassword, question, hashedQuestionAnswer);
 
     res.status(200).send("Registration successful");
 });

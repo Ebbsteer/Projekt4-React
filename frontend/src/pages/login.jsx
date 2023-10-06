@@ -17,7 +17,7 @@ const Login = () => {
         // Prepare the login data as an object
         const loginData = {
             username,
-            password,
+            password
         };
 
         console.log(loginData);
@@ -80,8 +80,8 @@ const Login = () => {
         const registerData = {
             username,
             password,
-            securityQuestion,
-            securityAnswer, // Added security answer
+            question: securityQuestion,
+            question_answer: securityAnswer
         };
 
         console.log(registerData);
