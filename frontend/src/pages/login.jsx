@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Cookies from "js-cookie";
 import spacepic from "../assets/img/spacepic.jpeg";
 
 const Login = () => {
