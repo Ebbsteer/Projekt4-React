@@ -1,5 +1,9 @@
 @use "base";
 
+body{
+  font-family: arial;
+}
+
 #home {
   position: relative;
 
@@ -80,6 +84,17 @@
     }
 
   }
+
+  .nextSlide{
+    opacity: 0;
+    transition: 0.5s ease;
+  }
+
+  .nextSlide1{
+    opacity: 1;
+    transition: 0.5s ease;
+  }
+
 
   .slideshowInfo{
     color: white;

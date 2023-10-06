@@ -53,8 +53,18 @@ const Slideshow = ({ images }) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
+      document.getElementById("slideshowBIld").classList.add("nextSlide");
+      setTimeout(() => {
+        document.getElementById("slideshowBIld").classList.remove("nextSlide");
+      }, 1000);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 30000);
+      setTimeout(() => {
+        document.getElementById("slideshowBIld").classList.add("nextSlide1");
+        setTimeout(() => {
+          document.getElementById("slideshowBIld").classList.remove("nextSlide1");
+        }, 1000);
+      }, 1000);
+    }, 29000);
 
     return () => {
       clearInterval(timer);
@@ -64,7 +74,7 @@ const Slideshow = ({ images }) => {
   return (
     <div className="slideshow">
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
-      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild"/>
+      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld"/>
       <p className="slideshowInfo">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
       <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
     </div>
@@ -82,24 +92,6 @@ const Home = () => {
 
   const [seconds, setSeconds] = useState(0);
   const [message, setMessage] = useState("HEJ");
-
-  // Av Skitkod AB
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds((prevSeconds) => {
-        if (prevSeconds >= 5) {
-          setMessage("goober");
-          return 0;
-        }
-        return prevSeconds + 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-
 
   const [num, setNum] = useState(Math.floor(Math.random()
     * (8 - 1 + 1)) + 1);
