@@ -84,7 +84,7 @@
   .slideshowInfo{
     color: white;
     clear: both;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .learnBtn{
@@ -93,6 +93,11 @@
     background-color: purple;
     border-radius: 1rem;
     padding:1rem;
+    transition: 0.5s ease;
+  }
+
+  .learnBtn:hover {
+    box-shadow: 0px 5px 5px 1px black;
   }
 
   .rndBtn{
@@ -102,6 +107,11 @@
     border-radius: 1rem;
     cursor: pointer;
     padding:0.5rem;
+    transition: 0.5s ease;
+  }
+
+  .rndBtn:hover{
+    box-shadow: 0px 5px 5px 1px black;
   }
 
   /* Media query for smaller screens */
