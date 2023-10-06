@@ -1,8 +1,5 @@
 @use "base";
 
-body{
-  font-family: arial;
-}
 
 #home {
   position: relative;
@@ -39,7 +36,7 @@ body{
     
     .left {
       height: 100%;
-      width: 50%;
+      width: 40%;
       
       margin: auto;
 
@@ -47,11 +44,7 @@ body{
 
       #planetoftheday {
 
-        .slideshowbild{
-          height: 30vw;
-          max-height: 45vh;
-          min-height: 300px;
-        }
+        
       }
     }
 
@@ -59,7 +52,7 @@ body{
       display: flex;
 
       height: 100%;
-      width: 50%;
+      width: 40%;
 
       margin: auto;
 
@@ -81,11 +74,16 @@ body{
         border-radius: 10px;
       }
       #planetoftheday {
-
+        h1{
+          font-family: base.$font-h;
+        }
+    
+        p{
+          font-family: base.$font-p;
+          font-size: 1.5rem;
+        }
         .slideshowbild{
-          height: 30vw;
-          max-height: 45vh;
-          min-height: 300px;
+          width: 80%;
         }
       }
     }
@@ -107,6 +105,14 @@ body{
     color: white;
     clear: both;
     margin-bottom: 2rem;
+
+    h1{
+      font-family: base.$font-h;
+    }
+
+    p{
+      font-family: base.$font-p;
+    }
   }
 
   .learnBtn{
