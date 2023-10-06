@@ -83,7 +83,7 @@
           font-size: 1.5rem;
         }
         .slideshowbild{
-          width: 80%;
+          width: 25vw;
         }
       }
     }
@@ -154,10 +154,12 @@
         #planetoftheday {
 
           .slideshowbild{
-            height: 50vw;
-            min-height: 50vw;
+            width: 50vw !important;
           }
         }
+      }
+      .slideshowbild{
+        width: 50vw !important;
       }
       
       .right {
