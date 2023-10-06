@@ -1,4 +1,7 @@
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+
 
 function Drop(){
     document.getElementById("droppa").classList.toggle("toggla");
@@ -43,7 +46,12 @@ const Navbar = () => {
             
             <div id="navright">
                 <NavLink to="/items/fav">&#9733;</NavLink>
-                <NavLink to="/login">&#9817;</NavLink>
+
+
+                <NavLink to="/login" >
+                <FontAwesomeIcon icon={faUserAstronaut} />
+</NavLink>
+
             </div>
         </div>
     </div>
