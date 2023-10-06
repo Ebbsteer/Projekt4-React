@@ -5,7 +5,15 @@ import {
     Outlet,
 } from "react-router-dom";
 
-import { Home, ErrorPage, Planet, Items, Login, Exempel, Profil } from "../../pages";
+import {
+    Home,
+    ErrorPage,
+    Planet,
+    Items,
+    Login,
+    Exempel,
+    Profil,
+} from "../../pages";
 import { Navbar, Footer } from "../../components";
 
 const OutletTest = () => {
@@ -27,8 +35,8 @@ const CreateRoutes = () => {
                         <Route index element={<Home />} />
                         <Route path="*" element={<ErrorPage />} />
                         <Route path="/planet/:id" element={<Planet />} />
-                        <Route path="/items" element={<Items />} />
-                        <Route path="/login/:id" element={<Login />} />
+                        <Route path="/items/:id?" element={<Items />} />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/exempel" element={<Exempel />} />
                         <Route path="/profil" element={<Profil />} />
                     </Route>
