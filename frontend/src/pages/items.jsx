@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Items = () => {
-  const [activeButtons, setActiveButtons] = useState(false);
+  const [activeButtons, setActiveButtons] = useState({});
+
+
 
   const toggleClass = (planetId) => {
     const updatedButtons = { ...activeButtons };
@@ -165,6 +167,14 @@ const Items = () => {
     }
   };
 
+
+  if (id === "fav") {
+    handleFavoritesFilterChange();
+
+    console.log("hej hej");
+  }
+  
+  
   return (
     <div id="home">
       <div className="nebulae"></div>

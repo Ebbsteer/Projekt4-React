@@ -28,7 +28,7 @@ const CreateRoutes = () => {
                         <Route path="*" element={<ErrorPage />} />
                         <Route path="/planet/:id" element={<Planet />} />
                         <Route path="/items" element={<Items />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/login/:id" element={<Login />} />
                         <Route path="/exempel" element={<Exempel />} />
                         <Route path="/profil" element={<Profil />} />
                     </Route>
