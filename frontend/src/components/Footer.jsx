@@ -1,24 +1,26 @@
 import { NavLink } from 'react-router-dom';
 
-window.onclick = function(event1) {
-  if (!event1.target.matches('#planetsID')) {
-    var dropdowns = document.getElementsByClassName("contentPlanets_footer");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('togglaPlanets')) {
-        openDropdown.classList.remove('togglaPlanets');
-      }
-    }
-  }
-}
-
 
 function DropPlan_footer(){
   document.getElementById("myPlanets-footer").classList.toggle("togglaPlanets");
 }
 
+
 const Footer = () => {
+
+  window.onclick = function(event1) {
+    if (!event1.target.matches('#planetsID')) {
+      var dropdowns = document.getElementsByClassName("contentPlanets_footer");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('togglaPlanets')) {
+          openDropdown.classList.remove('togglaPlanets');
+        }
+      }
+    }
+  } 
+  
   return (
     <>
       <div id="foot">
