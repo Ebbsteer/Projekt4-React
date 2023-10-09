@@ -1,5 +1,18 @@
 import { NavLink } from 'react-router-dom';
 
+window.onclick = function(event) {
+  if (!event.target.matches('#planetsID')) {
+    var dropdowns = document.getElementsByClassName("contentPlanets_footer");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('togglaPlanets')) {
+        openDropdown.classList.remove('togglaPlanets');
+      }
+    }
+  }
+}
+
 function DropPlan_footer(){
   document.getElementById("myPlanets-footer").classList.toggle("togglaPlanets");
 }
