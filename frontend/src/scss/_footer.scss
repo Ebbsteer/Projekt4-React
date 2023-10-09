@@ -16,6 +16,15 @@
 
     background-color: base.$blackish;
 
+    .navLink{
+        transition: 0.3s ease;
+     }
+  
+     .navLink:hover{
+        color: base.$purplish !important;
+        transition: 0.3s ease;
+     }
+
 
     p {
         font-size: large;
