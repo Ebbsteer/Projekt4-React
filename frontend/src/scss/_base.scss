@@ -27,7 +27,7 @@ $box-color: #bd887fa2;
 $box-border-color: #f5dfdbcd;
 
 
-$small-padding: 5px;
+$button-shadow: 0px 1px 10px 0px black;
 
 @mixin custom-box-shadow {
     box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
@@ -66,3 +66,12 @@ $small-padding: 5px;
 
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+$small-padding: 5px;

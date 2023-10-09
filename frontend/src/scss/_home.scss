@@ -114,25 +114,18 @@
     }
   }
 
-  .learnBtn{
+  .learn-button{
     @include base.Button-slideshow;
     transition: 0.5s ease;
-  }.learnBtn:hover {
-    box-shadow: 0px 1px 10px 0px black;
+  }.learn-button:hover {
+    box-shadow: base.$button-shadow;
   }
 
-  .rndBtn{
-    color: white;
-    font-size: 1rem;
-    background-color: purple;
-    border-radius: 1rem;
-    cursor: pointer;
-    padding:0.5rem;
+  .random-button{
+    @include base.Button;
     transition: 0.5s ease;
-  }
-
-  .rndBtn:hover{
-    box-shadow: 0px 5px 5px 1px black;
+  }.random-button:hover{
+    box-shadow: base.$button-shadow;
   }
 
   /* Media query for smaller screens */

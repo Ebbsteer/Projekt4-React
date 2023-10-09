@@ -77,7 +77,7 @@ const Slideshow = ({ images }) => {
       <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld"/>
       <p className="slideshowInfo">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
-      <NavLink to={planetDirect[currentIndex]} className="learnBtn">Learn more</NavLink>
+      <NavLink to={planetDirect[currentIndex]} className="learn-button">Learn more</NavLink>
     </div>
   );
 };
@@ -151,9 +151,9 @@ const Home = () => {
           <div id="planetoftheday">
             <Slideshow images={images}/>
           </div>
-          <button onClick={handleClick} className="rndBtn">
+            <button onClick={handleClick} className="random-button">
               Generate random planet
-        </button>
+            </button>
           </div>
         </div>
 
