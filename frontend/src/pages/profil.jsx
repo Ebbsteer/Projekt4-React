@@ -2,58 +2,82 @@ import React, { useState, useEffect } from "react";
 import profil from "../assets/img/profilwallpaper.gif";
 
 const Profil = () => {
-    const [readonly, setReadonly] = useState(true);
+    // Initialize state variables with default values or retrieve from localStorage
     const [firstName, setFirstName] = useState(
-        localStorage.getItem("firstName") || "Your Name"
+        localStorage.getItem("firstName") || "Your First Name"
     );
     const [lastName, setLastName] = useState(
         localStorage.getItem("lastName") || "Your Last Name"
     );
     const [userName, setUserName] = useState(
-        localStorage.getItem("userName") || "Your Username"
+        localStorage.getItem("username") || "Your Username"
     );
-    const [Password, setPassword] = useState(
-        localStorage.getItem("Password") || "Your Password"
+    const [password, setPassword] = useState(
+        localStorage.getItem("password") || "Your Password"
     );
-    const [SecurityQuestion, setSecurityQuestion] = useState(
-        localStorage.getItem("Security Question") || "Your Security Answer"
+    const [securityQuestion, setSecurityQuestion] = useState(
+        localStorage.getItem("securityQuestion") || "Your Security Question"
     );
+
+    // State variable to manage edit mode
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3000/user", {
             credentials: "include",
-        }).then((response) => {
-            console.log(response);
-        });
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Failed to fetch user data");
+                }
+            })
+            .then((userData) => {
+                // Update state with the user data from the server
+                setFirstName(userData.firstName);
+                setLastName(userData.lastName);
+                setUserName(userData.userName);
+                setPassword(userData.password);
+                setSecurityQuestion(userData.securityQuestion);
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
+            });
     }, []);
 
-    const toggleReadonly = () => {
-        setReadonly(!readonly);
+    const handleSave = () => {
+        // Save the edited data to your storage or server
+        // For now, we'll just simulate saving by updating localStorage
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+        localStorage.setItem("username", userName);
+        localStorage.setItem("password", password);
+        localStorage.setItem("securityQuestion", securityQuestion);
+
+        // Exit edit mode
+        setIsEditing(false);
     };
 
     return (
         <div id="profil">
-            <img
-                className="profilwallpaper"
-                src={profil}
-                alt="Profile Wallpaper"
-            />
-            {/* Other content for your Profil component */}
-
+            <img className="profilwallpaper" src={profil} alt="Profile Wallpaper" />
             <div className="container">
                 <div className="card">
                     <div className="info">
                         <span>Profile Info</span>
-                        <button onClick={toggleReadonly}>
-                            {readonly ? "Edit" : "Save"}
-                        </button>
+                        {isEditing ? (
+                            <button onClick={handleSave}>Save</button>
+                        ) : (
+                            <button onClick={() => setIsEditing(true)}>Edit</button>
+                        )}
                     </div>
                     <div className="forms">
                         <div className="inputs">
                             <span>First Name</span>
                             <input
                                 type="text"
-                                readOnly={readonly}
+                                readOnly={!isEditing}
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
@@ -62,7 +86,7 @@ const Profil = () => {
                             <span>Last Name</span>
                             <input
                                 type="text"
-                                readOnly={readonly}
+                                readOnly={!isEditing}
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
@@ -71,7 +95,7 @@ const Profil = () => {
                             <span>Username</span>
                             <input
                                 type="text"
-                                readOnly={readonly}
+                                readOnly={!isEditing}
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                             />
@@ -79,9 +103,9 @@ const Profil = () => {
                         <div className="inputs">
                             <span>Password</span>
                             <input
-                                type="text"
-                                readOnly={readonly}
-                                value={Password}
+                                type="password"
+                                readOnly={!isEditing}
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
@@ -89,11 +113,9 @@ const Profil = () => {
                             <span>Security Question</span>
                             <input
                                 type="text"
-                                readOnly={readonly}
-                                value={SecurityQuestion}
-                                onChange={(e) =>
-                                    setSecurityQuestion(e.target.value)
-                                }
+                                readOnly={!isEditing}
+                                value={securityQuestion}
+                                onChange={(e) => setSecurityQuestion(e.target.value)}
                             />
                         </div>
                     </div>
