@@ -55,7 +55,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            
+           
             <div id="navright">
                 <NavLink to="/items/fav" className="navLink">&#9733;</NavLink>
 

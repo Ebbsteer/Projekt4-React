@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
 import { NavLink } from 'react-router-dom';
+import { SolarSystem } from "../components";
 
 const images = [
   '/src/assets/img/mercurymock.png',
@@ -139,16 +140,20 @@ const Home = () => {
       <div className="Homebox">
 
         <div className="left">
-          <button onClick={handleClick} className="rndBtn">
-                Generate random planet
-          </button>
+
+
+        <SolarSystem />
+       
         </div>
 
         <div className="right">
           <div className="textbox">
-            <div id="planetoftheday">
-              <Slideshow images={images}/>
-            </div>
+          <div id="planetoftheday">
+            <Slideshow images={images}/>
+          </div>
+          <button onClick={handleClick} className="rndBtn">
+              Generate random planet
+        </button>
           </div>
         </div>
 
