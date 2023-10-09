@@ -19,29 +19,28 @@ import {
 export const router = Router();
 
 router.use((req, res, next) => {
-    req.cid = req.signedCookies?.cid;
-    console.log(req.cid);
-
-    if (!req.cid) {
-        req.cid = uuidv4();
-
-        res.cookie("cid", req.cid, {
+    if (!req.signedCookies?.cid) {
+        res.cookie("cid", uuidv4(), {
             maxAge: 1000 * 60 * 60 * 24 * 365,
             signed: true,
         });
-
-        next();
     }
 
-    const user = getSecureUser(req.cid);
-    if (user) req.user = user;
+    req.cid = signedCookie(req.signedCookies.cid, req.secret || "");
+
+    console.log(req.cid);
+
+    if (req.cid) {
+        const user = getSecureUser(req.cid);
+        if (user) req.user = user;
+    }
 
     next();
 });
 
 const authRoute = (req, res, next) => {
     console.log("authRoute");
-    if (!req.user || !req.cid) return res.send("router");
+    if (!req.cid) return res.send("router");
 
     const user = getSecureUser(req.cid);
     if (user !== req.user) return res.send("router");
@@ -72,7 +71,13 @@ router.route("/register").post((req, res) => {
 
     const hashedPassword = hashMD5(password);
     const hashedQuestionAnswer = hashMD5(question_answer);
-    insertUser(req.cid, username, hashedPassword, question, hashedQuestionAnswer);
+    insertUser(
+        req.cid,
+        username,
+        hashedPassword,
+        question,
+        hashedQuestionAnswer
+    );
 
     res.status(200).send("Registration successful");
 });
@@ -92,7 +97,8 @@ router.route("/login").post((req, res) => {
     const hashedPassword = hashMD5(password);
 
     if (user?.password_hash === hashedPassword) {
-        res.cookie("cid", user.cid, {
+        console.log({cid: user.id})
+        res.cookie("cid", user.id, {
             maxAge: 1000 * 60 * 60 * 24 * 365,
             signed: true,
         });
@@ -122,13 +128,13 @@ router.route("/account-recovery").post((req, res) => {
     const hashedQuestionAnswer = hashMD5(question_answer);
     const result = getUserByQuestion(username, hashedQuestionAnswer);
 
-    // This return technically gives wrong return message + error code but we do this 
+    // This return technically gives wrong return message + error code but we do this
     // to confuse any potential attackers trying to bruteforce out user reset question :^)
     if (!result) return res.status(400).send("Missing parameters");
 
     const hashedPassword = hashMD5(new_password);
 
-    updateUserPassword(result.cid, hashedPassword);
+    updateUserPassword(result.id, hashedPassword);
 
     return res.status(200).send("OK");
 });
@@ -136,7 +142,7 @@ router.route("/account-recovery").post((req, res) => {
 // Update later
 router.route("/user").get(authRoute, (req, res) => {
     const userData = getSecureUser(req.cid);
-    console.log(userData);
+    console.log("CID:" + req.cid);
 
     res.status(200).json(userData);
 });

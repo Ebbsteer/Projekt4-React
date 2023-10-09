@@ -4,7 +4,7 @@
 
 #nav{ 
    background-color: base.$blackish;
-   color: base.$whiteish;
+   color: white;
    
    position: fixed;
    z-index: 10;
@@ -21,12 +21,12 @@
 
    .navLink{
       color: base.$whiteish;
-      padding-right: 1rem;
+      margin-right: 1rem !important;
       transition: 0.3s ease;
    }
 
    .navLink:hover{
-      color: yellow !important;
+      color: base.$purplish !important;
       transition: 0.3s ease;
    }
    
