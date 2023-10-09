@@ -2,6 +2,18 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
+window.onclick = function(event) {
+    if (!event.target.matches('#planetsID')) {
+      var dropdowns = document.getElementsByClassName("contentPlanets");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('togglaPlanets')) {
+          openDropdown.classList.remove('togglaPlanets');
+        }
+      }
+    }
+}
 
 function Drop(){
     document.getElementById("droppa").classList.toggle("toggla");
@@ -15,7 +27,7 @@ const Navbar = () => {
 
     return <>
     <div id="nav">
-        <NavLink to="">
+        <NavLink to="" className="navLink">
             <img src="../src/assets/img/logospace.jpg" alt="" />
         </NavLink>
 
@@ -27,30 +39,30 @@ const Navbar = () => {
 
         <div id="droppa">
             <div id="navleft">
-                <NavLink to="/">HOME</NavLink>
-                <NavLink to="/items">ITEMS</NavLink>
+                <NavLink to="/" className="navLink">HOME</NavLink>
+                <NavLink to="/items" className="navLink">ITEMS</NavLink>
                 <div className="droppaPlanets">
-                    <a onClick={DropPlan} id="planetsID">PLANETS&#8681;</a>
+                    <a onClick={DropPlan} id="planetsID" className="navLink">PLANETS&#8681;</a>
                     <div id="myPlanets" className="contentPlanets">
-                        <NavLink to="/planet/mercury">Mercury</NavLink>
-                        <NavLink to="/planet/venus">Venus</NavLink>
-                        <NavLink to="/planet/earth">Tellus</NavLink>
-                        <NavLink to="/planet/mars">Mars</NavLink>
-                        <NavLink to="/planet/jupiter">Jupiter</NavLink>
-                        <NavLink to="/planet/saturn">Saturn</NavLink>
-                        <NavLink to="/planet/uranus">Uranus (lol)</NavLink>
-                        <NavLink to="/planet/neptune">Neptune</NavLink>
+                        <NavLink to="/planet/mercury" className="navLink">Mercury</NavLink>
+                        <NavLink to="/planet/venus" className="navLink">Venus</NavLink>
+                        <NavLink to="/planet/earth" className="navLink">Tellus</NavLink>
+                        <NavLink to="/planet/mars" className="navLink">Mars</NavLink>
+                        <NavLink to="/planet/jupiter" className="navLink">Jupiter</NavLink>
+                        <NavLink to="/planet/saturn" className="navLink">Saturn</NavLink>
+                        <NavLink to="/planet/uranus" className="navLink">Uranus (lol)</NavLink>
+                        <NavLink to="/planet/neptune" className="navLink">Neptune</NavLink>
                     </div>
                 </div>
             </div>
            
             <div id="navright">
-                <NavLink to="/items/fav">&#9733;</NavLink>
+                <NavLink to="/items/fav" className="navLink">&#9733;</NavLink>
 
 
-                <NavLink to="/login" >
+                <NavLink to="/login" className="navLink">
                 <FontAwesomeIcon icon={faUserAstronaut} />
-</NavLink>
+                </NavLink>
 
             </div>
         </div>

@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 
 $red: rgb(179, 0, 0);
 $black: #000;
 $white: #fff;
 $blackish: #0a0514;
 $whiteish: #dad6e2;
+$yellowish: rgb(255, 227, 68);
+$purplish: rgb(107, 0, 103);
 
-$color-font: #dad6e2;
+
+$color-font-w: #dad6e2;
+$color-font-b: #0a0514;
+
 $font-p: 'Times New Roman', Times, serif;
+$font-p1: 'Playfair Display', serif;
 $font-h: 'Bungee Inline';
+$font-h1: 'Dela Gothic One', cursive;
+
 
 $box-color: #26132ad8;
 

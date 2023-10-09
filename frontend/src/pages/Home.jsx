@@ -132,11 +132,13 @@ const Home = () => {
 
   return (
     <div id="home">
+
       <div className="nebulae">
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
 
       <div className="Homebox">
+
         <div className="left">
 
 
@@ -145,7 +147,6 @@ const Home = () => {
         </div>
 
         <div className="right">
-
           <div className="textbox">
           <div id="planetoftheday">
             <Slideshow images={images}/>
@@ -154,9 +155,10 @@ const Home = () => {
               Generate random planet
         </button>
           </div>
-
         </div>
+
       </div>
+      
     </div>
   );
 };

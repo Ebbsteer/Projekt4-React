@@ -4,7 +4,7 @@
 
 #nav{ 
    background-color: base.$blackish;
-   color: base.$whiteish;
+   color: white;
    
    position: fixed;
    z-index: 10;
@@ -19,8 +19,15 @@
    
    user-select: none;
 
-   a {
-    padding-right: 1rem;
+   .navLink{
+      color: base.$whiteish;
+      margin-right: 1rem !important;
+      transition: 0.3s ease;
+   }
+
+   .navLink:hover{
+      color: base.$purplish !important;
+      transition: 0.3s ease;
    }
    
    img {
