@@ -115,7 +115,7 @@
   .learnBtn{
     color: white;
     font-size: 1.5rem;
-    background-color: purple;
+    background-color: base.$purplish;
     border-radius: 1rem;
     padding:1rem;
     transition: 0.5s ease;
@@ -128,7 +128,7 @@
   .rndBtn{
     color: white;
     font-size: 1rem;
-    background-color: purple;
+    background-color: base.$purplish;
     border-radius: 1rem;
     cursor: pointer;
     padding:0.5rem;
