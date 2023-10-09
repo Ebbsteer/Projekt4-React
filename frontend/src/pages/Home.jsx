@@ -140,7 +140,7 @@ const Home = () => {
 
         <button onClick={handleClick} className="rndBtn">
               Generate random planet
-            </button>
+        </button>
 
         </div>
 
