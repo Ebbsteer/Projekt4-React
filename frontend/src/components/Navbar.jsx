@@ -27,7 +27,7 @@ const Navbar = () => {
 
         <div id="droppa">
             <div id="navleft">
-                <NavLink to="/">HOME</NavLink>
+                <NavLink to="/" className="navLink">HOME</NavLink>
                 <NavLink to="/items">ITEMS</NavLink>
                 <div className="droppaPlanets">
                     <a onClick={DropPlan} id="planetsID">PLANETS&#8681;</a>

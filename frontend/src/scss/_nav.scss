@@ -19,8 +19,13 @@
    
    user-select: none;
 
-   a {
-    padding-right: 1rem;
+   .navLink{
+      color: base.$whiteish;
+      padding-right: 1rem;
+   }
+
+   .navLink:hover{
+      color: yellow !important;
    }
    
    img {
