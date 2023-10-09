@@ -131,29 +131,29 @@ const Home = () => {
 
   return (
     <div id="home">
+
       <div className="nebulae">
         {/* <img className="nebaulae" alt="nebaulae" src={nebulae} draggable={false}/> */}
       </div>
 
       <div className="Homebox">
+
         <div className="left">
-
-        <button onClick={handleClick} className="rndBtn">
-              Generate random planet
-        </button>
-
+          <button onClick={handleClick} className="rndBtn">
+                Generate random planet
+          </button>
         </div>
 
         <div className="right">
-
           <div className="textbox">
-          <div id="planetoftheday">
-            <Slideshow images={images}/>
+            <div id="planetoftheday">
+              <Slideshow images={images}/>
+            </div>
           </div>
-          </div>
-
         </div>
+
       </div>
+      
     </div>
   );
 };

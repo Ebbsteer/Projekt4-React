@@ -19,8 +19,15 @@
    
    user-select: none;
 
-   a {
-    padding-right: 1rem;
+   .navLink{
+      color: base.$whiteish;
+      padding-right: 1rem;
+      transition: 0.3s ease;
+   }
+
+   .navLink:hover{
+      color: yellow !important;
+      transition: 0.3s ease;
    }
    
    img {
