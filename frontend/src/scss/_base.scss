@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
+// @mixin mixin-name {statements}
+//  {@include mixin-name}
 
 $red: rgb(179, 0, 0);
 $black: #000;
@@ -20,7 +21,8 @@ $font-h: 'Bungee Inline';
 $font-h1: 'Dela Gothic One', cursive;
 
 
-$box-color: #26132ad8;
+$box-color: #bd887fa2;
+$box-border-color: #f5dfdbcd;
 
 
 $small-padding: 5px;
@@ -29,4 +31,36 @@ $small-padding: 5px;
     box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
     -webkit-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
     -moz-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+}
+
+@mixin Button  {
+    color: white;
+    font-family: $font-h1;
+    font-size: 1.5rem;
+
+    background-color: #bd887fa2;
+
+    border: 2px solid $box-border-color;
+    border-radius: 1rem;
+
+    padding: 0.6rem 1.5rem 0.7rem;
+    margin: 0px;
+
+    cursor: pointer;
+}
+
+@mixin Button-slideshow {
+    color: white;
+    font-family: $font-h1;
+    font-size: 1.5rem;
+
+    background-color: #bd887fa2;
+
+    border: 2px solid $box-border-color;
+    border-radius: 1rem;
+
+    padding: 0.6rem 1.5rem 0.7rem;
+    margin: 0px;
+
+    cursor: pointer;
 }

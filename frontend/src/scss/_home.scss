@@ -10,13 +10,16 @@
   
 
   .nebulae {
-    background-image: url("../src/assets/img/nebulae.jpeg");
+    background-image: url("../src/assets/img/nebulae1.png"); 
     background-repeat: no-repeat;
     background-size: cover;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
-    filter: blur(3px);
+    filter: blur(1px);
+
     position: absolute;
     top: 0;
     left: 0;
@@ -62,14 +65,13 @@
         color: base.$whiteish;
         text-align: center;
 
-        
-
         padding: 4vh; 
         margin: 4vh auto;
         
-        border: 10px solid base.$blackish;
+        border: 10px solid base.$box-border-color;
         border-radius: 10px;
       }
+
       #planetoftheday {
         h1{
           font-family: base.$font-h;
@@ -113,23 +115,14 @@
   }
 
   .learnBtn{
-    color: white;
-    font-size: 1.5rem;
-    background-color: purple;
-    border-radius: 1rem;
-    padding:1rem;
+    @include base.Button-slideshow;
     transition: 0.5s ease;
-  }
-
-  .learnBtn:hover {
-    box-shadow: 0px 5px 5px 1px black;
+  }.learnBtn:hover {
+    box-shadow: 0px 1px 10px 0px black;
   }
 
   .rndBtn{
-    color: white;
-    font-size: 1rem;
-    background-color: purple;
-    border-radius: 1rem;
+    @include base.Button;
     cursor: pointer;
     padding:0.5rem;
     transition: 0.5s ease;

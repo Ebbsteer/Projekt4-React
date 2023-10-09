@@ -58,6 +58,15 @@
         height: 25px;
         width: 40%;
         padding-left: 15px;
+
+        border: 2px solid base.$blackish;
+        border-radius: 5px;
+    }
+
+    input[type=text]:focus {
+        border: none;
+        border-radius: 5px;
+        box-shadow: none;
     }
     
     
@@ -98,7 +107,7 @@
 
 
 
-
+// ----- Table general style ------------------------------
 
 .itemtable {
     font-family: 'Times New Roman', Times, serif;
@@ -129,6 +138,9 @@
 
 
 
+// ----- columns in table ---------------------------------
+
+    // Favorite column
     .item-table-title-favo,
     .item-table-info-favo {
         min-width: 40px;
@@ -139,6 +151,7 @@
 
     }
 
+    // Number column
     .item-table-title-nr,
     .item-table-info-nr {
         min-width: 60px;
@@ -149,6 +162,7 @@
 
     }
 
+    // Type column
     .item-table-title-type,
     .item-table-info-type {
         min-width: 100px;
@@ -161,6 +175,7 @@
         padding-left: 5px;
     }
 
+    // Name column
     .item-table-title-name,
     .item-table-info-name {
         min-width: 170px;
@@ -176,6 +191,7 @@
         text-align: left;
     }
 
+    // temperature column
     .item-table-title-temp,
     .item-table-info-temp {
         padding: 0;
@@ -192,6 +208,7 @@
         padding-left: 15px;
     }
 
+    // Gravity column
     .item-table-title-grav,
     .item-table-info-grav {
         min-width: 60px;
@@ -207,6 +224,7 @@
         padding-right: 10px;
     }
 
+    // Discovered column
     .item-table-title-disc,
     .item-table-info-disc {
         padding: 0;
