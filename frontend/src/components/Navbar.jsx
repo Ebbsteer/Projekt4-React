@@ -2,6 +2,18 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
+window.onclick = function(event) {
+    if (!event.target.matches('#planetsID')) {
+      var dropdowns = document.getElementsByClassName("contentPlanets");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('togglaPlanets')) {
+          openDropdown.classList.remove('togglaPlanets');
+        }
+      }
+    }
+}
 
 function Drop(){
     document.getElementById("droppa").classList.toggle("toggla");
