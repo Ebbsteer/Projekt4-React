@@ -1,88 +1,50 @@
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
-import { extend, useFrame } from '@react-three/fiber';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Import OrbitControls from three/examples/jsm/controls/OrbitControls
+import React, { useRef, useState } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls, TransformControls, useCursor } from "@react-three/drei";
 
-extend({ OrbitControls });
+const Planet = (props) => {
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const colorMap = useLoader(TextureLoader, "earthtexture.jpg");
+  // This reference will give us direct access to the mesh
+  const meshRef = useRef();
+  // Set up state for the hovered and active state
+  const [hovered, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  useFrame(async (state, delta) => {
+    await delay(10000);
+    meshRef.current.rotation.y += 0.009;
+  });
+  // Return view, these are regular three.js elements expressed in JSX
+  return (
+    <mesh
+      {...props}
+      ref={meshRef}
+      onClick={(event) => setActive(!active)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}
+    >
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial map={colorMap} />
+    </mesh>
+  );
+};
 
 const SolarSystem = () => {
-  const containerRef = useRef();
-  const camera = useRef();
-  const controls = useRef();
-
-  useEffect(() => {
-    const container = containerRef.current;
-
-    // Set a fixed height for the container
-    container.style.height = '400px'; // You can adjust the height as needed
-
-    // Create a scene
-    const scene = new THREE.Scene();
-
-    // Create a camera
-    camera.current = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.current.position.z = 5;
-
-    // Create a renderer
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
-
-    // Create a sphere geometry
-    const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
-
-    // Load the Earth texture image (make sure the path is correct)
-    const textureLoader = new THREE.TextureLoader();
-    const earthTexture = textureLoader.load('../src/assets/textures/earthtexture.jpg'); // Adjust the path as needed
-
-    // Create a material with the Earth texture
-    const sphereMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
-
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    scene.add(sphere);
-
-    controls.current = new OrbitControls(camera.current, renderer.domElement);
-
-    // Animation loop
-    // Animation loop
-const animate = () => {
-    requestAnimationFrame(animate);
-  
-    // Clear the previous rotation
-
-  
-    // Apply the new rotation
-    sphere.rotation.y += 0.005; // Rotate the Earth sphere slowly
-  
-    renderer.render(scene, camera.current);
-  };
-  
-  animate();
-  
-
-    // Event listener for window resize
-    const handleResize = () => {
-      const { clientWidth, clientHeight } = container;
-      camera.current.aspect = clientWidth / clientHeight;
-      camera.current.updateProjectionMatrix();
-      renderer.setSize(clientWidth, clientHeight);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      // Remove event listener when component unmounts
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // const { mode } = useControls({ mode: { value: 'translate', options: ['translate', 'rotate', 'scale'] } })
 
   return (
-    <div ref={containerRef}>
-      <orbitControls
-        ref={controls}
-        args={[camera.current]} // Pass camera.current as an argument
-        enableZoom={true} // You can customize controls options as needed
-      />
+    <div style={{width: '100%',
+    height: '100%' }}>  
+    <Canvas flat linear>
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
+      <Planet position={[0, 0, 0]} />
+      <OrbitControls makeDefault />
+    </Canvas>
     </div>
   );
 };
