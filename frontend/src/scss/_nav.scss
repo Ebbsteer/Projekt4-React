@@ -1,6 +1,25 @@
 @use "base";
 
 // ----- navbar stylses -------------------------------------------------------
+::-webkit-scrollbar {
+   width: 5px;
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #5e5e5e;
+ }
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: base.$purplish;
+   border-radius: 3px;
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: rgb(133, 65, 160);
+ }
 
 #nav{ 
    background-color: base.$blackish;
