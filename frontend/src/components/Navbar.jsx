@@ -9,6 +9,28 @@ function Drop(){
 
 const Navbar = () => {
 
+    function handleLogOut(){
+        fetch("http://localhost:3000/logout", {
+            // Update with your server URL
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("you logged out");
+                } else {
+                    alert("Logout failed");
+                }
+            })
+            .catch((error) => {
+                // Handle any network or request error here
+                console.error("Login error:", error);
+            });
+    }
+
     function DropPlan(){
         const[isOpen, setIsOpen] = useState(false);
     
@@ -75,6 +97,8 @@ const Navbar = () => {
                 <NavLink to="/login" className="navLink">
                 <FontAwesomeIcon icon={faUserAstronaut} />
                 </NavLink>
+
+                <button onClick={handleLogOut}>Hej</button>
 
             </div>
         </div>

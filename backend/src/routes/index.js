@@ -117,7 +117,8 @@ router.route("/login").post((req, res) => {
 
 router.post("/logout", (req, res) => {
     res.clearCookie("cid");
-    res.redirect("/");
+    /*res.redirect("/");*/
+    res.status(200).send("ok");
 });
 
 router.route("/account-recovery").post((req, res) => {
