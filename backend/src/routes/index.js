@@ -86,6 +86,7 @@ router.route("/login").post((req, res) => {
     const { username, password } = req.body;
 
     const redirectUrl = req.query.redirect ? `${req.query.redirect}` : "/";
+    console.log(redirectUrl);
 
     console.log("login", username, password);
 
@@ -104,9 +105,9 @@ router.route("/login").post((req, res) => {
         });
 
         // Security issue: Open Redirect, should check against regex
-        res.location = redirectUrl;
+        res.location = "http://localhost:5173/profil";
         return res.send(`
-            Redirecting to ${redirectUrl}<br><a href="${redirectUrl}">Click here if you are not redirected</a>
+            Redirecting to http://localhost:5173/profil <br><a href="http://localhost:5173/profil">Click here if you are not redirected</a>
         `);
     }
 
