@@ -32,9 +32,15 @@
     }
 
     .footer-CO-name {
+        display: block;
         font-size: 2.5rem;
         font-family: 'Bungee Inline', cursive;
-        line-height: 5rem;
+
+        .hubStyle{
+            color: rgb(0, 0, 0);
+            background-color: orange;
+            border-radius: 1rem;
+        }
     }
 
     .footer-CO-copyright {
@@ -89,8 +95,4 @@
     }
 }
 
-.hubStyle{
-    color: rgb(0, 0, 0);
-    background-color: orange;
-    border-radius: 1rem;
-}
+

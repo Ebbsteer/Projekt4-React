@@ -16,10 +16,10 @@ export const prepare = (query) => {
 };
 
 export const setupDB = () => {
-    const dropUsersTable = DB.prepare(`
+    /*const dropUsersTable = DB.prepare(`
         DROP TABLE users
     `);
-    dropUsersTable.run();
+    dropUsersTable.run();*/
 
     const setupUsersTable = DB.prepare(`
         CREATE TABLE IF NOT EXISTS users (

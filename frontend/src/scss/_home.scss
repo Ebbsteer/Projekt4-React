@@ -18,7 +18,7 @@
     height: 100%;
 
     object-fit: cover;
-    filter: blur(1px);
+    filter: blur(4px);
 
     position: absolute;
     top: 0;
@@ -65,32 +65,73 @@
       /* Styles for the box */
       .textbox {
         background-color: base.$box-color;
+        width: 90%;
         
         color: base.$whiteish;
         text-align: center;
 
-        padding: 4vh; 
+        padding: 2vh 4vh 3vh; 
         margin: 4vh auto;
-        
-        border: 10px solid base.$box-border-color;
-        border-radius: 10px;
-      }
 
-      #planetoftheday {
-        h1{
-          font-family: base.$font-h;
+        border: 10px solid base.$box-border-color;
+        border-radius: 25px;
+
+        transition: transform .2s;
+        
+        #planetoftheday {
+          h1 {
+            font-family: base.$font-h;
+          }
+      
+          p {
+            font-family: base.$font-p;
+            font-size: 1.5rem;
+          }
+          .slideshowbild {
+            width: 25vw;
+          }
+
+          .slideshowInfo {
+            color: white;
+            clear: both;
+          }
+
+          .title {
+            font-family: base.$font-h;
+            font-size: 3rem;
+          }
+      
+          .text {
+            font-family: base.$font-p;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            
+          }
+            
+          
+
+          .learn-button{
+            @include base.Button-slideshow;
+            transition: 0.5s ease;
+            
+          }.learn-button:hover {
+            box-shadow: base.$button-shadow;
+          }  
+
         }
-    
-        p{
-          font-family: base.$font-p;
-          font-size: 1.5rem;
+
+        .random-button{
+          @include base.Button;
+          transition: 0.5s ease;
+          margin-top: 2rem;
+        }.random-button:hover{
+          box-shadow: base.$button-shadow;
         }
-        .slideshowbild{
-          width: 25vw;
-        }
+
+      }.textbox:hover {
+        transform: scale(1.03);
       }
     }
-
   }
 
   .nextSlide{
@@ -104,44 +145,32 @@
   }
 
 
-  .slideshowInfo{
-    color: white;
-    clear: both;
-    margin-bottom: 2rem;
+  /* Media query for medium screens (1440px) */
+  @media (max-width: 1440px) {
+    .Homebox {
+      .left {
+        width: 50%;
 
-    h1{
-      font-family: base.$font-h;
+        #planetoftheday {
+
+          .slideshowbild{
+            width: 50vw !important;
+          }
+        }
+      }
+      .right {
+        width: 50%;
+      } 
     }
-
-    p{
-      font-family: base.$font-p;
-    }
   }
+  
 
-  .learnBtn{
-    @include base.Button-slideshow;
-    transition: 0.5s ease;
-  }.learnBtn:hover {
-    box-shadow: 0px 1px 10px 0px black;
-  }
-
-  .rndBtn{
-    color: white;
-    font-size: 1rem;
-    background-color: purple;
-    border-radius: 1rem;
-    cursor: pointer;
-    padding:0.5rem;
-    transition: 0.5s ease;
-  }
-
-  .rndBtn:hover{
-    box-shadow: 0px 5px 5px 1px black;
-  }
-
-  /* Media query for smaller screens */
+  /* Media query for smaller screens (768px) */
   @media screen and (max-width: 768px) {
     .Homebox {
+
+      display: flex;
+      flex-wrap: wrap;
       
       .left {
         margin-top: 25px;

@@ -17,13 +17,13 @@ const Login = () => {
         // Prepare the login data as an object
         const loginData = {
             username,
-            password
+            password,
         };
 
         console.log(loginData);
 
         // Send a POST request to your server (localhost:3000 or your server URL)
-        fetch("http://localhost:3000/login?redirect=http://localhost:5173/profil", {
+        fetch("http://localhost:3000/login", {
             // Update with your server URL
             method: "POST",
             headers: {
@@ -34,9 +34,9 @@ const Login = () => {
         })
             .then((response) => {
                 if (response.ok) {
+                    window.location = "/profil";
                     // Handle a successful login response here
                     // For example, you can display an alert
-                    alert("Login successful");
                 } else {
                     // Handle an unsuccessful login response here
                     alert("Login failed");
@@ -54,22 +54,34 @@ const Login = () => {
     };
 
     const handleResetPassword = () => {
-        // Retrieve the security question and answer from localStorage based on the username
-        const storedData = localStorage.getItem(resetPasswordUsername);
+        const resetData = {
+            username: resetPasswordUsername,
+            password,
+        };
 
-        if (storedData) {
-            const { securityQuestion: storedSecurityQuestion, securityAnswer: storedSecurityAnswer } = JSON.parse(storedData);
-
-            if (securityQuestion === storedSecurityQuestion && securityAnswer === storedSecurityAnswer) {
-                // Implement your password reset logic here
-                alert("Password reset successful");
-                setResettingPassword(false); // Reset the state to hide the reset form
-            } else {
-                alert("Incorrect security answer");
-            }
-        } else {
-            alert("Username not found");
-        }
+        fetch("http://localhost:3000/account-recovery", {
+            // Update with your server URL
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(resetData),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    // Handle a successful login response here
+                    // For example, you can display an alert
+                    alert("Login successful");
+                } else {
+                    // Handle an unsuccessful login response here
+                    alert("Login failed");
+                }
+            })
+            .catch((error) => {
+                // Handle any network or request error here
+                console.error("Login error:", error);
+            });
     };
 
     const handleRegister = (e) => {
@@ -81,7 +93,7 @@ const Login = () => {
             username,
             password,
             question: securityQuestion,
-            question_answer: securityAnswer
+            question_answer: securityAnswer,
         };
 
         console.log(registerData);
@@ -120,13 +132,17 @@ const Login = () => {
                             type="text"
                             placeholder="Username"
                             value={resetPasswordUsername}
-                            onChange={(e) => setResetPasswordUsername(e.target.value)}
+                            onChange={(e) =>
+                                setResetPasswordUsername(e.target.value)
+                            }
                         />
                         <input
                             type="text"
                             placeholder="Security Question: Your custom question"
                             value={securityQuestion}
-                            onChange={(e) => setSecurityQuestion(e.target.value)}
+                            onChange={(e) =>
+                                setSecurityQuestion(e.target.value)
+                            }
                         />
                         <input
                             type="text"
@@ -168,44 +184,61 @@ const Login = () => {
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Re-type Password"
                                     value={retypePassword}
-                                    onChange={(e) => setRetypePassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setRetypePassword(e.target.value)
+                                    }
                                 />
                                 <input
                                     type="text"
                                     placeholder="Security Question: Your custom question"
                                     value={securityQuestion}
-                                    onChange={(e) => setSecurityQuestion(e.target.value)}
+                                    onChange={(e) =>
+                                        setSecurityQuestion(e.target.value)
+                                    }
                                 />
                                 <input
                                     type="text"
                                     placeholder="Security Answer: Your custom answer"
                                     value={securityAnswer}
-                                    onChange={(e) => setSecurityAnswer(e.target.value)}
+                                    onChange={(e) =>
+                                        setSecurityAnswer(e.target.value)
+                                    }
                                 />
                             </>
                         )}
                         <button
                             type="button"
-                            onClick={isRegistering ? handleRegister : handleLogin}
+                            onClick={
+                                isRegistering ? handleRegister : handleLogin
+                            }
                         >
                             {isRegistering ? "Register" : "Login"}
                         </button>
                         {!isRegistering && (
-                            <button type="button" onClick={handleForgotPassword}>
-                                Forgot Password
-                            </button>
+                            <>
+                                <button
+                                    type="button"
+                                    onClick={handleForgotPassword}
+                                >
+                                    Forgot Password
+                                </button>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={rememberMe}
+                                        onChange={() =>
+                                            setRememberMe(!rememberMe)
+                                        }
+                                    />
+                                    Remember Me
+                                </label>
+                            </>
                         )}
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={rememberMe}
-                                onChange={() => setRememberMe(!rememberMe)}
-                            />
-                            Remember Me
-                        </label>
+
                         <button
+                            type="button"
                             className="register-button"
-                            onClick={handleRegister}
+                            onClick={() => setIsRegistering(!isRegistering)}
                         >
                             {isRegistering ? "Back to Login" : "Register here"}
                         </button>

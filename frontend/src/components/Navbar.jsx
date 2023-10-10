@@ -1,29 +1,75 @@
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
-
-window.onclick = function(event) {
-    if (!event.target.matches('#planetsID')) {
-      var dropdowns = document.getElementsByClassName("contentPlanets");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('togglaPlanets')) {
-          openDropdown.classList.remove('togglaPlanets');
-        }
-      }
-    }
-}
+import React, { useEffect, useState } from "react";
 
 function Drop(){
     document.getElementById("droppa").classList.toggle("toggla");
 }
 
-function DropPlan(){
-    document.getElementById("myPlanets").classList.toggle("togglaPlanets");
-}
-
 const Navbar = () => {
+
+    function handleLogOut(){
+        fetch("http://localhost:3000/logout", {
+            // Update with your server URL
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("You succesfully logged out!");
+                } else {
+                    alert("Logout failed!");
+                }
+            })
+            .catch((error) => {
+                // Handle any network or request error here
+                console.error("Login error:", error);
+            });
+    }
+
+    function DropPlan(){
+        const[isOpen, setIsOpen] = useState(false);
+    
+        const toggleDrop=()=>{
+            setIsOpen(!isOpen);
+            document.getElementById("myPlanets").classList.toggle("togglaPlanets");
+        };
+    
+        const handleOutsideClick = (event) => {
+            if (isOpen && !event.target.matches('#planetsID')) {
+              setIsOpen(false);
+              document.getElementById("myPlanets").classList.remove("togglaPlanets");
+            }
+          };
+    
+          React.useEffect(() => {
+            document.addEventListener('click', handleOutsideClick);
+            return () => {
+              document.removeEventListener('click', handleOutsideClick);
+            };
+          }, [isOpen]);
+
+          return(
+                <div className="droppaPlanets">
+                    <a onClick={toggleDrop} id="planetsID" className="navLink">PLANETS&#8681;</a>
+                    <div id="myPlanets" className="contentPlanets">
+                        <NavLink to="/planet/mercury" className="navLink">Mercury</NavLink>
+                        <NavLink to="/planet/venus" className="navLink">Venus</NavLink>
+                        <NavLink to="/planet/earth" className="navLink">Tellus</NavLink>
+                        <NavLink to="/planet/mars" className="navLink">Mars</NavLink>
+                        <NavLink to="/planet/jupiter" className="navLink">Jupiter</NavLink>
+                        <NavLink to="/planet/saturn" className="navLink">Saturn</NavLink>
+                        <NavLink to="/planet/uranus" className="navLink">Uranus (lol)</NavLink>
+                        <NavLink to="/planet/neptune" className="navLink">Neptune</NavLink>
+                    </div>
+                </div>
+          );
+        
+    }
 
     return <>
     <div id="nav">
@@ -41,19 +87,7 @@ const Navbar = () => {
             <div id="navleft">
                 <NavLink to="/" className="navLink">HOME</NavLink>
                 <NavLink to="/items" className="navLink">ITEMS</NavLink>
-                <div className="droppaPlanets">
-                    <a onClick={DropPlan} id="planetsID" className="navLink">PLANETS&#8681;</a>
-                    <div id="myPlanets" className="contentPlanets">
-                        <NavLink to="/planet/mercury" className="navLink">Mercury</NavLink>
-                        <NavLink to="/planet/venus" className="navLink">Venus</NavLink>
-                        <NavLink to="/planet/earth" className="navLink">Tellus</NavLink>
-                        <NavLink to="/planet/mars" className="navLink">Mars</NavLink>
-                        <NavLink to="/planet/jupiter" className="navLink">Jupiter</NavLink>
-                        <NavLink to="/planet/saturn" className="navLink">Saturn</NavLink>
-                        <NavLink to="/planet/uranus" className="navLink">Uranus (lol)</NavLink>
-                        <NavLink to="/planet/neptune" className="navLink">Neptune</NavLink>
-                    </div>
-                </div>
+                <DropPlan></DropPlan>
             </div>
            
             <div id="navright">
@@ -63,6 +97,8 @@ const Navbar = () => {
                 <NavLink to="/login" className="navLink">
                 <FontAwesomeIcon icon={faUserAstronaut} />
                 </NavLink>
+
+                <button onClick={handleLogOut}>Hej</button>
 
             </div>
         </div>
