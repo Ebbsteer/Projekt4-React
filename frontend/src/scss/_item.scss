@@ -1,18 +1,26 @@
 @use "base";
 
 .tabellDiv {
+    background-color: base.$table-line1;
     height: 70%;
     width: 70%;
-    color: base.$color-font-w;
-    background-color: #494949c2;
+    
     margin: 0;
+    padding: 8px;
+
     position: absolute;
     top: 50%;
     left: 50%;
+
+    color: base.$color-font-w;
+
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+
     overflow: auto;
     scroll-behavior: smooth;
+    
+    border-radius: 10px;
 }
 
 #favoriteButton{
@@ -38,7 +46,7 @@
     flex-wrap: wrap;
     align-items: center;
 
-    background-color: base.$color-font-w;
+    background-color: base.$whiteish;
 
     position: sticky;
     top: 0;
@@ -48,7 +56,7 @@
 
     font-size: 1.4rem;
     font-family: base.$font-p;
-    color: base.$blackish;
+    color: base.$color-font-b;
 
     .search {
         background-color: base.$color-font-w;
@@ -129,7 +137,7 @@
     }
     
     tr:nth-child(even) {
-        background-color: rgba(41, 41, 41, 0.76);
+        background-color: base.$table-line2;
     }
 
     
