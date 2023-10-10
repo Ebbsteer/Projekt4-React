@@ -3,7 +3,7 @@
 .tabellDiv {
     height: 70%;
     width: 70%;
-    color: base.$whiteish;
+    color: base.$color-font-w;
     background-color: #494949c2;
     margin: 0;
     position: absolute;
@@ -18,7 +18,7 @@
 #favoriteButton{
     background: none;
     border: none;
-    color: white;
+    color: base.$color-font-w;
     cursor: pointer;
 }
 
@@ -38,7 +38,7 @@
     flex-wrap: wrap;
     align-items: center;
 
-    background-color: base.$whiteish;
+    background-color: base.$color-font-w;
 
     position: sticky;
     top: 0;
@@ -51,7 +51,7 @@
     color: base.$blackish;
 
     .search {
-        background-color: base.$whiteish;
+        background-color: base.$color-font-w;
         position: sticky;
         top: 0;
 

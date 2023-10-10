@@ -72,6 +72,7 @@
         border: 10px solid base.$box-border-color;
         border-radius: 25px;
 
+        transition: transform .2s;
         
         #planetoftheday {
           h1 {
@@ -123,6 +124,8 @@
           box-shadow: base.$button-shadow;
         }
 
+      }.textbox:hover {
+        transform: scale(1.03);
       }
     }
   }
