@@ -74,9 +74,9 @@ const Slideshow = ({ images }) => {
   
   return (
     <div className="slideshow">
-      <h1 className="slideshowInfo">{planetNames[currentIndex]}</h1>
+      <p className="slideshowInfo title">{planetNames[currentIndex]}</p>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld"/>
-      <p className="slideshowInfo">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
+      <p className="slideshowInfo text">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
       <NavLink to={planetDirect[currentIndex]} className="learn-button">Learn more</NavLink>
     </div>
   );
