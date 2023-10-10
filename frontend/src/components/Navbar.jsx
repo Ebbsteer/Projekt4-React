@@ -20,9 +20,9 @@ const Navbar = () => {
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("you logged out");
+                    alert("You succesfully logged out!");
                 } else {
-                    alert("Logout failed");
+                    alert("Logout failed!");
                 }
             })
             .catch((error) => {
