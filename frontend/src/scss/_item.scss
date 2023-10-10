@@ -2,6 +2,7 @@
 
 .tabellDiv {
     background-color: base.$table-line1;
+    color: base.$whiteish;
     height: 70%;
     width: 70%;
     
@@ -28,6 +29,11 @@
     border: none;
     color: base.$color-font-w;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#favoriteButton:hover{
+    color: base.$yellowish;
 }
 
 #btnContent{
@@ -37,9 +43,12 @@
 
 .makeFavorite{
     color: gold !important;
+    transition: 0.3s ease;
 }
 
-
+/*.makeFavorite:hover{
+    color: white !important;
+}*/
 
 .filter{
     display: flex;
@@ -52,10 +61,12 @@
     top: 0;
 
     height: fit-content;
+    padding-top: 2px;
     padding-bottom: 2px;
 
     font-size: 1.4rem;
-    font-family: base.$font-p;
+    font-family: base.$font-titelnormal;
+    font-weight: bold;
     color: base.$color-font-b;
 
     .search {
