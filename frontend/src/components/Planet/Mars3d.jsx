@@ -7,42 +7,26 @@ import { OrbitControls, TransformControls, useCursor } from "@react-three/drei";
 const Planet = (props) => {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const colorMap = useLoader(TextureLoader, "earthtexture.jpg");
+  const colorMap = useLoader(TextureLoader, "marstexture.jpg");
   // This reference will give us direct access to the mesh
   const meshRef = useRef();
- //const controls = useRef();
+  //const controls = useRef();
   // Set up state for the hovered and active state
   //const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   // Subscribe this component to the render-loop, rotate the mesh every frame
 
- 
-
-
   useFrame(async (state, delta) => {
-
-
-   
-
-
     if (!active) {
-       
-       
-       
       meshRef.current.rotation.y += 0.009;
-     
-        
-      }
-  
-   
-    
+    }
   });
   // Return view, these are regular three.js elements expressed in JSX
   return (
     <mesh
       {...props}
       ref={meshRef}
-    //  onClick={(event) => setActive(!active)}
+      //  onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setActive(!active)}
       onPointerOut={(event) => setActive(!active)}
     >
@@ -52,21 +36,17 @@ const Planet = (props) => {
   );
 };
 
-const SolarSystem = () => {
+const Mars3d = () => {
   // const { mode } = useControls({ mode: { value: 'translate', options: ['translate', 'rotate', 'scale'] } })
 
   return (
-    
     <Canvas>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Planet position={[0, 0, 0]} />
-      <OrbitControls makeDefault
-      maxDistance={13}
-      minDistance={2} />
+      <OrbitControls makeDefault maxDistance={13} minDistance={2} />
     </Canvas>
-   
   );
 };
 
-export default SolarSystem;
+export default Mars3d;

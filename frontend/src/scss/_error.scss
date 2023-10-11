@@ -2,9 +2,9 @@
 
 #errorpage {
     position: relative;
-    width: 100vw;
+    width: 100dvw;
     height: fit-content;
-    min-height: calc(100vh - 250px);
+    min-height: calc(100dvh - 250px);
     overflow: hidden;
     
     display: flex;
@@ -48,8 +48,8 @@
                 color: base.$whiteish;
                 font-size: 2.5rem;
 
-                padding: 3vh 3vw;
-                margin-bottom: 4vh;
+                padding: 3dvh 3dvw;
+                margin-bottom: 4dvh;
 
                 
             }
@@ -60,7 +60,7 @@
                 width: fit-content;
                 
                 margin: auto;
-                padding: 1vh 1vw;
+                padding: 1dvh 1dvw;
 
                 font-family: 'Bungee Inline';
                 font-size: 1.8rem;

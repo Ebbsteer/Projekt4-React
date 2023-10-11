@@ -2,176 +2,176 @@
 
 // ----- navbar stylses -------------------------------------------------------
 ::-webkit-scrollbar {
-   width: 5px;
-   height: 10px;
- }
- 
- /* Track */
- ::-webkit-scrollbar-track {
-   background: #5e5e5e;
- }
- 
- /* Handle */
- ::-webkit-scrollbar-thumb {
-   background: base.$purplish;
-   border-radius: 3px;
- }
- 
- /* Handle on hover */
- ::-webkit-scrollbar-thumb:hover {
-   background: rgb(133, 65, 160);
- }
+    width: 5px;
+    height: 10px;
+}
 
-#nav{ 
-   background-color: base.$blackish;
-   color: base.$whiteish;
-   
-   position: fixed;
-   z-index: 10;
-   width: 100%;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #5e5e5e;
+}
 
-   display: inline-block;
-   padding-left: 1rem;
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: base.$purplish;
+    border-radius: 3px;
+}
 
-   font-family: base.$font-h;
-   font-size: 2rem;
-   line-height: 5rem;
-   
-   user-select: none;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(133, 65, 160);
+}
 
-   .navLink{
-      color: base.$whiteish;
-      margin-right: 1rem !important;
-      transition: 0.3s ease;
-   }
+#nav {
+    background-color: base.$blackish;
+    color: base.$whiteish;
 
-   .navLink:hover{
-      color: base.$purplish !important;
-      transition: 0.3s ease;
-   }
-   
-   img {
-   display: inline;
-   float: left;
-   height: 3rem;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
 
-   margin: 0.95rem 1rem auto 0px;
+    display: inline-block;
+    padding-left: 1rem;
 
-   border-radius: 10px;
-   }
+    font-family: base.$font-h;
+    font-size: 2rem;
+    line-height: 5rem;
+
+    user-select: none;
+
+    .navLink {
+        color: base.$whiteish;
+        margin-right: 1rem !important;
+        transition: 0.3s ease;
+    }
+
+    .navLink:hover {
+        color: base.$purplish !important;
+        transition: 0.3s ease;
+    }
+
+    img {
+        display: inline;
+        float: left;
+        height: 3rem;
+
+        margin: 0.95rem 1rem auto 0px;
+
+        border-radius: 10px;
+    }
 }
 
 // ----- Right elements in navbar - Home, Items, Planet
-#navright { 
-   float: right;
-   font-size: 3rem !important;
+#navright {
+    float: right;
+    font-size: 3rem !important;
 }
 
 // ----- Left elements in Navbar - Login/Logout/Profile, Favorites
 #navleft {
-   float: left;
+    float: left;
 }
 
 #droppa {
-   display: inline;
+    display: inline;
 }
 
 .toggla {
-   display: inline !important;
+    display: inline !important;
 }
 
 #dropknapp {
-   display: none;
+    display: none;
 }
 
-.hamb1, .hamb2, .hamb3 {
-   background-color: rgb(255, 255, 255);
-   
-   width: 2.3rem;
-   height: 0.35rem;
+.hamb1,
+.hamb2,
+.hamb3 {
+    background-color: rgb(255, 255, 255);
 
-   margin: 0.35rem 0;
+    width: 2.3rem;
+    height: 0.35rem;
 
-   transition: 0.4s ease;
+    margin: 0.35rem 0;
+
+    transition: 0.4s ease;
 }
 
 .droppaPlanets {
-   display: inline-block;
+    display: inline-block;
 }
 
 #planetsID {
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .contentPlanets {
-   background-color: base.$blackish;
-   
-   position: absolute;
-   display: none;
-   z-index: 1;
-   overflow: auto;
+    background-color: base.$blackish;
 
-   margin-left: -40px;
-   
+    position: absolute;
+    display: none;
+    z-index: 1;
+    overflow: auto;
 
-   min-width: 160px;
-   max-height: 200px;
+    margin-left: -40px;
 
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    max-height: 200px;
 
-   text-align: center;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
-   border-radius: 0px 0px 7px 7px;
-   a {
-      display: block;
-      padding-left: 1rem;
-   }
- }
+    text-align: center;
 
-.togglaPlanets {
-   display: block !important;
+    border-radius: 0px 0px 7px 7px;
+    a {
+        display: block;
+        padding-left: 1rem;
+    }
 }
 
-@media only screen and (max-width:700px){
-   // #nav {
-   //    // img {
-   //    //    display: block;
-   //    // }
-   // }
+.togglaPlanets {
+    display: block !important;
+}
 
-   #droppa {
-      display: none;
-   }
+@media only screen and (max-width: 700px) {
+    // #nav {
+    //    // img {
+    //    //    display: block;
+    //    // }
+    // }
 
-   #droppa a {
-      display: block;
-      width: 100%;
-   }
+    #droppa {
+        display: none;
+    }
 
-   #navleft {
-      float: none;
-   }
-   
-   #navright {
-      float: none;
-   }
+    #droppa a {
+        display: block;
+        width: 100%;
+    }
 
-   #dropknapp {
-      background: none;
+    #navleft {
+        float: none;
+    }
 
-      display: inline !important;
-      float: right;
+    #navright {
+        float: none;
+    }
 
-      margin-right: 1rem;
-      margin-top: 1rem;
+    #dropknapp {
+        background: none;
 
-      border: none;
-   }
+        display: inline !important;
+        float: right;
 
-   .contentPlanets {
-      position: relative !important;
-      margin-left: -0px;
-      text-align: left;
+        margin-right: 1rem;
+        margin-top: 1rem;
 
-   }
+        border: none;
+    }
+
+    .contentPlanets {
+        position: relative !important;
+        margin-left: -0px;
+        text-align: left;
+    }
 }

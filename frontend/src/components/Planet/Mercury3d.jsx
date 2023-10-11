@@ -7,7 +7,7 @@ import { OrbitControls, TransformControls, useCursor } from "@react-three/drei";
 const Planet = (props) => {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const colorMap = useLoader(TextureLoader, "earthtexture.jpg");
+  const colorMap = useLoader(TextureLoader, "mercurytexture.jpg");
   // This reference will give us direct access to the mesh
   const meshRef = useRef();
  //const controls = useRef();
@@ -52,7 +52,7 @@ const Planet = (props) => {
   );
 };
 
-const SolarSystem = () => {
+const Earth3d = () => {
   // const { mode } = useControls({ mode: { value: 'translate', options: ['translate', 'rotate', 'scale'] } })
 
   return (
@@ -69,4 +69,4 @@ const SolarSystem = () => {
   );
 };
 
-export default SolarSystem;
+export default Earth3d;
