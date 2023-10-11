@@ -70,3 +70,12 @@ $small-padding: 5px;
     cursor: pointer;
 }
 
+@mixin Boxes {
+    background-color: $box-color;
+
+    color: $whiteish;
+
+    border: 10px solid $box-border-color;
+    border-radius: 25px;
+
+}
