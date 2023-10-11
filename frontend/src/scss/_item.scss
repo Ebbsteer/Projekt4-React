@@ -148,7 +148,7 @@
         cursor: pointer;
     }
 
-    tr:hover{
+    tbody tr:hover{
         transform: scale(1, 1.03);
         box-shadow: 0px 3px 3px black;
     }
@@ -159,6 +159,8 @@
         background: base.$whiteish;
         color: black;
         font-family: base.$font-titelnormal;
+        z-index: 10;
+        cursor: pointer;
     }
     
     tr:nth-child(even) {
