@@ -5,6 +5,8 @@
 }
 
 #planet {
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: base.$font-p;
     position: relative;
     width: 100%;
@@ -141,6 +143,12 @@
 }
 
 .title-img {
+    
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    width: 30vw;
+    height: 30vw;
+
     font-family: base.$font-h;
     display: flex;
     margin-top: 3%;

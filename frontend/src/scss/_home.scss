@@ -72,21 +72,22 @@
         @include base.Boxes;
 
         #planetoftheday {
+
           h1 {
-              font-family: base.$font-h;
+            font-family: base.$font-h;
           }
 
           p {
-              font-family: base.$font-p;
-              font-size: 1.5rem;
+            font-family: base.$font-p;
+            font-size: 1.5rem;
           }
           .slideshowbild {
-              width: 25vw;
+            width: 25vw;
           }
 
           .slideshowInfo {
-              color: white;
-              clear: both;
+            color: white;
+            clear: both;
           }
 
           .title {
@@ -112,12 +113,12 @@
         }
 
         .random-button {
-            @include base.Button;
-            transition: 0.5s ease;
-            margin-top: 2rem;
+          @include base.Button;
+          transition: 0.5s ease;
+          margin-top: 2rem;
         }
         .random-button:hover {
-            box-shadow: base.$button-shadow;
+          box-shadow: base.$button-shadow;
         }
       } .textbox:hover {
         transform: scale(1.03);
@@ -126,57 +127,57 @@
   }
 
     .nextSlide {
-        opacity: 0;
-        transition: 0.5s ease;
+      opacity: 0;
+      transition: 0.5s ease;
     }
 
     .nextSlide1 {
-        opacity: 1;
-        transition: 0.5s ease;
+      opacity: 1;
+      transition: 0.5s ease;
     }
 
     /* Media query for medium screens (1440px) */
     @media (max-width: 1440px) {
-        .Homebox {
-            .left {
-                width: 50%;
+      .Homebox {
+        .left {
+          width: 50%;
 
-                #planetoftheday {
-                    .slideshowbild {
-                        width: 50dvw !important;
-                    }
-                }
+          #planetoftheday {
+            .slideshowbild {
+              width: 50dvw !important;
             }
-            .right {
-                width: 50%;
-            }
+          }
         }
+        .right {
+          width: 50%;
+        }
+      }
     }
 
     /* Media query for smaller screens (768px) */
     @media screen and (max-width: 768px) {
-        .Homebox {
-            display: flex;
-            flex-wrap: wrap;
+      .Homebox {
+        display: flex;
+        flex-wrap: wrap;
 
-            .left {
-                margin-top: 25px;
+        .left {
+          margin-top: 25px;
 
-                width: 100%;
+          width: 100%;
 
-                #planetoftheday {
-                    .slideshowbild {
-                        width: 50dvw !important;
-                    }
-                }
-            }
+          #planetoftheday {
             .slideshowbild {
-                width: 50dvw !important;
+              width: 50dvw !important;
             }
-
-            .right {
-                width: 100%;
-            }
+          }
         }
+        .slideshowbild {
+          width: 50dvw !important;
+        }
+
+        .right {
+          width: 100%;
+        }
+      }
     }
 }
