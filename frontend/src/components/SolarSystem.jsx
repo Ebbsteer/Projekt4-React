@@ -4,10 +4,10 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OrbitControls, TransformControls, useCursor } from "@react-three/drei";
 
-const Planet = (props) => {
+const Planet = () => {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const colorMap = useLoader(TextureLoader, "earthtexture.jpg");
+  const colorMap = useLoader(TextureLoader, "saturntexture.jpg");
   // This reference will give us direct access to the mesh
   const meshRef = useRef();
  //const controls = useRef();
@@ -40,7 +40,7 @@ const Planet = (props) => {
   // Return view, these are regular three.js elements expressed in JSX
   return (
     <mesh
-      {...props}
+      
       ref={meshRef}
     //  onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setActive(!active)}
