@@ -99,6 +99,12 @@
   overflow-y: auto;
   scroll-behavior: smooth;
   max-height: 80vh;
+  cursor: pointer;
+
+  tr:hover{
+    transform: scale(1, 1.03);
+    box-shadow: 0px 3px 3px black;
+  }
 }
 
 .details {
