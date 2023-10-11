@@ -30,11 +30,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-
-    padding-top: 80px;
-
+    padding: 80px;
     width: 100%;
-   height: fit-content;
+    height: fit-content;
     min-height: 100vh;
 
     
@@ -66,12 +64,13 @@
       .textbox {
         background-color: base.$box-color;
         width: 90%;
+        min-width: fit-content;
         
         color: base.$whiteish;
         text-align: center;
 
-        padding: 2vh 4vh 3vh; 
-        margin: 4vh auto;
+        padding: 2vh 4vh 5vh; 
+        margin: 8vh auto;
 
         border: 10px solid base.$box-border-color;
         border-radius: 25px;
@@ -99,12 +98,12 @@
           .title {
             font-family: base.$font-h;
             font-size: 3rem;
+            padding: 10px 0px;
           }
       
           .text {
             font-family: base.$font-p;
-            margin-top: 1.5rem;
-            margin-bottom: 3rem;
+            padding: 20px;
             
           }
             
@@ -123,7 +122,7 @@
         .random-button{
           @include base.Button;
           transition: 0.5s ease;
-          margin-top: 2rem;
+          margin-top: 10px;
         }.random-button:hover{
           box-shadow: base.$button-shadow;
         }
@@ -160,6 +159,7 @@
       }
       .right {
         width: 50%;
+        margin: auto;
       } 
     }
   }
