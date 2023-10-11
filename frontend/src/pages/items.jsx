@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
+import { faEarthAsia } from '@fortawesome/free-solid-svg-icons'
+import { faMeteor } from '@fortawesome/free-solid-svg-icons'
+import { faStarHalfStroke } from '@fortawesome/free-solid-svg-icons'
+
+
 
 const Items = () => {
+    const exponent2 = "\u00B2";
+
     const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
 
     const [activeButtons, setActiveButtons] = useState({});
@@ -230,9 +240,11 @@ const Items = () => {
                                 Name {sortOrder === "asc" ? "▼" : "▲"}
                             </th>
                             <th className="item-table-title-temp">
-                                Temperature - (K)
+                                Temp - °C
                             </th>
-                            <th className="item-table-title-grav">Gravity</th>
+                            <th className="item-table-title-grav">
+                                Gravity m/s{exponent2}
+                            </th>
                             <th
                                 onClick={sortlistDate}
                                 className="item-table-title-disc"
@@ -266,16 +278,22 @@ const Items = () => {
                                     </td>
                                     <td className="item-table-info-nr">{i}</td>
                                     <td className="item-table-info-type">
-                                        {planet.bodyType}
+                                        {planet.bodyType} &nbsp;
+                                        {planet.bodyType === "Moon" ? <FontAwesomeIcon icon={faMoon}/> : ""}
+                                        {planet.bodyType === "Planet" ? <FontAwesomeIcon icon={faEarthAmericas}/> : ""}
+                                        {planet.bodyType === "Asteroid" ? <FontAwesomeIcon icon={faMeteor}/> : ""}
+                                        {planet.bodyType === "Comet" ? <FontAwesomeIcon icon={faMeteor}/> : ""}
+                                        {planet.bodyType === "Star" ? <FontAwesomeIcon icon={faStarHalfStroke}/> : ""}
+                                        {planet.bodyType === "Dwarf Planet" ? <FontAwesomeIcon icon={faEarthAsia}/> : ""}
                                     </td>
                                     <td className="item-table-info-name">
                                         {planet.englishName}
                                     </td>
                                     <td className="item-table-info-temp">
-                                        {planet.avgTemp}
+                                        {planet.avgTemp - 273} °C
                                     </td>
                                     <td className="item-table-info-grav">
-                                        {planet.gravity}
+                                        {planet.gravity}m/s{exponent2}
                                     </td>
                                     <td className="item-table-info-disc">
                                         {planet.discoveryDate}
