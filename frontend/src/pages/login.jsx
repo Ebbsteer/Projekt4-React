@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import spacepic from "../assets/img/spacepic.jpeg";
 
 const Login = () => {
     const [username, setUsername] = useState("");
