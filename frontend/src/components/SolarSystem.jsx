@@ -27,7 +27,7 @@ const Planet = (props) => {
 
     if (!active) {
        
-       await delay(1000);
+       
        
       meshRef.current.rotation.y += 0.009;
      
@@ -61,7 +61,9 @@ const SolarSystem = () => {
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Planet position={[0, 0, 0]} />
-      <OrbitControls makeDefault />
+      <OrbitControls makeDefault
+      maxDistance={13}
+      minDistance={2} />
     </Canvas>
    
   );
