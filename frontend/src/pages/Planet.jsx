@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const bodyInfo = [
   {
@@ -184,11 +186,11 @@ const Planet = () => {
                 {" "}
                 <thead>
                   <tr>
-                    <th>gravity</th>
-                    <th>temperature</th>
+                    <th>Gravity</th>
+                    <th>Temperature</th>
                     <th> Discovered </th>
 
-                    <th> mass </th>
+                    <th> Mass </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -222,7 +224,7 @@ const Planet = () => {
               <table>
                 <thead>
                   <tr>
-                    <th className="planet-table-title-moon">Moons</th>
+                    <th className="planet-table-title-moon">Moons <FontAwesomeIcon icon={faMoon}/></th>
                     <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>

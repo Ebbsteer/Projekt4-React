@@ -5,9 +5,10 @@
     color: base.$whiteish;
     height: 70%;
     width: 70%;
-    
+
     margin: 0;
-    padding: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
 
     position: absolute;
     top: 50%;
@@ -20,11 +21,11 @@
 
     overflow: auto;
     scroll-behavior: smooth;
-    
+
     border-radius: 10px;
 }
 
-#favoriteButton{
+#favoriteButton {
     background: none;
     border: none;
     color: base.$color-font-w;
@@ -32,16 +33,16 @@
     transition: 0.3s ease;
 }
 
-#favoriteButton:hover{
+#favoriteButton:hover {
     color: base.$yellowish;
 }
 
-#btnContent{
+#btnContent {
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-.makeFavorite{
+.makeFavorite {
     color: gold !important;
     transition: 0.3s ease;
 }
@@ -50,7 +51,7 @@
     color: white !important;
 }*/
 
-.filter{
+.filter {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -63,6 +64,8 @@
     height: fit-content;
     padding-top: 2px;
     padding-bottom: 2px;
+    margin-bottom: 2px;
+    border: 1px solid black;
 
     font-size: 1.4rem;
     font-family: base.$font-titelnormal;
@@ -82,24 +85,21 @@
         border-radius: 5px;
     }
 
-    input[type=text]:focus {
+    input[type="text"]:focus {
         border: none;
         border-radius: 5px;
         box-shadow: none;
     }
-    
-    
+
     .filter-span {
         color: inherit;
         margin-left: 5px;
         margin-right: 10px;
     }
-        
 
     .select-type {
-    
         height: 25px;
-        
+
         text-align: center;
         color: inherit;
         font-size: 1rem;
@@ -108,31 +108,27 @@
         input {
             margin: 10px;
         }
-        
     }
 
     .fav-type {
         background-color: base.$whiteish;
-        
+
         width: fit-content;
         padding-left: 5px;
-        
+
         text-align: center;
         color: base.$blackish;
-        
     }
 }
-
-
-
 
 // ----- Table general style ------------------------------
 
 .itemtable {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     border-collapse: collapse;
     width: 100%;
     font-size: 1.6rem;
+    scroll-behavior: smooth;
     
     td, th {
         border:1px solid black;
@@ -140,29 +136,31 @@
         padding: 2px 0px 2px 7px;
     }
 
-    td{
+    td {
         font-family: base.$font-p;
+        cursor: pointer;
     }
-    
+
+    tbody tr:hover {
+        transform: scale(1, 1.03);
+        box-shadow: 0px 3px 3px black;
+    }
+
     th {
         top: 30px;
         position: sticky;
         background: base.$whiteish;
         color: black;
         font-family: base.$font-titelnormal;
+        z-index: 10;
+        cursor: pointer;
     }
-    
+
     tr:nth-child(even) {
         background-color: base.$table-line2;
     }
 
-    
-        
-    
-
-
-
-// ----- columns in table ---------------------------------
+    // ----- columns in table ---------------------------------
 
     // Favorite column
     .item-table-title-favo,
@@ -172,7 +170,6 @@
         padding: 0;
 
         text-align: center;
-
     }
 
     // Number column
@@ -182,8 +179,7 @@
 
         padding: 0;
 
-        text-align: center;    
-
+        text-align: center;
     }
 
     // Type column
@@ -193,9 +189,9 @@
 
         padding: 0;
 
-        text-align: center; 
-
-    }.item-table-info-type {
+        text-align: center;
+    }
+    .item-table-info-type {
         padding-left: 5px;
     }
 
@@ -207,12 +203,12 @@
         padding: 0;
 
         text-align: center;
-
-    }.item-table-info-name {
+    }
+    .item-table-info-name {
         padding-left: 10px;
         padding-right: 2px;
 
-        text-align: left;
+        text-align: center;
     }
 
     // temperature column
@@ -225,9 +221,9 @@
         min-width: 160px;
 
         text-align: center;
-
-    }.item-table-info-temp {
-        text-align: left;
+    }
+    .item-table-info-temp {
+        text-align: center;
 
         padding-left: 15px;
     }
@@ -240,9 +236,9 @@
         padding: 0;
 
         text-align: center;
-
-    }.item-table-info-grav {
-        text-align: left;
+    }
+    .item-table-info-grav {
+        text-align: center;
 
         padding-left: 10px;
         padding-right: 10px;
@@ -258,13 +254,11 @@
         min-width: 160px;
 
         text-align: center;
-
-    }.item-table-info-disc {
-        text-align: left;
+    }
+    .item-table-info-disc {
+        text-align: center;
 
         padding-left: 15px;
         padding-right: 10px;
     }
-
 }
-

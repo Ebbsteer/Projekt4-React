@@ -3,10 +3,10 @@
 #foot {
     justify-content: center;
     align-items: center;
-    
+
     color: base.$whiteish;
     text-align: center;
-   
+
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: auto;
@@ -16,19 +16,17 @@
 
     background-color: base.$blackish;
 
-    .navLink{
+    .navLink {
         transition: 0.3s ease;
     }
-  
-    .navLink:hover{
-    color: base.$purplish !important;
-    transition: 0.3s ease;
-    }
 
+    .navLink:hover {
+        color: base.$purplish !important;
+        transition: 0.3s ease;
+    }
 
     p {
         font-size: large;
-
     }
 
     .footer-CO-name {
@@ -36,7 +34,7 @@
         font-size: 2.5rem;
         font-family: base.$font-h;
 
-        .hubStyle{
+        .hubStyle {
             color: rgb(0, 0, 0);
             background-color: orange;
             border-radius: 1rem;
@@ -53,8 +51,6 @@
         justify-content: center;
         align-items: center;
 
-        
-        
         text-align: center;
 
         font-family: base.$font-h;
@@ -73,28 +69,25 @@
             
             .contentPlanets_footer{
                 background-color: base.$blackish;
-                
+
                 position: fixed;
                 bottom: 10px;
                 margin: 0px 0px 0px 120px;
                 display: none;
                 z-index: 1;
                 overflow: auto;
-             
+
                 min-width: 160px;
                 max-height: 200px;
-             
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
                 border-radius: 6px;
-             
+
                 a {
-                   display: block;
+                    display: block;
                 }
-              
             }
         }
     }
 }
-
-
