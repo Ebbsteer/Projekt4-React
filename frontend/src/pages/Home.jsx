@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import nebulae from "../assets/img/nebulae.jpeg";
 import { NavLink } from 'react-router-dom';
-import { SolarSystem } from "../components";
+import { Earth3d, Mars3d } from "../components";
+
 
 const images = [
   '/src/assets/img/mercurymock.png',
@@ -142,7 +143,9 @@ const Home = () => {
         <div className="left">
 
 
-        <SolarSystem />
+
+    <Earth3d />
+        
        
         </div>
 
