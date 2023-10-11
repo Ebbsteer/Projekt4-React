@@ -11,7 +11,6 @@ import {
     Planet,
     Items,
     Login,
-    Exempel,
     Profil,
 } from "../../pages";
 import { Navbar, Footer } from "../../components";
@@ -37,7 +36,6 @@ const CreateRoutes = () => {
                         <Route path="/planet/:id" element={<Planet />} />
                         <Route path="/items/:id?" element={<Items />} />
                         <Route path="/login" element={<Login />} />
-                        <Route path="/exempel" element={<Exempel />} />
                         <Route path="/profil" element={<Profil />} />
                     </Route>
                 </Routes>
