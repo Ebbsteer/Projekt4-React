@@ -122,7 +122,7 @@ const Navbar = () => {
                             <FontAwesomeIcon icon={faUserAstronaut} />
                         </NavLink>
 
-                        <button onClick={handleLogOut}>Hej</button>
+                        <button onClick={handleLogOut}>Logout</button>
                     </div>
                 </div>
             </div>
