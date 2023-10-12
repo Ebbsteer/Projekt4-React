@@ -7,6 +7,10 @@ function Drop() {
     document.getElementById("droppa").classList.toggle("toggla");
 }
 
+function refreshPage(){
+    window.location.href = "/items/fav";
+}
+
 const Navbar = () => {
     function handleLogOut() {
         fetch("http://localhost:3000/logout", {
@@ -114,7 +118,7 @@ const Navbar = () => {
                     </div>
 
                     <div id="navright">
-                        <NavLink to="/items/fav" className="navLink">
+                        <NavLink className="navLink" onClick={refreshPage}>
                             &#9733;
                         </NavLink>
 
