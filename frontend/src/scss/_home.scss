@@ -28,8 +28,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    padding: 80px;
     width: 100%;
+    padding-top: 4vh;
     height: fit-content;
     min-height: 100vh;
 
@@ -159,6 +159,8 @@
       .Homebox {
         display: flex;
         flex-wrap: wrap;
+        margin: none;
+        padding: none;
 
         .left {
           margin-top: 25px;
@@ -176,6 +178,12 @@
         }
 
         .right {
+          width: 80vw ;
+          margin-right: 10vw;
+          margin-left: 10vw;
+          text-align: center;
+        }
+        .textbox{
           width: 100%;
         }
       }
