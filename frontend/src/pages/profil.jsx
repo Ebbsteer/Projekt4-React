@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import profil from "../assets/img/profilwallpaper.gif";
 
 const Profil = () => {
-    // Initialize state variables with default values or retrieve from localStorage
     const [firstName, setFirstName] = useState(
         localStorage.getItem("firstName") || "Your First Name"
     );
@@ -19,8 +18,8 @@ const Profil = () => {
         localStorage.getItem("securityQuestion") || "Your Security Question"
     );
 
-    // State variable to manage edit mode
     const [isEditing, setIsEditing] = useState(false);
+    const [profileImage, setProfileImage] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:3000/user", {
@@ -34,12 +33,13 @@ const Profil = () => {
                 }
             })
             .then((userData) => {
-                // Update state with the user data from the server
                 setFirstName(userData.firstName);
                 setLastName(userData.lastName);
                 setUserName(userData.userName);
                 setPassword(userData.password);
                 setSecurityQuestion(userData.securityQuestion);
+                // Retrieve profile image URL here if available
+                // setProfileImage(userData.profileImage);
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
@@ -47,16 +47,43 @@ const Profil = () => {
     }, []);
 
     const handleSave = () => {
-        // Save the edited data to your storage or server
-        // For now, we'll just simulate saving by updating localStorage
-        localStorage.setItem("firstName", firstName);
-        localStorage.setItem("lastName", lastName);
-        localStorage.setItem("username", userName);
-        localStorage.setItem("password", password);
-        localStorage.setItem("securityQuestion", securityQuestion);
+        // Save user data to your server
+        fetch("http://localhost:3000/save-user", {
+            method: "POST",
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                userName,
+                password,
+                securityQuestion,
+                profileImage, // Include profile image data in the request
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Failed to save user data");
+                }
+            })
+            .then((data) => {
+                console.log("User data saved:", data);
+                // Update profileImage with the URL of the uploaded image
+                setProfileImage(profileImage);
+            })
+            .catch((error) => {
+                console.error("Error saving user data:", error);
+            });
 
-        // Exit edit mode
         setIsEditing(false);
+    };
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setProfileImage(URL.createObjectURL(selectedImage));
     };
 
     return (
@@ -67,7 +94,22 @@ const Profil = () => {
                     <div className="info">
                         <span>Profile Info</span>
                         {isEditing ? (
-                            <button onClick={handleSave}>Save</button>
+                            <div>
+                                {profileImage && (
+                                    <div className="profile-image">
+                                        <img src={profileImage} alt="Profile Image" />
+                                    </div>
+                                )}
+                                <div className="upload-button">
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                    />
+                                    <button>Upload Image</button>
+                                </div>
+                                <button onClick={handleSave}>Save</button>
+                            </div>
                         ) : (
                             <button onClick={() => setIsEditing(true)}>Edit</button>
                         )}
