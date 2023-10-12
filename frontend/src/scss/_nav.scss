@@ -113,12 +113,10 @@
     z-index: 1;
     overflow: auto;
 
-    margin-left: -40px;
-
     min-width: 160px;
     max-height: 200px;
 
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(71, 71, 71, 0.632);
 
     text-align: center;
 
@@ -131,6 +129,20 @@
 
 .togglaPlanets {
     display: block !important;
+}
+
+.signOutBtn{
+    background: none;
+    border: none;
+    color: base.$whiteish;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.signOutBtn:hover{
+    color: base.$purplish !important;
 }
 
 @media only screen and (max-width: 700px) {

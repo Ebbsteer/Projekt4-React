@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 function Drop() {
@@ -126,7 +127,7 @@ const Navbar = () => {
                             <FontAwesomeIcon icon={faUserAstronaut} />
                         </NavLink>
 
-                        <button onClick={handleLogOut}>Logout</button>
+                        <button onClick={handleLogOut} className="signOutBtn"><FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon></button>
                     </div>
                 </div>
             </div>
