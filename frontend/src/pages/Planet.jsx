@@ -155,9 +155,7 @@ const Planet = () => {
       <div
         id="planet"
         style={{
-          backgroundImage: `url(${planetBackground})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundImage: `url(${planetBackground})`
         }}
       >
         <div className="planet-container">
@@ -165,11 +163,7 @@ const Planet = () => {
             <div
               className="title-img"
               style={{
-                backgroundImage: `url(${planetimg})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "30vw",
-                width: "30vw",
-                height: "30vw",
+                backgroundImage: `url(${planetimg})`
               }}
             >
               <h1>{bodies.name}</h1>

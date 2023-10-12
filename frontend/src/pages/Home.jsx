@@ -71,31 +71,21 @@ const Slideshow = ({ images }) => {
             }, 1000);
         }, 29000);
 
-        return () => {
-            clearInterval(timer);
-        };
-    }, [images]);
-
-    return (
-        <div className="slideshow">
-            <p className="slideshowInfo title">{planetNames[currentIndex]}</p>
-            <img
-                src={images[currentIndex]}
-                alt={`Slide ${currentIndex + 1}`}
-                className="slideshowbild"
-                id="slideshowBIld"
-            />
-            <p className="slideshowInfo text">
-                {planetNames[currentIndex] +
-                    " is the " +
-                    planetInfo[currentIndex] +
-                    " in our solar system"}
-            </p>
-            <NavLink to={planetDirect[currentIndex]} className="learn-button">
-                Learn more
-            </NavLink>
-        </div>
-    );
+    return () => {
+      clearInterval(timer);
+    };
+  }, [images]);
+  
+  return (
+    <div className="slideshow">
+      <p className="slideshowInfo title">{planetNames[currentIndex]}</p>
+      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld"/>
+      <p className="slideshowInfo text">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
+      <button className="learn-button">
+        <NavLink to={planetDirect[currentIndex]}><span>Learn more</span></NavLink>
+      </button>
+    </div>
+  );
 };
 
 const Home = () => {

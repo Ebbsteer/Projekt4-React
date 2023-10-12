@@ -11,7 +11,7 @@ $white: #fff;
 $blackish: #0a0514;
 $whiteish: #fff2ef;
 $yellowish: rgb(255, 227, 68);
-$purplish: #ffcac1;
+$purplish: #ad776d;
 
 $color-font-w: #fff2ef;
 $color-font-b: #0a0514;
@@ -46,9 +46,9 @@ $small-padding: 5px;
     background-color: #bd887f;
 
     border: 2px solid $box-border-color;
-    border-radius: 1rem;
+    border-radius: 16px;
 
-    padding: 0.6rem 1.5rem 0.7rem;
+    padding: 1vh 1vw;
     margin: 0px;
 
     cursor: pointer;
@@ -62,11 +62,20 @@ $small-padding: 5px;
     background-color: #bd887f;
 
     border: 2px solid $box-border-color;
-    border-radius: 1rem;
+    border-radius: 16px;
 
-    padding: 0.6rem 1.5rem 0.7rem;
+    padding: 1vh 1vw;
     margin: 0px;
 
     cursor: pointer;
 }
 
+@mixin Boxes {
+    background-color: $box-color;
+
+    color: $whiteish;
+
+    border: 10px solid $box-border-color;
+    border-radius: 25px;
+
+}

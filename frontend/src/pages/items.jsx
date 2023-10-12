@@ -62,7 +62,9 @@ const Items = () => {
 
         console.log(id);
 
-        if (id === "fav") setShowFavorites(!showFavorites);
+        if (id === "fav"){
+            setShowFavorites(true);
+        } 
     }, []);
 
     const sortlistName = () => {

@@ -149,7 +149,9 @@ const Login = () => {
                             value={securityAnswer}
                             onChange={(e) => setSecurityAnswer(e.target.value)}
                         />
-                        <button type="button" onClick={handleResetPassword}>
+                        <button 
+                            className="reset-password"
+                            type="button" onClick={handleResetPassword}>
                             Reset Password
                         </button>
                     </form>
@@ -157,6 +159,7 @@ const Login = () => {
                     // Display login/registration form when resettingPassword is false
                     <form className="login-form">
                         <input
+                            className="input-text"
                             type="text"
                             placeholder="Username"
                             value={username}

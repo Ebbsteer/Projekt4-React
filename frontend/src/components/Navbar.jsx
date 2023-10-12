@@ -1,10 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 function Drop() {
     document.getElementById("droppa").classList.toggle("toggla");
+}
+
+function refreshPage(){
+    window.location.href = "/items/fav";
 }
 
 const Navbar = () => {
@@ -114,7 +119,7 @@ const Navbar = () => {
                     </div>
 
                     <div id="navright">
-                        <NavLink to="/items/fav" className="navLink">
+                        <NavLink className="navLink" onClick={refreshPage}>
                             &#9733;
                         </NavLink>
 
@@ -122,7 +127,7 @@ const Navbar = () => {
                             <FontAwesomeIcon icon={faUserAstronaut} />
                         </NavLink>
 
-                        <button onClick={handleLogOut}>Logout</button>
+                        <button onClick={handleLogOut} className="signOutBtn"><FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon></button>
                     </div>
                 </div>
             </div>

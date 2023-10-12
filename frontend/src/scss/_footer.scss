@@ -32,7 +32,7 @@
     .footer-CO-name {
         display: block;
         font-size: 2.5rem;
-        font-family: "Bungee Inline", cursive;
+        font-family: base.$font-h;
 
         .hubStyle {
             color: rgb(0, 0, 0);
@@ -53,21 +53,21 @@
 
         text-align: center;
 
-        font-family: "Bungee Inline", cursive;
+        font-family: base.$font-h;
         font-size: 1.2rem;
 
         .footer-home {
-            margin: 0px 0.6rem;
+            margin: 1rem 0.6rem;
         }
 
         .footer-items {
-            margin: 0px 0.6rem;
+            margin: 1rem 0.6rem;
         }
 
         .footer-planets {
-            margin: 0px 0.6rem;
-
-            .contentPlanets_footer {
+            margin: 1rem 0.6rem;
+            
+            .contentPlanets_footer{
                 background-color: base.$blackish;
 
                 position: fixed;
