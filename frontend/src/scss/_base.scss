@@ -4,38 +4,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
 // @mixin (mixin-name) {statements}
 //  {@include base.@(mixin-name)}
+//----- Colors -----\\
+    // Basic colors
+    $red: #ff0000; // red?
+    $black: #000; // defult black
+    $white: #fff; // defult white
+    $blackish: #0a0514; // our black
+    $whiteish: #fff2ef; // our white
+    $yellowish: rgb(255, 227, 68); // favorites
+    $pinkish: #ad776d;
 
-$red: #ff0000; // red?
-$black: #000; // defult black
-$white: #fff; // defult white
-$blackish: #0a0514; // our black
-$whiteish: #fff2ef; // our white
-$yellowish: rgb(255, 227, 68); // favorites
-$pinkish: #ad776d;
+    // Hover on link
+    $link-hover: #ad776d;
 
-$link-hover: #ad776d;
+    // Scroll colors
+    $scroll-bg: #5e5e5e;
+    $scroll-color: #ad776d;
+    $scroll-hover: #d8604d;
 
-$scroll-bg: #5e5e5e;
-$scroll-color: #ad776d;
-$scroll-hover: #d8604d;
+    // Font colors
+    $color-font-w: #fff2ef;
+    $color-font-b: #0a0514;
 
-$color-font-w: #fff2ef;
-$color-font-b: #0a0514;
+    // box Colors
+    $box-color: #bd887fa2;
+    $box-border-color: #f5dfdbcd;
 
-$font-p: "Times New Roman", Times, serif;
-$font-p1: "Playfair Display", serif;
-$font-h: "Rubik Dirt";
-$font-titelnormal: "Arial";
-$font-h1: "Dela Gothic One", cursive;
+    // table Colors
+    $table-line1: #cea49d77;
+    $table-line2: #cea49d77;
 
-$box-color: #bd887fa2;
-$box-border-color: #f5dfdbcd;
 
-$table-line1: #cea49d77;
-$table-line2: #cea49d77;
 
+//----- fonts -----\\
+    $font-p: "Times New Roman", Times, serif;
+    $font-p1: "Playfair Display", serif;
+    $font-h: "Rubik Dirt";
+    $font-titelnormal: "Arial";
+    $font-h1: "Dela Gothic One", cursive;
+
+
+// Button shadow
 $button-shadow: 0px 1px 10px 0px black;
 
+// Small padding
 $small-padding: 5px;
 
 @mixin custom-box-shadow {
