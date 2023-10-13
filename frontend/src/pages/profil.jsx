@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import profil from "../assets/img/profilwallpaper.gif";
+import profil from "../assets/img/nebulae1.png";
 
 const Profil = () => {
     const [firstName, setFirstName] = useState(
