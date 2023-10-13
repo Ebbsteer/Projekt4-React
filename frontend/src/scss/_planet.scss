@@ -41,6 +41,8 @@
         width: 100%;
         font-size: 1.7rem;
         text-align: center;
+
+        padding: 5px 5px 5px 5px;
     }
 
     td,
@@ -99,47 +101,97 @@
 }
 
 #mercury{
-  background-color: rgba(73, 73, 73, 0.76);
+    background-color: base.$table-mercury-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-mercury-line2;
+    }
+    // base.$planet-mercury-text-bd
 }
 
 #venus{
-  background-color: #ffca4e98;
+    background-color: base.$table-venus-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-venus-line2;
+    }
+    // base.$planet-venus-text-bd
 }
 
 #earth{
-  background-color: rgba(77, 77, 255, 0.658);
+    background-color: base.$table-earth-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-earth-line2;
+    }
+    // base.$planet-earth-text-bd
 }
 
 #mars{
-  background-color: rgba(255, 108, 55, 0.537);
+    background-color: base.$table-mars-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-mars-line2;
+    }
+    // 
+    // 
+    // base.$planet-mars-text-bd
 }
 
 #jupiter{
-  background-color: rgba(166, 108, 0, 0.555);
+    background-color: base.$table-jupiter-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-jupiter-line2;
+    }
+    // 
+    // 
+    // base.$planet-jupiter-text-bd
 }
 
 #saturn{
-  background-color: rgba(255, 200, 255, 0.557);
+    background-color: base.$table-saturn-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-saturn-line2;
+    }
+    // 
+    // 
+    // base.$planet-saturn-text-bd
 }
 
 #uranus{
-  background-color: rgba(0, 73, 73, 0.525);
+    background-color: base.$table-uranus-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-uranus-line2;
+    }
+    // 
+    // 
+    // base.$planet-uranus-text-bd
 }
 
 #neptune{
-  background-color: rgba(0, 0, 104, 0.543);
+    background-color: base.$table-neptune-line1;
+    
+    tr:nth-child(even) {
+        background-color: base.$table-neptune-line2;
+    }
+    // 
+    // 
+    // base.$planet-neptune-text-bd
 }
 
 .moon-container {
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  max-height: 80vh;
-  cursor: pointer;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: 80vh;
+    cursor: pointer;
 
-  tr:hover{
-    transform: scale(1, 1.03);
-    box-shadow: 0px 3px 3px black;
-  }
+    tr:hover{
+        transform: scale(1, 1.03);
+        box-shadow: 0px 3px 3px black;
+    }
 }
 
 .details {
