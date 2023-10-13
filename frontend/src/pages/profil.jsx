@@ -111,7 +111,10 @@ const Profil = () => {
                                 <button onClick={handleSave}>Save</button>
                             </div>
                         ) : (
+                            <>
+                            <img src={profileImage} className="profile-image"></img>
                             <button onClick={() => setIsEditing(true)}>Edit</button>
+                            </>
                         )}
                     </div>
                     <div className="forms">

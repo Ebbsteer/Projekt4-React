@@ -38,9 +38,7 @@ const Navbar = () => {
 
         const toggleDrop = () => {
             setIsOpen(!isOpen);
-            document
-                .getElementById("myPlanets")
-                .classList.toggle("togglaPlanets");
+            document.getElementById("myPlanets").classList.toggle("togglaPlanets");
         };
 
         const handleOutsideClick = (event) => {
