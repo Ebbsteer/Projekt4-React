@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useThree, Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { PerspectiveCamera } from "three";
+import {  Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { OrbitControls, Line, Html } from "@react-three/drei";
-import { BufferGeometry, BufferAttribute } from "three";
+import { BufferGeometry, BufferAttribute, MOUSE  } from "three";
+import { useThree } from "@react-three/fiber";
+
+
 
 const planetsData = [
   {
@@ -96,6 +98,7 @@ const createOrbitLine = (radius) => {
 };
 
 const SolarSystem = () => {
+   
   // Define a component for individual planets.
   const Planet = ({ name, texture, position, tiltAngle, scale }) => {
     const [showTooltip, setShowTooltip] = useState(false);
@@ -105,32 +108,27 @@ const SolarSystem = () => {
     const [active, setActive] = useState(false); // State to track if the planet is active (hovered).
 
     const [lastPosition, setLastPosition] = useState(position); // Store the last position
-    const { camera } = useThree(); // Access the camera from the three.js context.
-
-    // Set the initial camera position and rotation
-    // camera.position.set(0, 30, 20); // Adjust the values as needed
-    // camera.lookAt(0, 0, 0); // Look at the center of the solar system
+  
+ const { camera } = useThree(); // Access the camera from the three.js context.
+    camera.position.set(0, 30, 20); // Adjust the values as needed
+    camera.lookAt(0, 0, 0); // Look at the center of the solar system
 
     useEffect(() => {
-      if (active) {
-        camera.position.set(0, 30, 20); // Adjust the values as needed
-        camera.lookAt(0, 0, 0); // Look at the center of the solar system
-      }
-
+        
       if (!active) {
         const orbitRadius = position[0]; // Distance from the sun
         const orbitSpeed = 0.005; // Adjust the speed as needed
         let angle = 0;
 
         const updatePosition = () => {
-          const x = orbitRadius * Math.cos(angle);
-          const z = orbitRadius * Math.sin(angle);
-          meshRef.current.position.set(x, 0, z);
-          angle += orbitSpeed;
-        };
+            const x = orbitRadius * Math.cos(angle);
+            const z = orbitRadius * Math.sin(angle);
+            meshRef.current.position.set(x, 0, z);
+            angle += orbitSpeed;
+          };
         const stopAnimation = () => {
           cancelAnimationFrame(animationFrameId);
-          setLastPosition(meshRef.current.position.clone()); // Store the last position
+          //setLastPosition(meshRef.current.position.clone()); // Store the last position
         };
         // Create an animation loop to update the planet's position in its orbit.
         let animationFrameId;
@@ -139,17 +137,19 @@ const SolarSystem = () => {
           if (hoveredPlanet !== name) {
             updatePosition();
           }
-
+          else{
+            setLastPosition(meshRef.current.position)
+          }
           if (meshRef.current.position.distanceTo(lastPosition) <= 0.001) {
             stopAnimation();
           } else {
             animationFrameId = requestAnimationFrame(animate);
           }
         };
-
+  
         // Start animation loop
         animationFrameId = requestAnimationFrame(animate);
-
+  
         // Clean up the animation frame when the component unmounts.
         return () => cancelAnimationFrame(animationFrameId);
       }
@@ -162,24 +162,26 @@ const SolarSystem = () => {
         meshRef.current.rotation.x = tiltAngle;
       }
     });
-
+    //let angle = 0;
     const handlePlanetPointerOver = () => {
-      setHoveredPlanet(name);
-      setShowTooltip(true);
-      setActive(true); // Activate the planet
-    };
-
-    // When you hover out of a planet
-    const handlePlanetPointerOut = () => {
-      setHoveredPlanet(null);
-      setShowTooltip(false);
-      setActive(false); // Deactivate the planet
-    };
+        setHoveredPlanet(name);
+        setShowTooltip(true);
+        setActive(true); // Activate the planet
+       
+      };
+  
+      // When you hover out of a planet
+      const handlePlanetPointerOut = () => {
+        setHoveredPlanet(null);
+        setShowTooltip(false);
+        setActive(false); // Deactivate the planet
+       //angle = Math.atan2(meshRef.current.position.z, meshRef.current.position.x);
+      };
 
     return (
       <mesh
         ref={meshRef}
-        onPointerOver={handlePlanetPointerOver}
+       onPointerOver={handlePlanetPointerOver}
         onPointerOut={handlePlanetPointerOut}
         position={position}
         scale={scale}
@@ -210,14 +212,12 @@ const SolarSystem = () => {
 
   return (
     <Canvas>
-      <ambientLight /> {/* Add ambient light to the scene. */}
-      <pointLight position={[10, 10, 10]} />{" "}
-      {/* Add a point light to the scene. */}
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
       {planetsData.map((planet, index) => (
         <React.Fragment key={index}>
-          <Planet {...planet} /> {/* Render each planet based on the data. */}
-          {createOrbitLine(planet.position[0])}{" "}
-          {/* Create and render orbit lines. */}
+          <Planet {...planet} />
+          {createOrbitLine(planet.position[0])}
         </React.Fragment>
       ))}
       <OrbitControls
@@ -225,8 +225,12 @@ const SolarSystem = () => {
         enableZoom={false}
         enablePan={isControlsEnabled}
         enableRotate={isControlsEnabled}
-      />{" "}
-      {/* Add orbit controls for camera interaction. */}
+        mouseButtons={{
+            LEFT: MOUSE.ROTATE,
+            MIDDLE: MOUSE.DOLLY,
+            RIGHT: MOUSE.ZOOM,  // Change RIGHT to DOLLY
+          }}
+      />
     </Canvas>
   );
 };
