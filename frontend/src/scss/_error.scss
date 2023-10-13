@@ -4,7 +4,7 @@
     position: relative;
     width: 100dvw;
     height: fit-content;
-    min-height: calc(100dvh - 250px);
+    min-height: 100dvh;
     overflow: hidden;
     
     display: flex;
@@ -14,7 +14,7 @@
     align-items: center;
 
     .nebulae {
-        background-image: url("../src/assets/img/nebulae.jpeg");
+        background-image: url("../src/assets/img/nebulae1.png");
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
@@ -31,8 +31,8 @@
         height: 600px;
         width: 600px;
     
-        background-color: rgba(0, 0, 0, 0.8);
-        box-shadow: 0px 0px 15px black;
+        background-color: rgba(0, 0, 0, 0.6);
+        box-shadow: 0px 0px 15px base.$blackish;
         border-radius: 5000px;
 
         display: flex;
@@ -62,18 +62,13 @@
                 margin: auto;
                 padding: 1dvh 1dvw;
 
-                font-family: 'Bungee Inline';
+                font-family: base.$font-h;
                 font-size: 1.8rem;
-                color: base.$whiteish;
 
                 line-height: 2.5rem;
 
-                background-color: rgba(0, 0, 0, 0.6);
-                box-shadow: 0px 0px 5px base.$whiteish;
-                border-radius: 10px;
-                border: 1px solid base.$whiteish;
-
-        }
+                @include base.Boxes
+            }
         }
     }
 }

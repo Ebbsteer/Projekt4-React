@@ -4,32 +4,93 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
 // @mixin (mixin-name) {statements}
 //  {@include base.@(mixin-name)}
+//----- Colors -----\\
+    // Basic colors
+    $red: #ff0000; // red?
+    $black: #000; // defult black
+    $white: #fff; // defult white
+    $blackish: #0a0514; // our black
+    $whiteish: #fff2ef; // our white
+    $yellowish: rgb(255, 227, 68); // favorites
+    $pinkish: #ad776d;
 
-$red: #ff0000;
-$black: #000;
-$white: #fff;
-$blackish: #0a0514;
-$whiteish: #fff2ef;
-$yellowish: rgb(255, 227, 68);
-$purplish: #ad776d;
+    // Hover on link
+    $link-hover: #ad776d;
 
-$color-font-w: #fff2ef;
-$color-font-b: #0a0514;
+    // Scroll colors
+    $scroll-bg: #5e5e5e;
+    $scroll-color: #ad776d;
+    $scroll-hover: #d8604d;
 
-$font-p: "Times New Roman", Times, serif;
-$font-p1: "Playfair Display", serif;
-$font-h: "Rubik Dirt";
-$font-titelnormal: "Arial";
-$font-h1: "Dela Gothic One", cursive;
+    // Font colors
+    $color-font-w: #fff2ef;
+    $color-font-b: #0a0514;
 
-$box-color: #bd887fa2;
-$box-border-color: #f5dfdbcd;
+    // box Colors
+    $box-color: #bd887fa2;
+    $box-border-color: #f5dfdbcd;
 
-$table-line1: #cea49d77;
-$table-line2: #cea49d77;
+//----- Table Colors -----\\
+    // original
+    $table-line1: #cea49d77;
+    $table-line2: #cea49d77;
+    $planet-text-bd: rgba(173, 172, 172, 0.67);
 
+    //- Planets individual - colors -\\
+        // mercury
+        // $table-mercury-line1:;
+        // $table-mercury-line1:;
+        // $planet-mercury-text-bd:;
+
+        // venus
+        // $table-venus-line1:;
+        // $table-venus-line1:;
+        // $planet-venus-text-bd:;
+
+        // // earth
+        // $table-earth-line1:;
+        // $table-earth-line1:;
+        // $planet-earth-text-bd:;
+
+        // // mars
+        // $table-mars-line1:;
+        // $table-mars-line1:;
+        // $planet-mars-text-bd:;
+
+        // // jupiter
+        // $table-jupiter-line1:;
+        // $table-jupiter-line1:;
+        // $planet-jupiter-text-bd:;
+
+        // // saturn
+        // $table-saturn-line1:;
+        // $table-saturn-line1:;
+        // $planet-saturn-text-bd:;
+
+        // // uranus
+        // $table-uranus-line1:;
+        // $table-uranus-line1:;
+        // $planet-uranus-text-bd:;
+
+        // // neptune
+        // $table-neptune-line1:;
+        // $table-neptune-line1:;
+        // $planet-neptune-text-bd:;
+
+
+
+//----- fonts -----\\
+    $font-p: "Times New Roman", Times, serif;
+    $font-p1: "Playfair Display", serif;
+    $font-h: "Rubik Dirt";
+    $font-titelnormal: "Arial";
+    $font-h1: "Dela Gothic One", cursive;
+
+
+// Button shadow
 $button-shadow: 0px 1px 10px 0px black;
 
+// Small padding
 $small-padding: 5px;
 
 @mixin custom-box-shadow {
