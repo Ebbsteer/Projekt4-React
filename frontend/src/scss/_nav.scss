@@ -8,18 +8,18 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #5e5e5e; // FIXA
+    background: base.$scroll-bg;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: base.$pinkish;
+    background: base.$scroll-color;
     border-radius: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: base.$link-hover; // FIXA
+    background: base.$scroll-hover; // FIXA
 }
 
 #nav {
