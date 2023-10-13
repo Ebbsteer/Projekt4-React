@@ -21,8 +21,6 @@
 
     overflow: auto;
     scroll-behavior: smooth;
-
-    border-radius: 10px;
 }
 
 #favoriteButton {
@@ -74,6 +72,8 @@
     font-weight: bold;
     color: base.$color-font-b;
 
+    cursor: pointer;
+
     .search {
         background-color: base.$color-font-w;
         position: sticky;
@@ -107,6 +107,8 @@
         font-size: 1rem;
         font-family: inherit;
 
+        cursor: pointer;
+
         input {
             margin: 10px;
         }
@@ -120,6 +122,13 @@
 
         text-align: center;
         color: base.$blackish;
+        cursor: pointer;
+
+        user-select: none;
+
+        input{
+            cursor: pointer;
+        }
     }
 }
 
