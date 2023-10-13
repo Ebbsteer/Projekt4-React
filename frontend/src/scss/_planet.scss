@@ -35,7 +35,6 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     color: white;
-    background-color: rgba(73, 73, 73, 0.76);
 
     table {
         border-collapse: collapse;
@@ -46,7 +45,8 @@
 
     td,
     th {
-        border: 1px solid black;
+        border: none;
+        height: 3rem;
     }
 
     th {
@@ -96,6 +96,38 @@
             padding-left: 5px;
         }
     }
+}
+
+.mercury{
+  background-color: rgba(73, 73, 73, 0.76);
+}
+
+.venus{
+  background-color: rgba(255, 255, 109, 0.568);
+}
+
+.earth{
+  background-color: rgba(38, 38, 255, 0.473);
+}
+
+.mars{
+  background-color: rgba(255, 108, 55, 0.537);
+}
+
+.jupiter{
+  background-color: rgba(255, 166, 0, 0.555);
+}
+
+.saturn{
+  background-color: rgba(255, 123, 255, 0.557);
+}
+
+.uranus{
+  background-color: rgba(0, 186, 186, 0.525);
+}
+
+.neptune{
+  background-color: rgba(0, 0, 104, 0.543);
 }
 
 .moon-container {
