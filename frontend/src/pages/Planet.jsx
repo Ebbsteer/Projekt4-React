@@ -173,12 +173,12 @@ const Planet = () => {
             <div></div>
 
             <br />
-            <div className="planet-info">
+            <div className="planet-info" id={id}>
               <p>{bodies.description}</p>
             </div>
 
             <div className="table-container">
-              <table className={id}>
+              <table id={id}>
                 {" "}
                 <thead>
                   <tr>
@@ -217,7 +217,7 @@ const Planet = () => {
               style={{ marginTop: "5%", marginBottom: "-5%" }}
             />
             <div className="table-container moon-container">
-              <table className={id}>
+              <table id={id}>
                 <thead>
                   <tr>
                     <th className="planet-table-title-moon">Moons <FontAwesomeIcon icon={faMoon}/></th>
