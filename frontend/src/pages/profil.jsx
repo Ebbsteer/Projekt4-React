@@ -2,21 +2,10 @@ import React, { useState, useEffect } from "react";
 import profil from "../assets/img/nebulae1.png";
 
 const Profil = () => {
-    const [firstName, setFirstName] = useState(
-        localStorage.getItem("firstName") || "Your First Name"
-    );
-    const [lastName, setLastName] = useState(
-        localStorage.getItem("lastName") || "Your Last Name"
-    );
-    const [userName, setUserName] = useState(
-        localStorage.getItem("username") || "Your Username"
-    );
-    const [password, setPassword] = useState(
-        localStorage.getItem("password") || "Your Password"
-    );
-    const [securityQuestion, setSecurityQuestion] = useState(
-        localStorage.getItem("securityQuestion") || "Your Security Question"
-    );
+    const [userID, setUserID] = useState("User ID");
+    const [userUsername, setUserUsername] = useState("Username");
+    const [userQuestion, setUserQuestion] = useState("Question");
+    const [userImage, setUserImage] = useState("User image");
 
     const [isEditing, setIsEditing] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
@@ -33,11 +22,10 @@ const Profil = () => {
                 }
             })
             .then((userData) => {
-                setFirstName(userData.firstName);
-                setLastName(userData.lastName);
-                setUserName(userData.userName);
-                setPassword(userData.password);
-                setSecurityQuestion(userData.securityQuestion);
+                setUserID(userData.id);
+                setUserUsername(userData.username);
+                setUserQuestion(userData.question);
+                setUserImage(userData.image);
                 // Retrieve profile image URL here if available
                 // setProfileImage(userData.profileImage);
             })
@@ -48,19 +36,16 @@ const Profil = () => {
 
     const handleSave = () => {
         // Save user data to your server
-        fetch("http://localhost:3000/save-user", {
+        fetch("http://localhost:3000/user/update", {
             method: "POST",
-            body: JSON.stringify({
-                firstName,
-                lastName,
-                userName,
-                password,
-                securityQuestion,
-                profileImage, // Include profile image data in the request
-            }),
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
+            body: JSON.stringify({
+                username: userUsername,
+                image: userImage,
+            }),
         })
             .then((response) => {
                 if (response.ok) {
@@ -88,7 +73,11 @@ const Profil = () => {
 
     return (
         <div id="profil">
-            <img className="profilwallpaper" src={profil} alt="Profile Wallpaper" />
+            <img
+                className="profilwallpaper"
+                src={profil}
+                alt="Profile Wallpaper"
+            />
             <div className="container">
                 <div className="card">
                     <div className="info">
@@ -97,7 +86,10 @@ const Profil = () => {
                             <div>
                                 {profileImage && (
                                     <div className="profile-image">
-                                        <img src={profileImage} alt="Profile Image" />
+                                        <img
+                                            src={profileImage}
+                                            alt="Profile Image"
+                                        />
                                     </div>
                                 )}
                                 <div className="upload-button">
@@ -112,55 +104,48 @@ const Profil = () => {
                             </div>
                         ) : (
                             <>
-                            <img src={profileImage} className="profile-image"></img>
-                            <button onClick={() => setIsEditing(true)}>Edit</button>
+                                <img
+                                    src={profileImage}
+                                    className="profile-image"
+                                ></img>
+                                <button onClick={() => setIsEditing(true)}>
+                                    Edit
+                                </button>
                             </>
                         )}
                     </div>
                     <div className="forms">
                         <div className="inputs">
-                            <span>First Name</span>
-                            <input
-                                type="text"
-                                readOnly={!isEditing}
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                        </div>
-                        <div className="inputs">
-                            <span>Last Name</span>
-                            <input
-                                type="text"
-                                readOnly={!isEditing}
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
+                            <span>ID</span>
+                            <p>{userID}</p>
                         </div>
                         <div className="inputs">
                             <span>Username</span>
                             <input
                                 type="text"
                                 readOnly={!isEditing}
-                                value={userName}
+                                value={userUsername}
                                 onChange={(e) => setUserName(e.target.value)}
                             />
                         </div>
                         <div className="inputs">
-                            <span>Password</span>
-                            <input
-                                type="password"
-                                readOnly={!isEditing}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="inputs">
-                            <span>Security Question</span>
+                            <span>Question</span>
                             <input
                                 type="text"
                                 readOnly={!isEditing}
-                                value={securityQuestion}
-                                onChange={(e) => setSecurityQuestion(e.target.value)}
+                                value={userQuestion}
+                                onChange={(e) =>
+                                    setUserQuestion(e.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="inputs">
+                            <span>Image</span>
+                            <input
+                                type="text"
+                                readOnly={!isEditing}
+                                value={userImage}
+                                onChange={(e) => setUserImage(e.target.value)}
                             />
                         </div>
                     </div>
