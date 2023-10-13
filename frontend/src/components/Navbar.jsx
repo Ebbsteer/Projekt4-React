@@ -70,7 +70,7 @@ const Navbar = () => {
                         Venus
                     </NavLink>
                     <NavLink to="/planet/earth" className="navLink">
-                        Tellus
+                        Earth
                     </NavLink>
                     <NavLink to="/planet/mars" className="navLink">
                         Mars

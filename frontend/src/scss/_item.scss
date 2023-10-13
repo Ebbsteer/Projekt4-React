@@ -7,7 +7,8 @@
     width: 70%;
 
     margin: 0;
-    padding: 5px 5px 0px 5px;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
 
     position: absolute;
     top: 50%;
@@ -20,8 +21,6 @@
 
     overflow: auto;
     scroll-behavior: smooth;
-
-    border-radius: 10px;
 }
 
 #favoriteButton {
@@ -73,6 +72,8 @@
     font-weight: bold;
     color: base.$color-font-b;
 
+    cursor: pointer;
+
     .search {
         background-color: base.$color-font-w;
         position: sticky;
@@ -106,6 +107,8 @@
         font-size: 1rem;
         font-family: inherit;
 
+        cursor: pointer;
+
         input {
             margin: 10px;
         }
@@ -119,6 +122,13 @@
 
         text-align: center;
         color: base.$blackish;
+        cursor: pointer;
+
+        user-select: none;
+
+        input{
+            cursor: pointer;
+        }
     }
 }
 
