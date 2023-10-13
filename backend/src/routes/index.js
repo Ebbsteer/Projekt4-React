@@ -40,10 +40,11 @@ router.use((req, res, next) => {
 
 const authRoute = (req, res, next) => {
     console.log("authRoute");
-    if (!req.cid) return res.send("router");
+    console.log(req.cid)
+    if (!req.cid) return res.status(400).send("Failed");
 
     const user = getSecureUser(req.cid);
-    if (user !== req.user) return res.send("router");
+    if (!user) return res.status(403).send("Failed");
 
     next();
 };
@@ -150,21 +151,18 @@ router.route("/user").get(authRoute, (req, res) => {
 });
 
 router.route("/user/update").post(authRoute, (req, res) => {
-    const { username, password, question, question_answer, image_blob } =
+    const { username, image_blob } =
         req.body;
 
-    if (!username || !password || !question || !question_answer || !image_blob)
+    if (!username || !image_blob)
         return res.status(400).send("Missing parameters");
 
-    const hashedPassword = hashMD5(password);
-    const hashedQuestionAnswer = hashMD5(question_answer);
+    // const hashedPassword = hashMD5(password);
+    // const hashedQuestionAnswer = hashMD5(question_answer);
 
     updateUser(
         req.cid,
         username,
-        hashedPassword,
-        question,
-        hashedQuestionAnswer,
         image_blob
     );
 

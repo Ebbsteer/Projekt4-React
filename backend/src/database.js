@@ -133,17 +133,14 @@ export const deleteUser = (cid) => {
  * Update all information about a user
  * @param {string} cid id of user
  * @param {string} username users username
- * @param {string} password_hash password hash
- * @param {string} question question for account recovery
- * @param {string} question_answer_hash hash of question answer
  * @param {string} image image blob of users profile picture
  */
-export const updateUser = (cid, username, password_hash, image) => {
+export const updateUser = (cid, username, image) => {
     const updateUserStmt = prepare(`
-        UPDATE users SET username = @username, password_hash = @password_hash, question = @question, question_answer_hash = @question_answer_hash, image = @image WHERE id = @id
+        UPDATE users SET username = @username, image = @image WHERE id = @id
     `);
 
-    updateUserStmt.run({ id: cid, username, password_hash, question, question_answer_hash, image });
+    updateUserStmt.run({ id: cid, username, image });
 };
 
 /**
