@@ -3,7 +3,8 @@
 #profil {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100dvh;
   overflow: hidden;
 
   .profilwallpaper {
@@ -34,28 +35,30 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: base.$whiteish;
 
     .card {
-      width: 350px;
-      height: auto;
+      width: 400px;
+      
+      min-height: fit-content;
+
       box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.408);
-      overflow: hidden;
-      background-color: rgba(229, 229, 229, 0.705);
+      overflow: auto;
+      background-color: base.$whiteish;
       padding: 20px;
 
       .info {
         padding: 15px;
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid #e1dede;
+        border-bottom: 1px solid base.$whiteish;
 
         .profile-image {
           width: 100px;
           height: 100px;
           border-radius: 50%;
           object-fit: cover;
-          border: 2px solid #fff;
+          border: 1px solid base.$blackish;
           margin-right: 20px;
 
           img {
@@ -67,12 +70,17 @@
         }
 
         button {
+          background-color: #000;
+
           height: 30px;
           width: 80px;
+
+          color: base.$whiteish;
+          font-family: base.$font-p1;
+
           border: none;
-          color: #fff;
           border-radius: 4px;
-          background-color: #000;
+
           cursor: pointer;
           text-transform: uppercase;
         }
@@ -113,10 +121,10 @@
           font-size: 17px;
           box-shadow: none;
           outline: none;
-          background-color: rgba(255, 255, 255, 0.5);
+          background-color: base.$whiteish;
 
           &[type="text"][readonly] {
-            border: 2px solid rgba(0, 0, 0, 0);
+            border: 1px solid base.$blackish;
           }
         }
       }
