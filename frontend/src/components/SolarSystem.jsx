@@ -169,11 +169,21 @@ const Planet = ({
         setActive(false); // Deactivate the planet
     };
 
+
+    const handleClick = () => {
+      const url =  `/planet/${name}`
+      console.log(name)
+      window.location.href = url ; // Navigate to the specified URL
+    };
+  
+
+
     return (
         <mesh
             ref={meshRef}
             onPointerOver={handlePlanetPointerOver}
             onPointerOut={handlePlanetPointerOut}
+            onClick={handleClick}
             position={initialPosition}
             scale={scale}
         >
