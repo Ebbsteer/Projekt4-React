@@ -233,8 +233,8 @@ const Planet = () => {
                   ) : (
                     searchResults.map((moon, index) => (
                       <tr  key={index}>
-                        <td>{moonEnglish[index]?.englishName}</td>
-                        <td onClick={() => infohandler(index)}>
+                        <td className="moon-td1">{moonEnglish[index]?.englishName}</td>
+                        <td className="moon-td2" onClick={() => infohandler(index)}>
                           {showDetails[index]
                             ? "  Hide Details"
                             : "Show Details"}
