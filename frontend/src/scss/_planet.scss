@@ -39,10 +39,12 @@
     table {
         border-collapse: collapse;
         width: 100%;
+        
         font-size: 1.7rem;
         text-align: center;
 
-        padding: 5px 5px 5px 5px;
+        border-radius: 0.8rem;
+
     }
 
     td,
@@ -139,14 +141,22 @@
 }
 
 #jupiter{
-    background-color: base.$table-jupiter-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-jupiter-line2;
+
+    table {
+        background-color: base.$table-jupiter-line1;
+
+        tr:nth-child(even) {
+            background-color: base.$table-jupiter-line2;
+        }
     }
+
+    .title-img {
+        background-color: base.$planet-jupiter-text-bd;
+    }
+    
     // 
     // 
-    // base.$planet-jupiter-text-bd
+    // 
 }
 
 #saturn{

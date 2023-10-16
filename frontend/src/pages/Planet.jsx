@@ -160,10 +160,11 @@ const Planet = () => {
           backgroundImage: `url(${planetBackground})`
         }}
       >
-        <div className="planet-container">
+        <div className="planet-container" id={id}>
           <div className="planet-box">
             <div
               className="title-img"
+              
               style={{
                 backgroundImage: `url(${planetimg})`
               }}
@@ -173,12 +174,12 @@ const Planet = () => {
             <div></div>
 
             <br />
-            <div className="planet-info" id={id}>
+            <div className="planet-info">
               <p>{bodies.description}</p>
             </div>
 
             <div className="table-container">
-              <table id={id}>
+              <table>
                 {" "}
                 <thead>
                   <tr>
@@ -217,8 +218,10 @@ const Planet = () => {
               style={{ marginTop: "5%", marginBottom: "-5%" }}
             />
             
-            <div className="table-container moon-container">
-              <table id={id}>
+            <div className="table-container moon-container"
+                // style={{padding:'10px',}}
+                  >
+              <table>
                 <thead>
                   <tr>
                     <th className="planet-table-title-moon">Moons <FontAwesomeIcon icon={faMoon}/></th>
