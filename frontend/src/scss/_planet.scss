@@ -16,291 +16,500 @@
     min-height: 100dvh;
     justify-content: left;
     align-items: center;
-}
+    padding-top: 90px;
 
-.planet-container {
-    margin-bottom: 2%;
-    margin-top: 5dvw;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-}
 
-.table-container {
-    margin: 5%;
-    width: 80%;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    color: base.$color-font-w;
-
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        
-        font-size: 1.7rem;
-        text-align: center;
-
-        border-radius: 0.8rem;
-
-    }
-
-    td,
-    th {
-        border: none;
-        height: 3rem;
-    }
-
-    th {
-        top: 0;
-        position: sticky;
-        background: base.$whiteish;
-        color: black;
-    }
-
-    tr:nth-child(even) {
-        background-color: base.$table-line1;
-    }
-
-    .planet-table-title-moon {
-        width: 35%;
-    }
-
-    .planet-table-title-details {
-        width: 65%;
-    }
-
-    .planet-table-innertable {
+    .planet-container {
+        margin: 2dvh 0px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        font-size: 30px;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
 
-        .flex-break-planet-table-innertable {
-            flex-basis: 100%;
-            height: 0px;
-            border-bottom: 1px solid base.$blackish;
+    .table-container {
+        margin: 5%;
+        width: 80%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        color: base.$color-font-w;
+
+        table {
+            background-color: base.$table-line2;
+
+            width: 100%;
+            
+            font-size: 1.7rem;
+            text-align: center;
+
+            border-radius: 0.8rem;
+
+            padding: 5px;
+        }
+        .moon-table-head {
+            tr:hover {
+                transform: scale(1,1);
+                box-shadow: none;
+            }
+        }
+        .moon-table-body tr:hover {
+            transform: scale(1,1,01);
+            box-shadow: base.$button-shadow;
         }
 
-        .planet-table-innertable-type {
-            width: 50%;
-            padding: 2px;
-            font-size: 1rem;
-            text-align: right;
-            padding-right: 5px;
-            border-right: 1px solid base.$blackish;
+        td,
+        th {
+            border: none;
+            height: 3rem;
         }
 
-        .planet-table-innertable-info {
-            width: 50%;
-            padding: 4px;
-            font-size: 0.9rem;
-            text-align: left;
-            padding-left: 5px;
+        th {
+            top: 0px;
+            position: sticky;
+            background: base.$whiteish;
+            color: black;
         }
-    }
-}
-
-#mercury{
-    background-color: base.$table-mercury-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-mercury-line2;
-    }
-    // base.$planet-mercury-text-bd
-}
-
-#venus{
-    background-color: base.$table-venus-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-venus-line2;
-    }
-    // base.$planet-venus-text-bd
-}
-
-#earth{
-    background-color: base.$table-earth-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-earth-line2;
-    }
-    // base.$planet-earth-text-bd
-}
-
-#mars{
-    background-color: base.$table-mars-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-mars-line2;
-    }
-    // 
-    // 
-    // base.$planet-mars-text-bd
-}
-
-#jupiter{
-
-    table {
-        background-color: base.$table-jupiter-line1;
 
         tr:nth-child(even) {
-            background-color: base.$table-jupiter-line2;
+            background-color: base.$table-line1;
+        }
+
+        .planet-table-title-moon {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 5px;
+            width: 35%;
+            min-width: 120px;
+        }
+
+        .planet-table-title-details {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 5px;
+            width: 65%;
+            min-width: 95px;
+        }
+
+        .planet-table-innertable {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .flex-break-planet-table-innertable {
+                flex-basis: 100%;
+                height: 0px;
+                border-bottom: 1px solid base.$blackish;
+            }
+
+            .planet-table-innertable-type {
+                width: 50%;
+                padding: 2px;
+                font-size: 1rem;
+                text-align: right;
+                padding-right: 5px;
+                border-right: 1px solid base.$blackish;
+            }
+
+            .planet-table-innertable-info {
+                width: 50%;
+                padding: 4px;
+                font-size: 0.9rem;
+                text-align: left;
+                padding-left: 5px;
+            }
+        }
+    }
+
+
+    #mercury{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-mercury-line1;
+        }
+
+        table {
+            background-color: base.$table-mercury-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-mercury-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-mercury-text-bd;
+                box-shadow: 0 0 20px base.$planet-mercury-text-bd;
+                padding: calc(1dvw + 20px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1124px){ h1 { font-size: 3rem; } }   
+            @media (max-width: 768px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-mercury-line1;
+            border: 10px solid rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    #venus{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-venus-line1;
+        }
+
+        table {
+            background-color: base.$table-venus-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-venus-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-venus-text-bd;
+                box-shadow: 0 0 20px base.$planet-venus-text-bd;
+                padding: calc(1dvw + 20px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1124px){ h1 { font-size: 3rem; } }   
+            @media (max-width: 768px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-venus-line1;
+            border: 10px solid rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    #earth{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-earth-line1;
+        }
+
+        table {
+            background-color: base.$table-earth-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-earth-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-earth-text-bd;
+                box-shadow: 0 0 20px base.$planet-earth-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1124px){ h1 { font-size: 3rem; } }   
+            @media (max-width: 768px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-earth-line1;
+            border: 10px solid rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    #mars{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-mars-line1;
+        }
+
+        table {
+            background-color: base.$table-mars-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-mars-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-mars-text-bd;
+                box-shadow: 0 0 20px base.$planet-mars-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1124px){ h1 { font-size: 3rem; } }   
+            @media (max-width: 768px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-mars-line1;
+            border: 10px solid rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    #jupiter{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-jupiter-line1;
+        }
+
+        table {
+            background-color: base.$table-jupiter-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-jupiter-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-jupiter-text-bd;
+                box-shadow: 0 0 20px base.$planet-jupiter-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1124px){ h1 { font-size: 3rem; } }   
+            @media (max-width: 768px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-jupiter-line1;
+            border: 10px solid rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    #saturn{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-saturn-line1;
+        }
+
+        table {
+            background-color: base.$table-saturn-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-saturn-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-saturn-text-bd;
+                box-shadow: 0 0 20px base.$planet-saturn-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1700px){ h1 { font-size: 3rem; } }
+            @media (max-width: 1124px){ h1 { font-size: 2.5rem; } }   
+            @media (max-width: 848px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-saturn-line1;
+            border: 10px solid rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    #uranus{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-uranus-line1;
+        }
+
+        table {
+            background-color: base.$table-uranus-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-uranus-line2;
+            }
+            
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-uranus-text-bd;
+                box-shadow: 0 0 20px base.$planet-uranus-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1700px){ h1 { font-size: 3rem; } }
+            @media (max-width: 1124px){ h1 { font-size: 2.5rem; } }   
+            @media (max-width: 848px){ h1 { font-size: 2rem; } }    
+        }
+
+        .planet-info {
+            background-color: base.$table-uranus-line1;
+            border: 10px solid rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    #neptune{
+        .moon-search {
+            background-color: base.$whiteish;
+            border: 2px solid base.$table-neptune-line1;
+        }
+
+        table {
+            background-color: base.$table-neptune-line1;
+            tr:nth-child(even) {
+                background-color: base.$table-neptune-line2;
+            }
+        }
+
+        .title-img {
+            h1 {
+                font-size: 4rem;
+                background-color: base.$planet-neptune-text-bd;
+                box-shadow: 0 0 20px base.$planet-neptune-text-bd;
+                padding: calc(1dvw + 15px);
+                border-radius: 50%;
+            }
+            @media (max-width: 1500px){ h1 { font-size: 3rem; } }
+            @media (max-width: 1184px){ h1 { font-size: 2.5rem; } }   
+            @media (max-width: 848px){ h1 { font-size: 2rem; } }      
+        }
+
+        .planet-info {
+            background-color: base.$table-neptune-line1;
+            border: 10px solid rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    .moon-container {
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        max-height: 80vh;
+        cursor: pointer;
+
+        tr:hover{
+            transform: scale(1, 1.03);
+            box-shadow: 0px 3px 3px black;
+        }
+    }
+
+    .details {
+        display: none;
+        position: relative;
+        width: auto;
+        height: fit-content;
+    }
+
+    .details.mystyle {
+        display: block;
+    }
+
+    .planet-box {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        align-content: center;
+    }
+
+    .right-box {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        align-content: center;
+        scroll-behavior: smooth;
+
+        .moon-search {
+            font-family: base.$font-p;
+            font-size: 1rem;
+            margin-top: 4dvh;
+            margin-bottom: -4%;
+            padding: 5px 10px;
         }
     }
 
     .title-img {
-        h1 {
-            background-color: base.$planet-jupiter-text-bd;
-        }
-    }
-    
-    // 
-    // 
-    // 
-}
+        
+        background-repeat: no-repeat;
+        background-size: 30vw;
+        width: 30vw;
+        height: 30vw;
 
-#saturn{
-    background-color: base.$table-saturn-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-saturn-line2;
-    }
-    // 
-    // 
-    // base.$planet-saturn-text-bd
-}
-
-#uranus{
-    background-color: base.$table-uranus-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-uranus-line2;
-    }
-    // 
-    // 
-    // base.$planet-uranus-text-bd
-}
-
-#neptune{
-    background-color: base.$table-neptune-line1;
-    
-    tr:nth-child(even) {
-        background-color: base.$table-neptune-line2;
-    }
-    // 
-    // 
-    // base.$planet-neptune-text-bd
-}
-
-.moon-container {
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    max-height: 80vh;
-    cursor: pointer;
-
-    tr:hover{
-        transform: scale(1, 1.03);
-        box-shadow: 0px 3px 3px black;
-    }
-}
-
-.details {
-    display: none;
-    position: relative;
-    width: auto;
-    height: fit-content;
-}
-
-.details.mystyle {
-    display: block;
-}
-
-.planet-box {
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    align-content: center;
-}
-
-.right-box {
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    align-content: center;
-    scroll-behavior: smooth;
-}
-
-.title-img {
-    
-    background-repeat: no-repeat;
-    background-size: 30vw;
-    width: 30vw;
-    height: 30vw;
-
-    font-family: base.$font-h;
-    display: flex;
-    margin-top: 3%;
-    padding: 2vh;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        background-color: #adacacab;
-        padding: 2dvw;
-        border-radius: 50%;
-        box-shadow: 0 0 20px #adacac;
-    }
-}
-
-.planet-info {
-    margin-top: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 70%;
-    padding: 20px;
-    color: #ffffff;
-    border-radius: 15px;
-    text-align: center;
-    max-height: 80%;
-    word-wrap: break-word;
-
-    @include base.Boxes;
-    border: 10px solid rgba(0, 0, 0, 0.473);
-}
-
-@media only screen and (max-width: 700px) {
-    .planet-container {
-        width: 100%;
-        min-height: 100%;
-        flex-direction: column;
-        margin-top: 5dvw;
-    }
-
-    .planet-box,
-    .right-box {
-        width: 100dvw;
-        height: fit-content;
-    }
-
-    table {
-        font-size: 1rem;
-    }
-
-    .box-title {
-        max-width: 90%;
+        font-family: base.$font-h;
+        display: flex;
+        margin-top: 3%;
+        padding: 2vh;
+        justify-content: center;
+        align-items: center;
     }
 
     .planet-info {
-        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        max-height: 80%;
+        max-width: 70%;
+
         margin-top: 5%;
+        padding: 20px;
+
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        word-wrap: break-word;
+
+        border-radius: 15px;
+
+        @include base.Boxes;
+        border: 10px solid rgba(0, 0, 0, 0.473);
+    } 
+    @media screen and (max-width: 1128px){ .planet-info {font-size: 1.6rem;} }
+    @media screen and (max-width: 700px){ .planet-info {font-size: 1.4rem;} }
+
+    .planet-info-table {
+        thead {
+            .th1 {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 5px;
+                min-width: 100px;
+            }
+            .th2 {
+                min-width: 160px;
+            }
+            .th3 {
+                min-width: 135px;
+            }
+            .th4 {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 5px;
+                min-width: 100px;
+            }
+        }
+    }
+    @media only screen and (max-width: 700px) {
+        .planet-container {
+            width: 100%;
+            min-height: 100%;
+            flex-direction: column;
+            margin-top: 5dvw;
+        }
+
+        .planet-box,
+        .right-box {
+            width: 100dvw;
+            height: fit-content;
+        }
+
+        table {
+            font-size: 1rem;
+        }
+
+        .box-title {
+            max-width: 90%;
+        }
+
+        .planet-info { 
+            max-width: 80%; 
+            margin-top: 5%;
+        }
+        
     }
 }

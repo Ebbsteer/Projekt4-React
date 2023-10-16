@@ -171,23 +171,20 @@ const Planet = () => {
             >
               <h1>{bodies.name}</h1>
             </div>
-            <div></div>
 
-            <br />
             <div className="planet-info">
               <p>{bodies.description}</p>
             </div>
 
             <div className="table-container">
-              <table>
+              <table className="planet-info-table">
                 {" "}
                 <thead>
                   <tr>
-                    <th>Gravity</th>
-                    <th>Temperature</th>
-                    <th> Discovered </th>
-
-                    <th> Mass </th>
+                    <th className="th1">Gravity</th>
+                    <th className="th2">Temperature</th>
+                    <th className="th3"> Discovered </th>
+                    <th className="th4"> Mass </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -211,24 +208,24 @@ const Planet = () => {
 
           <div className="right-box">
             <input
+              className="moon-search"
               type="text"
               placeholder="Search Moon..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginTop: "5%", marginBottom: "-5%" }}
             />
             
             <div className="table-container moon-container"
                 // style={{padding:'10px',}}
                   >
               <table>
-                <thead>
+                <thead className="moon-table-head">
                   <tr>
                     <th className="planet-table-title-moon">Moons <FontAwesomeIcon icon={faMoon}/></th>
                     <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="moon-table-body">
                   {searchResults.length === 0 ? (
                     <tr>
                       <td colSpan="2">This planet has no moons</td>

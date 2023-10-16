@@ -16,10 +16,10 @@ export const prepare = (query) => {
 };
 
 export const setupDB = () => {
-    /*const dropUsersTable = DB.prepare(`
-        DROP TABLE users
-    `);
-    dropUsersTable.run();*/
+    // const dropUsersTable = DB.prepare(`
+    //     DROP TABLE users
+    // `);
+    // dropUsersTable.run();
 
     const setupUsersTable = DB.prepare(`
         CREATE TABLE IF NOT EXISTS users (
@@ -40,17 +40,35 @@ export const setupDB = () => {
  * @param {string} id id of user
  * @param {string} username username of user
  * @param {string} password_hash password hash of user
- * @param {string} question qustion for revocering account 
+ * @param {string} question qustion for revocering account
  * @param {string} question_answer_hash hash of answer to question
  */
-export const insertUser = (id, username, password_hash, question, question_answer_hash) => {
+export const insertUser = (
+    id,
+    username,
+    password_hash,
+    question,
+    question_answer_hash
+) => {
     const insertUserStmt = prepare(`
         INSERT INTO users VALUES (@id, @username, @password_hash, @question, @question_answer_hash, NULL, NULL)
     `);
 
-    console.log({ id, username, password_hash, question, question_answer_hash });
+    console.log({
+        id,
+        username,
+        password_hash,
+        question,
+        question_answer_hash,
+    });
 
-    insertUserStmt.run({ id, username, password_hash, question, question_answer_hash });
+    insertUserStmt.run({
+        id,
+        username,
+        password_hash,
+        question,
+        question_answer_hash,
+    });
 };
 
 /**
@@ -103,7 +121,7 @@ export const getUserByQuestion = (username, question_answer_hash) => {
         SELECT id, username, password_hash FROM users WHERE username = @username AND question_answer_hash = @question_answer_hash
     `);
 
-    return getUserCountStmt.get({username, question_answer_hash});
+    return getUserCountStmt.get({ username, question_answer_hash });
 };
 
 /**
@@ -192,47 +210,57 @@ export const getFavorites = (cid) => {
         SELECT favorites FROM users WHERE id = ?
     `);
 
-    return getFavoritesStmt.get(cid);
+    return getFavoritesStmt.get(cid).favorites;
 };
 
 /**
- * Add favorite
+ * Add favorites
  * @param {string} cid id of user
+ * @returns {string[]} array of current favorites
  */
 export const addFavorite = (cid, fid) => {
-    const oldFavorite = getFavorites(cid).split(",");
-    console.log(oldFavorite);
+    let oldFavorite = getFavorites(cid);
+    let newFavorite;
 
-    if (favorites.find(fid)) return null;
+    if (oldFavorite === null || oldFavorite === "") newFavorite = fid;
+    else {
+        const temp = oldFavorite.split(",");
 
-    const newFavorite = oldFavorite + "," + fid;
+        if (temp.indexOf(fid) !== -1) return null;
+
+        newFavorite = oldFavorite + "," + fid;
+    }
 
     const addFavoriteStmt = prepare(`
         UPDATE users SET favorites = @favorites WHERE id = @id
     `);
 
-    deleteFavoriteStmt.run({ id: cid, favorites: newFavorites });
+    addFavoriteStmt.run({ id: cid, favorites: newFavorite });
+
+    return newFavorite.split(",");
 };
 
 /**
  * Delete favorite
  * @param {string} cid id of user
+ * @returns {string[]} array of current favorites
  */
 export const deleteFavorite = (cid, fid) => {
-    const favorites = getFavorites(cid).split(",");
+    const tempFavorites = getFavorites(cid);
 
-    const position = favorites.find(fid);
+    if(tempFavorites === "") return null;
 
-    if (!position) res.send(401);
+    const favorites = tempFavorites.split(",");
+    const position = favorites.indexOf(fid);
 
-    const newFavorites = favorites.splice(position, 1).join(",");
+    if (position === -1) return null;
 
+    favorites.splice(position, 1);
     const deleteFavoriteStmt = prepare(`
         UPDATE users SET favorites = @favorites WHERE id = @id
     `);
 
-    deleteFavoriteStmt.run({ id: cid, favorites: newFavorites });
-};
+    deleteFavoriteStmt.run({ id: cid, favorites: favorites.join(",") });
 
-//  home - login - skapa user - id-uuid4 - cid
-// finns - finns -    inte    -   inte   - finns
+    return favorites;
+};
