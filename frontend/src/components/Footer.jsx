@@ -88,7 +88,7 @@ const Footer = () => {
                                     to="/planet/uranus"
                                     className="navLink"
                                 >
-                                    Uranus (lol)
+                                    Uranus
                                 </NavLink>
                                 <NavLink
                                     to="/planet/neptune"
