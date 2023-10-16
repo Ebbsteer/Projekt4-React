@@ -189,43 +189,49 @@ const Items = () => {
         <div id="home">
             <div className="nebulae"></div>
             <div className="tabellDiv">
-                <div className="filter">
-                    <input
-                        className="search"
-                        type="text"
-                        placeholder="Sök..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-
-                    <span className="filter-span">Filter:</span>
-                    
-                    <select
-                        className="select-type"
-                        value={filterType}
-                        onChange={handleTypeFilterChange}
-                    >
-                        <option value="all">All Types</option>
-                        <option value="star">Star</option>
-                        <option value="planet">Planets</option>
-                        <option value="moon">Moons</option>
-                        <option value="dwarf planet">Dwarf planets</option>
-                        <option value="asteroid">Asteroids</option>
-                        <option value="comet">Comets</option>
-                    </select>
-
-                    <label className="fav-type">
-                        <input
-                            type="checkbox"
-                            checked={showFavorites}
-                            onChange={handleFavoritesFilterChange}
-                        />
-                        Show Favorites
-                    </label>
-                </div>
-
                 <table className="itemtable">
-                    <thead>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                        <input
+                            className="search"
+                            type="text"
+                            placeholder="Sök..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        </th>
+
+                        <th>
+                        <span className="filter-span">Filter:</span>
+                        <select
+                            className="select-type"
+                            value={filterType}
+                            onChange={handleTypeFilterChange}
+                        >
+                            <option value="all">All Types</option>
+                            <option value="star">Star</option>
+                            <option value="planet">Planets</option>
+                            <option value="moon">Moons</option>
+                            <option value="dwarf planet">Dwarf planets</option>
+                            <option value="asteroid">Asteroids</option>
+                            <option value="comet">Comets</option>
+                        </select>
+                        </th>
+
+                        <th>   
+                        <label className="fav-type">
+                            <input
+                                type="checkbox"
+                                checked={showFavorites}
+                                onChange={handleFavoritesFilterChange}
+                            />
+                            Show Favorites
+                        </label>
+                        </th>
+                        
+                    </tr>
                         <tr>
                             <th className="item-table-title-favo"></th>
                             <th className="item-table-title-nr">Nr</th>
@@ -254,7 +260,7 @@ const Items = () => {
                                 Discovered {sortOrderDate === "asc" ? "▼" : "▲"}{" "}
                             </th>
                         </tr>
-                    </thead>
+                </thead>
                     <tbody>
                         {filteredResults.length === 0 ? (
                             <tr>

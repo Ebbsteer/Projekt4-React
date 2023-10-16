@@ -50,30 +50,7 @@
     color: white !important;
 }*/
 
-.filter {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
 
-    background-color: base.$whiteish;
-
-    position: sticky;
-    top: 0;
-
-    height: fit-content;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    margin-bottom: 2px;
-    border: 0px solid black;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-
-    font-size: 1.4rem;
-    font-family: base.$font-titelnormal;
-    font-weight: bold;
-    color: base.$color-font-b;
-
-    cursor: pointer;
 
     .search {
         background-color: base.$color-font-w;
@@ -131,7 +108,6 @@
             cursor: pointer;
         }
     }
-}
 
 // ----- Table general style ------------------------------
 
@@ -159,13 +135,16 @@
     }
 
     th {
-        top: 30px;
-        position: sticky;
         background: base.$whiteish;
         color: black;
         font-family: base.$font-titelnormal;
         z-index: 10;
         cursor: pointer;
+    }
+
+    thead{
+        position: sticky !important;
+        width: 100%;
     }
 
     tr:nth-child(even) {
