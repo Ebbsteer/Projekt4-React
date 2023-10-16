@@ -52,6 +52,7 @@
 
 .filter{
     background-color: base.$whiteish;
+    z-index: 10;
 
     position: sticky;
     top: -0.5rem;
@@ -153,6 +154,7 @@
         position: sticky;
         top: calc(39px - 0.5rem);
         width: 100%;
+        z-index: 10;
     }
 
     tr:nth-child(even) {
