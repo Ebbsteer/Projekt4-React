@@ -51,29 +51,29 @@
 }*/
 
 .filter{
-    font-size: 1.5rem;
-    font-family: base.$font-p1;
     background-color: base.$whiteish;
+
     position: sticky;
+    top: -0.5rem;
+
+    min-width: 870px;
+
+    font-size: 1.5rem;
+    font-family: base.$font-p;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
     .search {
         background-color: base.$color-font-w;
-        position: sticky;
-        top: 0;
 
-        height: 25px;
         width: 40%;
-        padding-left: 15px;
+        padding: 5px 15px;
+        margin: 5px;
 
-        border: 2px solid base.$blackish;
+        border: 2px solid base.$table-line1;
         border-radius: 5px;
-    }
-
-    input[type="text"]:focus {
-        border: none;
-        border-radius: 5px;
-        box-shadow: none;
     }
 
     .filter-span {
@@ -150,7 +150,8 @@
     }
 
     thead{
-        position: sticky !important;
+        position: sticky;
+        top: calc(39px - 0.5rem);
         width: 100%;
     }
 
@@ -168,6 +169,8 @@
         padding: 0;
 
         text-align: center;
+    } .item-table-title-favo {
+        border-bottom-left-radius: 5px;
     }
 
     // Number column
@@ -229,7 +232,7 @@
     // Gravity column
     .item-table-title-grav,
     .item-table-info-grav {
-        min-width: 60px;
+        min-width: 150px;
 
         padding: 0;
 
@@ -249,9 +252,12 @@
         padding-left: 5px;
         padding-right: 5px;
 
-        min-width: 160px;
+        min-width: 190px;
 
         text-align: center;
+    } 
+    .item-table-title-disc {
+        border-bottom-right-radius: 5px;
     }
     .item-table-info-disc {
         text-align: center;
