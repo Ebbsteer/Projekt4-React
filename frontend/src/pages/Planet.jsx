@@ -171,23 +171,20 @@ const Planet = () => {
             >
               <h1>{bodies.name}</h1>
             </div>
-            <div></div>
 
-            <br />
             <div className="planet-info">
               <p>{bodies.description}</p>
             </div>
 
             <div className="table-container">
-              <table>
+              <table className="planet-info-table">
                 {" "}
                 <thead>
                   <tr>
-                    <th>Gravity</th>
-                    <th>Temperature</th>
-                    <th> Discovered </th>
-
-                    <th> Mass </th>
+                    <th className="th1">Gravity</th>
+                    <th className="th2">Temperature</th>
+                    <th className="th3"> Discovered </th>
+                    <th className="th4"> Mass </th>
                   </tr>
                 </thead>
                 <tbody>
