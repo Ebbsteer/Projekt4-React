@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { OrbitControls, Line, Html } from "@react-three/drei";
+import { OrbitControls, Line, Html, Preload } from "@react-three/drei";
 import { BufferGeometry, BufferAttribute, MOUSE } from "three";
 import { useThree } from "@react-three/fiber";
 //import { useHistory } from "react-router-dom";
@@ -105,102 +105,101 @@ const createOrbitLine = (radius) => {
     );
 };
 
-const SolarSystem = () => {
-    // Define a component for individual planets.
-    const Planet = ({
-        name,
-        texture,
-        initialPosition,
-        tiltAngle,
-        scale,
-        speed /*history*/,
-    }) => {
-        const [showTooltip, setShowTooltip] = useState(false);
-        const colorMap = useLoader(TextureLoader, texture); // Load the planet's texture
-        const meshRef = useRef(); // Create a reference for the planet's 3D mesh
-        const [active, setActive] = useState(false); // State to track if the planet is active (hovered).
-        const { camera } = useThree(); // Access the camera from the three.js context.
-        camera.position.set(0, 30, 20); // Adjust the values as needed
-        camera.lookAt(0, 0, 0); // Look at the center of the solar system
+const Planet = ({
+    name,
+    texture,
+    initialPosition,
+    tiltAngle,
+    scale,
+    speed /*history*/,
+}) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+    const colorMap = useLoader(TextureLoader, texture); // Load the planet's texture
+    const meshRef = useRef(); // Create a reference for the planet's 3D mesh
+    const [active, setActive] = useState(false); // State to track if the planet is active (hovered).
+    const { camera } = useThree(); // Access the camera from the three.js context.
+    camera.position.set(0, 30, 20); // Adjust the values as needed
+    camera.lookAt(0, 0, 0); // Look at the center of the solar system
 
-        const [angle, setAngle] = useState(0);
+    const [angle, setAngle] = useState(0);
 
-        useEffect(() => {
-            const orbitRadius = initialPosition[0]; // Distance from the sun
+    useEffect(() => {
+        const orbitRadius = initialPosition[0]; // Distance from the sun
 
-            const updatePosition = () => {
-                setAngle(angle + speed);
+        const updatePosition = () => {
+            setAngle(angle + speed);
 
-                const x = orbitRadius * Math.cos(angle);
-                const z = orbitRadius * Math.sin(angle);
+            const x = orbitRadius * Math.cos(angle);
+            const z = orbitRadius * Math.sin(angle);
 
-                meshRef.current.position.set(x, 0, z);
-            };
-            // Create an animation loop to update the planet's position in its orbit.
-            let animationFrameId;
+            meshRef.current.position.set(x, 0, z);
+        };
+        // Create an animation loop to update the planet's position in its orbit.
+        let animationFrameId;
 
-            const animate = () => {
-                animationFrameId = requestAnimationFrame(animate);
-
-                if (!active) updatePosition();
-            };
-
-            // Start animation loop
+        const animate = () => {
             animationFrameId = requestAnimationFrame(animate);
 
-            // Clean up the animation frame when the component unmounts.
-            return () => cancelAnimationFrame(animationFrameId);
-        }, [active, angle]);
-
-        // Use a render loop to rotate the planet (unless it's active).
-        useFrame(async (state, delta) => {
-            if (!active) {
-                meshRef.current.rotation.y += 0.009;
-                meshRef.current.rotation.x = tiltAngle;
-            }
-        });
-        //let angle = 0;
-        const handlePlanetPointerOver = () => {
-            setShowTooltip(true);
-            setActive(true); // Activate the planet
+            if (!active) updatePosition();
         };
 
-        // When you hover out of a planet
-        const handlePlanetPointerOut = () => {
-            setShowTooltip(false);
-            setActive(false); // Deactivate the planet
-        };
+        // Start animation loop
+        animationFrameId = requestAnimationFrame(animate);
 
-        return (
-            <mesh
-                ref={meshRef}
-                onPointerOver={handlePlanetPointerOver}
-                onPointerOut={handlePlanetPointerOut}
-                position={initialPosition}
-                scale={scale}
-            >
-                shape
-                <sphereGeometry args={[1, 32, 32]} />
-                <meshStandardMaterial map={colorMap} />
-                {showTooltip && (
-                    <mesh>
-                        <planeGeometry args={[2, 2]} />
-                        <meshBasicMaterial transparent opacity={0.7} />
-                    </mesh>
-                )}
-                {showTooltip && (
-                    <Html position={[0, 1.2, 0]}>
-                        <div className="tooltip">
-                            <h3>{name}</h3>
-                            <p>Additional information about {name}.</p>
-                        </div>
-                    </Html>
-                )}
-            </mesh>
-        );
+        // Clean up the animation frame when the component unmounts.
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [active, angle]);
+
+    // Use a render loop to rotate the planet (unless it's active).
+    useFrame(async (state, delta) => {
+        if (!active) {
+            meshRef.current.rotation.y += 0.009;
+            meshRef.current.rotation.x = tiltAngle;
+        }
+    });
+    //let angle = 0;
+    const handlePlanetPointerOver = () => {
+        setShowTooltip(true);
+        setActive(true); // Activate the planet
     };
 
-    const [isControlsEnabled, setIsControlsEnabled] = useState(true);
+    // When you hover out of a planet
+    const handlePlanetPointerOut = () => {
+        setShowTooltip(false);
+        setActive(false); // Deactivate the planet
+    };
+
+    return (
+        <mesh
+            ref={meshRef}
+            onPointerOver={handlePlanetPointerOver}
+            onPointerOut={handlePlanetPointerOut}
+            position={initialPosition}
+            scale={scale}
+        >
+            <sphereGeometry args={[1, 32, 32]} />
+            <meshStandardMaterial map={colorMap} />
+            {showTooltip && (
+                <mesh>
+                    <planeGeometry args={[2, 2]} />
+                    <meshBasicMaterial transparent opacity={0.7} />
+                </mesh>
+            )}
+            {showTooltip && (
+                <Html position={[0, 1.2, 0]}>
+                    <div className="tooltip">
+                        <h3>{name}</h3>
+                        <p>Additional information about {name}.</p>
+                    </div>
+                </Html>
+            )}
+        </mesh>
+    );
+};
+
+const SolarSystem = () => {
+    // Define a component for individual planets.
+    const [isControlsEnabled, setIsControlsEnabled] = useState(false);
 
     return (
         <Canvas>
@@ -223,6 +222,7 @@ const SolarSystem = () => {
                     RIGHT: MOUSE.DOLLY, // Change RIGHT to DOLLY
                 }}
             />
+            <Preload all />
         </Canvas>
     );
 };
