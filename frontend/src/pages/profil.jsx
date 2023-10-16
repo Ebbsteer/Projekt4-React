@@ -6,11 +6,11 @@ const Profil = () => {
     const [userUsername, setUserUsername] = useState("Username");
     const [userQuestion, setUserQuestion] = useState("Question");
     const [userImage, setUserImage] = useState("User image");
-
-    const [isEditing, setIsEditing] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
+        // Fetch user data, including the profile picture, from the server
         fetch("http://localhost:3000/user", {
             credentials: "include",
         })
@@ -26,16 +26,15 @@ const Profil = () => {
                 setUserUsername(userData.username);
                 setUserQuestion(userData.question);
                 setUserImage(userData.image);
-                // Retrieve profile image URL here if available
-                // setProfileImage(userData.profileImage);
+                setProfileImage(userData.profileImage); // Set profile image if available
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
             });
-    }, []);
+    }, []); // This useEffect will run when the component mounts.
 
     const handleSave = () => {
-        // Save user data to your server
+        // Save user data, including the profile picture, to the server
         fetch("http://localhost:3000/user/update", {
             method: "POST",
             headers: {
@@ -45,6 +44,7 @@ const Profil = () => {
             body: JSON.stringify({
                 username: userUsername,
                 image: userImage,
+                profileImage: profileImage, // Send the current profile image
             }),
         })
             .then((response) => {
@@ -56,8 +56,6 @@ const Profil = () => {
             })
             .then((data) => {
                 console.log("User data saved:", data);
-                // Update profileImage with the URL of the uploaded image
-                setProfileImage(profileImage);
             })
             .catch((error) => {
                 console.error("Error saving user data:", error);
@@ -104,10 +102,13 @@ const Profil = () => {
                             </div>
                         ) : (
                             <>
-                                <img
-                                    src={profileImage}
-                                    className="profile-image"
-                                ></img>
+                                {profileImage && (
+                                    <img
+                                        src={profileImage}
+                                        className="profile-image"
+                                        alt="Profile Image"
+                                    />
+                                )}
                                 <button onClick={() => setIsEditing(true)}>
                                     Edit
                                 </button>
@@ -125,7 +126,7 @@ const Profil = () => {
                                 type="text"
                                 readOnly={!isEditing}
                                 value={userUsername}
-                                onChange={(e) => setUserName(e.target.value)}
+                                onChange={(e) => setUserUsername(e.target.value)}
                             />
                         </div>
                         <div className="inputs">

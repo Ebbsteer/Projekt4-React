@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
-import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
-import { faEarthAsia } from '@fortawesome/free-solid-svg-icons'
-import { faMeteor } from '@fortawesome/free-solid-svg-icons'
-import { faStarHalfStroke } from '@fortawesome/free-solid-svg-icons'
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
+import { faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { faMeteor } from "@fortawesome/free-solid-svg-icons";
+import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 const Items = () => {
     const exponent2 = "\u00B2";
 
     const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
 
-    const [activeButtons, setActiveButtons] = useState({});
+    const [activeButtons, setActiveButtons] = useState([]);
 
     const [planets, setPlanets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -26,45 +24,52 @@ const Items = () => {
     const [filterType, setFilterType] = useState("all"); // Default to "all"
     const [showFavorites, setShowFavorites] = useState(false);
 
-    const toggleClass = (planetId) => {
-        const updatedButtons = { ...activeButtons };
-        updatedButtons[planetId] = !updatedButtons[planetId];
-        setActiveButtons(updatedButtons);
+    const handleButtonClick = (planetId, shouldRemove) => {
+        const action = shouldRemove ? "remove" : "add";
 
-        localStorage.setItem("activeButtons", JSON.stringify(updatedButtons));
-    };
-
-    const handleButtonClick = (planetId, planetI) => {
-        toggleClass(planetId);
-
-        fetch("http://localhost:3000/add-favorite", {
-            method: "POST",
+        fetch(`http://localhost:3000/favorite/${action}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(planetId),
+            credentials: "include",
+            body: JSON.stringify({ fid: planetId }),
         })
+            .then((response) => response.json())
             .then((response) => {
                 console.log(response);
+
+                if (response !== null) setActiveButtons(response);
             })
             .catch((error) => {
                 console.error("Fetch error:", error);
+                alert("Please log in to perform this action!");
             });
-        console.log(planetId, planetI);
     };
 
     const { id } = useParams();
 
     useEffect(() => {
-        const storedButtons =
-            JSON.parse(localStorage.getItem("activeButtons")) || {};
-        setActiveButtons(storedButtons);
+        fetch("http://localhost:3000/favorite/list", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                console.log(response);
+                setActiveButtons(response.favorites);
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+                alert("Please log in to perform this action!");
+            });
 
-        console.log(id);
-
-        if (id === "fav"){
+        if (id === "fav") {
             setShowFavorites(true);
-        } 
+        }
     }, []);
 
     const sortlistName = () => {
@@ -133,8 +138,8 @@ const Items = () => {
     };
 
     const filteredResults = searchResults.filter((planet) => {
-        const isFavorite = activeButtons[planet.id];
-        if (showFavorites && !isFavorite) {
+        const isFavorite = activeButtons.indexOf(planet.id);
+        if (showFavorites && isFavorite === -1) {
             return false;
         }
         if (
@@ -190,48 +195,51 @@ const Items = () => {
             <div className="nebulae"></div>
             <div className="tabellDiv">
                 <table className="itemtable">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                        <input
-                            className="search"
-                            type="text"
-                            placeholder="Sök..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        </th>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input
+                                    className="search"
+                                    type="text"
+                                    placeholder="Sök..."
+                                    value={searchTerm}
+                                    onChange={(e) =>
+                                        setSearchTerm(e.target.value)
+                                    }
+                                />
+                            </th>
 
-                        <th>
-                        <span className="filter-span">Filter:</span>
-                        <select
-                            className="select-type"
-                            value={filterType}
-                            onChange={handleTypeFilterChange}
-                        >
-                            <option value="all">All Types</option>
-                            <option value="star">Star</option>
-                            <option value="planet">Planets</option>
-                            <option value="moon">Moons</option>
-                            <option value="dwarf planet">Dwarf planets</option>
-                            <option value="asteroid">Asteroids</option>
-                            <option value="comet">Comets</option>
-                        </select>
-                        </th>
+                            <th>
+                                <span className="filter-span">Filter:</span>
+                                <select
+                                    className="select-type"
+                                    value={filterType}
+                                    onChange={handleTypeFilterChange}
+                                >
+                                    <option value="all">All Types</option>
+                                    <option value="star">Star</option>
+                                    <option value="planet">Planets</option>
+                                    <option value="moon">Moons</option>
+                                    <option value="dwarf planet">
+                                        Dwarf planets
+                                    </option>
+                                    <option value="asteroid">Asteroids</option>
+                                    <option value="comet">Comets</option>
+                                </select>
+                            </th>
 
-                        <th>   
-                        <label className="fav-type">
-                            <input
-                                type="checkbox"
-                                checked={showFavorites}
-                                onChange={handleFavoritesFilterChange}
-                            />
-                            Show Favorites
-                        </label>
-                        </th>
-                        
-                    </tr>
+                            <th>
+                                <label className="fav-type">
+                                    <input
+                                        type="checkbox"
+                                        checked={showFavorites}
+                                        onChange={handleFavoritesFilterChange}
+                                    />
+                                    Show Favorites
+                                </label>
+                            </th>
+                        </tr>
                         <tr>
                             <th className="item-table-title-favo"></th>
                             <th className="item-table-title-nr">Nr</th>
@@ -247,9 +255,7 @@ const Items = () => {
                             >
                                 Name {sortOrder === "asc" ? "▼" : "▲"}
                             </th>
-                            <th className="item-table-title-temp">
-                                Temp - °C
-                            </th>
+                            <th className="item-table-title-temp">Temp - °C</th>
                             <th className="item-table-title-grav">
                                 Gravity m/s{exponent2}
                             </th>
@@ -260,7 +266,7 @@ const Items = () => {
                                 Discovered {sortOrderDate === "asc" ? "▼" : "▲"}{" "}
                             </th>
                         </tr>
-                </thead>
+                    </thead>
                     <tbody>
                         {filteredResults.length === 0 ? (
                             <tr>
@@ -273,12 +279,19 @@ const Items = () => {
                                         <button
                                             id="favoriteButton"
                                             className={
-                                                activeButtons[planet.id]
+                                                activeButtons.indexOf(
+                                                    planet.id
+                                                ) !== -1
                                                     ? "makeFavorite"
                                                     : ""
                                             }
                                             onClick={() =>
-                                                handleButtonClick(planet.id, i)
+                                                handleButtonClick(
+                                                    planet.id,
+                                                    activeButtons.indexOf(
+                                                        planet.id
+                                                    ) !== -1
+                                                )
                                             }
                                         >
                                             <p id="btnContent">&#9733;</p>
@@ -287,12 +300,42 @@ const Items = () => {
                                     <td className="item-table-info-nr">{i}</td>
                                     <td className="item-table-info-type">
                                         {planet.bodyType} &nbsp;
-                                        {planet.bodyType === "Moon" ? <FontAwesomeIcon icon={faMoon}/> : ""}
-                                        {planet.bodyType === "Planet" ? <FontAwesomeIcon icon={faEarthAmericas}/> : ""}
-                                        {planet.bodyType === "Asteroid" ? <FontAwesomeIcon icon={faMeteor}/> : ""}
-                                        {planet.bodyType === "Comet" ? <FontAwesomeIcon icon={faMeteor}/> : ""}
-                                        {planet.bodyType === "Star" ? <FontAwesomeIcon icon={faStarHalfStroke}/> : ""}
-                                        {planet.bodyType === "Dwarf Planet" ? <FontAwesomeIcon icon={faEarthAsia}/> : ""}
+                                        {planet.bodyType === "Moon" ? (
+                                            <FontAwesomeIcon icon={faMoon} />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {planet.bodyType === "Planet" ? (
+                                            <FontAwesomeIcon
+                                                icon={faEarthAmericas}
+                                            />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {planet.bodyType === "Asteroid" ? (
+                                            <FontAwesomeIcon icon={faMeteor} />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {planet.bodyType === "Comet" ? (
+                                            <FontAwesomeIcon icon={faMeteor} />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {planet.bodyType === "Star" ? (
+                                            <FontAwesomeIcon
+                                                icon={faStarHalfStroke}
+                                            />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {planet.bodyType === "Dwarf Planet" ? (
+                                            <FontAwesomeIcon
+                                                icon={faEarthAsia}
+                                            />
+                                        ) : (
+                                            ""
+                                        )}
                                     </td>
                                     <td className="item-table-info-name">
                                         {planet.englishName}
