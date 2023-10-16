@@ -100,7 +100,7 @@ const createOrbitLine = (radius) => {
 
     return (
         <line geometry={orbitGeometry}>
-            <lineBasicMaterial color="white" linewidth={1} />
+            <lineBasicMaterial color="white" linewidth={1}  opacity={0}/>
         </line>
     );
 };
@@ -118,8 +118,7 @@ const Planet = ({
     const meshRef = useRef(); // Create a reference for the planet's 3D mesh
     const [active, setActive] = useState(false); // State to track if the planet is active (hovered).
     const { camera } = useThree(); // Access the camera from the three.js context.
-    camera.position.set(0, 30, 20); // Adjust the values as needed
-    camera.lookAt(0, 0, 0); // Look at the center of the solar system
+   
 
     const [angle, setAngle] = useState(0);
 
@@ -199,7 +198,7 @@ const Planet = ({
                 <Html position={[0, 1.2, 0]}>
                     <div className="tooltip">
                         <h3>{name}</h3>
-                        <p>Additional information about {name}.</p>
+                        <p style={{fontSize : "3.5rem",}}>Additional information about {name}.</p>
                     </div>
                 </Html>
             )}
@@ -209,7 +208,7 @@ const Planet = ({
 
 const SolarSystem = () => {
     // Define a component for individual planets.
-    const [isControlsEnabled, setIsControlsEnabled] = useState(false);
+    const [isControlsEnabled, setIsControlsEnabled] = useState(true);
 
     return (
         <Canvas>
@@ -225,7 +224,7 @@ const SolarSystem = () => {
                 enableDamping
                 enableZoom={true}
                 enablePan={isControlsEnabled}
-                enableRotate={isControlsEnabled}
+                enableRotate={true}
                 mouseButtons={{
                     LEFT: MOUSE.ROTATE,
                     MIDDLE: MOUSE.PAN,
