@@ -64,7 +64,7 @@ const Items = () => {
             })
             .catch((error) => {
                 console.error("Fetch error:", error);
-                alert("Please log in to perform this action!");
+
             });
 
         if (id === "fav") {
@@ -194,11 +194,7 @@ const Items = () => {
         <div id="home">
             <div className="nebulae"></div>
             <div className="tabellDiv">
-                <table className="itemtable">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>
+                <div className="filter">
                                 <input
                                     className="search"
                                     type="text"
@@ -208,9 +204,9 @@ const Items = () => {
                                         setSearchTerm(e.target.value)
                                     }
                                 />
-                            </th>
+                            
 
-                            <th>
+                            
                                 <span className="filter-span">Filter:</span>
                                 <select
                                     className="select-type"
@@ -227,9 +223,9 @@ const Items = () => {
                                     <option value="asteroid">Asteroids</option>
                                     <option value="comet">Comets</option>
                                 </select>
-                            </th>
+                            
 
-                            <th>
+                            
                                 <label className="fav-type">
                                     <input
                                         type="checkbox"
@@ -238,8 +234,9 @@ const Items = () => {
                                     />
                                     Show Favorites
                                 </label>
-                            </th>
-                        </tr>
+                    </div>
+                <table className="itemtable">
+                    <thead>
                         <tr>
                             <th className="item-table-title-favo"></th>
                             <th className="item-table-title-nr">Nr</th>

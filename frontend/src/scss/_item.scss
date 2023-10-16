@@ -50,7 +50,12 @@
     color: white !important;
 }*/
 
-
+.filter{
+    font-size: 1.5rem;
+    font-family: base.$font-p1;
+    background-color: base.$whiteish;
+    position: sticky;
+}
 
     .search {
         background-color: base.$color-font-w;
@@ -72,16 +77,17 @@
     }
 
     .filter-span {
-        color: inherit;
+        color: black;
         margin-left: 5px;
         margin-right: 10px;
+        position: sticky;
     }
 
     .select-type {
         height: 25px;
-
+        position: sticky;
         text-align: center;
-        color: inherit;
+        
         font-size: 1rem;
         font-family: inherit;
 
@@ -136,6 +142,7 @@
 
     th {
         background: base.$whiteish;
+        position: sticky;
         color: black;
         font-family: base.$font-titelnormal;
         z-index: 10;

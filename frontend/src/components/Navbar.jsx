@@ -24,6 +24,7 @@ const Navbar = () => {
             .then((response) => {
                 if (response.ok) {
                     alert("You succesfully logged out!");
+                    window.location.href = "/";
                 } else {
                     alert("Logout failed!");
                 }
