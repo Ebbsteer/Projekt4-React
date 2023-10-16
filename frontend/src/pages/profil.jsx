@@ -44,8 +44,7 @@ const Profil = () => {
                 credentials: "include",
                 body: JSON.stringify({
                     username: userUsername,
-                    image: userImage,
-                    profileImage: profileImage, // Send the current profile image
+                    image: profileImage
                 }),
             })
                 .then((response) => {
