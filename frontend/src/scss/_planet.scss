@@ -151,7 +151,9 @@
     }
 
     .title-img {
-        background-color: base.$planet-jupiter-text-bd;
+        h1 {
+            background-color: base.$planet-jupiter-text-bd;
+        }
     }
     
     // 
