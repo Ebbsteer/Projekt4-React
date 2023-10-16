@@ -52,6 +52,7 @@
 
 .filter{
     background-color: base.$whiteish;
+    z-index: 10;
 
     position: sticky;
     top: -0.5rem;
@@ -136,8 +137,8 @@
     }
 
     tbody tr:hover {
-        transform: scale(1, 1.03);
-        box-shadow: 0px 3px 3px black;
+        transform: scale(1, 1.00);
+        box-shadow: base.$button-shadow;
     }
 
     th {
@@ -153,10 +154,16 @@
         position: sticky;
         top: calc(39px - 0.5rem);
         width: 100%;
+        z-index: 10;
     }
 
     tr:nth-child(even) {
         background-color: base.$table-line2;
+        border-radius: 10px;
+    }
+
+    tr {
+        border-radius: 10px;
     }
 
     // ----- columns in table ---------------------------------
@@ -169,8 +176,13 @@
         padding: 0;
 
         text-align: center;
-    } .item-table-title-favo {
+    } 
+    .item-table-title-favo {
         border-bottom-left-radius: 5px;
+    } 
+    .item-table-info-favo {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     // Number column
@@ -264,5 +276,9 @@
 
         padding-left: 15px;
         padding-right: 10px;
+    }
+    .item-table-info-disc {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 }
