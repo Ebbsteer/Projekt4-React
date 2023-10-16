@@ -51,7 +51,7 @@ const Footer = () => {
                                 id="planetsID"
                                 className="navLink"
                             >
-                                PLANETS &#8680;
+                                PLANETS &#8681;
                             </a>
                             <div
                                 id="myPlanets-footer"
