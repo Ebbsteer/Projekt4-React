@@ -40,7 +40,7 @@ router.use((req, res, next) => {
 
 const authRoute = (req, res, next) => {
     console.log("authRoute");
-    console.log(req.cid)
+    console.log(req.cid);
     if (!req.cid) return res.status(400).send("Failed");
 
     const user = getSecureUser(req.cid);
@@ -99,7 +99,7 @@ router.route("/login").post((req, res) => {
     const hashedPassword = hashMD5(password);
 
     if (user?.password_hash === hashedPassword) {
-        console.log({cid: user.id})
+        console.log({ cid: user.id });
         res.cookie("cid", user.id, {
             maxAge: 1000 * 60 * 60 * 24 * 365,
             signed: true,
@@ -151,8 +151,7 @@ router.route("/user").get(authRoute, (req, res) => {
 });
 
 router.route("/user/update").post(authRoute, (req, res) => {
-    const { username, image_blob } =
-        req.body;
+    const { username, image_blob } = req.body;
 
     if (!username || !image_blob)
         return res.status(400).send("Missing parameters");
@@ -160,11 +159,7 @@ router.route("/user/update").post(authRoute, (req, res) => {
     // const hashedPassword = hashMD5(password);
     // const hashedQuestionAnswer = hashMD5(question_answer);
 
-    updateUser(
-        req.cid,
-        username,
-        image_blob
-    );
+    updateUser(req.cid, username, image_blob);
 
     res.status(200).send("Updated user");
 });
@@ -173,22 +168,32 @@ router.route("/user/update").post(authRoute, (req, res) => {
 router.route("/favorite/add").patch(authRoute, (req, res) => {
     const { fid } = req.body;
 
-    addFavorite(req.cid, fid);
+    if (!fid) return res.status(400).send("Missing parameters");
 
-    res.send(200);
+    const totalFavorites = addFavorite(req.cid, fid);
+
+    res.status(200).json(totalFavorites);
 });
 
 // Update later
 router.route("/favorite/remove").patch(authRoute, (req, res) => {
     const { fid } = req.body;
 
-    deleteFavorite(req.cid, fid);
+    if (!fid) return res.status(400).send("Missing parameters");
 
-    res.send(200);
+    const totalFavorites = deleteFavorite(req.cid, fid);
+
+    res.status(200).json(totalFavorites);
 });
 
 router.route("/favorite/list").get(authRoute, (req, res) => {
-    const favorites = getFavorites(req.cid).split(";");
+    const favorites = getFavorites(req.cid);
 
-    res.send(200).json(favorites);
+    console.log(favorites);
+
+    // Goober fix
+    res.status(200).json({
+        favorites:
+            favorites === null || favorites === "" ? [] : favorites.split(","),
+    });
 });
