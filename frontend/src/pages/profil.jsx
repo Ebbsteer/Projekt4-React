@@ -34,39 +34,46 @@ const Profil = () => {
     }, []); // This useEffect will run when the component mounts.
 
     const handleSave = () => {
-        // Save user data, including the profile picture, to the server
-        fetch("http://localhost:3000/user/update", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                username: userUsername,
-                image: userImage,
-                profileImage: profileImage, // Send the current profile image
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("Failed to save user data");
-                }
+        // Convert profileImage to base64 and save it along with other user data
+        if (profileImage) {
+            fetch("http://localhost:3000/user/update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    username: userUsername,
+                    image: profileImage
+                }),
             })
-            .then((data) => {
-                console.log("User data saved:", data);
-            })
-            .catch((error) => {
-                console.error("Error saving user data:", error);
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Failed to save user data");
+                    }
+                })
+                .then((data) => {
+                    console.log("User data saved:", data);
+                })
+                .catch((error) => {
+                    console.error("Error saving user data:", error);
+                });
 
-        setIsEditing(false);
+            setIsEditing(false);
+        }
     };
 
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
-        setProfileImage(URL.createObjectURL(selectedImage));
+
+        // Convert the selected image to base64
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            setProfileImage(e.target.result);
+        };
+        reader.readAsDataURL(selectedImage);
     };
 
     return (
