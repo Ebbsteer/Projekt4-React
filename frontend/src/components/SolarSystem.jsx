@@ -172,6 +172,9 @@ const Planet = ({
     const handleClick = () => {
       const url =  `/planet/${name}`
       console.log(name)
+      if(url==`/planet/sun`){
+          url=``
+      }
       window.location.href = url ; // Navigate to the specified URL
     };
   
