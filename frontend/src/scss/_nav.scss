@@ -1,37 +1,11 @@
 @use "base";
 
-// ----- navbar stylses -------------------------------------------------------
-::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: base.$scroll-bg;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: base.$scroll-color;
-    border-radius: 3px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: base.$scroll-hover; // FIXA
-}
-
-#nav {
+nav#nav {
     background-color: base.$blackish;
     color: base.$whiteish;
 
     position: fixed;
     z-index: 10;
-    width: 100%;
-
-    display: inline-block;
-    padding-left: 1rem;
 
     font-family: base.$font-h;
     font-size: 2rem;
@@ -39,9 +13,25 @@
 
     user-select: none;
 
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .inner {
+        width: 100%;
+        max-width: base.$common-max-width;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
     .navLink {
         color: base.$whiteish;
-        margin-right: 1rem !important;
         transition: 0.3s ease;
     }
 
@@ -54,30 +44,41 @@
         display: inline;
         float: left;
         height: 3rem;
-
-        margin: 0.95rem 1rem auto 0px;
-
         border-radius: 10px;
     }
 }
 
 // ----- Right elements in navbar - Home, Items, Planet
 #navright {
-    float: right;
-    font-size: 3rem !important;
+    font-size: 2rem !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 
 // ----- Left elements in Navbar - Login/Logout/Profile, Favorites
 #navleft {
-    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    a {
+        font-size: 26px;
+    }
 }
 
 #droppa {
-    display: inline;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .toggla {
-    display: inline !important;
+    display: flex !important;
 }
 
 #dropknapp {
@@ -111,7 +112,8 @@
     position: absolute;
     display: none;
     z-index: 1;
-    overflow: auto;
+    overflow-x: none;
+    overflow-y: scroll;
 
     min-width: 160px;
     max-height: 200px;
@@ -131,34 +133,47 @@
     display: block !important;
 }
 
-#signOutBtn{
+#signOutBtn {
     background: none;
     border: none;
     color: base.$whiteish;
     font-size: 2.5rem;
-    margin-right: 0.5rem;
     cursor: pointer;
     transition: 0.3s ease;
     display: none;
 }
 
-#signOutBtn:hover{
+#signOutBtn:hover {
     color: base.$link-hover !important;
 }
 
-.togglaSign{
+.togglaSign {
     display: inline !important;
 }
 
+#not-droppa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media only screen and (max-width: 700px) {
-    // #nav {
-    //    // img {
-    //    //    display: block;
-    //    // }
-    // }
+    .inner {
+        flex-direction: column !important;
+    }
+
+    #not-droppa {
+        height: 10dvh;
+        width: 100%;
+    }
 
     #droppa {
         display: none;
+        height: 90dvh;
+        justify-content: space-between !important;
+        flex-direction: column;
+        width: 100%;
     }
 
     #droppa a {
@@ -168,6 +183,8 @@
 
     #navleft {
         float: none;
+        flex-direction: column;
+        align-items: start;
     }
 
     #navright {
@@ -179,9 +196,6 @@
 
         display: inline !important;
         float: right;
-
-        margin-right: 1rem;
-        margin-top: 1rem;
 
         border: none;
     }

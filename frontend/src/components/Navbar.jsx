@@ -8,39 +8,36 @@ function Drop() {
     document.getElementById("droppa").classList.toggle("toggla");
 }
 
-function refreshPage(){
+function refreshPage() {
     window.location.href = "/items/fav";
 }
 
 const Navbar = () => {
+    const cookieName = "cid";
 
-        const cookieName = "cid";
+    const allCookies = document.cookie;
 
-        const allCookies = document.cookie;
-
-       useEffect(() => {
-      
-          // Kontrollera om den önskade cookien finns
-          if (allCookies.includes(`${cookieName}=`)) {
+    useEffect(() => {
+        // Kontrollera om den önskade cookien finns
+        if (allCookies.includes(`${cookieName}=`)) {
             document.getElementById("signOutBtn").classList.add("togglaSign");
             // Cookien finns
             console.log(`Cookien ${cookieName} finns.`);
-          } else {
-            document.getElementById("signOutBtn").classList.remove("togglaSign");
+        } else {
+            document
+                .getElementById("signOutBtn")
+                .classList.remove("togglaSign");
             // Cookien finns inte
             console.log(`Cookien ${cookieName} finns inte.`);
-          }
-        }, []);
-   
+        }
+    }, []);
 
-    function goToProfile(){
-
-            if (allCookies.includes(`${cookieName}=`)) {
-              window.location.href = "profil";
-            } else {
-              window.location.href = "login";
-            }
-
+    function goToProfile() {
+        if (allCookies.includes(`${cookieName}=`)) {
+            window.location.href = "profil";
+        } else {
+            window.location.href = "login";
+        }
     }
 
     function handleLogOut() {
@@ -69,7 +66,9 @@ const Navbar = () => {
 
         const toggleDrop = () => {
             setIsOpen(!isOpen);
-            document.getElementById("myPlanets").classList.toggle("togglaPlanets");
+            document
+                .getElementById("myPlanets")
+                .classList.toggle("togglaPlanets");
         };
 
         const handleOutsideClick = (event) => {
@@ -125,41 +124,48 @@ const Navbar = () => {
 
     return (
         <>
-            <div id="nav">
-                <NavLink to="" className="navLink">
-                    <img src="../src/assets/img/logospace.jpg" alt="" />
-                </NavLink>
-
-                <button onClick={Drop} id="dropknapp">
-                    <div className="hamb1"></div>
-                    <div className="hamb2"></div>
-                    <div className="hamb3"></div>
-                </button>
-
-                <div id="droppa">
-                    <div id="navleft">
-                        <NavLink to="/" className="navLink">
-                            HOME
+            <nav id="nav">
+                <div className="inner">
+                    <div id="not-droppa">
+                        <NavLink to="" className="navLink">
+                            <img src="../src/assets/img/logospace.jpg" alt="" />
                         </NavLink>
-                        <NavLink to="/items" className="navLink">
-                            ITEMS
-                        </NavLink>
-                        <DropPlan></DropPlan>
+                        <button onClick={Drop} id="dropknapp">
+                            <div className="hamb1"></div>
+                            <div className="hamb2"></div>
+                            <div className="hamb3"></div>
+                        </button>
                     </div>
 
-                    <div id="navright">
-                        <NavLink className="navLink" onClick={refreshPage}>
-                            &#9733;
-                        </NavLink>
+                    <div id="droppa">
+                        <div id="navleft">
+                            <NavLink to="/" className="navLink">
+                                HOME
+                            </NavLink>
+                            <NavLink to="/items" className="navLink">
+                                ITEMS
+                            </NavLink>
+                            <DropPlan></DropPlan>
+                        </div>
 
-                        <NavLink className="navLink" onClick={goToProfile}>
-                            <FontAwesomeIcon icon={faUserAstronaut} />
-                        </NavLink>
+                        <div id="navright">
+                            <NavLink className="navLink" onClick={refreshPage}>
+                                &#9733;
+                            </NavLink>
 
-                        <button onClick={handleLogOut} id="signOutBtn"><FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon></button>
+                            <NavLink className="navLink" onClick={goToProfile}>
+                                <FontAwesomeIcon icon={faUserAstronaut} />
+                            </NavLink>
+
+                            <button onClick={handleLogOut} id="signOutBtn">
+                                <FontAwesomeIcon
+                                    icon={faRightFromBracket}
+                                ></FontAwesomeIcon>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </nav>
         </>
     );
 };
