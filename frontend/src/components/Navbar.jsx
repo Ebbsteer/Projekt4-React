@@ -8,10 +8,6 @@ function Drop() {
     document.getElementById("droppa").classList.toggle("toggla");
 }
 
-function refreshPage() {
-    window.location.href = "/items/fav";
-}
-
 const Navbar = () => {
     const cookieName = "cid";
 
@@ -37,6 +33,14 @@ const Navbar = () => {
             window.location.href = "/profil";
         } else {
             window.location.href = "/login";
+        }
+    }
+
+    function refreshPage() {
+        if (allCookies.includes(`${cookieName}=`)) {
+            window.location.href = "/items/fav";
+        } else {
+ 
         }
     }
 
