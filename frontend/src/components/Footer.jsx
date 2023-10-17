@@ -24,89 +24,42 @@ const Footer = () => {
 
     return (
         <>
-            <div id="foot">
-                <div>
-                    <span className="footer-CO-name">
-                        Cosmic<span className="hubStyle">Hub</span>
-                    </span>
-                </div>
-
-                <div className="footer-content">
-                    <div className="footer-home">
-                        <NavLink to="/" className="navLink">
-                            HOME
-                        </NavLink>
+            <footer id="footer">
+                <div className="inner">
+                    <div className="footer-logo">
+                        <h2 className="logo">
+                            Cosmic<span className="hubStyle">Hub</span>
+                        </h2>
                     </div>
 
-                    <div className="footer-items">
-                        <NavLink to="/items" className="navLink">
-                            ITEMS
-                        </NavLink>
-                    </div>
+                    <div className="footer-content">
+                        <div>
+                            <h3>Sitemap</h3>
+                            <NavLink to="/">Home</NavLink>
+                            <NavLink to="/items">Items</NavLink>
+                            <NavLink to="/login">Login/Register</NavLink>
+                        </div>
 
-                    <div className="footer-planets">
-                        <div className="droppaPlanets">
-                            <a
-                                onClick={DropPlan_footer}
-                                id="planetsID"
-                                className="navLink"
-                            >
-                                PLANETS &#8681;
-                            </a>
-                            <div
-                                id="myPlanets-footer"
-                                className="contentPlanets_footer"
-                            >
-                                <NavLink
-                                    to="/planet/mercury"
-                                    className="navLink"
-                                >
-                                    Mercury
-                                </NavLink>
-                                <NavLink to="/planet/venus" className="navLink">
-                                    Venus
-                                </NavLink>
-                                <NavLink to="/planet/earth" className="navLink">
-                                    Tellus
-                                </NavLink>
-                                <NavLink to="/planet/mars" className="navLink">
-                                    Mars
-                                </NavLink>
-                                <NavLink
-                                    to="/planet/jupiter"
-                                    className="navLink"
-                                >
-                                    Jupiter
-                                </NavLink>
-                                <NavLink
-                                    to="/planet/saturn"
-                                    className="navLink"
-                                >
-                                    Saturn
-                                </NavLink>
-                                <NavLink
-                                    to="/planet/uranus"
-                                    className="navLink"
-                                >
-                                    Uranus
-                                </NavLink>
-                                <NavLink
-                                    to="/planet/neptune"
-                                    className="navLink"
-                                >
-                                    Neptune
-                                </NavLink>
-                            </div>
+                        <div className="footer-planets">
+                            <h3>Planets</h3>
+                            <NavLink to="/planet/mercury">Mercury</NavLink>
+                            <NavLink to="/planet/venus">Venus</NavLink>
+                            <NavLink to="/planet/earth">Tellus</NavLink>
+                            <NavLink to="/planet/mars">Mars</NavLink>
+                            <NavLink to="/planet/jupiter">Jupiter</NavLink>
+                            <NavLink to="/planet/saturn">Saturn</NavLink>
+                            <NavLink to="/planet/uranus">Uranus</NavLink>
+                            <NavLink to="/planet/neptune">Neptune</NavLink>
                         </div>
                     </div>
-                </div>
 
-                <div>
-                    <p className="footer-CO-copyright">
-                        © 2024 CosmicHub - All rights reserved.
-                    </p>
+                    <div>
+                        <p className="footer-CO-copyright">
+                            © 2024 CosmicHub - All rights reserved.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </footer>
         </>
     );
 };
