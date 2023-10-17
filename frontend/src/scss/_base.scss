@@ -37,47 +37,66 @@ $table-line1: #cea49d77;
 $table-line2: #cea49d77;
 $planet-text-bd: rgba(173, 172, 172, 0.67);
 
-//- Planets individual - colors -\\
+    //- Planets individual - colors -\\
+        // sun
+        $solarsystem-sun-bg: #e4c263aa;
+        $solarsystem-sun-border: #e4c263;
+        
+        // mercury
+        $table-mercury-line1: #625c5caa;
+        $table-mercury-line2: #898383aa;
+        $planet-mercury-text-bd: #464242aa;
+        $solarsystem-mercury-bg: #625c5cbf;
+        $solarsystem-mercury-border: #625c5c;
 
-// mercury
-$table-mercury-line1: #625c5caa;
-$table-mercury-line2: #898383aa;
-$planet-mercury-text-bd: #464242aa;
+        // venus
+        $table-venus-line1: #c0aa7daa;
+        $table-venus-line2: #c7bba2aa;
+        $planet-venus-text-bd: #9e9177aa;
+        $solarsystem-venus-bg: #c9b58daa;
+        $solarsystem-venus-border: #c9b58d;
 
-// venus
-$table-venus-line1: #c0aa7daa;
-$table-venus-line2: #c7bba2aa;
-$planet-venus-text-bd: #9e9177aa;
+        // earth
+        $table-earth-line1: #3983b4aa;
+        $table-earth-line2: #3c6c8caa;
+        $planet-earth-text-bd: #3375a1aa;
+        $solarsystem-earth-bg: #3f80acaa;
+        $solarsystem-earth-border: #3f80ac;
 
-// earth
-$table-earth-line1: #3983b4aa;
-$table-earth-line2: #3c6c8caa;
-$planet-earth-text-bd: #3375a1aa;
+        // mars
+        $table-mars-line1: #a46b55ae;
+        $table-mars-line2: #ab6243ae;
+        $planet-mars-text-bd: #664538ae;
+        $solarsystem-mars-bg: #a46b55ae;
+        $solarsystem-mars-border: #a46b55;
 
-// mars
-$table-mars-line1: #a46b55ae;
-$table-mars-line2: #ab6243ae;
-$planet-mars-text-bd: #664538ae;
+        // jupiter
+        $table-jupiter-line1: #bead9dae;
+        $table-jupiter-line2: #9c7d68ae;
+        $planet-jupiter-text-bd: #bead9dae;
+        $solarsystem-jupiter-bg: #bead9dae;
+        $solarsystem-jupiter-border: #bead9d;
 
-// jupiter
-$table-jupiter-line1: #bead9dae;
-$table-jupiter-line2: #9c7d68ae;
-$planet-jupiter-text-bd: #bead9dae;
+        // // saturn
+        $table-saturn-line1: #b7b2a1aa;
+        $table-saturn-line2: #9a9586aa;
+        $planet-saturn-text-bd: #a5a299aa;
+        $solarsystem-saturn-bg: #b7b2a1aa;
+        $solarsystem-saturn-border: #b7b2a1;
 
-// // saturn
-$table-saturn-line1: #b7b2a1aa;
-$table-saturn-line2: #9a9586aa;
-$planet-saturn-text-bd: #a5a299aa;
+        // // uranus
+        $table-uranus-line1: #59a9c29a;
+        $table-uranus-line2: #4f87969a;
+        $planet-uranus-text-bd: #6ea6b69a;
+        $solarsystem-uranus-bg: #8ed4dd9a;
+        $solarsystem-uranus-border: #8ed4dd;
 
-// // uranus
-$table-uranus-line1: #59a9c29a;
-$table-uranus-line2: #4f87969a;
-$planet-uranus-text-bd: #6ea6b69a;
-
-// // neptune
-$table-neptune-line1: #5b72bc9a;
-$table-neptune-line2: #7487d19a;
-$planet-neptune-text-bd: #7487d19a;
+        // // neptune
+        $table-neptune-line1: #5b72bc9a;
+        $table-neptune-line2: #7487d19a;
+        $planet-neptune-text-bd: #7487d19a;
+        $solarsystem-neptune-bg: #7490d19a;
+        $solarsystem-neptune-border: #7490d1;
 
 //----- fonts -----\\
 $font-p: "Times New Roman", Times, serif;
@@ -137,7 +156,7 @@ $common-max-width: 1000px;
 @mixin Boxes {
     background-color: $box-color;
 
-    color: $whiteish;
+        color: $color-font-w;
 
     border: 10px solid $box-border-color;
     border-radius: 25px;

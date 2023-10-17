@@ -1,2 +1,90 @@
 @use "base";
 
+.tooltip {
+    border-radius: 25px;
+    
+    box-shadow: 0px 1px 15px 0px rgb(61, 56, 56);
+    padding: 10px 20px 20px;
+    
+    width: 15dvw;
+    height: fit-content;
+    
+    .name {
+        font-size: 2.5rem;
+        font-family: base.$font-h;
+    }
+
+    .description {
+        font-size: 1.4rem;
+        font-family: base.$font-p;
+    }
+
+    .temp {
+        font-size: 1.2rem;
+        font-family: base.$font-titelnormal;
+        font-weight: 700;   
+        margin-top: 10px;
+    }
+
+    .click-info {
+        font-size: 1rem;
+        font-family: base.$font-p;
+        margin-top: 10px;
+    }
+
+
+}
+
+#Sun {
+    background-color: base.$solarsystem-sun-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-sun-border;
+}
+
+#Mercury {
+    background-color: base.$solarsystem-mercury-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-mercury-border;
+}
+
+#Venus {
+    background-color: base.$solarsystem-venus-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-venus-border;
+}
+
+#Earth {
+    background-color: base.$solarsystem-earth-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-earth-border;
+}
+
+#Mars {
+    background-color: base.$solarsystem-mars-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-mars-border;
+}
+
+#Jupiter {
+    background-color: base.$solarsystem-jupiter-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-jupiter-border;
+}
+
+#Saturn {
+    background-color: base.$solarsystem-saturn-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-saturn-border;
+}
+
+#Uranus {
+    background-color: base.$solarsystem-uranus-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-uranus-border;
+}
+
+#Neptune {
+    background-color: base.$solarsystem-neptune-bg;
+    color: base.$color-font-w;
+    border: 7px solid base.$solarsystem-neptune-border;
+}
