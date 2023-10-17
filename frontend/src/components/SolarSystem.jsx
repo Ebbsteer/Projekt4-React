@@ -9,76 +9,94 @@ import { useThree } from "@react-three/fiber";
 
 const planetsData = [
     {
-        name: "sun",
+        name: "Sun",
         texture: "suntexture.jpg",
         initialPosition: [0, 0, 0],
         tiltAngle: 0, // No tilt for the sun
         scale: [1, 1, 1], // Increase the scale to make it larger
         speed: 0.005,
+        temp: "6000 °C", // temperature off planet
+        description: "The suns inner temperature is around 15 000 000 °C. But the surfase temperature at 6000 °C is enough to make diamonds boil.", // information about the planet
     },
     {
-        name: "mercury",
+        name: "Mercury",
         texture: "mercurytexture.jpg",
         initialPosition: [3, 0, 0],
         tiltAngle: 0, // No axial tilt for Mercury
         scale: [0.2, 0.2, 0.2], // Adjust the scale
         speed: 0.005 * 1.61,
+        temp: "167 °C", // temperature off planet
+        description: "Mercury is the closest planet to the Sun and is known for its extreme temperatures. It has a thin atmosphere and is heavily cratered.", // information about the planet
     },
     {
-        name: "venus",
+        name: "Venus",
         texture: "venustexture.jpg",
         initialPosition: [-4, 0],
         tiltAngle: (177.4 * Math.PI) / 180, // Venus's axial tilt
         scale: [0.4, 0.4, 0.4], // Adjust the scale
         speed: 0.005 * 1.18,
+        temp: "464 °C", // temperature off planet
+        description: "Venus is often called Earth's twin due to its similar size and composition. It has a thick, toxic atmosphere and a scorching surface temperature.", // information about the planet
     },
     {
-        name: "earth",
+        name: "Earth",
         texture: "earthtexture.jpg",
         initialPosition: [6, 0, 0],
         tiltAngle: (23.5 * Math.PI) / 180, // Earth's axial tilt
         scale: [0.4, 0.4, 0.4], // Adjust the scale
         speed: 0.005,
+        temp: "15 °C", // temperature off planet
+        description: "Earth is the only known planet with abundant life. It has a diverse climate and is home to a wide variety of ecosystems and species.", // information about the planet
     },
     {
-        name: "mars",
+        name: "Mars",
         texture: "marstexture.jpg",
         initialPosition: [-8, 0, 0],
         tiltAngle: 25.2, // Mars's axial tilt
         scale: [0.3, 0.3, 0.3], // Adjust the scale
         speed: 0.005 * 0.81,
+        temp: "-63 °C", // temperature off planet
+        description: "Mars is often called the 'Red Planet' due to its reddish appearance. It has a thin atmosphere and has been a target for robotic exploration.", // information about the planet
     },
     {
-        name: "jupiter",
+        name: "Jupiter",
         texture: "jupitertexture.jpg",
         initialPosition: [12, 0, 0],
         tiltAngle: (3.13 * Math.PI) / 180, // Jupiter's axial tilt
         scale: [1, 1, 1], // Adjust the scale
         speed: 0.005 * 0.44,
+        temp: "-108 °C", // temperature off planet
+        description: "Jupiter is the largest planet in our solar system and is known for its massive size and iconic bands of clouds. It has a strong magnetic field.", // information about the planet
     },
     {
-        name: "saturn",
+        name: "Saturn",
         texture: "saturntexture.jpg",
         initialPosition: [-18, 0, 0],
         tiltAngle: (26.7 * Math.PI) / 180, // Saturn's axial tilt
         scale: [1.5, 1.5, 1.5], // Adjust the scale
         speed: 0.005 * 0.33,
+        temp: "-139 °C", // temperature off planet
+        description: "Saturn is famous for its stunning ring system, which consists of icy particles. It is a gas giant with a distinct golden hue.", // information about the planet
     },
     {
-        name: "uranus",
+        name: "Uranus",
         texture: "uranustexture.jpg",
         initialPosition: [24, 0, 0],
         tiltAngle: (97.8 * Math.PI) / 180, // Uranus's axial tilt
         scale: [1.2, 1.2, 1.2], // Adjust the scale
         speed: 0.005 * 0.23,
+        temp: "-197 °C", // temperature off planet
+        description: "Uranus is a unique planet that rotates on its side, making it appear to roll along its orbital path. It has a blue-green color due to methane in its atmosphere.", // information about the planet
     },
     {
-        name: "neptune",
+        name: "Neptune",
         texture: "neptunetexture.jpg",
         initialPosition: [-30, 0, 0],
         tiltAngle: (28.3 * Math.PI) / 180, // Neptune's axial tilt
         scale: [1.1, 1.1, 1.1], // Adjust the scale
         speed: 0.005 * 0.18,
+        temp: "-218 °C", // temperature off planet
+        description: "Neptune is the farthest known planet from the Sun and is known for its deep blue color. It has strong winds and a dynamic atmosphere.", // information about the planet
     },
 ];
 
@@ -113,6 +131,8 @@ const Planet = ({
     tiltAngle,
     scale,
     speed /*history*/,
+    temp,
+    description,
 }) => {
     const [showTooltip, setShowTooltip] = useState(false);
     const colorMap = useLoader(TextureLoader, texture); // Load the planet's texture
@@ -175,8 +195,8 @@ const Planet = ({
 
 
     const handleClick = () => {
-      const url =  `/planet/${name}`
-      console.log(name)
+      const url =  `/planet/${name.toLowerCase()}`
+      console.log(name.toLowerCase())
       if(url==`/planet/sun`){
           url=``
       }
@@ -204,10 +224,12 @@ const Planet = ({
                 </mesh>
             )}
             {showTooltip && (
-                <Html position={[0, 1.2, 0]}>
-                    <div className="tooltip">
-                        <h3>{name}</h3>
-                        <p style={{fontSize : "3.5rem",}}>Additional information about {name}.</p>
+                <Html position={[0, -1, 0]}>
+                    <div className="tooltip" id={name}>
+                        <p className="name">{name}</p>
+                        <p className="description">{description}</p>
+                        <p className="temp">avg temp: {temp}</p>
+                        <p className="click-info">Click for more info</p>
                     </div>
                 </Html>
             )}
