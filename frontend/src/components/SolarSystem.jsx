@@ -212,10 +212,20 @@ const Planet = ({
 
 const SolarSystem = () => {
     // Define a component for individual planets.
-    const [isControlsEnabled, setIsControlsEnabled] = useState(true);
+    
+  
+
+    // Function to handle the scroll event
+    const handleScroll = () => {
+      console.log("bjfhgufhguf")
+
+
+      }
+
+    
 
     return (
-        <Canvas>
+        <Canvas onWheel={handleScroll} onWheelCapture={handleScroll}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             {planetsData.map((planet, index) => (
@@ -227,8 +237,9 @@ const SolarSystem = () => {
             <OrbitControls
                 enableDamping
                 enableZoom={true}
-                enablePan={isControlsEnabled}
+                enablePan={false}
                 enableRotate={true}
+        
                 mouseButtons={{
                     LEFT: MOUSE.ROTATE,
                     MIDDLE: MOUSE.PAN,
