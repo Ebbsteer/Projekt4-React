@@ -11,19 +11,24 @@
     
     .name {
         font-size: 2.5rem;
+        font-family: base.$font-h;
     }
 
     .description {
         font-size: 1.4rem;
+        font-family: base.$font-p;
     }
 
     .temp {
         font-size: 1.2rem;
+        font-family: base.$font-titelnormal;
         font-weight: 700;   
         margin-top: 10px;
     }
 
     .click-info {
+        font-size: 1rem;
+        font-family: base.$font-p;
         margin-top: 10px;
     }
 
