@@ -119,7 +119,7 @@ const createOrbitLine = (radius) => {
 
     return (
         <line geometry={orbitGeometry}>
-            <lineBasicMaterial color="white" linewidth={1}  opacity={0}/>
+            <lineBasicMaterial color={"rgba(255, 255, 255, 0.5)"} linewidth={1}  opacity={0}/>
         </line>
     );
 };
