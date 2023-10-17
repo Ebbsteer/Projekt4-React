@@ -6,38 +6,36 @@
 // className {@include base.@(mixin-name)}
 
 //----- Colors -----\\
-    // Basic colors
-    $red: #ff0000; // red?
-    $black: #000; // defult black
-    $white: #fff; // defult white
-    $blackish: #0a0514; // our black
-    $whiteish: #fff2ef; // our white
-    $yellowish: rgb(255, 227, 68); // favorites
-    $pinkish: #ad776d;
+// Basic colors
+$red: #ff0000; // red?
+$black: #000; // defult black
+$white: #fff; // defult white
+$blackish: #0a0514; // our black
+$whiteish: #fff2ef; // our white
+$yellowish: rgb(255, 227, 68); // favorites
+$pinkish: #ad776d;
 
-    // Hover on link
-    $link-hover: #ad776d;
+// Hover on link
+$link-hover: #ad776d;
 
-    // Scroll colors
-    $scroll-bg: #5e5e5e;
-    $scroll-color: #ad776d;
-    $scroll-hover: #d8604d;
+// Scroll colors
+$scroll-bg: #5e5e5e;
+$scroll-color: #ad776d;
+$scroll-hover: #d8604d;
 
-    // Font colors
-    $color-font-w: #fff2ef;
-    $color-font-b: #0a0514;
+// Font colors
+$color-font-w: #fff2ef;
+$color-font-b: #0a0514;
 
-    // box Colors
-    $box-color: #bd887fa2;
-    $box-border-color: #f5dfdbcd;
-
-
+// box Colors
+$box-color: #bd887fa2;
+$box-border-color: #f5dfdbcd;
 
 //----- Table Colors -----\\
-    // original
-    $table-line1: #cea49d77;
-    $table-line2: #cea49d77;
-    $planet-text-bd: rgba(173, 172, 172, 0.67);
+// original
+$table-line1: #cea49d77;
+$table-line2: #cea49d77;
+$planet-text-bd: rgba(173, 172, 172, 0.67);
 
     //- Planets individual - colors -\\
         // sun
@@ -100,15 +98,12 @@
         $solarsystem-neptune-bg: #7490d19a;
         $solarsystem-neptune-border: #7490d1;
 
-
-
 //----- fonts -----\\
-    $font-p: "Times New Roman", Times, serif;
-    $font-p1: "Playfair Display", serif;
-    $font-h: "Rubik Dirt";
-    $font-titelnormal: "Arial";
-    $font-h1: "Dela Gothic One", cursive;
-
+$font-p: "Times New Roman", Times, serif;
+$font-p1: "Playfair Display", serif;
+$font-h: "Rubik Dirt";
+$font-titelnormal: "Arial";
+$font-h1: "Dela Gothic One", cursive;
 
 // Button shadow
 $button-shadow: 0px 1px 10px 0px black;
@@ -116,52 +111,53 @@ $button-shadow: 0px 1px 10px 0px black;
 // Small padding
 $small-padding: 5px;
 
+// Max width
+$common-max-width: 1000px;
 
 //----- MIXINs - same style on compinents -----\\
-    @mixin custom-box-shadow {
-        box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
-        -webkit-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
-        -moz-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
-    }
+@mixin custom-box-shadow {
+    box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+    -webkit-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: -1px 10px 24px 0px rgba(0, 0, 0, 0.29);
+}
 
-    @mixin Button {
-        color: white;
-        font-family: $font-h1;
-        font-size: 1.5rem;
+@mixin Button {
+    color: white;
+    font-family: $font-h1;
+    font-size: 1.5rem;
 
-        background-color: #bd887f;
+    background-color: #bd887f;
 
-        border: 2px solid $box-border-color;
-        border-radius: 16px;
+    border: 2px solid $box-border-color;
+    border-radius: 16px;
 
-        padding: 1vh 1vw;
-        margin: 0px;
+    padding: 1vh 1vw;
+    margin: 0px;
 
-        cursor: pointer;
-    }
+    cursor: pointer;
+}
 
-    @mixin Button-slideshow {
-        color: white;
-        font-family: $font-h1;
-        font-size: 1.5rem;
+@mixin Button-slideshow {
+    color: white;
+    font-family: $font-h1;
+    font-size: 1.5rem;
 
-        background-color: #bd887f;
+    background-color: #bd887f;
 
-        border: 2px solid $box-border-color;
-        border-radius: 16px;
+    border: 2px solid $box-border-color;
+    border-radius: 16px;
 
-        padding: 1vh 1vw;
-        margin: 0px;
+    padding: 1vh 1vw;
+    margin: 0px;
 
-        cursor: pointer;
-    }
+    cursor: pointer;
+}
 
-    @mixin Boxes {
-        background-color: $box-color;
+@mixin Boxes {
+    background-color: $box-color;
 
         color: $color-font-w;
 
-        border: 10px solid $box-border-color;
-        border-radius: 25px;
-
-    }
+    border: 10px solid $box-border-color;
+    border-radius: 25px;
+}

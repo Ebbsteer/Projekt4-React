@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Drop() {
     document.getElementById("droppa").classList.toggle("toggla");
@@ -13,6 +13,36 @@ function refreshPage(){
 }
 
 const Navbar = () => {
+
+        const cookieName = "cid";
+
+        const allCookies = document.cookie;
+
+       useEffect(() => {
+      
+          // Kontrollera om den önskade cookien finns
+          if (allCookies.includes(`${cookieName}=`)) {
+            document.getElementById("signOutBtn").classList.add("togglaSign");
+            // Cookien finns
+            console.log(`Cookien ${cookieName} finns.`);
+          } else {
+            document.getElementById("signOutBtn").classList.remove("togglaSign");
+            // Cookien finns inte
+            console.log(`Cookien ${cookieName} finns inte.`);
+          }
+        }, []);
+   
+
+    function goToProfile(){
+
+            if (allCookies.includes(`${cookieName}=`)) {
+              window.location.href = "profil";
+            } else {
+              window.location.href = "login";
+            }
+
+    }
+
     function handleLogOut() {
         fetch("http://localhost:3000/logout", {
             method: "POST",
@@ -122,11 +152,11 @@ const Navbar = () => {
                             &#9733;
                         </NavLink>
 
-                        <NavLink to="/login" className="navLink">
+                        <NavLink className="navLink" onClick={goToProfile}>
                             <FontAwesomeIcon icon={faUserAstronaut} />
                         </NavLink>
 
-                        <button onClick={handleLogOut} className="signOutBtn"><FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon></button>
+                        <button onClick={handleLogOut} id="signOutBtn"><FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon></button>
                     </div>
                 </div>
             </div>

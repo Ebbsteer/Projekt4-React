@@ -242,17 +242,11 @@ const SolarSystem = () => {
     
     const cameraRef = useRef();
 
-    // Function to handle the scroll event
-    const handleScroll = () => {
-      console.log("bjfhgufhguf")
-
-
-      }
-
     
+  
 
     return (
-        <Canvas onWheel={handleScroll} onWheelCapture={handleScroll}>
+        <Canvas  >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             {planetsData.map((planet, index) => (
@@ -264,7 +258,7 @@ const SolarSystem = () => {
             <OrbitControls
                 enableDamping
                 enableZoom={true}
-                enablePan={false}
+                enablePan={true}
                 enableRotate={true}
         
                 mouseButtons={{
