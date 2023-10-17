@@ -10,7 +10,9 @@ footer#footer {
     display: flex;
     align-items: center;
     justify-content: center;
-
+.logo{
+    margin-left: auto;
+}
     .inner {
         width: 100%;
         max-width: base.$common-max-width;
@@ -23,6 +25,8 @@ footer#footer {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            text-align: center;
+            
 
             h2 {
                 font-size: 28px;
@@ -31,9 +35,10 @@ footer#footer {
                 gap: 20px;
             }
 
-            div {
+            .footer-row {
+                margin: 0px 5%;
                 display: flex;
-                flex-direction: row-reverse;
+                flex-direction: row;
                 justify-content: start;
                 column-gap: 50px;
 
@@ -57,12 +62,15 @@ footer#footer {
                         }
                     }
                 }
-            }
 
-            .footer-planets {
-                text-align: left;
+                .footer-img
+                {
+                    
+                margin-left: auto;
+                }
             }
         }
+
 
         .copyright-container {
             p {

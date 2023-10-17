@@ -1,13 +1,13 @@
-@use "home";
+@use "error";
 @use "footer";
 @use "nav";
-@use "base";
-@use "planet";
+@use "home";
 @use "item";
+@use "planet";
 @use "login";
-@use "error";
 @use "profil";
 @use "solarsystem";
+@use "base";
 
 #root {
     width: 100%;
