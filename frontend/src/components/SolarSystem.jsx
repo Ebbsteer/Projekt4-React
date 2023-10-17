@@ -258,7 +258,7 @@ const SolarSystem = () => {
             <OrbitControls
                 enableDamping
                 enableZoom={true}
-                enablePan={true}
+                enablePan={false}
                 enableRotate={true}
         
                 mouseButtons={{
