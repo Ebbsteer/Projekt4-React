@@ -190,8 +190,9 @@ const Planet = ({
             <meshStandardMaterial map={colorMap} />
             {showTooltip && (
                 <mesh>
-                    <planeGeometry args={[2, 2]} />
-                    <meshBasicMaterial transparent opacity={0.7} />
+                
+                    <sphereGeometry args={[1, 32, 32]} />
+                    <meshBasicMaterial transparent opacity={0.1} />
                 </mesh>
             )}
             {showTooltip && (
