@@ -34,9 +34,9 @@ const Navbar = () => {
 
     function goToProfile() {
         if (allCookies.includes(`${cookieName}=`)) {
-            window.location.href = "profil";
+            window.location.href = "/profil";
         } else {
-            window.location.href = "login";
+            window.location.href = "/login";
         }
     }
 
