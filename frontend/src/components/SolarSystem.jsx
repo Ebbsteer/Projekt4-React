@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { OrbitControls, Line, Html, Preload } from "@react-three/drei";
+import { OrbitControls, Line, Html, Preload,PerspectiveCamera  } from "@react-three/drei";
 import { BufferGeometry, BufferAttribute, MOUSE } from "three";
 import { useThree } from "@react-three/fiber";
 //import { useHistory } from "react-router-dom";
+
 
 const planetsData = [
     {
@@ -120,6 +121,10 @@ const Planet = ({
     const { camera } = useThree(); // Access the camera from the three.js context.
    
 
+
+
+
+
     const [angle, setAngle] = useState(0);
 
     useEffect(() => {
@@ -213,7 +218,7 @@ const Planet = ({
 const SolarSystem = () => {
     // Define a component for individual planets.
     
-  
+    const cameraRef = useRef();
 
     // Function to handle the scroll event
     const handleScroll = () => {
@@ -247,6 +252,12 @@ const SolarSystem = () => {
                 }}
             />
             <Preload all />
+            <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        position={[90, 90,0 ]} // Adjust the camera's position
+      />
+
         </Canvas>
     );
 };
