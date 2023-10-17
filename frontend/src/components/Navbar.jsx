@@ -40,7 +40,7 @@ const Navbar = () => {
         if (allCookies.includes(`${cookieName}=`)) {
             window.location.href = "/items/fav";
         } else {
- 
+            alert("You need to be logged in to perform this action!");
         }
     }
 
