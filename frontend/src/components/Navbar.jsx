@@ -14,12 +14,11 @@ function refreshPage(){
 
 const Navbar = () => {
 
+        const cookieName = "cid";
+
+        const allCookies = document.cookie;
+
        useEffect(() => {
-          // Namnet på den cookie du vill kontrollera
-          const cookieName = "cid";
-      
-          // Hämta alla cookies som finns på webbsidan
-          const allCookies = document.cookie;
       
           // Kontrollera om den önskade cookien finns
           if (allCookies.includes(`${cookieName}=`)) {
@@ -33,6 +32,16 @@ const Navbar = () => {
           }
         }, []);
    
+
+    function goToProfile(){
+
+            if (allCookies.includes(`${cookieName}=`)) {
+              window.location.href = "profil";
+            } else {
+              window.location.href = "login";
+            }
+
+    }
 
     function handleLogOut() {
         fetch("http://localhost:3000/logout", {
@@ -143,7 +152,7 @@ const Navbar = () => {
                             &#9733;
                         </NavLink>
 
-                        <NavLink to="/login" className="navLink">
+                        <NavLink className="navLink" onClick={goToProfile}>
                             <FontAwesomeIcon icon={faUserAstronaut} />
                         </NavLink>
 
