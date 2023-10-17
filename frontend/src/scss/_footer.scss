@@ -35,8 +35,8 @@ footer#footer {
                 gap: 20px;
             }
 
-            div {margin-left: 5%;
-            
+            .footer-row {
+                margin: 0px 5%;
                 display: flex;
                 flex-direction: row;
                 justify-content: start;
@@ -62,12 +62,12 @@ footer#footer {
                         }
                     }
                 }
-            }
 
-            .footer-img
-             {
-                
-             margin-left: auto;
+                .footer-img
+                {
+                    
+                margin-left: auto;
+                }
             }
         }
 

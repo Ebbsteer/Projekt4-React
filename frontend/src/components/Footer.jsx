@@ -23,7 +23,6 @@ const Footer = () => {
       <footer id="footer">
         <div className="inner">
           <div className="footer-content">
-            <h2 className="logo">CosmicHub</h2>
             
             <div className="footer-row">
 
@@ -57,7 +56,12 @@ const Footer = () => {
                 
 
               </div>
-              <div className="footer-img"> <img width={150}  src="./favicon.ico" alt="" /></div>
+
+              <div className="footer-img"> 
+                <h2 className="logo">CosmicHub</h2>
+                <img width={150}  src="/favicon.ico" alt="" />
+              </div>
+
             </div>
            
           </div>
