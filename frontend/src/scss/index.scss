@@ -9,6 +9,10 @@
 @use "profil";
 @use "solarsystem";
 
+#root {
+    width: 100%;
+}
+
 * {
     // scrollbar-gutter: stable;
 
