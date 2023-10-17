@@ -98,7 +98,7 @@ const Login = () => {
         console.log(registerData);
 
         // Store registration data in localStorage
-        localStorage.setItem(username, JSON.stringify(registerData));
+       // localStorage.setItem(username, JSON.stringify(registerData));
 
         fetch("http://localhost:3000/register", {
             method: "POST",

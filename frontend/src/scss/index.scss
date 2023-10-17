@@ -7,9 +7,10 @@
 @use "login";
 @use "error";
 @use "profil";
+@use "solarsystem";
 
 * {
-    scrollbar-gutter: stable;
+    // scrollbar-gutter: stable;
 
     padding: 0;
     margin: 0;
@@ -21,8 +22,17 @@
 }
 
 body {
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100dvh;
     overflow-x: hidden;
+
+    background-color: base.$blackish;
+    font-weight: 400;
+
+    font-family: base.$font-titelnormal;
 }
 
 main {

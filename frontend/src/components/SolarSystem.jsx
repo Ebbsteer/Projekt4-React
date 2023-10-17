@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { OrbitControls, Line, Html, Preload } from "@react-three/drei";
+import { OrbitControls, Line, Html, Preload,PerspectiveCamera  } from "@react-three/drei";
 import { BufferGeometry, BufferAttribute, MOUSE } from "three";
 import { useThree } from "@react-three/fiber";
 //import { useHistory } from "react-router-dom";
+
 
 const planetsData = [
     {
@@ -120,6 +121,10 @@ const Planet = ({
     const { camera } = useThree(); // Access the camera from the three.js context.
    
 
+
+
+
+
     const [angle, setAngle] = useState(0);
 
     useEffect(() => {
@@ -193,8 +198,9 @@ const Planet = ({
             <meshStandardMaterial map={colorMap} />
             {showTooltip && (
                 <mesh>
-                    <planeGeometry args={[2, 2]} />
-                    <meshBasicMaterial transparent opacity={0.7} />
+                
+                    <sphereGeometry args={[1, 32, 32]} />
+                    <meshBasicMaterial transparent opacity={0.1} />
                 </mesh>
             )}
             {showTooltip && (
@@ -211,10 +217,20 @@ const Planet = ({
 
 const SolarSystem = () => {
     // Define a component for individual planets.
-    const [isControlsEnabled, setIsControlsEnabled] = useState(true);
+    
+    const cameraRef = useRef();
+
+    // Function to handle the scroll event
+    const handleScroll = () => {
+      console.log("bjfhgufhguf")
+
+
+      }
+
+    
 
     return (
-        <Canvas>
+        <Canvas onWheel={handleScroll} onWheelCapture={handleScroll}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             {planetsData.map((planet, index) => (
@@ -226,8 +242,9 @@ const SolarSystem = () => {
             <OrbitControls
                 enableDamping
                 enableZoom={true}
-                enablePan={isControlsEnabled}
+                enablePan={false}
                 enableRotate={true}
+        
                 mouseButtons={{
                     LEFT: MOUSE.ROTATE,
                     MIDDLE: MOUSE.PAN,
@@ -235,6 +252,12 @@ const SolarSystem = () => {
                 }}
             />
             <Preload all />
+            <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        position={[90, 90,0 ]} // Adjust the camera's position
+      />
+
         </Canvas>
     );
 };
