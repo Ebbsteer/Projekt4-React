@@ -153,11 +153,11 @@ const Navbar = () => {
                         </div>
 
                         <div id="navright">
-                            <NavLink className="navLink" onClick={refreshPage}>
+                            <NavLink className="navLink starBtn" onClick={refreshPage}>
                                 &#9733;
                             </NavLink>
 
-                            <NavLink className="navLink" onClick={goToProfile}>
+                            <NavLink className="navLink profileBtn" onClick={goToProfile}>
                                 <FontAwesomeIcon icon={faUserAstronaut} />
                             </NavLink>
 

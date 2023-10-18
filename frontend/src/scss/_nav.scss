@@ -158,7 +158,7 @@ nav#nav {
     background: none;
     border: none;
     color: base.$whiteish;
-    font-size: 2.5rem;
+    font-size: 3rem;
     cursor: pointer;
     transition: 0.3s ease;
     display: none;
@@ -179,7 +179,15 @@ nav#nav {
     align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+.profileBtn{
+    font-size: 3rem !important;
+}
+
+.starBtn{
+    font-size: 3.5rem !important;
+}
+
+@media only screen and (max-width: 800px) {
     .inner {
         flex-direction: column !important;
     }

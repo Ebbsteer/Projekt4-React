@@ -117,6 +117,9 @@
       .random-planet-button {
         @include base.Button;
         transition: 0.5s ease;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
       } .random-planet-button:hover {
         box-shadow: base.$button-shadow;
       }
@@ -161,7 +164,7 @@
         .left {
           margin-top: 25px;
 
-          width: 100%;
+          width: 100% !important;
 
           #planetoftheday {
             .slideshowbild {
@@ -174,9 +177,8 @@
         }
 
         .right {
-          width: 80vw ;
-          margin-right: 10vw;
-          margin-left: 10vw;
+          width: 100% !important ;
+
           text-align: center;
         }
 
