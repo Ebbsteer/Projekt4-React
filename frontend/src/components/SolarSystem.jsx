@@ -242,7 +242,7 @@ const SolarSystem = () => {
     
     const cameraRef = useRef();
 
-    
+
   
 
     return (
@@ -260,11 +260,12 @@ const SolarSystem = () => {
                 enableZoom={true}
                 enablePan={false}
                 enableRotate={true}
-        
+                minDistance={4}
+              maxDistance={190}
                 mouseButtons={{
-                    LEFT: MOUSE.ROTATE,
-                    MIDDLE: MOUSE.PAN,
-                    RIGHT: MOUSE.DOLLY, // Change RIGHT to DOLLY
+                    LEFT: MOUSE.PAN,
+                    MIDDLE: MOUSE.DOLLY,
+                    RIGHT: MOUSE.ROTATE, // Change RIGHT to DOLLY
                 }}
             />
             <Preload all />
