@@ -62,13 +62,13 @@ footer#footer {
 
 
                     img {
-                        margin: -140px 0px -140px 0px;
-                        height: 400px;
+                        margin: 0px;
+                        width: 400px;
                     }   
-                    @media (max-width: 1010px){ img { margin: -90px 0px -80px 0px; height: 300px; } }
-                    @media (max-width: 877px){ img { margin: -70px 0px -100px 0px; height: 250px; } }
-                    @media (max-width: 810px){ img { margin: -40px 0px -100px 0px; height: 200px; } }
-                    @media (max-width: 745px){ img { margin: 0px; height: 0px; } }
+                    @media (max-width: 1010px){ img { margin: 0px; width: 300px; } }
+                    @media (max-width: 877px){ img { margin: 0px; width: 250px; } }
+                    @media (max-width: 810px){ img { margin: 0px; width: 200px; } }
+                    @media (max-width: 745px){ img { margin: 0px; width: 0px; } }
                 }
 
             }

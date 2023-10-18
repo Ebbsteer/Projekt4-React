@@ -45,28 +45,31 @@ nav#nav {
         width: 100%;
         max-width: base.$common-max-width;
 
+        margin: 0px 20px;
+
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-    }
+    
 
-    .navLink {
-        color: base.$whiteish;
-        transition: 0.3s ease;
-    }
+        .navLink {
+            color: base.$whiteish;
+            transition: 0.3s ease;
+        }
 
-    .navLink:hover {
-        color: base.$link-hover !important;
-        transition: 0.3s ease;
-    }
+        .navLink:hover {
+            color: base.$link-hover !important;
+            transition: 0.3s ease;
+        }
 
-    img {
-        display: inline;
-        float: left;
-        height: 3rem;
-        border-radius: 10px;
+        img {
+            display: inline;
+            float: left;
+            height: 3rem;
+            border-radius: 10px;
+        }
     }
 }
 
@@ -219,6 +222,7 @@ nav#nav {
 
     #navright {
         float: none;
+        margin: 0px 0px 20px 0px;
     }
 
     #dropknapp {
