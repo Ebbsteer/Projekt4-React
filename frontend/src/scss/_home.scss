@@ -113,19 +113,23 @@
 
         }
 
-        .random-button {
-          @include base.Button;
-          transition: 0.5s ease;
-          margin-top: 2rem;
-        }
-        .random-button:hover {
-          box-shadow: base.$button-shadow;
-        }
-      } .textbox:hover {
-        transform: scale(1.03);
+
+  #generate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Adjust the height as needed */
+
+    .random-button {
+     @include base.Button;
+     transition: 0.5s ease;
       }
-    }
-  }
+
+    .random-button:hover {
+     box-shadow: base.$button-shadow;
+     }
+}
+
 
     .nextSlide {
       opacity: 0;
