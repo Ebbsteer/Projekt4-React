@@ -23,9 +23,7 @@ const Footer = () => {
       <footer id="footer">
         <div className="inner">
           <div className="footer-content">
-            
             <div className="footer-row">
-
               <div className="footer-planets">
                 <h3>Planets</h3>
                 <NavLink to="/planet/mercury">Mercury</NavLink>
@@ -46,24 +44,18 @@ const Footer = () => {
               </div>
 
               <div className="footer-contact">
-
                 <h3>Contact us</h3>
-                    <NavLink to="https://www.linkedin.com/in/ebba-elversson-22a572222/"> Ebba Elversson </NavLink>
-                    <NavLink to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> David </NavLink>
-                    <NavLink to="https://www.linkedin.com/in/othman-alani-8133b4251/"> Othman Al-Ani </NavLink>
-                    <NavLink to="https://www.linkedin.com/in/salah-al-hassun-132b4b253/"> Salah Al Hassun </NavLink>
-                    <NavLink to="https://www.linkedin.com/in/zimon-johnsson-19647723a/"> Zimon Johnsson </NavLink>
-                
-
+                <NavLink to="https://www.linkedin.com/in/ebba-elversson-22a572222/"> Ebba Elversson </NavLink>
+                <NavLink to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> David </NavLink>
+                <NavLink to="https://www.linkedin.com/in/othman-alani-8133b4251/"> Othman Al-Ani </NavLink>
+                <NavLink to="https://www.linkedin.com/in/salah-al-hassun-132b4b253/"> Salah Al Hassun </NavLink>
+                <NavLink to="https://www.linkedin.com/in/zimon-johnsson-19647723a/"> Zimon Johnsson </NavLink>
               </div>
 
               <div className="footer-img"> 
-                <h2 className="logo">CosmicHub</h2>
-                <img width={150}  src="/favicon.ico" alt="" />
+                <img width={150}  src="../assets/img/" alt="" />
               </div>
-
             </div>
-           
           </div>
 
           <div className="copyright-container">
