@@ -88,25 +88,28 @@ const Profil = () => {
                     <div className="info">
                         <span>Profile Info</span>
                         {isEditing ? (
-                            <div>
-                                {profileImage && (
-                                    <div className="profile-image">
-                                        <img
-                                            src={profileImage}
-                                            alt="Profile Image"
+                            <>
+                                <div className="box-profile-image">
+                                    {profileImage && (
+                                        <div className="profile-image">
+                                            <img
+                                                src={profileImage}
+                                                alt="Profile Image"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className="upload-button">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
                                         />
+                                        <button className="button-upload">Upload Image</button>
                                     </div>
-                                )}
-                                <div className="upload-button">
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={handleImageChange}
-                                    />
-                                    <button>Upload Image</button>
                                 </div>
                                 <button onClick={handleSave}>Save</button>
-                            </div>
+                                    
+                            </>
                         ) : (
                             <>
                                 {profileImage && (
@@ -147,7 +150,7 @@ const Profil = () => {
                                 }
                             />
                         </div>
-                        <div className="inputs">
+                        {/* <div className="inputs">
                             <span>Image</span>
                             <input
                                 type="text"
@@ -155,7 +158,7 @@ const Profil = () => {
                                 value={userImage}
                                 onChange={(e) => setUserImage(e.target.value)}
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
