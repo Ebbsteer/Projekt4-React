@@ -154,24 +154,25 @@
     }
 
     /* Media query for smaller screens (768px) */
-    @media screen and (max-width: 768px) {
+    @media (max-width: 768px) {
+      .left {
+        margin-top: 25px;
+
+        width: 100%;
+      }
       .Homebox {
         display: flex;
         flex-wrap: wrap;
         margin: none;
         padding: none;
-
-        .left {
-          margin-top: 25px;
-
-          width: 100% !important;
-
+      }
+      
           #planetoftheday {
             .slideshowbild {
               width: 50dvw !important;
             }
           }
-        }
+       
         .slideshowbild {
           width: 50dvw !important;
         }
@@ -188,7 +189,7 @@
         .textbox{
           width: 100%;
         }
-      }
+      
     }
   }
 }
