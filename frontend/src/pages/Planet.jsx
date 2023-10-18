@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const bodyInfo = [
@@ -67,7 +67,7 @@ const Planet = () => {
   const [planet, setPlanet] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [moonEnglish, setmoonEnglish] = useState({});
+  const [moonEnglish, setmoonEnglish] = useState([]);
   const [showDetails, setShowDetails] = useState({});
 
   useEffect(() => {
@@ -101,37 +101,28 @@ const Planet = () => {
           )
         );
 
-        // for (let i = 0; i < data.moons.length; i++) {
-        //   var moonResponse = await fetch(data.moons[i].rel);
-        //   if (!moonResponse.ok) {
-        //     throw new Error("Network response for moon data was not ok");
-        //   }
-        //   const moonData = await moonResponse.json();
-        //   moonDataArray.push(moonData);
-        // }.
         const yeet = await Promise.all(moonDataArray);
 
         setmoonEnglish(yeet); // Set the moon data as an array
+      }else {
+        setmoonEnglish([]); // Clear moon data if there are no moons
       }
-      // } catch (error) {
-      //   console.error("Fetch error:", error, planetURL);
-      // }
+    
     };
 
     // Call the fetchPlanetData function when the component mounts
     fetchPlanetData();
   }, [id]);
 
-  //console.log(moonEnglish[index]?.englishName);
-
   useEffect(() => {
-    const filteredData = planet.moons
-      ? planet.moons.filter((moon) =>
-          moon.moon.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = moonEnglish
+      ? moonEnglish.filter((moon) =>
+          moon.englishName.toLowerCase().includes(searchTerm.toLowerCase())
         )
       : [];
+    console.log(moonEnglish);
     setSearchResults(filteredData);
-  }, [planet, searchTerm]);
+  }, [moonEnglish, searchTerm]);
 
   var planMass = planet.mass?.massValue.toFixed(2);
 
@@ -148,25 +139,20 @@ const Planet = () => {
 
   const exponent2 = "\u00B2";
 
-
-
-
-
   return (
     <>
       <div
         id="planet"
         style={{
-          backgroundImage: `url(${planetBackground})`
+          backgroundImage: `url(${planetBackground})`,
         }}
       >
         <div className="planet-container" id={id}>
           <div className="planet-box">
             <div
               className="title-img"
-              
               style={{
-                backgroundImage: `url(${planetimg})`
+                backgroundImage: `url(${planetimg})`,
               }}
             >
               <h1>{bodies.name}</h1>
@@ -189,16 +175,15 @@ const Planet = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td> {planet.gravity} m/s{exponent2} </td>
+                    <td>
+                      {" "}
+                      {planet.gravity} m/s{exponent2}{" "}
+                    </td>
                     <td> {planet.avgTemp - 273} °C </td>
                     <td> {planet.discoveryDate}</td>
                     <td>
                       {" "}
-                   
-  
-                   {planMass} x 10<sup>{planet.mass?.massExponent}</sup> kg{" "}
-  
-
+                      {planMass} x 10<sup>{planet.mass?.massExponent}</sup> kg{" "}
                     </td>
                   </tr>
                 </tbody>
@@ -214,59 +199,67 @@ const Planet = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            
-            <div className="table-container moon-container"
-                // style={{padding:'10px',}}
-                  >
+
+            <div
+              className="table-container moon-container"
+              // style={{padding:'10px',}}
+            >
               <table>
                 <thead className="moon-table-head">
                   <tr>
-                    <th className="planet-table-title-moon">Moons <FontAwesomeIcon icon={faMoon}/></th>
+                    <th className="planet-table-title-moon">
+                      Moons <FontAwesomeIcon icon={faMoon} />
+                    </th>
                     <th className="planet-table-title-details">Details</th>
                   </tr>
                 </thead>
                 <tbody className="moon-table-body">
-                  {searchResults.length === 0 ? (
+                  {moonEnglish?.length === 0 ? (
                     <tr>
-                      <td colSpan="2">This planet has no moons</td>
+                      <td colSpan="2">{bodies.name} has no moons </td>
+                    </tr>
+                  ) : searchResults?.length === 0 ? (
+                    <tr>
+                      <td colSpan="2">
+                        {bodies.name} has no moons with that name
+                      </td>
                     </tr>
                   ) : (
-                    searchResults.map((moon, index) => (
-                      <tr  key={index}>
-                        <td className="moon-td1">{moonEnglish[index]?.englishName}</td>
-                        <td className="moon-td2" onClick={() => infohandler(index)}>
+                    searchResults?.map((moon, index) => (
+                      <tr key={index}>
+                        <td className="moon-td1">{moon.englishName}</td>
+                        <td
+                          className="moon-td2"
+                          onClick={() => infohandler(index)}
+                        >
                           {showDetails[index]
                             ? "  Hide Details"
                             : "Show Details"}
 
                           {showDetails[index] && (
-                            
                             <tbody className="planet-table-innertable">
-                                
-                                  <span className="planet-table-innertable-type">Moon Mass: </span>
-                                  <span className="planet-table-innertable-info">
-                                    {" "}
-                                    {/* Add additional information here */}
-                                    {moonEnglish[index]?.mass?.massValue.toFixed( 2 )}
-                                    {" "}
-                                    x 10
-                                    <sup> {moonEnglish[index]?.mass?.massExponent} </sup>
-                                    {" "}
-                                    kg 
-                                    {/* Add more details as needed */}
-                                  </span>
+                              <span className="planet-table-innertable-type">
+                                Moon Mass:{" "}
+                              </span>
+                              <span className="planet-table-innertable-info">
+                                {" "}
+                                {/* Add additional information here */}
+                                {moon.mass?.massValue.toFixed(2)} x 10
+                                <sup> {moon.mass?.massExponent} </sup> kg
+                                {/* Add more details as needed */}
+                              </span>
 
-                                  <span className="flex-break-planet-table-innertable"></span>
+                              <span className="flex-break-planet-table-innertable"></span>
 
-                                  <span className="planet-table-innertable-type">Gravity: </span>
-                                  <span className="planet-table-innertable-info"> 
-                                    {moonEnglish[index]?.gravity}
-                                    m/s
-                                    {exponent2}
-                                  </span>
-                                
+                              <span className="planet-table-innertable-type">
+                                Gravity:{" "}
+                              </span>
+                              <span className="planet-table-innertable-info">
+                                {moon.gravity}
+                                m/s
+                                {exponent2}
+                              </span>
                             </tbody>
-                            
                           )}
                         </td>
                       </tr>
