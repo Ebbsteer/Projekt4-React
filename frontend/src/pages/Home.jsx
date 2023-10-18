@@ -107,7 +107,7 @@ const Home = () => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-    const handleClick = () => {
+    const handleClickRnd = () => {
         setNum(randomNumberInRange(1, 8));
         if (num == 1) {
             window.location = `/planet/mercury`;
@@ -144,7 +144,7 @@ const Home = () => {
                         <div id="planetoftheday">
                             <Slideshow images={images} />
                         </div>
-                        <button onClick={handleClick} className="random-button">
+                        <button onClick={handleClickRnd} className="random-button">
                             Generate random planet
                         </button>
                     </div>

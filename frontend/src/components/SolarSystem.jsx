@@ -16,7 +16,7 @@ const planetsData = [
         scale: [1, 1, 1], // Increase the scale to make it larger
         speed: 0.005,
         temp: "6000 °C", // temperature off planet
-        description: "The suns inner temperature is around 15 000 000 °C. But the surfase temperature at 6000 °C is enough to make diamonds boil.", // information about the planet
+        description: "The suns inner temperature is around 15 000 000 °C. But the surface temperature at 6000 °C is enough to make diamonds boil.", // information about the planet
     },
     {
         name: "Mercury",
