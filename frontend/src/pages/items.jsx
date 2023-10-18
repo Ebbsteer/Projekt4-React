@@ -227,9 +227,7 @@ const Items = () => {
                                     <option value="star">Star</option>
                                     <option value="planet">Planets</option>
                                     <option value="moon">Moons</option>
-                                    <option value="dwarf planet">
-                                        Dwarf planets
-                                    </option>
+                                    <option value="dwarf planet">Dwarf planet </option>
                                     <option value="asteroid">Asteroids</option>
                                     <option value="comet">Comets</option>
                                 </select>
@@ -306,7 +304,7 @@ const Items = () => {
                                     </td>
                                     <td className="item-table-info-nr">{i}</td>
                                     <td className="item-table-info-type">
-                                        {planet.bodyType} &nbsp;
+                                       
                                         {planet.bodyType === "Moon" ? (
                                             <FontAwesomeIcon icon={faMoon} />
                                         ) : (
@@ -342,7 +340,7 @@ const Items = () => {
                                             />
                                         ) : (
                                             ""
-                                        )}
+                                        )} {planet.bodyType} &nbsp;
                                     </td>
                                     <td className="item-table-info-name">
                                         {planet.englishName}
