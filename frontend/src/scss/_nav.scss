@@ -30,8 +30,8 @@ nav#nav {
     z-index: 10;
 
     font-family: base.$font-h;
-    font-size: 2rem;
-    line-height: 5rem;
+    font-size: 2.5rem;
+    line-height: 6rem;
 
     user-select: none;
 
@@ -72,7 +72,7 @@ nav#nav {
 
 // ----- Right elements in navbar - Home, Items, Planet
 #navright {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -87,7 +87,7 @@ nav#nav {
     gap: 20px;
 
     a {
-        font-size: 26px;
+        font-size: 2.5rem;
     }
 }
 
