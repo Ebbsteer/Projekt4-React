@@ -53,7 +53,7 @@ const Footer = () => {
               </div>
 
               <div className="footer-img"> 
-                <img width={150}  src="../assets/img/logotest1.png" alt="" />
+                <img src="src/assets/img/logotest1.png" alt="CosmicHub"/>
               </div>
             </div>
           </div>
