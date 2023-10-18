@@ -149,11 +149,9 @@ const Login = () => {
                             value={securityAnswer}
                             onChange={(e) => setSecurityAnswer(e.target.value)}
                         />
-                        <button 
-                            className="reset-password"
-                            type="button" onClick={handleResetPassword}>
+                        <p className="reset-password" onClick={handleResetPassword}>
                             Reset Password
-                        </button>
+                        </p>
                     </form>
                 ) : (
                     // Display login/registration form when resettingPassword is false
@@ -161,24 +159,23 @@ const Login = () => {
                         <input
                             className="input-text"
                             type="text"
-                            placeholder="Username"
+                            placeholder="Username"           //  Done
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                         <div className="password-input">
                             <input
                                 type={showPassword ? "text" : "password"}
-                                placeholder="Password"
+                                placeholder="Password"                          //  Done
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <button
-                                type="button"
+                            /> 
+                            <span style={{width:"30px",}}
                                 onClick={() => setShowPassword(!showPassword)}
                                 className="show-password-button"
                             >
                                 {showPassword ? "Hide" : "Show"}
-                            </button>
+                            </span>
                         </div>
                         {isRegistering && (
                             <>
@@ -218,10 +215,7 @@ const Login = () => {
                         </button>
                         {!isRegistering && (
                             <>
-                                <button
-                                    type="button"
-                                    onClick={handleForgotPassword}
-                                >
+                                <button type="button" onClick={handleForgotPassword} >
                                     Forgot Password
                                 </button>
                                 <label>
