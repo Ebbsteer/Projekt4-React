@@ -140,13 +140,15 @@ const Home = () => {
                             <Slideshow images={images} />
                         </div>
                     </div>
+                    
+                    <p onClick={handleClick} className="random-planet-button">
+                        Generate random planet
+                    </p>
+                    
                 </div>
             </div>
-            <div id="generate">
-                <button onClick={handleClick} className="random-button">
-                    Generate random planet
-                </button>
-            </div>
+
+            
         </div>
     );
 };

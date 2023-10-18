@@ -113,24 +113,14 @@
 
         }
       }
-    }
-
-    #generate {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* Adjust the height as needed */
-
-      .random-button {
-      @include base.Button;
-      transition: 0.5s ease;
-        }
-
-      .random-button:hover {
-      box-shadow: base.$button-shadow;
+      
+      .random-planet-button {
+        @include base.Button;
+        transition: 0.5s ease;
+      } .random-planet-button:hover {
+        box-shadow: base.$button-shadow;
       }
     }
-
 
     .nextSlide {
       opacity: 0;
