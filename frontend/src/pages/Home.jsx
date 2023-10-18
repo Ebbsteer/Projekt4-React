@@ -71,21 +71,21 @@ const Slideshow = ({ images }) => {
             }, 1000);
         }, 29000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [images]);
-  
-  return (
-    <div className="slideshow">
-      <p className="slideshowInfo title">{planetNames[currentIndex]}</p>
-      <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld"/>
-      <p className="slideshowInfo text">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
-      <button className="learn-button">
-        <NavLink to={planetDirect[currentIndex]}><span>Learn more</span></NavLink>
-      </button>
-    </div>
-  );
+        return () => {
+            clearInterval(timer);
+        };
+    }, [images]);
+
+    return (
+        <div className="slideshow">
+            <p className="slideshowInfo title">{planetNames[currentIndex]}</p>
+            <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="slideshowbild" id="slideshowBIld" />
+            <p className="slideshowInfo text">{planetNames[currentIndex] + " is the " + planetInfo[currentIndex] + " in our solar system"}</p>
+            <button className="learn-button">
+                <NavLink to={planetDirect[currentIndex]}><span>Learn more</span></NavLink>
+            </button>
+        </div>
+    );
 };
 
 const Home = () => {
@@ -107,25 +107,20 @@ const Home = () => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-    const handleClickRnd = () => {
-        setNum(randomNumberInRange(1, 8));
-        if (num == 1) {
-            window.location = `/planet/mercury`;
-        } else if (num == 2) {
-            window.location = `/planet/venus`;
-        } else if (num == 3) {
-            window.location = `/planet/earth`;
-        } else if (num == 4) {
-            window.location = `/planet/mars`;
-        } else if (num == 5) {
-            window.location = `/planet/jupiter`;
-        } else if (num == 6) {
-            window.location = `/planet/saturn`;
-        } else if (num == 7) {
-            window.location = `/planet/uranus`;
-        } else if (num == 8) {
-            window.location = `/planet/neptune`;
-        }
+    const planetPaths = [
+        "/planet/mercury",
+        "/planet/venus",
+        "/planet/earth",
+        "/planet/mars",
+        "/planet/jupiter",
+        "/planet/saturn",
+        "/planet/uranus",
+        "/planet/neptune",
+    ];
+
+    const handleClick = () => {
+        const randomNum = randomNumberInRange(0, planetPaths.length - 1);
+        window.location = planetPaths[randomNum];
     };
 
     return (
@@ -136,7 +131,7 @@ const Home = () => {
 
             <div className="Homebox">
                 <div className="left">
-                    <SolarSystem  />
+                    <SolarSystem />
                 </div>
 
                 <div className="right">
@@ -144,11 +139,13 @@ const Home = () => {
                         <div id="planetoftheday">
                             <Slideshow images={images} />
                         </div>
-                        <button onClick={handleClickRnd} className="random-button">
-                            Generate random planet
-                        </button>
                     </div>
                 </div>
+            </div>
+            <div id="generate">
+                <button onClick={handleClick} className="random-button">
+                    Generate random planet
+                </button>
             </div>
         </div>
     );
