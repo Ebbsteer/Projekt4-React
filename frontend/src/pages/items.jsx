@@ -8,6 +8,10 @@ import { faMeteor } from "@fortawesome/free-solid-svg-icons";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 const Items = () => {
+    const cookieName = "cid";
+
+    const allCookies = document.cookie;
+
     const exponent2 = "\u00B2";
 
     const itemList = "https://api.le-systeme-solaire.net/rest/bodies/";
@@ -26,7 +30,7 @@ const Items = () => {
 
     const handleButtonClick = (planetId, shouldRemove) => {
         const action = shouldRemove ? "remove" : "add";
-
+        if(allCookies.includes(`${cookieName}=`)){
         fetch(`http://localhost:3000/favorite/${action}`, {
             method: "PATCH",
             headers: {
@@ -45,11 +49,16 @@ const Items = () => {
                 console.error("Fetch error:", error);
                 alert("Please log in to perform this action!");
             });
+        }
+        else{
+            alert("Please log in to perform this action!");
+        }
     };
 
     const { id } = useParams();
 
     useEffect(() => {
+        if(allCookies.includes(`${cookieName}=`)){
         fetch("http://localhost:3000/favorite/list", {
             method: "GET",
             headers: {
@@ -70,6 +79,7 @@ const Items = () => {
         if (id === "fav") {
             setShowFavorites(true);
         }
+    }
     }, []);
 
     const sortlistName = () => {

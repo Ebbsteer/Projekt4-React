@@ -52,7 +52,7 @@ const Footer = () => {
                     <NavLink to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> David </NavLink>
                     <NavLink to="https://www.linkedin.com/in/othman-alani-8133b4251/"> Othman Al-Ani </NavLink>
                     <NavLink to="https://www.linkedin.com/in/salah-al-hassun-132b4b253/"> Salah Al Hassun </NavLink>
-                    <NavLink to="https://www.linkedin.com/in/zimon-johnsson-19647723a/"> Zimon johansson </NavLink>
+                    <NavLink to="https://www.linkedin.com/in/zimon-johnsson-19647723a/"> Zimon Johnsson </NavLink>
                 
 
               </div>
