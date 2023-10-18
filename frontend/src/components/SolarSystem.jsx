@@ -195,7 +195,7 @@ const Planet = ({
 
 
     const handleClick = () => {
-      const url =  `/planet/${name.toLowerCase()}`
+      let url =  `/planet/${name.toLowerCase()}`
       console.log(name.toLowerCase())
       if(url==`/planet/sun`){
           url=``
