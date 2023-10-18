@@ -71,7 +71,7 @@ const Planet = () => {
   const [showDetails, setShowDetails] = useState({});
 
   useEffect(() => {
-    let planetURL = `https://api.le-systeme-solaire.net/rest/bodies/${id}`;
+    const planetURL = `https://api.le-systeme-solaire.net/rest/bodies/${id}`;
 
     const fetchPlanetData = async () => {
       // try {
